@@ -11,7 +11,6 @@
                     $result = Whitelist::findOne(['id' => $request['id']]);
                     ?>
                     <?= json_encode($result, JSON_PRETTY_PRINT) ?>
-                    <input type="hidden" name="id" value="<?= $result['id'] ?>">
                 </div>
             </div>
             <?= admin_views('layouts.footer') ?>

@@ -7,8 +7,45 @@
             <div id="content">
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-                    <?= $request['id'] ?>
+                    <div class="d-flex justify-content-center">
+                        <div class="card" style="width: 30rem;">
+                            <div class="card-body">
+                                <div class="modal-header justify-content-center">
+                                    <h5 class="modal-title">ตรวจสอบบัญชี</h5>
+                                </div>
+                                <?php
+                                $result = Account::findOne(['id' => $request['id']]);
+                                ?>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>ชื่อบัญชี</label>
+                                        <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>อีเมล</label>
+                                        <input type="text" class="form-control" name="email" value="<?= $result['email'] ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>สิทธิ์การใช้งาน</label>
+                                        <select class="form-control" name="role" disabled>
+                                            <option value="superadmin" <?= $result['role'] == "superadmin" ? "superadmin" : "" ?>>ผู้ดูแลระบบ (superadmin)</option>
+                                            <option value="admin" <?= $result['role'] == "admin" ? "admin" : "" ?>>ผู้ดูแล (admin)</option>
+                                            <option value="staff" <?= $result['role'] == "staff" ? "staff" : "" ?>>เจ้าหน้าที่ (staff)</option>
+                                            <option value="seller" <?= $result['role'] == "seller" ? "seller" : "" ?>>ผู้ขาย (seller)</option>
+                                            <option value="user" <?= $result['role'] == "user" ? "user" : "" ?>>ผู้ใช้งาน (user)</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="btn btn-group">
+                                            <a href="<?= admin_url('account') ?>" class="btn btn-secondary">ย้อนกลับ</a>
+                                            <a href="<?= admin_url('account.' . $result['id'] . '.edit') ?>" class="btn btn-primary">แก้ไขบัญชี</a>
+                                            <a href="<?= admin_url('account.' . $result['id'] . '.password') ?>" class="btn btn-primary">เปลี่ยนรหัสผ่าน</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <?= admin_views('layouts.footer') ?>

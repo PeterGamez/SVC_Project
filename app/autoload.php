@@ -67,6 +67,10 @@ function admin_url($path = '', $ext = '')
     return url(config('site.admin_panel') . '/' . $path, $ext);
 }
 
+function url_back()
+{
+    return $_SERVER['HTTP_REFERER'];
+}
 function controller($path)
 {
     global $site;
@@ -81,7 +85,7 @@ function controller($path)
 
 function api($path)
 {
-    global $site;
+    global $site, $request;
     $path = str_replace('.', '/', $path);
     $apiPath = './api/' . $path . '.php';
     if (file_exists($apiPath)) {
@@ -96,7 +100,6 @@ function redirect($path)
     header('Location: ' . url($path));
     exit;
 }
-
 function views($filename)
 {
     global $site, $request;

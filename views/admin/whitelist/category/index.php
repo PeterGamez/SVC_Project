@@ -12,7 +12,7 @@ $site['cdn'] = ['datatables'];
                 <div class="container-fluid">
                     <div class="d-flex">
                         <div class="p-2">
-                            <a href="<?= admin_url('whitelist/category/add') ?>" class="btn btn-primary">เพิ่มประเภทร้าน</a>
+                            <a href="<?= admin_url('whitelist.category.add') ?>" class="btn btn-primary">เพิ่มประเภทร้าน</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -31,7 +31,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
-                                    echo '<td><a href="' . admin_url('whitelist/category/' . $result[$i]['id']) . '/edit" class="btn btn-primary btn-sm">แก้ไข</a></td>';
+                                    echo '<td><a href="' . admin_url('whitelist.category.' . $result[$i]['id']) . '.edit" class="btn btn-primary btn-sm">แก้ไข</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>

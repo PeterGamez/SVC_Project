@@ -26,8 +26,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
-                                            <a href="<?= admin_url('whitelist/category') ?>" class="btn btn-danger">ย้อนกลับ</a>
-                                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                                            <a href="<?= admin_url('whitelist.category') ?>" class="btn btn-secondary">ย้อนกลับ</a>
+                                            <button type="submit" class="btn btn-success">บันทึก</button>
                                         </div>
                                     </div>
                                 </form>

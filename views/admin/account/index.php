@@ -10,6 +10,11 @@ $site['cdn'] = ['datatables'];
             <div id="content">
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
+                    <div class="d-flex">
+                        <div class="p-2">
+                            <a href="<?= admin_url('account.add') ?>" class="btn btn-primary">เพิ่มบัญชี</a>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table id="table_account" class="dt-responsive nowrap table table-striped table-hover align-middle">
                             <thead>
@@ -30,7 +35,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<td>' . $result[$i]['username'] . '</td>';
                                     echo '<td>' . $result[$i]['email'] . '</td>';
                                     echo '<td>' . $result[$i]['role'] . '</td>';
-                                    echo '<td><a href="' . admin_url('account/' . $result[$i]['id']) . '" class="btn btn-primary btn-sm">View</a></td>';
+                                    echo '<td><a href="' . admin_url('account/' . $result[$i]['id']) . '" class="btn btn-primary btn-sm">ตรวจสอบ</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>

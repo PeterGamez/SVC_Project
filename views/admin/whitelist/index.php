@@ -28,7 +28,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
                                     echo '<td>' . $result[$i]['whitelist_category'] . '</td>';
-                                    echo '<td><a href="' . admin_url('whitelist/' . $result[$i]['id']) . '" class="btn btn-primary btn-sm">View</a></td>';
+                                    echo '<td><a href="' . admin_url('whitelist.' . $result[$i]['id']) . '" class="btn btn-primary btn-sm">View</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>

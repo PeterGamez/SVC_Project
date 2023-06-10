@@ -181,6 +181,12 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
             } else if ($agent_request[4] == 'edit' and $agent_method == 'POST') {
                 return controller('account.edit');
             }
+            // password
+            else if ($agent_request[4] == 'password' and $agent_method == 'GET') {
+                return admin_views('account.password');
+            } else if ($agent_request[4] == 'edit' and $agent_method == 'POST') {
+                return controller('account.password');
+            }
             // delete
             else if ($agent_request[4] == 'delete' and $agent_method == 'GET') {
                 return admin_views('account.delete');

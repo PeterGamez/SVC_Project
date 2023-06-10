@@ -11,7 +11,7 @@
                         <div class="card" style="width: 30rem;">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
-                                    <h5 class="modal-title">แก้ไขบัญชี</h5>
+                                    <h5 class="modal-title">แก้ไขรหัสผ่าน</h5>
                                 </div>
                                 <form method="POST" action="<?= url() ?>">
                                     <?php
@@ -20,22 +20,12 @@
                                     <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label>ชื่อบัญชี <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" required>
+                                            <label>ชื่อบัญชี</label>
+                                            <input type="text" class="form-control" value="<?= $result['username'] ?>" disabled>
                                         </div>
                                         <div class="form-group">
-                                            <label>อีเมล <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="email" value="<?= $result['email'] ?>" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>สิทธิ์การใช้งาน <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="role" required>
-                                                <option value="superadmin" <?= $result['role'] == "superadmin" ? "superadmin" : "" ?>>ผู้ดูแลระบบ (superadmin)</option>
-                                                <option value="admin" <?= $result['role'] == "admin" ? "admin" : "" ?>>ผู้ดูแล (admin)</option>
-                                                <option value="staff" <?= $result['role'] == "staff" ? "staff" : "" ?>>เจ้าหน้าที่ (staff)</option>
-                                                <option value="seller" <?= $result['role'] == "seller" ? "seller" : "" ?>>ผู้ขาย (seller)</option>
-                                                <option value="user" <?= $result['role'] == "user" ? "user" : "" ?>>ผู้ใช้งาน (user)</option>
-                                            </select>
+                                            <label>รหัสผ่าน <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="password" required>
                                         </div>
                                     </div>
                                     <div class="modal-body">
