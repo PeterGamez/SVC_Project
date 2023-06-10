@@ -36,11 +36,11 @@ if (isset($_POST['user'])) {
         } else {
             Login::set_session($data);
 
-            Alert_Login::succeed();
+            echo Alert_Login::succeed();
         }
     } else {
         echo Alert_Login::alert('ไม่พบชื่อผู้ใช้งาน', 'warning', 1500, 'history.back()');
     }
 } else {
-    redirect(config('site.admin_panel') . '/login');
+    redirect(admin_url('login'));
 }

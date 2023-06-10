@@ -13,7 +13,7 @@ $site['cdn'] = ['login'];
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4"><?= config('site.name') ?></h1>
                         </div>
-                        <form class="user" method="POST" action="<?= admin_url('login.callback.form') ?>">
+                        <form class="user" method="POST" action="<?= admin_url('login.form') ?>">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email">
                             </div>

@@ -8,12 +8,13 @@ $site = [
         "256" => resource('images/logo-256.png', true),
         "ico" => resource('images/logo.ico', true),
     ],
+    "lang" => "th",
     "admin_panel" => "/backend",
 
     "google" => [
-        "id" => "704090470537-j17c60vgubje74mb0bqgdk8bvm27lq58.apps.googleusercontent.com",
-        "secret" => "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",
-        "callback" => url('backend.login.google.callback')
+        "id" => "704090470537-97c10g406cm14m2lntapii8aq0cg2nbk.apps.googleusercontent.com",
+        "secret" => "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",
+        "callback" => url('backend.login.google')
     ],
     "cloudflare" => [
         "turnstile" => [

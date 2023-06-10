@@ -2,7 +2,7 @@
 $database = [
     "host" => "localhost",
     "user" => "root",
-    "passowrd" => "",
+    "password" => "",
     "database" => "project"
 ];
 

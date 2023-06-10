@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="<?= config('site.lang') ?>">
 
 <head>
     <title><?= $site['name'] ?></title>
@@ -8,10 +8,10 @@
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="<?= $site['name'] ?>">
+    <meta name="theme-color" content="#333399">
     <?php
     if ($site['social'] == true) {
     ?>
-        <meta name="theme-color" content="#FA4E29">
         <meta name="description" content="<?= $site['desc'] ?>">
         <meta name="keywords" content="Discord Thailand, IBO Community, Devastate">
         <meta property="og:title" content="<?= $site['name'] ?>">

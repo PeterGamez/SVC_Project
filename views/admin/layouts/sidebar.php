@@ -7,10 +7,8 @@
         </div>
     </a>
 
-    <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="<?= url(config('site.admin_panel')) ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -18,10 +16,52 @@
         </a>
     </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
+    <div class="sidebar-heading">
+        Whitelist
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= admin_url('whitelist') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>รายการไวริส</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= admin_url('whitelist.category') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>จัดการหมวดหมู่</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= admin_url('whitelist.seller') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>จัดการบัญชีผู้ขาย</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Blacklist
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= admin_url('blacklist') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>รายการแบล็คลิส</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= admin_url('blacklist.category') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>จัดการหมวดหมู่</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
     <div class="sidebar-heading">
         Setting
     </div>
@@ -29,11 +69,10 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('account') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Account</span>
+            <span>จัดการบัญชี</span>
         </a>
     </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->

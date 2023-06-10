@@ -111,6 +111,7 @@ function views($filename)
 
 function admin_views($path = '')
 {
+    global $site, $request;
     return views('admin/' . $path);
 }
 
@@ -122,7 +123,7 @@ $agent_method = $_SERVER['REQUEST_METHOD'];
 
 $Class = scandir('./app/class'); // ไฟล์ทั้งหมดในโฟลเดอร์
 foreach ($Class as $key => $value) {
-    if ($value != '.' && $value != '..') {
+    if ($value != '.' && $value != '..' && substr($value, -4) == '.php') {
         require_once './app/class/' . $value;
     }
 }

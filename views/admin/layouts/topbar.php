@@ -11,13 +11,19 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['user_username'] ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600"><?= $_SESSION['user_username'] ?></span>
                 <img class="img-profile rounded-circle" src="<?= $_SESSION['user_avatar'] ?>">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="<?= url('/') ?>">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> หนัาบ้าน
+                </a>
+                <a class="dropdown-item" href="<?= admin_url('password') ?>">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> เปลี่ยนรหัสผ่าน
+                </a>
                 <a class="dropdown-item" href="<?= admin_url('logout') ?>">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> ออกจากระบบ
                 </a>
             </div>
         </li>
