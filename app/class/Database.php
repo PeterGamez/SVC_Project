@@ -57,7 +57,7 @@ class Database
         return " WHERE " . implode(" AND ", $query);
     }
 
-    public function DBcreate($sql, $params)
+    public function create($sql, $params)
     {
         $stmt = $this->conn->prepare($sql);
         $this->bindParams($stmt, $params);
