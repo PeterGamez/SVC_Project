@@ -9,13 +9,20 @@ class Whitelist
     }
     public static function find($conditions = [])
     {
+        $conditions = array_map(function ($key) {
+            return "whitelist.$key";
+        }, array_keys($conditions));
         $DB = new Database();
         $sql = "SELECT whitelist.*, whitelist_category.name as whitelist_category FROM whitelist
-            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id";
+            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . $DB->buildWhereClause($conditions);
         return $DB->find($sql, $conditions);
     }
     public static function findOne($conditions)
     {
+        $conditions = array_map(function ($key) {
+            return "whitelist.$key";
+        }, array_keys($conditions));
+
         $DB = new Database();
         $sql = "SELECT whitelist.*, whitelist_category.name as whitelist_category FROM whitelist
             INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . $DB->buildWhereClause($conditions);

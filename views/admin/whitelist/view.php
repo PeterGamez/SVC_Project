@@ -7,7 +7,11 @@
             <div id="content">
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <?php
+                    $result = Whitelist::findOne(['id' => $request['id']]);
+                    ?>
+                    <?= json_encode($result, JSON_PRETTY_PRINT) ?>
+                    <input type="hidden" name="id" value="<?= $result['id'] ?>">
                 </div>
             </div>
             <?= admin_views('layouts.footer') ?>

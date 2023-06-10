@@ -13,10 +13,11 @@
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">แก้ไขประเภทร้าน</h5>
                                 </div>
-                                <form method="POST" action="<?= admin_url('whitelist/category/edit') ?>">
+                                <form method="POST" action="<?= url() ?>">
                                     <?php
                                     $result = Whitelist_Category::findOne(['id' => $request['id']]);
                                     ?>
+                                    <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อประเภทร้าน <span class="text-danger">*</span></label>

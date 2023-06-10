@@ -9,11 +9,6 @@ class Database
         $this->conn = $conn;
     }
 
-    public function __destruct()
-    {
-        $this->conn->close();
-    }
-
     private function bindParams($stmt, $params)
     {
         $types = "";
@@ -84,9 +79,9 @@ class Database
             $this->bindParams($stmt, $params);
         }
         $stmt->execute();
-        $result = $stmt->get_result()->fetch_assoc();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
-        return $result ?? null;
+        return $result[0] ?? null;
     }
 
     public function update($sql, $conditions, $newData)

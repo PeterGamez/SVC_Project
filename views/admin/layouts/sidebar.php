@@ -34,12 +34,6 @@
             <span>จัดการหมวดหมู่</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= admin_url('whitelist.seller') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>จัดการบัญชีผู้ขาย</span>
-        </a>
-    </li>
 
     <hr class="sidebar-divider">
 

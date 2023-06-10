@@ -13,7 +13,7 @@
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">เพิ่มประเภทร้าน</h5>
                                 </div>
-                                <form method="POST" action="<?= admin_url('whitelist/category/add') ?>">
+                                <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อประเภทร้าน <span class="text-danger">*</span></label>
