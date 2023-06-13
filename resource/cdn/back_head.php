@@ -1,11 +1,20 @@
 <!-- Site style -->
-<link rel="stylesheet" href="<?= resource('cdn/back_style.min.css', true) ?>">
+<link rel="preload" href="<?= resource('cdn/back_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="<?= resource('cdn/back_style.min.css', true) ?>">
+</noscript>
 
 <!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</noscript>
 
 <!-- Custom styles for this template-->
-<link href="https://cdn.jsdelivr.net/gh/startbootstrap/startbootstrap-sb-admin-2/css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/startbootstrap/startbootstrap-sb-admin-2/css/sb-admin-2.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/startbootstrap/startbootstrap-sb-admin-2/css/sb-admin-2.min.css">
+</noscript>
 
 <!-- Data Tables -->
 <?php if (isset($site['cdn']) and in_array('datatables', $site['cdn'])) { ?>
