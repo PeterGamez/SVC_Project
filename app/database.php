@@ -143,3 +143,4 @@ class Database
         return $affectedRows;
     }
 }
+

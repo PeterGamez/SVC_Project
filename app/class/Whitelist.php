@@ -6,6 +6,7 @@ class Whitelist extends Database
         $sql = "INSERT INTO whitelist" . parent::buildInsertConditions($conditions);
         return parent::buildCreate($sql, $conditions);
     }
+
     public static function find($conditions = [])
     {
         $conditions = array_map(function ($key) {
@@ -15,6 +16,7 @@ class Whitelist extends Database
             INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions);
         return parent::buildFind($sql, $conditions);
     }
+
     public static function findOne($conditions)
     {
         $conditions = array_map(function ($key) {
@@ -25,11 +27,19 @@ class Whitelist extends Database
             INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions);
         return parent::buildFindOne($sql, $conditions);
     }
+
+    public static function count($conditions = [], $operator = null)
+    {
+        $sql = "SELECT COUNT(*) as count FROM whitelist" . parent::buildWhereClause($conditions, $operator);
+        return parent::buildFindOne($sql, $conditions)['count'];
+    }
+
     public static function update($conditions, $newData)
     {
         $sql = "UPDATE whitelist" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
         return parent::buildUpdate($sql, $conditions, $newData);
     }
+    
     public static function delete($conditions)
     {
         $sql = "DELETE FROM whitelist" . parent::buildWhereClause($conditions);

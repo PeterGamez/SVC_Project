@@ -22,6 +22,12 @@ class Blacklist extends Database
         return parent::buildFindOne($sql, $conditions);
     }
 
+    public static function count($conditions = [], $operator = null)
+    {
+        $sql = "SELECT COUNT(*) as count FROM blacklist" . parent::buildWhereClause($conditions, $operator);
+        return parent::buildFindOne($sql, $conditions)['count'];
+    }
+
     public static function update($conditions, $newData)
     {
         $sql = "UPDATE blacklist" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
