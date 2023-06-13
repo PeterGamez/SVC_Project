@@ -1,34 +1,34 @@
 <?php
-class Account
+class Account extends Database
 {
     public static function create($conditions)
     {
-        $DB = new Database();
-        $sql = "INSERT INTO account SET " . $DB->buildConditions($conditions);
-        return $DB->create($sql, $conditions);
+        $sql = "INSERT INTO account" . parent::buildInsertConditions($conditions);
+        return parent::buildCreate($sql, $conditions);
     }
     public static function find($conditions = [])
     {
-        $DB = new Database();
-        $sql = "SELECT * FROM account " . $DB->buildWhereClause($conditions);
-        return $DB->find($sql, $conditions);
+        $sql = "SELECT * FROM account" . parent::buildWhereClause($conditions);
+        return parent::buildFind($sql, $conditions);
     }
     public static function findOne($conditions)
     {
-        $DB = new Database();
-        $sql = "SELECT * FROM account " . $DB->buildWhereClause($conditions);
-        return $DB->findOne($sql, $conditions);
+        $sql = "SELECT * FROM account" . parent::buildWhereClause($conditions);
+        return parent::buildFindOne($sql, $conditions);
+    }
+    public static function count($conditions = [], $operator = null)
+    {
+        $sql = "SELECT COUNT(*) as count FROM account" . parent::buildWhereClause($conditions, $operator);
+        return parent::buildFindOne($sql, $conditions)['count'];
     }
     public static function update($conditions, $newData)
     {
-        $DB = new Database();
-        $sql = "UPDATE account SET " . $DB->buildConditions($newData) . $DB->buildWhereClause($conditions);
-        return $DB->update($sql, $conditions, $newData);
+        $sql = "UPDATE account" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
     public static function delete($conditions)
     {
-        $DB = new Database();
-        $sql = "DELETE FROM account" . $DB->buildWhereClause($conditions);
-        return $DB->delete($sql, $conditions);
+        $sql = "DELETE FROM account" . parent::buildWhereClause($conditions);
+        return parent::buildDelete($sql, $conditions);
     }
 }

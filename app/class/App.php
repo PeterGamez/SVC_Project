@@ -30,7 +30,7 @@ class App
 
         $headers = array();
         $headers[] = 'Accept: application/json';
-        $headers[] = 'User-Agent: IBO/1.0';
+        $headers[] = 'User-Agent: itsvc/1.0';
 
         if (isset($_SESSION['access_token']))
             $headers[] = 'Authorization: Bearer ' . $_SESSION['access_token'];

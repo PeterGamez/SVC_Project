@@ -49,8 +49,12 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
         // check is number
         else if (is_numeric($agent_request[3])) {
             $request['id'] = $agent_request[3];
+            // view
+            if (!isset($agent_request[4])) {
+                return admin_views('whitelist.view');
+            }
             // edit
-            if ($agent_request[4] == 'edit' and $agent_method == 'GET') {
+            else if ($agent_request[4] == 'edit' and $agent_method == 'GET') {
                 return admin_views('whitelist.edit');
             } else if ($agent_request[4] == 'edit' and $agent_method == 'POST') {
                 return controller('whitelist.edit');
@@ -60,10 +64,6 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return admin_views('whitelist.delete');
             } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
                 return controller('whitelist.delete');
-            }
-            // view
-            else {
-                return admin_views('whitelist.view');
             }
         }
         // category

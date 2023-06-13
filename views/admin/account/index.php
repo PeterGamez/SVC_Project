@@ -3,7 +3,7 @@ $site['cdn'] = ['datatables'];
 ?>
 <?= admin_views('layouts.header') ?>
 
-<body id="page-top">
+<body>
     <div id="wrapper">
         <?= admin_views('layouts.sidebar') ?>
         <div id="content-wrapper" class="d-flex flex-column">

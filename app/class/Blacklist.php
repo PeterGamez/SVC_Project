@@ -1,79 +1,68 @@
 <?php
 
-class Blacklist
+class Blacklist extends Database
 {
     public static function create($conditions)
     {
-        $DB = new Database();
-        $sql = "INSERT INTO blacklist SET " . $DB->buildConditions($conditions);
-        return $DB->create($sql, $conditions);
+        $sql = "INSERT INTO blacklist" . parent::buildInsertConditions($conditions);
+        return parent::buildCreate($sql, $conditions);
     }
 
     public static function find($conditions = [])
     {
-        $DB = new Database();
         $sql = "SELECT blacklist.*, blacklist_category.name as blacklist_category FROM blacklist
-            INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id";
-        return $DB->find($sql, $conditions);
+            INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id" . parent::buildWhereClause($conditions);
+        return parent::buildFind($sql, $conditions);
     }
 
     public static function findOne($conditions)
     {
-        $DB = new Database();
         $sql = "SELECT blacklist.*, blacklist_category.name as blacklist_category FROM blacklist
-            INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id" . $DB->buildWhereClause($conditions);
-        return $DB->findOne($sql, $conditions);
+            INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id" . parent::buildWhereClause($conditions);
+        return parent::buildFindOne($sql, $conditions);
     }
 
     public static function update($conditions, $newData)
     {
-        $DB = new Database();
-        $sql = "UPDATE blacklist SET " . $DB->buildConditions($newData) . $DB->buildWhereClause($conditions);
-        return $DB->update($sql, $conditions, $newData);
+        $sql = "UPDATE blacklist" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
 
     public static function delete($conditions)
     {
-        $DB = new Database();
-        $sql = "DELETE FROM blacklist" . $DB->buildWhereClause($conditions);
-        return $DB->delete($sql, $conditions);
+        $sql = "DELETE FROM blacklist" . parent::buildWhereClause($conditions);
+        return parent::buildDelete($sql, $conditions);
     }
 }
 
-class Blacklist_Category
+class Blacklist_Category extends Database
 {
     public static function create($conditions)
     {
-        $DB = new Database();
-        $sql = "INSERT INTO blacklist_category SET " . $DB->buildConditions($conditions);
-        return $DB->create($sql, $conditions);
+        $sql = "INSERT INTO blacklist_category" . parent::buildInsertConditions($conditions);
+        return parent::buildCreate($sql, $conditions);
     }
 
     public static function find($conditions = [])
     {
-        $DB = new Database();
-        $sql = "SELECT * FROM blacklist_category" . $DB->buildWhereClause($conditions);
-        return $DB->find($sql, $conditions);
+        $sql = "SELECT * FROM blacklist_category" . parent::buildWhereClause($conditions);
+        return parent::buildFind($sql, $conditions);
     }
-
     public static function findOne($conditions)
     {
-        $DB = new Database();
-        $sql = "SELECT * FROM blacklist_category" . $DB->buildWhereClause($conditions);
-        return $DB->findOne($sql, $conditions);
+        $sql = "SELECT * FROM blacklist_category" . parent::buildWhereClause($conditions);
+        return parent::buildFindOne($sql, $conditions);
     }
 
     public static function update($conditions, $newData)
     {
-        $DB = new Database();
-        $sql = "UPDATE blacklist_category SET " . $DB->buildConditions($newData) . $DB->buildWhereClause($conditions);
-        return $DB->update($sql, $conditions, $newData);
+        $sql = "UPDATE blacklist_category" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
 
     public static function delete($conditions)
     {
-        $DB = new Database();
-        $sql = "DELETE FROM blacklist_category" . $DB->buildWhereClause($conditions);
-        return $DB->delete($sql, $conditions);
+        $sql = "DELETE FROM blacklist_category" . parent::buildWhereClause($conditions);
+        return parent::buildDelete($sql, $conditions);
     }
 }

@@ -1,21 +1,19 @@
 <?php
-class Whitelist
+class Whitelist extends Database
 {
     public static function create($conditions)
     {
-        $DB = new Database();
-        $sql = "INSERT INTO whitelist SET " . $DB->buildConditions($conditions);
-        return $DB->create($sql, $conditions);
+        $sql = "INSERT INTO whitelist" . parent::buildInsertConditions($conditions);
+        return parent::buildCreate($sql, $conditions);
     }
     public static function find($conditions = [])
     {
         $conditions = array_map(function ($key) {
             return "whitelist.$key";
         }, array_keys($conditions));
-        $DB = new Database();
         $sql = "SELECT whitelist.*, whitelist_category.name as whitelist_category FROM whitelist
-            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . $DB->buildWhereClause($conditions);
-        return $DB->find($sql, $conditions);
+            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions);
+        return parent::buildFind($sql, $conditions);
     }
     public static function findOne($conditions)
     {
@@ -23,58 +21,50 @@ class Whitelist
             return "whitelist.$key";
         }, array_keys($conditions));
 
-        $DB = new Database();
         $sql = "SELECT whitelist.*, whitelist_category.name as whitelist_category FROM whitelist
-            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . $DB->buildWhereClause($conditions);
-        return $DB->findOne($sql, $conditions);
+            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions);
+        return parent::buildFindOne($sql, $conditions);
     }
     public static function update($conditions, $newData)
     {
-        $DB = new Database();
-        $sql = "UPDATE whitelist SET " . $DB->buildConditions($newData) . $DB->buildWhereClause($conditions);
-        return $DB->update($sql, $conditions, $newData);
+        $sql = "UPDATE whitelist" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
     public static function delete($conditions)
     {
-        $DB = new Database();
-        $sql = "DELETE FROM whitelist" . $DB->buildWhereClause($conditions);
-        return $DB->delete($sql, $conditions);
+        $sql = "DELETE FROM whitelist" . parent::buildWhereClause($conditions);
+        return parent::buildDelete($sql, $conditions);
     }
 }
-class Whitelist_Category
+class Whitelist_Category extends Database
 {
     public static function create($conditions)
     {
-        $DB = new Database();
-        $sql = "INSERT INTO whitelist_category SET " . $DB->buildConditions($conditions);
-        return $DB->create($sql, $conditions);
+        $sql = "INSERT INTO whitelist_category" . parent::buildInsertConditions($conditions);
+        return parent::buildCreate($sql, $conditions);
     }
 
     public static function find($conditions = [])
     {
-        $DB = new Database();
-        $sql = "SELECT * FROM whitelist_category" . $DB->buildWhereClause($conditions);
-        return $DB->find($sql, $conditions);
+        $sql = "SELECT * FROM whitelist_category" . parent::buildWhereClause($conditions);
+        return parent::buildFind($sql, $conditions);
     }
 
     public static function findOne($conditions)
     {
-        $DB = new Database();
-        $sql = "SELECT * FROM whitelist_category" . $DB->buildWhereClause($conditions);
-        return $DB->findOne($sql, $conditions);
+        $sql = "SELECT * FROM whitelist_category" . parent::buildWhereClause($conditions);
+        return parent::buildFindOne($sql, $conditions);
     }
 
     public static function update($conditions, $newData)
     {
-        $DB = new Database();
-        $sql = "UPDATE whitelist_category SET " . $DB->buildConditions($newData) . $DB->buildWhereClause($conditions);
-        return $DB->update($sql, $conditions, $newData);
+        $sql = "UPDATE whitelist_category" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
 
     public static function delete($conditions)
     {
-        $DB = new Database();
-        $sql = "DELETE FROM whitelist_category" . $DB->buildWhereClause($conditions);
-        return $DB->delete($sql, $conditions);
+        $sql = "DELETE FROM whitelist_category" . parent::buildWhereClause($conditions);
+        return parent::buildDelete($sql, $conditions);
     }
 }

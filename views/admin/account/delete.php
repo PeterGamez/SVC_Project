@@ -1,6 +1,6 @@
 <?= admin_views('layouts.header') ?>
 
-<body id="page-top">
+<body>
     <div id="wrapper">
         <?= admin_views('layouts.sidebar') ?>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -8,7 +8,7 @@
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card" style="width: 30rem;">
+                        <div class="card mb-4" style="width: 30rem;">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">ลบบัญชี</h5>
@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
-                                            <a href="<?= admin_url('account.' . $result['id']) ?>" class="btn btn-secondary">ย้อนกลับ</a>
+                                            <a href="<?= url_back() ?>" class="btn btn-secondary">ย้อนกลับ</a>
                                             <button type="submit" class="btn btn-danger">ยืนยัน</button>
                                         </div>
                                     </div>

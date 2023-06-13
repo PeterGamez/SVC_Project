@@ -3,7 +3,7 @@ $site['cdn'] = ['datatables'];
 ?>
 <?= admin_views('layouts.header') ?>
 
-<body id="page-top">
+<body>
     <div id="wrapper">
         <?= admin_views('layouts.sidebar') ?>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -12,7 +12,7 @@ $site['cdn'] = ['datatables'];
                 <div class="container-fluid">
                     <div class="d-flex">
                         <div class="p-2">
-                            <a href="<?= admin_url('whitelist.category.add') ?>" class="btn btn-primary">เพิ่มประเภทร้าน</a>
+                            <a href="<?= admin_url('whitelist.category.add') ?>" class="btn btn-primary">เพิ่มประเภทกิจการ</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -20,7 +20,7 @@ $site['cdn'] = ['datatables'];
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">ประเภทร้าน</th>
+                                    <th scope="col">ประเภทกิจการ</th>
                                     <th scope="col">&nbsp</th>
                                 </tr>
                             </thead>

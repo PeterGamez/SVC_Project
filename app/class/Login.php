@@ -1,27 +1,17 @@
 <?php
-class Login
+class Login extends Database
 {
     static function get_user($user)
     {
-        $sql = "SELECT * FROM account WHERE username = ? OR email = ?";
-        global $conn;
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $user, $user);
-        $stmt->execute();
-        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        $stmt->close();
-        return $result[0] ?? null;
+        $conditions = ['username' => $user, 'email' => $user];
+        $sql = "SELECT * FROM account" . parent::buildWhereClause($conditions, 'OR');
+        return parent::buildFindOne($sql, $conditions);
     }
     static function get_email($email)
     {
-        $sql = "SELECT * FROM account WHERE email = ?";
-        global $conn;
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        $stmt->close();
-        return $result[0] ?? null;
+        $conditions = ['email' => $email];
+        $sql = "SELECT * FROM account" . parent::buildWhereClause($conditions);
+        return parent::buildFindOne($sql, $conditions);
     }
     static function set_session($data)
     {
@@ -33,11 +23,9 @@ class Login
     }
     static function set_avatar($id, $avatar)
     {
-        $sql = "UPDATE account SET avatar = ? WHERE id = ?";
-        global $conn;
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('si', $avatar, $id);
-        $stmt->execute();
-        $stmt->close();
+        $conditions = ['id' => $id];
+        $newData = ['avatar' => $avatar];
+        $sql = "UPDATE account" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
 }
