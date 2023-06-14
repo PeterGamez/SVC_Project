@@ -4,26 +4,38 @@ require_once './app/autoload.php';
 if ($agent_path == '/') {
     return views('index');
 } else if ($agent_path == '/whitelist') {
-    return views('whitelist');
+    if (isset($agent_request[2])) {
+        $request['id'] = $agent_request[2];
+        return views('whitelist.view');
+    } else {
+        return views('whitelist.index');
+    }
 } else if ($agent_path == '/blacklist') {
-    return views('blacklist');
+    if (isset($agent_request[2])) {
+        $request['id'] = $agent_request[2];
+        return views('blacklist.view');
+    } else {
+        return views('blacklist.index');
+    }
 } else if ($agent_path == '/contact') {
     return views('contact');
 }
 if (str_starts_with($agent_path, config('site.admin_panel'))) {
     if ($_SESSION['login'] == false) {
-        if ($agent_request[2] == 'login') {
+        if (isset($agent_request[2]) and $agent_request[2] == 'login') {
             if (isset($agent_request[3]) and $agent_method == 'POST') {
                 if ($agent_request[3] == 'form') {
                     return controller('login.form');
                 } else if ($agent_request[3] == 'google') {
                     return controller('login.google');
                 }
+            } else {
+                return admin_views('login');
             }
         } else {
             $_SESSION['callback'] = url($agent_path);
+            return redirect(config('site.admin_panel') . '/login');
         }
-        return admin_views('login');
     }
     if (!isset($agent_request[2])) {
         return admin_views('index');
