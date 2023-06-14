@@ -17,42 +17,42 @@
                             'title' => "Account (All)",
                             'count' => Account::count(),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-sharp fa-light fa-users fa-2x text-gray-300',
+                            'icon' => 'fa-sharp fa-light fa-users',
                         ], [
                             'title' => "Account (Superadmin, Admin, Staff)",
                             'count' => Account::count(['role' => ['superadmin',  'admin',  'staff']]),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-sharp fa-light fa-square-terminal fa-2x text-gray-300',
+                            'icon' => 'fa-sharp fa-light fa-square-terminal',
                         ], [
                             'title' => "Account (Seller)",
                             'count' => Account::count(['role' => 'seller']),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-sharp fa-light fa-shop fa-2x text-gray-300',
+                            'icon' => 'fa-sharp fa-light fa-shop',
                         ], [
                             'title' => "Account (User)",
                             'count' => Account::count(['role' => 'user']),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-calendar fa-2x text-gray-300',
+                            'icon' => 'fa-light fa-user',
                         ], [
                             'title' => "Whitelist (Approve)",
                             'count' => Whitelist::count(['approve_agree' => '1']),
                             'theme' => 'success',
-                            'icon' => 'fas fa-sharp fa-light fa-shield-check fa-2x text-gray-300',
+                            'icon' => 'fa-sharp fa-light fa-shield-check',
                         ], [
                             'title' => "Whitelist (DisApprove)",
                             'count' =>  Whitelist::count(['approve_agree' => '0']),
                             'theme' => 'danger',
-                            'icon' => 'fas fa-sharp fa-light fa-shield-xmark fa-2x text-gray-300',
+                            'icon' => 'fa-sharp fa-light fa-shield-xmark',
                         ], [
                             'title' => "Blacklist (Approve)",
                             'count' => Blacklist::count(['approve_agree' => '1']),
                             'theme' => 'success',
-                            'icon' => 'fas fa-solid fa-circle-check fa-2x text-gray-300',
+                            'icon' => 'fa-solid fa-circle-check',
                         ], [
                             'title' => "Blacklist (DisApprove)",
                             'count' => Blacklist::count(['approve_agree' => '0']),
                             'theme' => 'danger',
-                            'icon' => 'fas fa-solid fa-circle-xmark fa-2x text-gray-300',
+                            'icon' => 'fa-solid fa-circle-xmark',
                         ]
                     );
 
@@ -70,7 +70,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $item[$i]['count'] ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="<?= $item[$i]['icon'] ?>"></i>
+                                            <i class="<?= $item[$i]['icon'] ?> fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            <i class="fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">Dropdown Header:</div>
@@ -115,7 +115,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            <i class="fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">Dropdown Header:</div>
@@ -132,13 +132,13 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fa-circle text-primary"></i> Direct
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <i class="fa-circle text-success"></i> Social
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fa-circle text-info"></i> Referral
                                         </span>
                                     </div>
                                 </div>
