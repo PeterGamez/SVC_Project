@@ -25,7 +25,6 @@ class Login extends Database
     {
         $conditions = ['id' => $id];
         $newData = ['avatar' => $avatar];
-        $sql = "UPDATE account" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
-        return parent::buildUpdate($sql, $conditions, $newData);
+        return parent::buildUpdate('account', $conditions, $newData);
     }
 }

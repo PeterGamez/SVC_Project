@@ -1,34 +1,37 @@
 <?php
 class Account extends Database
 {
+    public static $table = 'account';
+
     public static function create($conditions)
     {
-        $sql = "INSERT INTO account" . parent::buildInsertConditions($conditions);
-        return parent::buildCreate($sql, $conditions);
+        return parent::buildCreate(self::$table, $conditions);
     }
+
     public static function find($conditions = [])
     {
-        $sql = "SELECT * FROM account" . parent::buildWhereClause($conditions);
+        $sql = "SELECT * FROM " . self::$table . parent::buildWhereClause($conditions);
         return parent::buildFind($sql, $conditions);
     }
+
     public static function findOne($conditions)
     {
-        $sql = "SELECT * FROM account" . parent::buildWhereClause($conditions);
+        $sql = "SELECT * FROM " . self::$table . parent::buildWhereClause($conditions);
         return parent::buildFindOne($sql, $conditions);
     }
-    public static function count($conditions = [], $operator = null)
+
+    public static function count($conditions = [])
     {
-        $sql = "SELECT COUNT(*) as count FROM account" . parent::buildWhereClause($conditions, $operator);
-        return parent::buildFindOne($sql, $conditions)['count'];
+        return parent::buildFindCount(self::$table, $conditions);
     }
+
     public static function update($conditions, $newData)
     {
-        $sql = "UPDATE account" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
-        return parent::buildUpdate($sql, $conditions, $newData);
+        return parent::buildUpdate(self::$table, $conditions, $newData);
     }
+    
     public static function delete($conditions)
     {
-        $sql = "DELETE FROM account" . parent::buildWhereClause($conditions);
-        return parent::buildDelete($sql, $conditions);
+        return parent::buildDelete(self::$table, $conditions);
     }
 }

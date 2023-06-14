@@ -41,7 +41,7 @@ class Database
         $stmt->bind_param($types, ...$bindParams);
     }
 
-    static public function buildInsertConditions($conditions)
+    static private function buildInsertConditions($conditions)
     {
         $query = [];
 
@@ -52,7 +52,7 @@ class Database
         return " (" . implode(", ", $query) . ") VALUES (" . implode(", ", array_fill(0, count($query), "?")) . ")";
     }
 
-    static public function buildSetConditions($conditions)
+    static private function buildSetConditions($conditions)
     {
         $query = [];
 
@@ -63,7 +63,7 @@ class Database
         return " SET " . implode(", ", $query);
     }
 
-    static public function buildWhereClause($conditions, $operator = "AND")
+    static protected function buildWhereClause($conditions, $operator = "AND")
     {
         if (empty($conditions)) {
             return "";
@@ -85,21 +85,46 @@ class Database
         return " WHERE " . implode($operatorString, $query);
     }
 
-    static public function buildCreate($sql, $params)
+    static protected function buildGroupClause($conditions)
     {
+        if (empty($conditions)) {
+            return "";
+        }
+
+        return " GROUP BY " . implode(", ", $conditions);
+    }
+
+    static protected function buildOrderClause($conditions)
+    {
+        if (empty($conditions)) {
+            return "";
+        }
+
+        $order = [];
+
+        foreach ($conditions as $field => $value) {
+            $order[] = "$field $value";
+        }
+
+        return " ORDER BY " . implode(", ", $order);
+    }
+
+    static protected function buildCreate($table, $conditions)
+    {
+        $sql = "INSERT INTO $table " . self::buildInsertConditions($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
-        self::bindParams($stmt, $params);
+        self::bindParams($stmt, array_values($conditions));
         $stmt->execute();
         return $stmt->insert_id;
     }
 
-    static public function buildFind($sql, $params)
+    static protected function buildFind($sql, $conditions)
     {
         global $conn;
         $stmt = $conn->prepare($sql);
-        if (!empty($params)) {
-            self::bindParams($stmt, $params);
+        if (!empty($conditions)) {
+            self::bindParams($stmt, array_values($conditions));
         }
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -107,12 +132,12 @@ class Database
         return $result;
     }
 
-    static public function buildFindOne($sql, $params)
+    static protected function buildFindOne($sql, $conditions)
     {
         global $conn;
         $stmt = $conn->prepare($sql);
-        if (!empty($params)) {
-            self::bindParams($stmt, $params);
+        if (!empty($conditions)) {
+            self::bindParams($stmt, array_values($conditions));
         }
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -120,20 +145,35 @@ class Database
         return $result[0] ?? null;
     }
 
-    static public function buildUpdate($sql, $conditions, $newData)
+    static protected function buildFindCount($table, $conditions = [])
     {
+        $sql = "SELECT COUNT(*) as count FROM $table" . self::buildWhereClause($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
-        $bindParams = array_merge(array_values($newData), array_values($conditions));
-        self::bindParams($stmt, $bindParams);
+        if (!empty($conditions)) {
+            self::bindParams($stmt, array_values($conditions));
+        }
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $result[0]['count'] ?? null;
+    }
+
+    static protected function buildUpdate($table, $conditions, $newData)
+    {
+        $sql = "UPDATE $table" . self::buildSetConditions($newData) . self::buildWhereClause($conditions);
+        global $conn;
+        $stmt = $conn->prepare($sql);
+        self::bindParams($stmt, array_merge(array_values($newData), array_values($conditions)));
         $stmt->execute();
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
         return $affectedRows;
     }
 
-    static public function buildDelete($sql, $conditions)
+    static protected function buildDelete($table, $conditions)
     {
+        $sql = "DELETE FROM $table" . self::buildWhereClause($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
@@ -143,4 +183,3 @@ class Database
         return $affectedRows;
     }
 }
-
