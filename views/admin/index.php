@@ -20,7 +20,7 @@
                             'icon' => 'fas fa-sharp fa-light fa-users text-gray-300',
                         ], [
                             'title' => "Account (Superadmin, Admin, Staff)",
-                            'count' => Account::count(['role' => ['superadmin',  'admin',  'staff']], 'OR'),
+                            'count' => Account::count(['role' => ['superadmin',  'admin',  'staff']]),
                             'theme' => 'primary',
                             'icon' => 'fas fa-sharp fa-light fa-square-terminal text-gray-300',
                         ], [
