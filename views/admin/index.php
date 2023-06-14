@@ -17,17 +17,17 @@
                             'title' => "Account (All)",
                             'count' => Account::count(),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-sharp fa-light fa-users text-gray-300',
+                            'icon' => 'fas fa-sharp fa-light fa-users fa-2x text-gray-300',
                         ], [
                             'title' => "Account (Superadmin, Admin, Staff)",
-                            'count' => Account::count(['role' => ['superadmin',  'admin',  'staff']], 'OR'),
+                            'count' => Account::count(['role' => ['superadmin',  'admin',  'staff']]),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-sharp fa-light fa-square-terminal text-gray-300',
+                            'icon' => 'fas fa-sharp fa-light fa-square-terminal fa-2x text-gray-300',
                         ], [
                             'title' => "Account (Seller)",
                             'count' => Account::count(['role' => 'seller']),
                             'theme' => 'primary',
-                            'icon' => 'fas fa-sharp fa-light fa-shop text-gray-300',
+                            'icon' => 'fas fa-sharp fa-light fa-shop fa-2x text-gray-300',
                         ], [
                             'title' => "Account (User)",
                             'count' => Account::count(['role' => 'user']),
@@ -37,22 +37,22 @@
                             'title' => "Whitelist (Approve)",
                             'count' => Whitelist::count(['approve_agree' => '1']),
                             'theme' => 'success',
-                            'icon' => 'fas fa-sharp fa-light fa-shield-check text-gray-300',
+                            'icon' => 'fas fa-sharp fa-light fa-shield-check fa-2x text-gray-300',
                         ], [
                             'title' => "Whitelist (DisApprove)",
                             'count' =>  Whitelist::count(['approve_agree' => '0']),
                             'theme' => 'danger',
-                            'icon' => 'fas fa-sharp fa-light fa-shield-xmark text-gray-300',
+                            'icon' => 'fas fa-sharp fa-light fa-shield-xmark fa-2x text-gray-300',
                         ], [
                             'title' => "Blacklist (Approve)",
                             'count' => Blacklist::count(['approve_agree' => '1']),
                             'theme' => 'success',
-                            'icon' => 'fas fa-solid fa-circle-check text-gray-300',
+                            'icon' => 'fas fa-solid fa-circle-check fa-2x text-gray-300',
                         ], [
                             'title' => "Blacklist (DisApprove)",
                             'count' => Blacklist::count(['approve_agree' => '0']),
                             'theme' => 'danger',
-                            'icon' => 'fas fa-solid fa-circle-xmark text-gray-300',
+                            'icon' => 'fas fa-solid fa-circle-xmark fa-2x text-gray-300',
                         ]
                     );
 
