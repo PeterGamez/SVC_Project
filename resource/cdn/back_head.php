@@ -5,15 +5,9 @@
 </noscript>
 
 <!-- Font Awesome -->
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://kit-pro.fontawesome.com/releases/v6.4.0/css/pro.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</noscript>
-
-<!-- Custom styles for this template-->
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/startbootstrap/startbootstrap-sb-admin-2/css/sb-admin-2.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/startbootstrap/startbootstrap-sb-admin-2/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.0/css/pro.min.css">
 </noscript>
 
 <!-- Data Tables -->
