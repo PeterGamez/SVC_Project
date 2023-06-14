@@ -1,7 +1,7 @@
 <!-- Site style -->
-<link rel="preload" href="<?= resource('cdn/font_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="<?= resource('css/font_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
-    <link rel="stylesheet" href="<?= resource('cdn/font_style.min.css', true) ?>">
+    <link rel="stylesheet" href="<?= resource('css/font_style.min.css', true) ?>">
 </noscript>
 <!-- Bootstrap -->
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
