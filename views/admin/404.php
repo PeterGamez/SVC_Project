@@ -1,3 +1,6 @@
+<?php
+$site['cdn'] = ['404'];
+?>
 <?= admin_views('layouts.header') ?>
 
 <body>
