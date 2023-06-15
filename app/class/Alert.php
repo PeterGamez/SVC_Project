@@ -32,6 +32,7 @@ class Alert
             </script>
         </body>";
     }
+
     static function error()
     {
         return Alert::alert('เกิดข้อผิดพลาด', 'error', 1500, 'history.back()');
@@ -57,18 +58,22 @@ class Alert_Login
             </script>
         </body>";
     }
+
     static function contact()
     {
         return Alert_Login::alert('กรุณาติดต่อผู้ดูแลระบบ', 'error', 1500, 'history.back()');
     }
+
     static function suspended()
     {
         return Alert_Login::alert('บัญชีของคุณถูกระงับการใช้งาน', 'error', 1500, 'history.back()');
     }
+    
     static function pass_mismatch()
     {
         return Alert_Login::alert('รหัสผ่านไม่ถูกต้อง', 'error', 1500, 'history.back()');
     }
+
     static function succeed()
     {
         if (isset($_SESSION['callback'])) {

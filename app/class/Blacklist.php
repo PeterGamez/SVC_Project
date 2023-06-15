@@ -62,10 +62,12 @@ class Blacklist_Category extends Database
     {
         return parent::buildFindCount(self::$table, $conditions);
     }
+
     public static function update($conditions, $newData)
     {
         return parent::buildUpdate(self::$table, $conditions, $newData);
     }
+    
     public static function delete($conditions)
     {
         return parent::buildDelete(self::$table, $conditions);

@@ -18,6 +18,7 @@ class App
         }
         return array('ip' => $ip, 'country' => $country, 'cdn' => $cdn);
     }
+    
     static function apiRequest($api_url, $post = null)
     {
         $ch = curl_init($api_url);
