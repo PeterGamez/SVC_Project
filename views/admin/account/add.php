@@ -17,7 +17,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อบัญชี <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" required>
+                                            <input type="text" class="form-control" name="username" required>
                                         </div>
                                         <div class="form-group">
                                             <label>อีเมล <span class="text-danger">*</span></label>

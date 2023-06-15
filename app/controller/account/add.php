@@ -1,0 +1,27 @@
+<?php
+if ($_POST['username']) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+
+    if (count(Account::count(['username' => $username, 'email' => $email], 'OR')) > 0) {
+        echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
+        exit;
+    }
+    Account::create([
+        'username' => $username,
+        'email' => $email,
+        'password' => password_hash($password, PASSWORD_DEFAULT),
+        'role' => $role,
+        'create_at' => date('Y-m-d H:i:s'),
+        'create_by' => $_SESSION['user_id'],
+        'update_at' => date('Y-m-d H:i:s'),
+        'update_by' => $_SESSION['user_id']
+    ]);
+
+    $path = admin_url('account');
+    echo Alert::alerts('เพิ่มบัญชีสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+} else {
+    redirect(admin_url('account.add'));
+}

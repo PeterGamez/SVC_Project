@@ -3,8 +3,8 @@ if ($_POST['id']) {
     $id = $_POST['id'];
     $name = $_POST['name'];
 
-    if (!Whitelist_Category::findOne(['id' => $id])) {
-        redirect(admin_url('whitelist.category'));
+    if (count(Whitelist_Category::find(['id' => $id])) == 0) {
+        echo Alert::alerts('ไม่พบหมวดหมู่นี้ในระบบ', 'error', null, 'window.history.back()');
         exit;
     }
     Whitelist_Category::update([

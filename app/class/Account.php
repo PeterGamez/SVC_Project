@@ -20,7 +20,7 @@ class Account extends Database
         return parent::buildFindOne($sql, $conditions);
     }
 
-    public static function count($conditions = [])
+    public static function count($conditions = [], )
     {
         return parent::buildFindCount(self::$table, $conditions);
     }

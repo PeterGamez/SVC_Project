@@ -50,13 +50,12 @@ class Blacklist_Category extends Database
 
     public static function find($conditions = [])
     {
-        $sql = "SELECT * FROM " . self::$table . parent::buildWhereClause($conditions);
-        return parent::buildFind($sql, $conditions);
+        return parent::buildSelect(self::$table, $conditions);
     }
+
     public static function findOne($conditions)
     {
-        $sql = "SELECT * FROM " . self::$table . parent::buildWhereClause($conditions);
-        return parent::buildFindOne($sql, $conditions);
+        return parent::buildSelectOne(self::$table, $conditions);
     }
 
     public static function count($conditions = [])

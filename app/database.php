@@ -63,7 +63,7 @@ class Database
         return " SET " . implode(", ", $query);
     }
 
-    static protected function buildWhereClause($conditions, $operator = "AND")
+    static protected function buildWhereClause($conditions, $operator = "")
     {
         if (empty($conditions)) {
             return "";
@@ -109,9 +109,21 @@ class Database
         return " ORDER BY " . implode(", ", $order);
     }
 
+    static protected function buildSelect($table, $conditions)
+    {
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions);
+        return self::buildFind($sql, $conditions);
+    }
+
+    static protected function buildSelectOne($table, $conditions)
+    {
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions);
+        return self::buildFindOne($sql, $conditions);
+    }
+
     static protected function buildCreate($table, $conditions)
     {
-        $sql = "INSERT INTO $table " . self::buildInsertConditions($conditions);
+        $sql = "INSERT INTO $table" . self::buildInsertConditions($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
