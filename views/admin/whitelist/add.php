@@ -1,3 +1,7 @@
+<?php
+$site['cdn'] = ['bs-file'];
+?>
+
 <?= admin_views('layouts.header') ?>
 
 <body>
@@ -13,7 +17,7 @@
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">เพื่มกิจการ</h5>
                                 </div>
-                                <form method="POST" action="<?= url() ?>">
+                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
@@ -48,7 +52,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label>รูปบัตรประชาชน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_image" required>
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" for="id_image">เลือกไฟล์</label>
+                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-body">
