@@ -4,7 +4,7 @@ if ($_POST['id']) {
     $name = $_POST['name'];
 
     if (!Blacklist_Category::findOne(['id' => $id])) {
-        redirect(admin_url('whitelist.category'));
+        redirect(admin_url('blacklist.category'));
         exit;
     }
     Blacklist_Category::update([
@@ -15,8 +15,8 @@ if ($_POST['id']) {
         'update_by' => $_SESSION['user_id']
     ]);
 
-    $path = admin_url('whitelist.category');
+    $path = admin_url('blacklist.category');
     echo Alert::alerts('แก้ไขหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
 } else {
-    redirect(admin_url('whitelist.category.add'));
+    redirect(admin_url('blacklist.category.add'));
 }

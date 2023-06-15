@@ -6,7 +6,14 @@ if ($_POST['name']) {
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
     $id_card = $_POST['id_card'];
-    $id_image = $_POST['id_image'];
+    $id_image = $_FILES['id_image'];
+
+    $file = $id_image['tmp_name'];
+    $file_name = $id_image['name'];
+    $file_size = $id_image['size'];
+    $file_type = $id_image['type'];
+
+    $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, $file_type, $file_name)]);
 
     Whitelist::create([
         'name' => $name,
@@ -15,7 +22,7 @@ if ($_POST['name']) {
         'website' => $website,
         'id_name' => $id_name,
         'id_card' => $id_card,
-        'id_image' => $id_image,
+        'id_image' => $data['attachments'][0]['url'],
     ]);
 
     $path = admin_url('whitelist');

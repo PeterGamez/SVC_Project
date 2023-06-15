@@ -14,6 +14,20 @@ if ($_POST['id']) {
         exit;
     }
 
+    Whitelist::update([
+        'id' => $id
+    ], [
+        'name' => $name,
+        'description' => $description,
+        'whitelist_category' => $whitelist_category,
+        'website' => $website,
+        'id_name' => $id_name,
+        'id_card' => $id_card,
+        'id_image' => $id_image,
+        'update_at' => date('Y-m-d H:i:s'),
+        'update_by' => $_SESSION['user_id']
+    ]);
+
     $path = admin_url('whitelist');
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
 } else {

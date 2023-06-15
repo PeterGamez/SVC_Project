@@ -14,8 +14,8 @@ if ($_POST['name']) {
         'update_by' => $_SESSION['user_id']
     ]);
 
-    $path = admin_url('whitelist.category');
+    $path = admin_url('blacklist.category');
     echo Alert::alerts('เพิ่มหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
 } else {
-    redirect(admin_url('whitelist.category.add'));
+    redirect(admin_url('blacklist.category.add'));
 }
