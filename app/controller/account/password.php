@@ -1,7 +1,13 @@
 <?php
 if ($_POST['id']) {
     $id = $_POST['id'];
-    $password = $_POST['password'];
+    $password1 = $_POST['password1'];
+    $password2 = $_POST['password2'];
+
+    if ($password1 != $password2) {
+        echo Alert::alerts('รหัสผ่านไม่ตรงกัน', 'error', null, 'window.history.back()');
+        exit;
+    }
 
     if (count(Account::find(['id' => $id])) == 0) {
         echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', null, 'window.history.back()');
