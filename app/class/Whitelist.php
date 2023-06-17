@@ -3,78 +3,28 @@ class Whitelist extends Database
 {
     public static $table = 'whitelist';
 
-    public static function create($conditions)
-    {
-        return parent::buildCreate(self::$table, $conditions);
-    }
-
-    public static function find($conditions = [])
+    public static function find($conditions = [], $operator = '')
     {
         $conditions = array_map(function ($key) {
             return "whitelist.$key";
         }, array_keys($conditions));
         $sql = "SELECT whitelist.*, whitelist_category.name as whitelist_category FROM whitelist
-            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions);
+            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions, $operator);
         return parent::buildFind($sql, $conditions);
     }
 
-    public static function findOne($conditions)
+    public static function findOne($conditions, $operator = '')
     {
         $conditions = array_map(function ($key) {
             return "whitelist.$key";
         }, array_keys($conditions));
 
         $sql = "SELECT whitelist.*, whitelist_category.name as whitelist_category FROM whitelist
-            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions);
+            INNER JOIN whitelist_category ON whitelist.whitelist_category_id = whitelist_category.id" . parent::buildWhereClause($conditions, $operator);
         return parent::buildFindOne($sql, $conditions);
     }
-
-    public static function count($conditions = [])
-    {
-        return parent::buildFindCount(self::$table, $conditions);
-    }
-
-    public static function update($conditions, $newData)
-    {
-        return parent::buildUpdate(self::$table, $conditions, $newData);
-    }
-
-    public static function delete($conditions)
-    {
-        return parent::buildDelete(self::$table, $conditions);
-    }
 }
-class Whitelist_Category extends Database
+class WhitelistCategory extends Database
 {
     public static $table = 'whitelist_category';
-
-    public static function create($conditions)
-    {
-        return parent::buildCreate(self::$table, $conditions);
-    }
-
-    public static function find($conditions = [])
-    {
-        return parent::buildSelect(self::$table, $conditions);
-    }
-
-    public static function findOne($conditions)
-    {
-        return parent::buildSelectOne(self::$table, $conditions);
-    }
-
-    public static function count($conditions = [])
-    {
-        return parent::buildFindCount(self::$table, $conditions);
-    }
-
-    public static function update($conditions, $newData)
-    {
-        return parent::buildUpdate(self::$table, $conditions, $newData);
-    }
-
-    public static function delete($conditions)
-    {
-        return parent::buildDelete(self::$table, $conditions);
-    }
 }

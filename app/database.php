@@ -15,7 +15,67 @@ date_default_timezone_set("Asia/Bangkok");
 
 class Database
 {
-    static private function bindParams($stmt, $params)
+    // Main function
+    public static function create($conditions)
+    {
+        $table = self::parseTable();
+        $sql = "INSERT INTO $table" . self::buildInsertConditions($conditions);
+        return self::buildCreate($sql, $conditions);
+    }
+
+    public static function find($conditions = [], $operator = '')
+    {
+        $table = self::parseTable();
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator);
+        return self::buildFind($sql, $conditions);
+    }
+
+    public static function findOne($conditions, $operator = '')
+    {
+        $table = self::parseTable();
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator);
+        return self::buildFindOne($sql, $conditions);
+    }
+
+    public static function count($conditions = [], $operator = '')
+    {
+        $table = self::parseTable();
+        $sql = "SELECT COUNT(*) as count FROM $table" . self::buildWhereClause($conditions, $operator);
+        return self::buildFindCount($sql, $conditions);
+    }
+
+    public static function update($conditions, $newData)
+    {
+        $table = self::parseTable();
+        $sql = "UPDATE $table" . self::buildSetConditions($newData) . self::buildWhereClause($conditions);
+        return self::buildUpdate($sql, $conditions, $newData);
+    }
+
+    public static function delete($conditions)
+    {
+        $table = self::parseTable();
+        $sql = "DELETE FROM $table" . self::buildWhereClause($conditions);
+        return self::buildDelete($sql, $conditions);
+    }
+
+    // Build Query
+    private static function parseTable()
+    {
+        if (get_called_class() == 'Database') {
+            throw new Exception("Database class cannot be used directly");
+        }
+        $table = null;
+        if (isset(get_called_class()::$table)) {
+            $table = get_called_class()::$table;
+        }
+        if ($table == null) {
+            $table = get_called_class();
+        }
+        $parsetable = lcfirst($table);
+        return $parsetable;
+    }
+
+    private static function bindParams($stmt, $params)
     {
         $types = "";
         $bindParams = [];
@@ -41,7 +101,8 @@ class Database
         $stmt->bind_param($types, ...$bindParams);
     }
 
-    static private function buildInsertConditions($conditions)
+    // Build Conditions
+    protected static function buildInsertConditions($conditions)
     {
         $query = [];
 
@@ -52,7 +113,7 @@ class Database
         return " (" . implode(", ", $query) . ") VALUES (" . implode(", ", array_fill(0, count($query), "?")) . ")";
     }
 
-    static private function buildSetConditions($conditions)
+    protected static function buildSetConditions($conditions)
     {
         $query = [];
 
@@ -63,7 +124,8 @@ class Database
         return " SET " . implode(", ", $query);
     }
 
-    static protected function buildWhereClause($conditions, $operator = "")
+    // Build Clause
+    protected static function buildWhereClause($conditions, $operator = '')
     {
         if (empty($conditions)) {
             return "";
@@ -85,7 +147,7 @@ class Database
         return " WHERE " . implode($operatorString, $query);
     }
 
-    static protected function buildGroupClause($conditions)
+    protected static function buildGroupClause($conditions)
     {
         if (empty($conditions)) {
             return "";
@@ -94,7 +156,7 @@ class Database
         return " GROUP BY " . implode(", ", $conditions);
     }
 
-    static protected function buildOrderClause($conditions)
+    protected static function buildOrderClause($conditions)
     {
         if (empty($conditions)) {
             return "";
@@ -109,21 +171,9 @@ class Database
         return " ORDER BY " . implode(", ", $order);
     }
 
-    static protected function buildSelect($table, $conditions)
+    // Build result
+    protected static function buildCreate($sql, $conditions)
     {
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions);
-        return self::buildFind($sql, $conditions);
-    }
-
-    static protected function buildSelectOne($table, $conditions)
-    {
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions);
-        return self::buildFindOne($sql, $conditions);
-    }
-
-    static protected function buildCreate($table, $conditions)
-    {
-        $sql = "INSERT INTO $table" . self::buildInsertConditions($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
@@ -131,7 +181,7 @@ class Database
         return $stmt->insert_id;
     }
 
-    static protected function buildFind($sql, $conditions)
+    protected static function buildFind($sql, $conditions)
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -144,7 +194,7 @@ class Database
         return $result;
     }
 
-    static protected function buildFindOne($sql, $conditions)
+    protected static function buildFindOne($sql, $conditions)
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -157,9 +207,8 @@ class Database
         return $result[0] ?? null;
     }
 
-    static protected function buildFindCount($table, $conditions = [])
+    protected static function buildFindCount($sql, $conditions = [])
     {
-        $sql = "SELECT COUNT(*) as count FROM $table" . self::buildWhereClause($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
@@ -171,9 +220,8 @@ class Database
         return $result[0]['count'] ?? null;
     }
 
-    static protected function buildUpdate($table, $conditions, $newData)
+    protected static function buildUpdate($sql, $conditions, $newData)
     {
-        $sql = "UPDATE $table" . self::buildSetConditions($newData) . self::buildWhereClause($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_merge(array_values($newData), array_values($conditions)));
@@ -183,9 +231,8 @@ class Database
         return $affectedRows;
     }
 
-    static protected function buildDelete($table, $conditions)
+    protected static function buildDelete($sql, $conditions)
     {
-        $sql = "DELETE FROM $table" . self::buildWhereClause($conditions);
         global $conn;
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));

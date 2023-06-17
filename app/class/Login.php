@@ -23,11 +23,12 @@ class Login extends Database
         $_SESSION['user_avatar'] = isset($data['avatar']) ? $data['avatar'] : resource('images/logo-1000.png', true);
         $_SESSION['user_role'] = $data['role'];
     }
-    
+
     static function set_avatar($id, $avatar)
     {
         $conditions = ['id' => $id];
         $newData = ['avatar' => $avatar];
-        return parent::buildUpdate('account', $conditions, $newData);
+        $sql = "UPDATE account" . parent::buildSetConditions($newData) . parent::buildWhereClause($conditions);
+        return parent::buildUpdate($sql, $conditions, $newData);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 class Discord
 {
-    static public function postImage($url, $data)
+    public static function postImage($url, $data)
     {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_POST, true);
