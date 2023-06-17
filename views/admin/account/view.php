@@ -8,7 +8,7 @@
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card mb-4" style="width: 30rem;">
+                        <div class="card mb-4 shadow" style="width: 30rem;">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">ตรวจสอบบัญชี</h5>
@@ -37,9 +37,9 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="btn btn-group">
-                                            <a href="<?= admin_url('account') ?>" class="btn btn-secondary">ย้อนกลับ</a>
-                                            <a href="<?= admin_url('account.' . $result['id'] . '.edit') ?>" class="btn btn-primary">แก้ไขบัญชี</a>
-                                            <a href="<?= admin_url('account.' . $result['id'] . '.password') ?>" class="btn btn-primary">เปลี่ยนรหัสผ่าน</a>
+                                            <a href="<?= admin_url('account') ?>" class="btn btn-sm btn-secondary">ย้อนกลับ</a>
+                                            <a href="<?= admin_url('account.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขบัญชี</a>
+                                            <a href="<?= admin_url('account.' . $result['id'] . '.password') ?>" class="btn btn-sm btn-primary">เปลี่ยนรหัสผ่าน</a>
                                         </div>
                                     </div>
                                 </div>
