@@ -35,7 +35,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<td>' . $result[$i]['username'] . '</td>';
                                     echo '<td>' . $result[$i]['email'] . '</td>';
                                     echo '<td>' . $result[$i]['role'] . '</td>';
-                                    echo '<td><a href="' . admin_url('account/' . $result[$i]['id']) . '" class="btn btn-primary btn-sm">ตรวจสอบ</a></td>';
+                                    echo '<td><a href="' . admin_url('account/' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>

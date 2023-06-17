@@ -31,7 +31,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
-                                    echo '<td><a href="' . admin_url('whitelist.category.' . $result[$i]['id']) . '.edit" class="btn btn-primary btn-sm">แก้ไข</a></td>';
+                                    echo '<td><a href="' . admin_url('whitelist.category.' . $result[$i]['id']) . '.edit" class="btn btn-sm btn-primary">แก้ไข</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>

@@ -35,7 +35,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<td>' . $result[$i]['name'] . '</td>';
                                     echo '<td>' . $result[$i]['blacklist_category'] . '</td>';
                                     echo '<td>' . $result[$i]['id_name'] . '</td>';
-                                    echo '<td><a href="' . admin_url('blacklist.' . $result[$i]['id']) . '" class="btn btn-primary btn-sm">View</a></td>';
+                                    echo '<td><a href="' . admin_url('blacklist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">View</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>
