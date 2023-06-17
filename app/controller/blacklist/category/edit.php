@@ -3,11 +3,11 @@ if ($_POST['id']) {
     $id = $_POST['id'];
     $name = $_POST['name'];
 
-    if (!Blacklist_Category::findOne(['id' => $id])) {
+    if (!BlacklistCategory::findOne(['id' => $id])) {
         redirect(admin_url('blacklist.category'));
         exit;
     }
-    Blacklist_Category::update([
+    BlacklistCategory::update([
         'id' => $id
     ], [
         'name' => $name,

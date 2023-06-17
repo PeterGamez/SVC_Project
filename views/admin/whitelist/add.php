@@ -31,7 +31,7 @@ $site['cdn'] = ['bs-file'];
                                             <label>ประเภทกิจการ <span class="text-danger">*</span></label>
                                             <select class="form-control" name="whitelist_category" required>
                                                 <?php
-                                                $result = Whitelist_Category::find();
+                                                $result = WhitelistCategory::find();
                                                 for ($i = 0; $i < count($result); $i++) {
                                                     echo '<option value="' . $result[$i]['id'] . '">' . $result[$i]['name'] . '</option>';
                                                 }

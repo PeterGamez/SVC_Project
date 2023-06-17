@@ -15,7 +15,7 @@
                                 </div>
                                 <form method="POST" action="<?= url() ?>">
                                     <?php
-                                    $result = Whitelist_Category::findOne(['id' => $request['id']]);
+                                    $result = WhitelistCategory::findOne(['id' => $request['id']]);
                                     ?>
                                     <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">

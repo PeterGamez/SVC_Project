@@ -2,11 +2,11 @@
 if ($_POST['name']) {
     $name = $_POST['name'];
 
-    if (count(Blacklist_Category::find(['name' => $name])) > 0) {
+    if (count(BlacklistCategory::find(['name' => $name])) > 0) {
         echo Alert::alerts('มีหมวดหมู่นี้อยู่แล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
-    Blacklist_Category::create([
+    BlacklistCategory::create([
         'name' => $name,
         'create_at' => date('Y-m-d H:i:s'),
         'create_by' => $_SESSION['user_id'],
