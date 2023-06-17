@@ -11,15 +11,16 @@
                         <div class="card mb-4 shadow" style="width: 30rem;">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
-                                    <h5 class="modal-title">ลบกิจการ</h5>
+                                    <h5 class="modal-title">แก้ไขประเภทกิจการ</h5>
                                 </div>
-                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
+                                <form method="POST" action="<?= url() ?>">
+                                    <?php
+                                    $result = WhitelistCategory::findOne(['id' => $request['id']]);
+                                    ?>
+                                    <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">
-                                        <?php
-                                        $result = Whitelist::findOne(['id' => $request['id']]);
-                                        ?>
                                         <div class="form-group">
-                                            <label>ชื่อกิจการ</label>
+                                            <label>ชื่อประเภทกิจการ</label>
                                             <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                         </div>
                                     </div>

@@ -12,7 +12,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= url(config('site.admin_panel')) ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>หน้าแรก</span>
         </a>
     </li>
 
