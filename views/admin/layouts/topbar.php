@@ -17,13 +17,14 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="<?= url('/') ?>">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> หนัาบ้าน
+                    <i class="fa-sharp fa-solid fa-house-chimney mr-2 text-gray-400"></i> หนัาบ้าน
                 </a>
-                <a class="dropdown-item" href="<?= admin_url('password') ?>">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> เปลี่ยนรหัสผ่าน
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?= admin_url('profile.password') ?>">
+                    <i class="fa-sharp fa-solid fa-gear-code mr-2 text-gray-400"></i> เปลี่ยนรหัสผ่าน
                 </a>
                 <a class="dropdown-item" href="<?= admin_url('logout') ?>">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> ออกจากระบบ
+                    <i class="fa-sharp fa-solid fa-person-from-portal mr-2 text-gray-400"></i> ออกจากระบบ
                 </a>
             </div>
         </li>

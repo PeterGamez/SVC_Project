@@ -41,8 +41,14 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
         return admin_views('index');
     }
     // profile
-    else if ($agent_request[2] == 'password') {
-        return admin_views('password');
+    else if ($agent_request[2] == 'profile') {
+        if ($agent_request[3] == 'password') {
+            if ($agent_method == 'POST') {
+                return controller('profile.password');
+            } else {
+                return admin_views('profile.password');
+            }
+        }
     } else if ($agent_request[2] == 'logout') {
         return controller('login.logout');
     }
