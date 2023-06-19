@@ -29,12 +29,12 @@ if (isset($_POST['user'])) {
     $user = strtolower($_POST['user']);
     $password = $_POST['password'];
 
-    $data = Login::get_user($user);
+    $data = Account::findOne(['username' => $user, 'email' => $user], 'OR');
     if ($data) {
         if (!password_verify($password, $data['password'])) {
             echo Alert_Login::pass_mismatch();
         } else {
-            Login::set_session($data);
+            Account::set_session($data);
 
             echo Alert_Login::succeed();
         }

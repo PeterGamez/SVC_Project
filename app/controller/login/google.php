@@ -10,13 +10,13 @@ if (isset($_POST['credential'])) {
             exit();
         }
 
-        $data = Login::get_email($payload['email']);
+        $data = Account::findOne(['email' => $payload['email']]);
         if ($data) {
             if ($data['avatar'] <> $payload['picture']) {
-                Login::set_avatar($data['id'], $payload['picture']);
+                Account::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
             }
             $data['avatar'] = $payload['picture'];
-            Login::set_session($data);
+            Account::set_session($data);
 
             echo Alert_Login::succeed();
         } else {
