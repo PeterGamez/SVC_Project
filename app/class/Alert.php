@@ -1,7 +1,7 @@
 <?php
 class Alert
 {
-    static function alert($title, $icon, $timer, $willClose)
+    public static function alert($title, $icon, $timer, $willClose)
     {
         return "<body><script>
             Swal.fire({
@@ -14,7 +14,7 @@ class Alert
             })
         </script></body>";
     }
-    static function alerts($title, $icon, $timer, $willClose)
+    public static function alerts($title, $icon, $timer, $willClose)
     {
         return "<head>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.3/sweetalert2.all.min.js'></script>
@@ -33,14 +33,14 @@ class Alert
         </body>";
     }
 
-    static function error()
+    public static function error()
     {
         return Alert::alert('เกิดข้อผิดพลาด', 'error', 1500, 'history.back()');
     }
 }
 class Alert_Login
 {
-    static function alert($title, $icon, $timer, $willClose)
+    public static function alert($title, $icon, $timer, $willClose)
     {
         return "<head>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.3/sweetalert2.all.min.js'></script>
@@ -59,22 +59,22 @@ class Alert_Login
         </body>";
     }
 
-    static function contact()
+    public static function contact()
     {
         return Alert_Login::alert('กรุณาติดต่อผู้ดูแลระบบ', 'error', 1500, 'history.back()');
     }
 
-    static function suspended()
+    public static function suspended()
     {
         return Alert_Login::alert('บัญชีของคุณถูกระงับการใช้งาน', 'error', 1500, 'history.back()');
     }
     
-    static function pass_mismatch()
+    public static function pass_mismatch()
     {
         return Alert_Login::alert('รหัสผ่านไม่ถูกต้อง', 'error', 1500, 'history.back()');
     }
 
-    static function succeed()
+    public static function succeed()
     {
         if (isset($_SESSION['callback'])) {
             $path = "window.location.href = '$_SESSION[callback]'";

@@ -2,8 +2,8 @@
 class Account extends Database
 {
     public static $table = 'account';
-    
-    static function set_session($data)
+
+    public static function set_session($data)
     {
         $_SESSION['login'] = true;
         $_SESSION['user_id'] = $data['id'];

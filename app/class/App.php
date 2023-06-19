@@ -2,7 +2,7 @@
 
 class App
 {
-    static function getAgentIP()
+    public static function getAgentIP()
     {
         $ip = 'Unknown';
         $cdn = null;
@@ -19,7 +19,7 @@ class App
         return array('ip' => $ip, 'country' => $country, 'cdn' => $cdn);
     }
     
-    static function apiRequest($api_url, $post = null)
+    public static function apiRequest($api_url, $post = null)
     {
         $ch = curl_init($api_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
