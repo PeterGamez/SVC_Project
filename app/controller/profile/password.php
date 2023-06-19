@@ -23,7 +23,7 @@ if ($_POST['id']) {
     ]);
 
     $path = admin_url('account');
-    echo Alert::alerts('แก้ไขรหัสผ่านสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('แก้ไขรหัสผ่านสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('account'));
 }

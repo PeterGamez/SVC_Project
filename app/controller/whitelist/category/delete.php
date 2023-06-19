@@ -9,7 +9,7 @@ if ($_POST['id']) {
     WhitelistCategory::delete(['id' => $id]);
 
     $path = admin_url('whitelist.category.index');
-    echo Alert::alerts('ลบหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('ลบหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('whitelist.category.index'));
 }

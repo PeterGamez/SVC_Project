@@ -11,7 +11,7 @@ if ($_POST['id']) {
     Blacklist::delete(['id' => $id]);
 
     $path = admin_url('blacklist');
-    echo Alert::alerts('ลบกิจการสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('ลบกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('blacklist'));
 }

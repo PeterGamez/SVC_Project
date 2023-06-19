@@ -39,7 +39,7 @@ if ($_POST['id']) {
     Whitelist::update(['id' => $id], $newData);
 
     $path = admin_url('whitelist');
-    echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('whitelist.add'));
 }

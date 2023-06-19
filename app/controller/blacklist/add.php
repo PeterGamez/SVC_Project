@@ -7,7 +7,7 @@ if ($_POST['name']) {
     ]);
 
     $path = admin_url('blacklist');
-    echo Alert::alerts('เพิ่มกิจการสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('เพิ่มกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('blacklist.add'));
 }

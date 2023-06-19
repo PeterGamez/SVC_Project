@@ -9,7 +9,7 @@ if ($_POST['id']) {
     BlacklistCategory::delete(['id' => $id]);
 
     $path = admin_url('blacklist.category.index');
-    echo Alert::alerts('ลบหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('ลบหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('blacklist.category.index'));
 }

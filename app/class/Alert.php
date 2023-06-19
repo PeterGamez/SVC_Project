@@ -38,6 +38,7 @@ class Alert
         return Alert::alert('เกิดข้อผิดพลาด', 'error', 1500, 'history.back()');
     }
 }
+
 class Alert_Login
 {
     public static function alert($title, $icon, $timer, $willClose)
@@ -77,10 +78,10 @@ class Alert_Login
     public static function succeed()
     {
         if (isset($_SESSION['callback'])) {
-            $path = "window.location.href = '$_SESSION[callback]'";
+            $path = "window.location.href='$_SESSION[callback]'";
             unset($_SESSION['callback']);
         } else {
-            $path = "window.location.href = '" . url(config('site.admin_panel')) . "'";
+            $path = "window.location.href='" . url(config('site.admin_panel')) . "'";
         }
         return Alert_Login::alert('เข้าสู่ระบบสำเร็จ', 'success', 1500, $path);
     }

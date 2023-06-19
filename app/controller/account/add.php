@@ -21,7 +21,7 @@ if ($_POST['username']) {
     ]);
 
     $path = admin_url('account');
-    echo Alert::alerts('เพิ่มบัญชีสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('เพิ่มบัญชีสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('account.add'));
 }

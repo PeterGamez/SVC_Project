@@ -16,7 +16,7 @@ if ($_POST['id']) {
     ]);
 
     $path = admin_url('whitelist.category');
-    echo Alert::alerts('แก้ไขหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('แก้ไขหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('whitelist.category.add'));
 }

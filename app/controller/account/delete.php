@@ -9,7 +9,7 @@ if ($_POST['id']) {
     Account::delete(['id' => $id]);
 
     $path = admin_url('account');
-    echo Alert::alerts('ลบบัญชีสำเร็จ', 'success', 1500, 'window.location.href = "' . $path . '"');
+    echo Alert::alerts('ลบบัญชีสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('account'));
 }
