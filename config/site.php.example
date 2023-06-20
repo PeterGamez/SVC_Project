@@ -9,6 +9,8 @@ $site = [
         "ico" => resource('images/logo.ico', true),
     ],
     "lang" => "th",
+    
+    "member_panel" => "/member",
     "admin_panel" => "/backend",
 
     "google" => [
