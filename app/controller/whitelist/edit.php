@@ -3,7 +3,7 @@ if ($_POST['id']) {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $whitelist_category = $_POST['whitelist_category'];
+    $whitelist_category_id = $_POST['whitelist_category_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
     $id_card = $_POST['id_card'];
@@ -16,7 +16,7 @@ if ($_POST['id']) {
     $newData = [
         'name' => $name,
         'description' => $description,
-        'whitelist_category' => $whitelist_category,
+        'whitelist_category_id' => $whitelist_category_id,
         'website' => $website,
         'id_name' => $id_name,
         'id_card' => $id_card,

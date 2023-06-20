@@ -6,10 +6,10 @@ $site['desc'] = config('site.description');
 $site['bot'] = '';
 ?>
 
-<?= views('layouts/header'); ?>
+<?= visitor_views('layouts/header') ?>
 
 <body>
-    <?= views('layouts/navbar'); ?>
+    <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
         <div class="row">
             <div class="col-12">
@@ -47,4 +47,4 @@ $site['bot'] = '';
     </div>
 </body>
 
-<?= views('layouts/footer'); ?>
+<?= visitor_views('layouts/footer') ?>

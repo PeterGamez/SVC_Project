@@ -23,6 +23,7 @@ $site['cdn'] = ['datatables'];
                                     <th scope="col">ชื่อกิจการ</th>
                                     <th scope="col">ประเภทกิจการ</th>
                                     <th scope="col">เจ้าของกิจการ</th>
+                                    <th scope="col">สถานะ</th>
                                     <th scope="col">&nbsp</th>
                                 </tr>
                             </thead>
@@ -35,7 +36,8 @@ $site['cdn'] = ['datatables'];
                                     echo '<td>' . $result[$i]['name'] . '</td>';
                                     echo '<td>' . $result[$i]['whitelist_category'] . '</td>';
                                     echo '<td>' . $result[$i]['id_name'] . '</td>';
-                                    echo '<td><a href="' . admin_url('whitelist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">View</a></td>';
+                                    echo $result[$i]['approve_agree'] == 1 ? '<td class="text-success">อนุมัติ</td>' : '<td class="text-danger">รอการอนุมัติ</p>' . '</td>';
+                                    echo '<td><a href="' . admin_url('whitelist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>
@@ -52,6 +54,12 @@ $site['cdn'] = ['datatables'];
         $('#table_whitelist').DataTable({
             scrollX: false,
             scrollY: false,
+            order: [[0, 'desc']],
+            columnDefs: [{
+                targets: -1,
+                searchable: false,
+                orderable: false
+            }, ],
             language: {
                 url: "<?= resource('datatables/th.json', true) ?>"
             }

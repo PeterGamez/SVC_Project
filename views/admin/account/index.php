@@ -52,6 +52,11 @@ $site['cdn'] = ['datatables'];
         $('#table_account').DataTable({
             scrollX: false,
             scrollY: false,
+            columnDefs: [{
+                targets: -1,
+                searchable: false,
+                orderable: false
+            }, ],
             language: {
                 url: "<?= resource('datatables/th.json', true) ?>"
             }

@@ -23,24 +23,24 @@ class Database
         return self::buildCreate($sql, $conditions);
     }
 
-    public static function find(array $conditions = [], string $operator = '')
+    public static function find(array $conditions = [], string $operator = '', array $order = [])
     {
         $table = self::parseTable();
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator);
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildOrderClause($order);
         return self::buildFind($sql, $conditions);
     }
 
-    public static function findOne(array $conditions, string $operator = '')
+    public static function findOne(array $conditions, string $operator = '', array $order = [])
     {
         $table = self::parseTable();
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator);
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildOrderClause($order);
         return self::buildFindOne($sql, $conditions);
     }
 
-    public static function count(array $conditions = [], string $operator = '')
+    public static function count(array $conditions = [], string $operator = '', array $group = [])
     {
         $table = self::parseTable();
-        $sql = "SELECT COUNT(*) as count FROM $table" . self::buildWhereClause($conditions, $operator);
+        $sql = "SELECT COUNT(*) as count FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildGroupClause($group);
         return self::buildFindCount($sql, $conditions);
     }
 
@@ -147,28 +147,28 @@ class Database
         return " WHERE " . implode($operatorString, $query);
     }
 
-    protected static function buildGroupClause(array $conditions)
+    protected static function buildGroupClause(array $group)
     {
-        if (empty($conditions)) {
+        if (empty($group)) {
             return "";
         }
 
-        return " GROUP BY " . implode(", ", $conditions);
+        return " GROUP BY " . implode(", ", $group);
     }
 
-    protected static function buildOrderClause(array $conditions)
+    protected static function buildOrderClause(array $order)
     {
-        if (empty($conditions)) {
+        if (empty($order)) {
             return "";
         }
 
-        $order = [];
+        $query = [];
 
-        foreach ($conditions as $field => $value) {
-            $order[] = "$field $value";
+        foreach ($order as $field => $value) {
+            $query[] = "$field $value";
         }
 
-        return " ORDER BY " . implode(", ", $order);
+        return " ORDER BY " . implode(", ", $query);
     }
 
     // Build result

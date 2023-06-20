@@ -37,7 +37,6 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="btn btn-group">
-                                            <a href="<?= admin_url('account') ?>" class="btn btn-sm btn-secondary">ย้อนกลับ</a>
                                             <a href="<?= admin_url('account.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขบัญชี</a>
                                             <a href="<?= admin_url('account.' . $result['id'] . '.password') ?>" class="btn btn-sm btn-primary">เปลี่ยนรหัสผ่าน</a>
                                             <a href="<?= admin_url('account.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบบัญชี</a>

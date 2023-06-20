@@ -2,7 +2,7 @@
 if ($_POST['name']) {
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $whitelist_category = $_POST['whitelist_category'];
+    $whitelist_category_id = $_POST['whitelist_category_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
     $id_card = $_POST['id_card'];
@@ -15,11 +15,11 @@ if ($_POST['name']) {
 
     $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, $file_type, $file_name)]);
     $image_url = $data['attachments'][0]['url'];
-    
+
     Whitelist::create([
         'name' => $name,
         'description' => $description,
-        'whitelist_category' => $whitelist_category,
+        'whitelist_category_id' => $whitelist_category_id,
         'website' => $website,
         'id_name' => $id_name,
         'id_card' => $id_card,

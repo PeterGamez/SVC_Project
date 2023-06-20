@@ -65,6 +65,10 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>จัดการบัญชี</span>
         </a>
+        <a class="nav-link" href="<?= admin_url('bank') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>จัดการธนาคาร</span>
+        </a>
     </li>
 
     <hr class="sidebar-divider d-none d-md-block">

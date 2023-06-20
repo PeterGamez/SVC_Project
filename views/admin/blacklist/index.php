@@ -35,7 +35,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<td>' . $result[$i]['name'] . '</td>';
                                     echo '<td>' . $result[$i]['blacklist_category'] . '</td>';
                                     echo '<td>' . $result[$i]['id_name'] . '</td>';
-                                    echo '<td><a href="' . admin_url('blacklist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">View</a></td>';
+                                    echo '<td><a href="' . admin_url('blacklist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>
@@ -52,6 +52,11 @@ $site['cdn'] = ['datatables'];
         $('#table_blacklist').DataTable({
             scrollX: false,
             scrollY: false,
+            columnDefs: [{
+                targets: -1,
+                searchable: false,
+                orderable: false
+            }, ],
             language: {
                 url: "<?= resource('datatables/th.json', true) ?>"
             }

@@ -1,43 +1,64 @@
 <?php
 require_once './app/autoload.php';
 
-if ($agent_path == '/') {
-    return views('index');
-} else if ($agent_path == '/whitelist') {
-    if (isset($agent_request[2])) {
-        $request['id'] = $agent_request[2];
-        return views('whitelist.view');
-    } else {
-        return views('whitelist.index');
-    }
-} else if ($agent_path == '/blacklist') {
-    if (isset($agent_request[2])) {
-        $request['id'] = $agent_request[2];
-        return views('blacklist.view');
-    } else {
-        return views('blacklist.index');
-    }
-} else if ($agent_path == '/contact') {
-    return views('contact');
+if (empty($agent_request[1])) {
+    return visitor_views('index');
 }
-if (str_starts_with($agent_path, config('site.admin_panel'))) {
-    if ($_SESSION['login'] == false) {
-        if (isset($agent_request[2]) and $agent_request[2] == 'login') {
-            if (isset($agent_request[3]) and $agent_method == 'POST') {
-                if ($agent_request[3] == 'form') {
-                    return controller('login.form');
-                } else if ($agent_request[3] == 'google') {
-                    return controller('login.google');
-                }
-            } else {
-                return admin_views('login');
-            }
-        } else {
-            $_SESSION['callback'] = url($agent_path);
-            return redirect(config('site.admin_panel') . '/login');
-        }
+// Whitelist
+else if ($agent_request[1] == 'whitelist') {
+    if (isset($agent_request[1])) {
+        $request['id'] = $agent_request[2];
+        return visitor_views('whitelist.view');
+    } else {
+        return visitor_views('whitelist.index');
     }
-    if (!isset($agent_request[2])) {
+}
+// Blacklist
+else if ($agent_request[1] == 'blacklist') {
+    if (isset($agent_request[2])) {
+        $request['id'] = $agent_request[2];
+        return visitor_views('blacklist.view');
+    } else {
+        return visitor_views('blacklist.index');
+    }
+}
+// Contact
+else if ($agent_request[1] == 'contact') {
+    return visitor_views('contact');
+}
+// Login
+else if ($agent_request[1] == 'login') {
+    if (isset($agent_request[2]) and $agent_method == 'POST') {
+        if ($agent_request[2] == 'form') {
+            return controller('login.form');
+        } else if ($agent_request[2] == 'google') {
+            return controller('login.google');
+        }
+    } else {
+        return visitor_views('login');
+    }
+}
+// Logout
+else if ($agent_request[1] == 'logout') {
+    return controller('login.logout');
+}
+// Member Panel
+else if (str_starts_with($agent_path, config('site.member_panel'))) {
+    // chcek login
+    if ($_SESSION['login'] == false) {
+        $_SESSION['callback'] = url($agent_path);
+        return redirect(member_url('/login'));
+    }
+}
+// Admin Panel
+else if (str_starts_with($agent_path, config('site.admin_panel'))) {
+    // chcek login
+    if ($_SESSION['login'] == false) {
+        $_SESSION['callback'] = url($agent_path);
+        return redirect(member_url('/login'));
+    }
+    // dashboard
+    if (empty($agent_request[2])) {
         return admin_views('index');
     }
     // profile
@@ -49,13 +70,11 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return admin_views('profile.password');
             }
         }
-    } else if ($agent_request[2] == 'logout') {
-        return controller('login.logout');
     }
     // whitelist
     else if ($agent_request[2] == 'whitelist') {
         // index
-        if (!isset($agent_request[3])) {
+        if (empty($agent_request[3])) {
             return admin_views('whitelist.index');
         }
         // add
@@ -68,7 +87,7 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
         else if (is_numeric($agent_request[3])) {
             $request['id'] = $agent_request[3];
             // view
-            if (!isset($agent_request[4])) {
+            if (empty($agent_request[4])) {
                 return admin_views('whitelist.view');
             }
             // edit
@@ -83,10 +102,16 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
             } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
                 return controller('whitelist.delete');
             }
+            // approve
+            else if ($agent_request[4] == 'approve' and $agent_method == 'GET') {
+                return admin_views('whitelist.approve');
+            } else if ($agent_request[4] == 'approve' and $agent_method == 'POST') {
+                return controller('whitelist.approve');
+            }
         }
         // category
         else if ($agent_request[3] == 'category') {
-            if (!isset($agent_request[4])) {
+            if (empty($agent_request[4])) {
                 return admin_views('whitelist.category.index');
             }
             // add
@@ -116,7 +141,7 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
     // blacklist
     else if ($agent_request[2] == 'blacklist') {
         // index
-        if (!isset($agent_request[3])) {
+        if (empty($agent_request[3])) {
             return admin_views('blacklist.index');
         }
         // add
@@ -129,7 +154,7 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
         else if (is_numeric($agent_request[3])) {
             $request['id'] = $agent_request[3];
             // view
-            if (!isset($agent_request[4])) {
+            if (empty($agent_request[4])) {
                 return admin_views('blacklist.view');
             }
             // edit
@@ -147,7 +172,7 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
         }
         // category
         else if ($agent_request[3] == 'category') {
-            if (!isset($agent_request[4])) {
+            if (empty($agent_request[4])) {
                 return admin_views('blacklist.category.index');
             }
             // add
@@ -177,7 +202,7 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
     // setting
     else if ($agent_request[2] == 'account') {
         // index
-        if (!isset($agent_request[3])) {
+        if (empty($agent_request[3])) {
             return admin_views('account.index');
         }
         // add
@@ -190,7 +215,7 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
         else if (is_numeric($agent_request[3])) {
             $request['id'] = $agent_request[3];
             // view
-            if (!isset($agent_request[4])) {
+            if (empty($agent_request[4])) {
                 return admin_views('account.view');
             }
             // edit
@@ -210,6 +235,41 @@ if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return admin_views('account.delete');
             } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
                 return controller('account.delete');
+            }
+        }
+    } else if ($agent_request[2] == 'bank') {
+        // index
+        if (empty($agent_request[3])) {
+            return admin_views('bank.index');
+        }
+        // add
+        else if ($agent_request[3] == 'add' and $agent_method == 'GET') {
+            return admin_views('bank.add');
+        } else if ($agent_request[3] == 'add' and $agent_method == 'POST') {
+            return controller('bank.add');
+        }
+        // check is number
+        else if (is_numeric($agent_request[3])) {
+            $request['id'] = $agent_request[3];
+            // view
+            if (empty($agent_request[4])) {
+                return admin_views('bank.view');
+            }
+            // check is number
+            else if (is_numeric($agent_request[4])) {
+                $request['id'] = $agent_request[4];
+                // edit
+                if ($agent_request[5] == 'edit' and $agent_method == 'GET') {
+                    return admin_views('bank.edit');
+                } else if ($agent_request[5] == 'edit' and $agent_method == 'POST') {
+                    return controller('bank.edit');
+                }
+                // delete
+                else if ($agent_request[5] == 'delete' and $agent_method == 'GET') {
+                    return admin_views('bank.delete');
+                } else if ($agent_request[5] == 'delete' and $agent_method == 'POST') {
+                    return controller('bank.delete');
+                }
             }
         }
     }

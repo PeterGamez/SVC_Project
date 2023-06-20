@@ -28,7 +28,7 @@
                 ?>
                     <div class="d-flex justify-content-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= sub_url(config('site.admin_panel'), 'login') ?>">Login <i class="fa-solid fa-lock-keyhole"></i></a>
+                            <a class="nav-link" href="<?= url('login') ?>">Login <i class="fa-solid fa-lock-keyhole"></i></a>
                         </li>
                     </div>
                 <?php
@@ -40,8 +40,14 @@
                             <?= $_SESSION['user_username']; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?= url(config('site.admin_panel')) ?>"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>
-                            <a class="dropdown-item" href="<?= sub_url(config('site.admin_panel'), 'logout') ?>"><i class="fa-solid fa-lock-keyhole-open"></i> ออกจากระบบ</a>
+                            <?php
+                            if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
+                                echo '<a class="dropdown-item" href="' . url(config('site.admin_panel')) . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
+                            } else {
+                                echo '<a class="dropdown-item" href="' . url(config('site.member_panel')) . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
+                            }
+                            ?>
+                            <a class="dropdown-item" href="<?= url('logout') ?>"><i class="fa-solid fa-lock-keyhole-open"></i> ออกจากระบบ</a>
                         </div>
                     </li>
                 <?php

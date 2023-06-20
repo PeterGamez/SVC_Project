@@ -6,13 +6,13 @@ $site['desc'] = config('site.description');
 $site['bot'] = '';
 ?>
 
-<?= views('layouts/header'); ?>
+<?= visitor_views('layouts/header') ?>
 
 <body>
-    <?= views('layouts/navbar'); ?>
+    <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
-        blacklist view <?= $request['id'] ?>
+        contact
     </div>
 </body>
 
-<?= views('layouts/footer'); ?>
+<?= visitor_views('layouts/footer') ?>

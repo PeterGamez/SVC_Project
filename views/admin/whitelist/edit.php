@@ -22,6 +22,7 @@ $site['cdn'] = ['bs-file'];
                                         <?php
                                         $result = Whitelist::findOne(['id' => $request['id']]);
                                         ?>
+                                        <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
@@ -32,7 +33,7 @@ $site['cdn'] = ['bs-file'];
                                         </div>
                                         <div class="form-group">
                                             <label>ประเภทกิจการ <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="whitelist_category" required>
+                                            <select class="form-control" name="whitelist_category_id" required>
                                                 <?php
                                                 $result = WhitelistCategory::find();
                                                 for ($i = 0; $i < count($result); $i++) {

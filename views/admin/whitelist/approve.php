@@ -11,7 +11,7 @@
                         <div class="card mb-4 shadow" style="width: 30rem;">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
-                                    <h5 class="modal-title">ลบกิจการ</h5>
+                                    <h5 class="modal-title">อนุมัติกิจการ</h5>
                                 </div>
                                 <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
@@ -23,11 +23,18 @@
                                             <label>ชื่อกิจการ</label>
                                             <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                         </div>
+                                        <div class="form-group">
+                                            <label>สถานะ <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="approve_agree" required>
+                                                <option value="0" <?= $result['approve_agree'] == 0 ? 'selected' : '' ?>>ไม่อนุมัติ</option>
+                                                <option value="1" <?= $result['approve_agree'] == 1 ? 'selected' : '' ?>>อนุมัติ</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
                                             <a href="<?= url_back() ?>" class="btn btn-secondary">ย้อนกลับ</a>
-                                            <button type="submit" class="btn btn-danger">ยืนยัน</button>
+                                            <button type="submit" class="btn btn-success">ยืนยัน</button>
                                         </div>
                                     </div>
                                 </form>

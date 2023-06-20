@@ -59,6 +59,11 @@ function admin_url($path = '', $ext = '')
     return url(config('site.admin_panel') . '/' . $path, $ext);
 }
 
+function member_url($path = '', $ext = '')
+{
+    return url(config('site.member_panel') . '/' . $path, $ext);
+}
+
 function url_back()
 {
     return $_SERVER['HTTP_REFERER'];
@@ -75,6 +80,18 @@ function controller($path)
     return null;
 }
 
+function admin_controller($path)
+{
+    global $site;
+    return controller('admin/' . $path);
+}
+
+function member_controller($path)
+{
+    global $site;
+    return controller('member/' . $path);
+}
+
 function api($path)
 {
     global $site, $request;
@@ -89,7 +106,7 @@ function api($path)
 
 function redirect($path)
 {
-    header('Location: ' . url($path));
+    header('Location: ' . $path);
     exit;
 }
 
@@ -109,4 +126,16 @@ function admin_views($path = '')
 {
     global $site, $request;
     return views('admin/' . $path);
+}
+
+function member_views($path = '')
+{
+    global $site, $request;
+    return views('member/' . $path);
+}
+
+function visitor_views($path = '')
+{
+    global $site, $request;
+    return views('visitor/' . $path);
 }

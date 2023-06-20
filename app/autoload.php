@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['id'])) {
+if (empty($_SESSION['id'])) {
     $_SESSION['id'] = session_id();
     $_SESSION['login'] = false;
     $_SESSION['user_role'] = 'visitor';

@@ -11,9 +11,9 @@ class Discord
 
         $response = curl_exec($curl);
         curl_close($curl);
-        return json_decode($response);
+        return json_decode($response, true);
     }
-    
+
     public static function postImage($url, $data)
     {
         $curl = curl_init($url);
@@ -23,6 +23,6 @@ class Discord
 
         $response = curl_exec($curl);
         curl_close($curl);
-        return json_decode($response);
+        return json_decode($response, true);
     }
 }
