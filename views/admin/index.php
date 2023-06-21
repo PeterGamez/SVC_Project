@@ -1,4 +1,4 @@
-<?= admin_views('layouts.header') ?>
+<?= views('layouts.back_header') ?>
 
 <body>
     <div id="wrapper">
@@ -83,7 +83,7 @@
                     }
                     ?>
                 </div>
-                <?= admin_views('layouts.footer') ?>
+                <?= views('layouts.back_footer') ?>
             </div>
         </div>
     </div>

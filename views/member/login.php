@@ -1,7 +1,7 @@
 <?php
 $site['cdn'] = ['login'];
 ?>
-<?= admin_views('layouts.header') ?>
+<?= views('layouts.back_header') ?>
 
 <body>
     <div class="container">
@@ -13,7 +13,7 @@ $site['cdn'] = ['login'];
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4"><?= config('site.name') ?></h1>
                         </div>
-                        <form class="user" method="POST" action="<?= url('login.form') ?>">
+                        <form class="user" method="POST" action="<?= member_url('login.callback.form') ?>">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email">
                             </div>
@@ -37,5 +37,5 @@ $site['cdn'] = ['login'];
             </div>
         </div>
     </div>
-    <?= admin_views('layouts.footer') ?>
+    <?= views('layouts.back_footer') ?>
 </body>

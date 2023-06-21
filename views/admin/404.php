@@ -1,7 +1,7 @@
 <?php
 $site['cdn'] = ['404'];
 ?>
-<?= admin_views('layouts.header') ?>
+<?= views('layouts.back_header') ?>
 
 <body>
     <div id="wrapper">
@@ -17,7 +17,7 @@ $site['cdn'] = ['404'];
                     </div>
                 </div>
             </div>
-            <?= admin_views('layouts.footer') ?>
+            <?= views('layouts.back_footer') ?>
         </div>
     </div>
     <?= resource('cdn/back_foot.php') ?>

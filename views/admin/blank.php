@@ -1,4 +1,4 @@
-<?= admin_views('layouts.header') ?>
+<?= views('layouts.back_header') ?>
 
 <body>
     <div id="wrapper">
@@ -10,7 +10,7 @@
                     <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
                 </div>
             </div>
-            <?= admin_views('layouts.footer') ?>
+            <?= views('layouts.back_footer') ?>
         </div>
     </div>
     <?= resource('cdn/back_foot.php') ?>

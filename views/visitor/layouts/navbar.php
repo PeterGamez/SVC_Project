@@ -28,7 +28,7 @@
                 ?>
                     <div class="d-flex justify-content-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= url('login') ?>">Login <i class="fa-solid fa-lock-keyhole"></i></a>
+                            <a class="nav-link" href="<?= member_url('login') ?>">Login <i class="fa-solid fa-lock-keyhole"></i></a>
                         </li>
                     </div>
                 <?php
@@ -47,7 +47,7 @@
                                 echo '<a class="dropdown-item" href="' . url(config('site.member_panel')) . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
                             }
                             ?>
-                            <a class="dropdown-item" href="<?= url('logout') ?>"><i class="fa-solid fa-lock-keyhole-open"></i> ออกจากระบบ</a>
+                            <a class="dropdown-item" href="<?= member_url('logout') ?>"><i class="fa-solid fa-lock-keyhole-open"></i> ออกจากระบบ</a>
                         </div>
                     </li>
                 <?php

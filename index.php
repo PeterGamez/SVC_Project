@@ -26,52 +26,60 @@ else if ($agent_request[1] == 'blacklist') {
 else if ($agent_request[1] == 'contact') {
     return visitor_views('contact');
 }
-// Login
-else if ($agent_request[1] == 'login') {
-    if (isset($agent_request[2]) and $agent_method == 'POST') {
-        if ($agent_request[2] == 'form') {
-            return controller('login.form');
-        } else if ($agent_request[2] == 'google') {
-            return controller('login.google');
-        }
-    } else {
-        return visitor_views('login');
-    }
-}
-// Logout
-else if ($agent_request[1] == 'logout') {
-    return controller('login.logout');
-}
+// Authentication
+
 // Member Panel
 else if (str_starts_with($agent_path, config('site.member_panel'))) {
-    // chcek login
+    // Chcek Login
     if ($_SESSION['login'] == false) {
+        // Login
+        if ($agent_request[2] == 'login') {
+            // Callback
+            if ($agent_request[3] == 'callback' and isset($agent_request[4]) and $agent_method == 'POST') {
+                // Site Form
+                if ($agent_request[4] == 'form') {
+                    return controller('login.form');
+                }
+                // Google API
+                else if ($agent_request[4] == 'google') {
+                    return controller('login.google');
+                }
+            }
+            // Login
+            return member_views('login');
+        }
+        // Redirect to Login
         $_SESSION['callback'] = url($agent_path);
-        return redirect(member_url('/login'));
+        return redirect(member_url('login'));
     }
-}
-// Admin Panel
-else if (str_starts_with($agent_path, config('site.admin_panel'))) {
-    // chcek login
-    if ($_SESSION['login'] == false) {
-        $_SESSION['callback'] = url($agent_path);
-        return redirect(member_url('/login'));
+    // Logout
+    else if ($agent_request[2] == 'logout') {
+        return controller('login.logout');
     }
-    // dashboard
-    if (empty($agent_request[2])) {
-        return admin_views('index');
-    }
-    // profile
+    // Profile
     else if ($agent_request[2] == 'profile') {
         if ($agent_request[3] == 'password') {
             if ($agent_method == 'POST') {
                 return controller('profile.password');
             } else {
-                return admin_views('profile.password');
+                return member_views('profile.password');
             }
         }
     }
-    // whitelist
+}
+// Admin Panel
+else if (str_starts_with($agent_path, config('site.admin_panel'))) {
+    // Chcek Login
+    if ($_SESSION['login'] == false) {
+        // Redirect to Login
+        $_SESSION['callback'] = url($agent_path);
+        return redirect(member_url('login'));
+    }
+    // Dashboard
+    if (empty($agent_request[2])) {
+        return admin_views('index');
+    }
+    // Whitelist
     else if ($agent_request[2] == 'whitelist') {
         // index
         if (empty($agent_request[3])) {
@@ -138,7 +146,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
             }
         }
     }
-    // blacklist
+    // Blacklist
     else if ($agent_request[2] == 'blacklist') {
         // index
         if (empty($agent_request[3])) {
@@ -199,7 +207,8 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
             }
         }
     }
-    // setting
+    // Setting
+    /// Account
     else if ($agent_request[2] == 'account') {
         // index
         if (empty($agent_request[3])) {
@@ -237,7 +246,9 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return controller('account.delete');
             }
         }
-    } else if ($agent_request[2] == 'bank') {
+    }
+    /// Bank
+    else if ($agent_request[2] == 'bank') {
         // index
         if (empty($agent_request[3])) {
             return admin_views('bank.index');

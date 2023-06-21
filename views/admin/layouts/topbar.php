@@ -20,10 +20,10 @@
                     <i class="fa-sharp fa-solid fa-house-chimney mr-2 text-gray-400"></i> หนัาบ้าน
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= admin_url('profile.password') ?>">
+                <a class="dropdown-item" href="<?= member_url('profile.password') ?>">
                     <i class="fa-sharp fa-solid fa-gear-code mr-2 text-gray-400"></i> เปลี่ยนรหัสผ่าน
                 </a>
-                <a class="dropdown-item" href="<?= admin_url('logout') ?>">
+                <a class="dropdown-item" href="<?= member_url('logout') ?>">
                     <i class="fa-sharp fa-solid fa-person-from-portal mr-2 text-gray-400"></i> ออกจากระบบ
                 </a>
             </div>
