@@ -5,7 +5,7 @@ if ($_POST['username']) {
     $password = $_POST['password'];
     $role = $_POST['role'];
 
-    if (count(Account::count(['username' => $username, 'email' => $email], 'OR')) > 0) {
+    if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
         echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
         exit;
     }

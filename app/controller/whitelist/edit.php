@@ -8,7 +8,7 @@ if ($_POST['id']) {
     $id_name = $_POST['id_name'];
     $id_card = $_POST['id_card'];
 
-    if (count(Whitelist::find(['id' => $id])) == 0) {
+    if (Whitelist::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', null, 'window.history.back()');
         exit;
     }

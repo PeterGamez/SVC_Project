@@ -5,12 +5,12 @@ if ($_POST['id']) {
     $email = $_POST['email'];
     $role = $_POST['role'];
 
-    if (count(Account::find(['id' => $id])) == 0) {
+    if (Account::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', null, 'window.history.back()');
         exit;
     }
 
-    if (count(Account::find(['username' => $username, 'email' => $email], 'OR')) > 0) {
+    if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
         echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
         exit;
     }

@@ -2,7 +2,7 @@
 if ($_POST['id']) {
     $id = $_POST['id'];
 
-    if (count(Whitelist::find(['id' => $id])) == 0) {
+    if (Whitelist::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', null, 'window.history.back()');
         exit;
     }

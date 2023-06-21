@@ -1,4 +1,4 @@
 <?php
 session_destroy();
 
-redirect(url('/login'));
+redirect(member_url('login'));

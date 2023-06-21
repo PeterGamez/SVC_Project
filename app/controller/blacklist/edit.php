@@ -3,7 +3,7 @@ if ($_POST['id']) {
     $id = $_POST['id'];
     $name = $_POST['name'];
 
-    if (count(Blacklist::find(['id' => $id])) == 0) {
+    if (Blacklist::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', null, 'window.history.back()');
         exit;
     }

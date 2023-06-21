@@ -2,7 +2,7 @@
 if ($_POST['name']) {
     $name = $_POST['name'];
 
-    if (count(WhitelistCategory::find(['name' => $name])) > 0) {
+    if (WhitelistCategory::count(['name' => $name]) > 0) {
         echo Alert::alerts('มีหมวดหมู่นี้อยู่แล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
