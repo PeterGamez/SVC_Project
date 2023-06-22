@@ -26,8 +26,14 @@ else if ($agent_request[1] == 'blacklist') {
 else if ($agent_request[1] == 'contact') {
     return visitor_views('contact');
 }
-// Authentication
-
+// Application
+else if ($agent_request[1] == 'download') {
+    if (empty($agent_request[2])) {
+        return visitor_views('download');
+    } else if ($agent_request[2] == 'android') {
+        return Download::transfer(resource('application/android/release.apk', true), 'IntraCheck.apk');
+    }
+}
 // Member Panel
 else if (str_starts_with($agent_path, config('site.member_panel'))) {
     // Chcek Login
