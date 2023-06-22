@@ -52,6 +52,10 @@ else if (str_starts_with($agent_path, config('site.member_panel'))) {
         $_SESSION['callback'] = url($agent_path);
         return redirect(member_url('login'));
     }
+    // Dashboard
+    else if (empty($agent_request[2])) {
+        return member_views('index');
+    }
     // Logout
     else if ($agent_request[2] == 'logout') {
         return controller('login.logout');
@@ -66,6 +70,33 @@ else if (str_starts_with($agent_path, config('site.member_panel'))) {
             }
         }
     }
+    // Whitelist
+    else if ($agent_request[2] == 'whitelist') {
+        if (isset($agent_request[3])) {
+            if ($agent_request[3] == 'setting' and $agent_method == 'GET') {
+                return member_views('whitelist.setting');
+            } else if ($agent_request[3] == 'setting' and $agent_method == 'POST') {
+                return controller('whitelist.setting');
+            } else if ($agent_request[3] == 'register' and $agent_method == 'GET') {
+                return member_views('whitelist.register');
+            } else if ($agent_request[3] == 'register' and $agent_method == 'POST') {
+                return controller('whitelist.register');
+            }
+        }
+    }
+    // Blacklist
+    else if ($agent_request[2] == 'blacklist') {
+        if (isset($agent_request[3])) {
+            if ($agent_request[3] == 'report' and $agent_method == 'GET') {
+                return member_views('blacklist.report');
+            } else if ($agent_request[3] == 'report' and $agent_method == 'POST') {
+                return controller('blacklist.report');
+            } else if ($agent_request[3] == 'myreport') {
+                return member_views('blacklist.myreport');
+            }
+        }
+    }
+    return member_views('404');
 }
 // Admin Panel
 else if (str_starts_with($agent_path, config('site.admin_panel'))) {
@@ -74,9 +105,11 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         // Redirect to Login
         $_SESSION['callback'] = url($agent_path);
         return redirect(member_url('login'));
+    } else if (!in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
+        return redirect(url(config('site.member_panel')));
     }
     // Dashboard
-    if (empty($agent_request[2])) {
+    else  if (empty($agent_request[2])) {
         return admin_views('index');
     }
     // Whitelist
@@ -209,7 +242,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
     }
     // Setting
     /// Account
-    else if ($agent_request[2] == 'account') {
+    else if ($agent_request[2] == 'account' and in_array($_SESSION['user_role'], ['superadmin'])) {
         // index
         if (empty($agent_request[3])) {
             return admin_views('account.index');
@@ -236,7 +269,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
             // password
             else if ($agent_request[4] == 'password' and $agent_method == 'GET') {
                 return admin_views('account.password');
-            } else if ($agent_request[4] == 'edit' and $agent_method == 'POST') {
+            } else if ($agent_request[4] == 'password' and $agent_method == 'POST') {
                 return controller('account.password');
             }
             // delete
@@ -248,7 +281,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         }
     }
     /// Bank
-    else if ($agent_request[2] == 'bank') {
+    else if ($agent_request[2] == 'bank' and in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {
         // index
         if (empty($agent_request[3])) {
             return admin_views('bank.index');
