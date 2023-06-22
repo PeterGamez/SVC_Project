@@ -6,7 +6,7 @@ if (empty($agent_request[1])) {
 }
 // Whitelist
 else if ($agent_request[1] == 'whitelist') {
-    if (isset($agent_request[1])) {
+    if (isset($agent_request[2])) {
         $request['id'] = $agent_request[2];
         return visitor_views('whitelist.view');
     } else {
@@ -35,7 +35,7 @@ else if (str_starts_with($agent_path, config('site.member_panel'))) {
         // Login
         if ($agent_request[2] == 'login') {
             // Callback
-            if ($agent_request[3] == 'callback' and isset($agent_request[4]) and $agent_method == 'POST') {
+            if (isset($agent_request[3]) and $agent_request[3] == 'callback' and isset($agent_request[4]) and $agent_method == 'POST') {
                 // Site Form
                 if ($agent_request[4] == 'form') {
                     return controller('login.form');
@@ -109,7 +109,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         return redirect(url(config('site.member_panel')));
     }
     // Dashboard
-    else  if (empty($agent_request[2])) {
+    else if (empty($agent_request[2])) {
         return admin_views('index');
     }
     // Whitelist
