@@ -4,7 +4,7 @@ if ($_POST['id']) {
     $password = $_POST['password'];
 
     if (Account::count(['id' => $id]) == 0) {
-        echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', null, 'window.history.back()');
+        echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
 

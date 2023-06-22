@@ -4,7 +4,7 @@ if ($_POST['password1']) {
     $password2 = $_POST['password2'];
 
     if ($password1 != $password2) {
-        echo Alert::alerts('รหัสผ่านไม่ตรงกัน', 'error', null, 'window.history.back()');
+        echo Alert::alerts('รหัสผ่านไม่ตรงกัน', 'error', 1500, 'window.history.back()');
         exit;
     }
 

@@ -3,7 +3,7 @@ if ($_POST['id']) {
     $id = $_POST['id'];
 
     if (WhitelistCategory::count(['id' => $id]) == 0) {
-        echo Alert::alerts('ไม่พบหมวดหมู่นี้ในระบบ', 'error', null, 'window.history.back()');
+        echo Alert::alerts('ไม่พบหมวดหมู่นี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
     WhitelistCategory::delete(['id' => $id]);

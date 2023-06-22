@@ -6,7 +6,7 @@ if ($_POST['username']) {
     $role = $_POST['role'];
 
     if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
-        echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
+        echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
     Account::create([

@@ -6,12 +6,12 @@ if ($_POST['id']) {
     $role = $_POST['role'];
 
     if (Account::count(['id' => $id]) == 0) {
-        echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', null, 'window.history.back()');
+        echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
 
     if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
-        echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
+        echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
 

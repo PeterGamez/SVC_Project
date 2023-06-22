@@ -11,11 +11,11 @@ if ($_POST['id']) {
 
 
     if (Whitelist::count(['id' => $id]) == 0) {
-        echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', null, 'window.history.back()');
+        echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
     if (Whitelist::count(['account_id' => $account_id]) > 0) {
-        echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
+        echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
 

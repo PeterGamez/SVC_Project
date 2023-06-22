@@ -15,7 +15,7 @@ if ($_POST['name']) {
     $file_type = $id_image['type'];
 
     if (Whitelist::count(['account_id' => $account_id]) > 0) {
-        echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
+        echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
 
