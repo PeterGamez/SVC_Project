@@ -9,6 +9,7 @@
                 <div class="container-fluid">
 
                 </div>
+                <?= views('layouts.back_footer') ?>
             </div>
         </div>
     </div>

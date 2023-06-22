@@ -58,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+                <?= views('layouts.back_footer') ?>
             </div>
         </div>
     </div>
