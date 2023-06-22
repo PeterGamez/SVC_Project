@@ -4,12 +4,18 @@ if ($_POST['id']) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $whitelist_category_id = $_POST['whitelist_category_id'];
+    $account_id = $_POST['account_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
     $id_card = $_POST['id_card'];
 
+
     if (Whitelist::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', null, 'window.history.back()');
+        exit;
+    }
+    if (Whitelist::count(['account_id' => $account_id]) > 0) {
+        echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', null, 'window.history.back()');
         exit;
     }
 
@@ -17,12 +23,11 @@ if ($_POST['id']) {
         'name' => $name,
         'description' => $description,
         'whitelist_category_id' => $whitelist_category_id,
+        'account_id' => $account_id,
         'website' => $website,
         'id_name' => $id_name,
         'id_card' => $id_card,
-        'id_image' => $id_image,
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
+        'id_image' => $id_image
     ];
 
     if ($_POST['id_image']) {

@@ -35,16 +35,20 @@ $site['cdn'] = ['bs-file'];
                                             <label>ประเภทกิจการ <span class="text-danger">*</span></label>
                                             <select class="form-control" name="whitelist_category_id" required>
                                                 <?php
-                                                $result = WhitelistCategory::find();
-                                                for ($i = 0; $i < count($result); $i++) {
-                                                    if ($result[$i]['id'] == $request['whitelist_category']) {
-                                                        echo '<option value="' . $result[$i]['id'] . '" selected>' . $result[$i]['name'] . '</option>';
+                                                $category = WhitelistCategory::find();
+                                                for ($i = 0; $i < count($category); $i++) {
+                                                    if ($category[$i]['id'] == $request['whitelist_category']) {
+                                                        echo '<option value="' . $category[$i]['id'] . '" selected>' . $category[$i]['name'] . '</option>';
                                                     } else {
-                                                        echo '<option value="' . $result[$i]['id'] . '">' . $result[$i]['name'] . '</option>';
+                                                        echo '<option value="' . $category[$i]['id'] . '">' . $category[$i]['name'] . '</option>';
                                                     }
                                                 }
                                                 ?>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ไอดีเจ้าของกิจการ <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="account_id" value="<?= $result['account_id'] ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
