@@ -7,7 +7,7 @@ if (isset($_POST['credential'])) {
     if ($payload) {
         if ($payload['email_verified'] == false) {
             echo Alert_Login::alert('กรุณายืนยันอีเมลก่อน', 'warning', 1500, 'history.back()');
-            exit();
+            exit;
         }
 
         $data = Account::findOne(['email' => $payload['email']]);

@@ -6,7 +6,7 @@ if (isset($_POST['user'])) {
     $captcha = $_POST['cf-turnstile-response'];
     if (!$captcha) {
         echo Alert_Login::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
-        exit();
+        exit;
     }
     $ip = App::getAgentIP();
 
@@ -22,7 +22,7 @@ if (isset($_POST['user'])) {
         } else {
             echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result->{'error-codes'}[0], 'error', 1500, 'history.back()');
         }
-        exit();
+        exit;
     }
 
     // Login
