@@ -20,9 +20,7 @@ if ($_POST['id']) {
     ], [
         'username' => $username,
         'email' => $email,
-        'role' => $role,
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
+        'role' => $role
     ]);
 
     $path = admin_url('account');

@@ -8,14 +8,7 @@ if ($_POST['id']) {
         exit;
     }
 
-    Whitelist::update(
-        ['id' => $id],
-        [
-            'approve_agree' => $approve_agree,
-            'update_at' => date('Y-m-d H:i:s'),
-            'update_by' => $_SESSION['user_id']
-        ]
-    );
+    Whitelist::update(['id' => $id], ['approve_agree' => $approve_agree]);
 
     $path = admin_url("whitelist.$id.view");
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');

@@ -8,13 +8,7 @@ if ($_POST['id']) {
         exit;
     }
 
-    Account::update([
-        'id' => $id
-    ], [
-        'password' => password_hash($password, PASSWORD_DEFAULT),
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
-    ]);
+    Account::update(['id' => $id], ['password' => password_hash($password, PASSWORD_DEFAULT)]);
 
     $path = admin_url('account');
     echo Alert::alerts('แก้ไขรหัสผ่านสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');

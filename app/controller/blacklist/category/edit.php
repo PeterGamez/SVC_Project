@@ -7,13 +7,7 @@ if ($_POST['id']) {
         redirect(admin_url('blacklist.category'));
         exit;
     }
-    BlacklistCategory::update([
-        'id' => $id
-    ], [
-        'name' => $name,
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
-    ]);
+    BlacklistCategory::update(['id' => $id], ['name' => $name]);
 
     $path = admin_url('blacklist.category');
     echo Alert::alerts('แก้ไขหมวดหมู่สำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');

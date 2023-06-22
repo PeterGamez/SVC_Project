@@ -13,11 +13,7 @@ if ($_POST['username']) {
         'username' => $username,
         'email' => $email,
         'password' => password_hash($password, PASSWORD_DEFAULT),
-        'role' => $role,
-        'create_at' => date('Y-m-d H:i:s'),
-        'create_by' => $_SESSION['user_id'],
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
+        'role' => $role
     ]);
 
     $path = admin_url('account');

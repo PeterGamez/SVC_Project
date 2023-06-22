@@ -8,13 +8,7 @@ if ($_POST['password1']) {
         exit;
     }
 
-    Account::update([
-        'id' => $_SESSION['user_id']
-    ], [
-        'password' => password_hash($password, PASSWORD_DEFAULT),
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
-    ]);
+    Account::update(['id' => $_SESSION['user_id']], ['password' => password_hash($password, PASSWORD_DEFAULT)]);
 
     if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
         $path = url(config('site.admin_panel'));

@@ -7,11 +7,7 @@ if ($_POST['name']) {
         exit;
     }
     BlacklistCategory::create([
-        'name' => $name,
-        'create_at' => date('Y-m-d H:i:s'),
-        'create_by' => $_SESSION['user_id'],
-        'update_at' => date('Y-m-d H:i:s'),
-        'update_by' => $_SESSION['user_id']
+        'name' => $name
     ]);
 
     $path = admin_url('blacklist.category');

@@ -18,6 +18,11 @@ class Database
     // Main function
     public static function create(array $conditions)
     {
+        if (empty($conditions['create_at'])) $conditions['create_at'] = date('Y-m-d H:i:s');
+        if (empty($conditions['create_by'])) $conditions['create_by'] = $_SESSION['user_id'];
+        if (empty($conditions['update_at'])) $conditions['update_at'] = date('Y-m-d H:i:s');
+        if (empty($conditions['update_by'])) $conditions['update_by'] = $_SESSION['user_id'];
+
         $table = self::parseTable();
         $sql = "INSERT INTO $table" . self::buildInsertConditions($conditions);
         return self::buildCreate($sql, $conditions);
@@ -46,6 +51,10 @@ class Database
 
     public static function update(array $conditions, array $newData)
     {
+        if (isset($conditions['create_at'])) unset($conditions['create_at']);
+        if (isset($conditions['create_by'])) unset($conditions['create_by']);
+        if (empty($conditions['update_at'])) $conditions['update_at'] = date('Y-m-d H:i:s');
+        if (empty($conditions['update_by'])) $conditions['update_by'] = $_SESSION['user_id'];
         $table = self::parseTable();
         $sql = "UPDATE $table" . self::buildSetConditions($newData) . self::buildWhereClause($conditions);
         return self::buildUpdate($sql, $conditions, $newData);
