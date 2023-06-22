@@ -19,20 +19,20 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label>ชื่อบัญชี</label>
-                                        <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" disabled>
+                                        <input type="text" class="form-control" value="<?= $result['username'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>อีเมล</label>
-                                        <input type="text" class="form-control" name="email" value="<?= $result['email'] ?>" disabled>
+                                        <input type="text" class="form-control" value="<?= $result['email'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>สิทธิ์การใช้งาน</label>
-                                        <select class="form-control" name="role" disabled>
-                                            <option value="superadmin" <?= $result['role'] == "superadmin" ? "superadmin" : "" ?>>ผู้ดูแลระบบ (superadmin)</option>
-                                            <option value="admin" <?= $result['role'] == "admin" ? "admin" : "" ?>>ผู้ดูแล (admin)</option>
-                                            <option value="staff" <?= $result['role'] == "staff" ? "staff" : "" ?>>เจ้าหน้าที่ (staff)</option>
-                                            <option value="seller" <?= $result['role'] == "seller" ? "seller" : "" ?>>ผู้ขาย (seller)</option>
-                                            <option value="user" <?= $result['role'] == "user" ? "user" : "" ?>>ผู้ใช้งาน (user)</option>
+                                        <select class="form-control" disabled>
+                                            <option value="superadmin" <?= $result['role'] == "superadmin" ? "selected" : "" ?>>ผู้ดูแลระบบ (superadmin)</option>
+                                            <option value="admin" <?= $result['role'] == "admin" ? "selected" : "" ?>>ผู้ดูแล (admin)</option>
+                                            <option value="staff" <?= $result['role'] == "staff" ? "selected" : "" ?>>เจ้าหน้าที่ (staff)</option>
+                                            <option value="seller" <?= $result['role'] == "seller" ? "selected" : "" ?>>ผู้ขาย (seller)</option>
+                                            <option value="user" <?= $result['role'] == "user" ? "selected" : "" ?>>ผู้ใช้งาน (user)</option>
                                         </select>
                                     </div>
                                     <div class="modal-body">

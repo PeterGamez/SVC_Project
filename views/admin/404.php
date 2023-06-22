@@ -12,7 +12,7 @@ $site['cdn'] = ['404'];
                 <div class="container-fluid">
                     <div class="text-center">
                         <div class="error mx-auto" data-text="404">404</div>
-                        <span class="lead text-gray-800 mb-5">Page Not Found</span>
+                        <div class="lead text-gray-800 m-3">Page Not Found</div>
                         <div class="btn btn-primary" onclick="window.history.back()">ย้อนกลับ</div>
                     </div>
                 </div>
