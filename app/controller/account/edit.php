@@ -5,14 +5,17 @@ if ($_POST['id']) {
     $email = $_POST['email'];
     $role = $_POST['role'];
 
-    if (Account::count(['id' => $id]) == 0) {
+    $data = Account::findOne(['id' => $id]);
+    if (count($data) == 0) {
         echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
 
-    if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
-        echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
-        exit;
+    if ($username <> $data['username'] || $email <> $data['email']) {
+        if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
+            echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
+            exit;
+        }
     }
 
     Account::update([
@@ -23,7 +26,7 @@ if ($_POST['id']) {
         'role' => $role
     ]);
 
-    $path = admin_url('account');
+    $path = admin_url("account.$id");
     echo Alert::alerts('แก้ไขบัญชีสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('account'));

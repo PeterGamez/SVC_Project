@@ -16,16 +16,16 @@ date_default_timezone_set("Asia/Bangkok");
 class Database
 {
     // Main function
-    public static function create(array $conditions)
+    public static function create(array $newData)
     {
-        if (empty($conditions['create_at'])) $conditions['create_at'] = date('Y-m-d H:i:s');
-        if (empty($conditions['create_by'])) $conditions['create_by'] = $_SESSION['user_id'];
-        if (empty($conditions['update_at'])) $conditions['update_at'] = date('Y-m-d H:i:s');
-        if (empty($conditions['update_by'])) $conditions['update_by'] = $_SESSION['user_id'];
+        $newData['create_at'] = date('Y-m-d H:i:s');
+        $newData['create_by'] = $_SESSION['user_id'];
+        $newData['update_at'] = date('Y-m-d H:i:s');
+        $newData['update_by'] = $_SESSION['user_id'];
 
         $table = self::parseTable();
-        $sql = "INSERT INTO $table" . self::buildInsertConditions($conditions);
-        return self::buildCreate($sql, $conditions);
+        $sql = "INSERT INTO $table" . self::buildInsertData($newData);
+        return self::buildCreate($sql, $newData);
     }
 
     public static function find(array $conditions = [], string $operator = '', array $order = [])
@@ -51,13 +51,13 @@ class Database
 
     public static function update(array $conditions, array $newData)
     {
-        if (isset($conditions['create_at'])) unset($conditions['create_at']);
-        if (isset($conditions['create_by'])) unset($conditions['create_by']);
-        if (empty($conditions['update_at'])) $conditions['update_at'] = date('Y-m-d H:i:s');
-        if (empty($conditions['update_by'])) $conditions['update_by'] = $_SESSION['user_id'];
-        
+        if (isset($newData['create_at'])) unset($newData['create_at']);
+        if (isset($newData['create_by'])) unset($newData['create_by']);
+        $newData['update_at'] = date('Y-m-d H:i:s');
+        $newData['update_by'] = $_SESSION['user_id'];
+
         $table = self::parseTable();
-        $sql = "UPDATE $table" . self::buildSetConditions($newData) . self::buildWhereClause($conditions);
+        $sql = "UPDATE $table" . self::buildSetData($newData) . self::buildWhereClause($conditions);
         return self::buildUpdate($sql, $conditions, $newData);
     }
 
@@ -81,7 +81,12 @@ class Database
         if ($table == null) {
             $table = get_called_class();
         }
+        // 1. change first character to lowercase
         $parsetable = lcfirst($table);
+        // 2. change uppercase to underscore
+        $parsetable = preg_replace('/(?<!^)[A-Z]/', '_$0', $parsetable);
+        // 3. change uppercase to lowercase
+        $parsetable = strtolower($parsetable);
         return $parsetable;
     }
 
@@ -111,23 +116,23 @@ class Database
         $stmt->bind_param($types, ...$bindParams);
     }
 
-    // Build Conditions
-    protected static function buildInsertConditions(array $conditions)
+    // Build Data
+    protected static function buildInsertData(array $newData)
     {
         $query = [];
 
-        foreach ($conditions as $field => $value) {
+        foreach ($newData as $field => $value) {
             $query[] = $field;
         }
 
         return " (" . implode(", ", $query) . ") VALUES (" . implode(", ", array_fill(0, count($query), "?")) . ")";
     }
 
-    protected static function buildSetConditions(array $conditions)
+    protected static function buildSetData(array $newData)
     {
         $query = [];
 
-        foreach ($conditions as $field => $value) {
+        foreach ($newData as $field => $value) {
             $query[] = "$field = ?";
         }
 

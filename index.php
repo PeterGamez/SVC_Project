@@ -302,22 +302,22 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         else if (is_numeric($agent_request[3])) {
             $request['id'] = $agent_request[3];
             // view
-            if (empty($agent_request[4])) {
+            if (empty($agent_request[3])) {
                 return admin_views('bank.view');
             }
             // check is number
-            else if (is_numeric($agent_request[4])) {
-                $request['id'] = $agent_request[4];
+            else if (is_numeric($agent_request[3])) {
+                $request['id'] = $agent_request[3];
                 // edit
-                if ($agent_request[5] == 'edit' and $agent_method == 'GET') {
+                if ($agent_request[4] == 'edit' and $agent_method == 'GET') {
                     return admin_views('bank.edit');
-                } else if ($agent_request[5] == 'edit' and $agent_method == 'POST') {
+                } else if ($agent_request[4] == 'edit' and $agent_method == 'POST') {
                     return controller('bank.edit');
                 }
                 // delete
-                else if ($agent_request[5] == 'delete' and $agent_method == 'GET') {
+                else if ($agent_request[4] == 'delete' and $agent_method == 'GET') {
                     return admin_views('bank.delete');
-                } else if ($agent_request[5] == 'delete' and $agent_method == 'POST') {
+                } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
                     return controller('bank.delete');
                 }
             }

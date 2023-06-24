@@ -1,6 +1,7 @@
 <?php
 $site['cdn'] = ['datatables'];
 ?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

@@ -1,6 +1,7 @@
 <?php
 $site['cdn'] = ['404'];
 ?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

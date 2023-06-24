@@ -13,7 +13,7 @@
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">ลบกิจการ</h5>
                                 </div>
-                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
+                                <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <?php
                                         $result = Whitelist::findOne(['id' => $request['id']]);

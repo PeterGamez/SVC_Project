@@ -1,6 +1,7 @@
 <?php
 $site['cdn'] = ['datatables'];
 ?>
+
 <?= views('layouts.back_header') ?>
 
 <body>
@@ -30,8 +31,8 @@ $site['cdn'] = ['datatables'];
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
-                                    echo '<td>' . '<img href=">' . $resule[$i]['image'] . '" style="width: 50px">' . ' ' . $result[$i]['name'] . '</td>';
-                                    echo '<td><a href="' . admin_url('bank.' . $result[$i]['id']) . '.edit" class="btn btn-sm btn-primary">แก้ไข</a></td>';
+                                    echo '<td><img src="' . $result[$i]['image'] . '" style="width: 30px">' . ' ' . $result[$i]['name'] . '</td>';
+                                    echo '<td><a href="' . admin_url('bank.' . $result[$i]['id'] . '.edit') . '" class="btn btn-sm btn-primary">แก้ไข</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>

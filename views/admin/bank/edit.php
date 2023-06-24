@@ -2,7 +2,6 @@
 $site['cdn'] = ['bs-file'];
 ?>
 
-
 <?= views('layouts.back_header') ?>
 
 <body>
@@ -18,7 +17,7 @@ $site['cdn'] = ['bs-file'];
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">แก้ไขธนาคาร</h5>
                                 </div>
-                                <form method="POST" action="<?= url() ?>">
+                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <?php
                                         $result = Bank::findOne(['id' => $request['id']]);

@@ -10,7 +10,7 @@ if ($_POST['id']) {
 
     Account::update(['id' => $id], ['password' => password_hash($password, PASSWORD_DEFAULT)]);
 
-    $path = admin_url('account');
+    $path = admin_url("account.$id");
     echo Alert::alerts('แก้ไขรหัสผ่านสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('account'));

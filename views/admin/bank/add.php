@@ -17,11 +17,11 @@ $site['cdn'] = ['bs-file'];
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">เพิ่มธนาคาร</h5>
                                 </div>
-                                <form method="POST" action="<?= url() ?>">
+                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อธนาคาร <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="username" required>
+                                            <input type="text" class="form-control" name="name" required>
                                         </div>
                                         <div class="form-group">
                                             <label>โลโก้ธนาคาร <span class="text-danger">*</span></label>
