@@ -14,6 +14,9 @@ $discord = [
         "approve" => "https://discord.com/api/webhooks/1118860755698192454/",
         "proof" => "https://discord.com/api/webhooks/1118860783007309915/"
     ],
+    "bank" => [
+        "image" => "https://discord.com/api/webhooks/1122009607292866600/"
+    ]
 ];
 
 return $discord;
