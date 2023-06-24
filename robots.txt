@@ -1,7 +1,8 @@
 User-agent: *
 Disallow: /whitelist/
 Disallow: /blacklist/
-Disallow: /backend/
+Disallow: /admin/
+Disallow: /member/
 Disallow: /cdn-cgi/
 Disallow: /challenge-platform/
 Sitemap: https://lastboss.itsvc.me
