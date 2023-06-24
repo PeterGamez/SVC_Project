@@ -4,7 +4,7 @@ if ($_POST['id']) {
     $name = $_POST['name'];
 
     if (!BlacklistCategory::findOne(['id' => $id])) {
-        redirect(admin_url('blacklist.category'));
+        echo Alert::alerts('ไม่พบหมวดหมู่นี้ในระบบ', 'danger', 1500, 'window.history.back()');
         exit;
     }
     BlacklistCategory::update(['id' => $id], ['name' => $name]);

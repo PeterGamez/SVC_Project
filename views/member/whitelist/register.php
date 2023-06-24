@@ -1,3 +1,7 @@
+<?php
+$site['cdn'] = ['bs-file'];
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>
@@ -44,7 +48,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>เลขบัตรประชาชน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_card" required>
+                                            <input type="text" class="form-control" name="id_number" required>
                                         </div>
                                         <div class="form-group">
                                             <label>รูปบัตรประชาชน <span class="text-danger">*</span></label>

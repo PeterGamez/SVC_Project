@@ -37,7 +37,7 @@ $site['cdn'] = ['bs-file'];
                                                 <?php
                                                 $category = WhitelistCategory::find();
                                                 for ($i = 0; $i < count($category); $i++) {
-                                                    if ($category[$i]['id'] == $request['whitelist_category']) {
+                                                    if ($category[$i]['id'] == $result['whitelist_category_id']) {
                                                         echo '<option value="' . $category[$i]['id'] . '" selected>' . $category[$i]['name'] . '</option>';
                                                     } else {
                                                         echo '<option value="' . $category[$i]['id'] . '">' . $category[$i]['name'] . '</option>';
@@ -60,7 +60,7 @@ $site['cdn'] = ['bs-file'];
                                         </div>
                                         <div class="form-group">
                                             <label>เลขบัตรประชาชน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_card" value="<?= $result['id_card'] ?>" required>
+                                            <input type="text" class="form-control" name="id_number" value="<?= $result['id_number'] ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label>รูปบัตรประชาชน</label>

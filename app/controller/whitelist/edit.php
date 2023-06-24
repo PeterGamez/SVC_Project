@@ -7,7 +7,7 @@ if ($_POST['id']) {
     $account_id = $_POST['account_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
-    $id_card = $_POST['id_card'];
+    $id_number = $_POST['id_number'];
 
 
     if (Whitelist::count(['id' => $id]) == 0) {
@@ -26,7 +26,7 @@ if ($_POST['id']) {
         'account_id' => $account_id,
         'website' => $website,
         'id_name' => $id_name,
-        'id_card' => $id_card,
+        'id_number' => $id_number,
         'id_image' => $id_image
     ];
 
@@ -39,12 +39,12 @@ if ($_POST['id']) {
 
         $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, $file_type, $file_name)]);
         $image_url = $data['attachments'][0]['url'];
-        array_push($newData, ['id_image' => $url]);
+        array_push($newData, ['id_image' => $image_url]);
     }
     Whitelist::update(['id' => $id], $newData);
 
-    $path = admin_url('whitelist');
+    $path = admin_url("whitelist.$id.view");
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
-    redirect(admin_url('whitelist.add'));
+    redirect(admin_url('whitelist'));
 }

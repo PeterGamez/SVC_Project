@@ -27,7 +27,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label>ประเภทกิจการ</label>
-                                        <input type="text" class="form-control" value="<?= $result[$i]['name'] ?>" disabled>
+                                        <?php
+                                        $category = WhitelistCategory::findOne(['id' => $result['whitelist_category_id']]);
+                                        ?>
+                                        <input type="text" class="form-control" value="<?= $category['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>เว็บไซต์</label>
@@ -39,7 +42,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>เลขบัตรประชาชน</label>
-                                        <input type="text" class="form-control" value="<?= $result['id_card'] ?>" disabled>
+                                        <input type="text" class="form-control" value="<?= $result['id_number'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>รูปบัตรประชาชน</label>
@@ -47,12 +50,12 @@
                                             <img src="<?= $result['id_image'] ?>" class="img-fluid" style="width: 200px;">
                                         </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="btn btn-group">
-                                            <a href="<?= admin_url('whitelist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
-                                            <a href="<?= admin_url('whitelist.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขกิจการ</a>
-                                            <a href="<?= admin_url('whitelist.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบกิจการ</a>
-                                        </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="btn btn-group">
+                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
+                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขกิจการ</a>
+                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบกิจการ</a>
                                     </div>
                                 </div>
                             </div>

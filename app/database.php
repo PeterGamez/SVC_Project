@@ -55,6 +55,7 @@ class Database
         if (isset($conditions['create_by'])) unset($conditions['create_by']);
         if (empty($conditions['update_at'])) $conditions['update_at'] = date('Y-m-d H:i:s');
         if (empty($conditions['update_by'])) $conditions['update_by'] = $_SESSION['user_id'];
+        
         $table = self::parseTable();
         $sql = "UPDATE $table" . self::buildSetConditions($newData) . self::buildWhereClause($conditions);
         return self::buildUpdate($sql, $conditions, $newData);

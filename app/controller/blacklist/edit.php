@@ -10,8 +10,8 @@ if ($_POST['id']) {
 
     Blacklist::update(['id' => $id], ['name' => $name]);
 
-    $path = admin_url('blacklist');
+    $path = admin_url("blacklist.$id.view");
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
-    redirect(admin_url('blacklist.add'));
+    redirect(admin_url('blacklist'));
 }

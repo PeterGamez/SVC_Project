@@ -6,7 +6,7 @@ if ($_POST['name']) {
     $account_id = $_POST['account_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
-    $id_card = $_POST['id_card'];
+    $id_number = $_POST['id_number'];
     $id_image = $_FILES['id_image'];
 
     $file = $id_image['tmp_name'];
@@ -29,7 +29,7 @@ if ($_POST['name']) {
         'account_id' => $account_id,
         'website' => $website,
         'id_name' => $id_name,
-        'id_card' => $id_card,
+        'id_number' => $id_number,
         'id_image' => $image_url
     ]);
 
