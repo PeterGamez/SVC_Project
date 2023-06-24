@@ -1,5 +1,4 @@
 <?php
-
 class Blacklist extends Database
 {
     public static $table = 'blacklist';
@@ -28,4 +27,9 @@ class Blacklist extends Database
 class BlacklistCategory extends Database
 {
     public static $table = 'blacklist_category';
+}
+
+class BlacklistImage extends Database
+{
+    public static $table = 'blacklist_image';
 }
