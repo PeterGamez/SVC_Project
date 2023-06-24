@@ -77,17 +77,16 @@ class Database
         $table = null;
         if (isset(get_called_class()::$table)) {
             $table = get_called_class()::$table;
-        }
-        if ($table == null) {
+        } else {
             $table = get_called_class();
+            // 1. change first character to lowercase
+            $table = lcfirst($table);
+            // 2. change uppercase to underscore
+            $table = preg_replace('/(?<!^)[A-Z]/', '_$0', $table);
+            // 3. change uppercase to lowercase
+            $table = strtolower($table);
         }
-        // 1. change first character to lowercase
-        $parsetable = lcfirst($table);
-        // 2. change uppercase to underscore
-        $parsetable = preg_replace('/(?<!^)[A-Z]/', '_$0', $parsetable);
-        // 3. change uppercase to lowercase
-        $parsetable = strtolower($parsetable);
-        return $parsetable;
+        return $table;
     }
 
     private static function bindParams($stmt, array $params)
