@@ -37,6 +37,13 @@ $site['cdn'] = ['datatables'];
                                 }
                                 ?>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>ธนาคาร</th>
+                                    <th>&nbsp</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -50,7 +57,7 @@ $site['cdn'] = ['datatables'];
             scrollX: false,
             scrollY: false,
             order: [
-                [0, 'desc']
+                [0, 'asc']
             ],
             columnDefs: [{
                 targets: -1,

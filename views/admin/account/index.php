@@ -41,6 +41,14 @@ $site['cdn'] = ['datatables'];
                                 }
                                 ?>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>ชื่อผู้ใช้งาน</th>
+                                    <th>อีเมล</th>
+                                    <th>สิทธิ์การใช้งาน</th>
+                                    <th>&nbsp</th>
+                                </tr>
                         </table>
                     </div>
                 </div>
