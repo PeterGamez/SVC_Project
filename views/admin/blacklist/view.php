@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <?php
-                                    $result = Whitelist::findOne(['id' => $request['id']]);
+                                    $result = Blacklist::findOne(['id' => $request['id']]);
                                     ?>
                                     <div class="form-group">
                                         <label>ชื่อกิจการ <?= $result['approve_agree'] == 1 ? '<span class="text-success"><i class="fa-sharp fa-light fa-shield-check"></i></span>' : '<span class="text-danger"><i class="fa-sharp fa-light fa-shield-xmark"></i></span>' ?></label>
@@ -47,7 +47,7 @@
                                     <div class="form-group">
                                         <label>รูปบัตรประชาชน</label>
                                         <div class="text-center">
-                                            <img src="<?= $result['id_image'] ?>" class="img-fluid" style="width:200px">
+                                            <img src="<?= $result['id_image'] ?>" class="img-fluid" style="width:150px">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -61,12 +61,25 @@
                                         <label>เลขที่บัญชี</label>
                                         <input type="text" class="form-control" value="<?= $result['bank_number'] ?>" disabled>
                                     </div>
+                                    <div class="form-group">
+                                        <label>หลักฐาน</label>
+                                        <?php
+                                        $proof = BlacklistImage::find(['blacklist_id' => $result['id']]);
+                                        foreach ($proof as $key => $value) {
+                                        ?>
+                                            <div class="text-center">
+                                                <img src="<?= $value['image'] ?>" class="img-fluid" style="width:150px">
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                                 <div class="modal-body">
                                     <div class="btn btn-group">
-                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
-                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขกิจการ</a>
-                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบกิจการ</a>
+                                        <a href="<?= admin_url('blacklist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
+                                        <a href="<?= admin_url('blacklist.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขกิจการ</a>
+                                        <a href="<?= admin_url('blacklist.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบกิจการ</a>
                                     </div>
                                 </div>
                             </div>

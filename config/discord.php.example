@@ -7,11 +7,12 @@ $discord = [
     "whitelist" => [
         "request" => "https://discord.com/api/webhooks/1118860666103676989/",
         "approve" => "https://discord.com/api/webhooks/1118860694788526160/",
-        "proof" => "https://discord.com/api/webhooks/1118817771841663076/"
+        "id_image" => "https://discord.com/api/webhooks/1118817771841663076/"
     ],
     "blacklist" => [
         "request" => "https://discord.com/api/webhooks/1118860727592177734/",
         "approve" => "https://discord.com/api/webhooks/1118860755698192454/",
+        "id_image" => "https://discord.com/api/webhooks/1122438423320477746/"
         "proof" => "https://discord.com/api/webhooks/1118860783007309915/"
     ],
     "bank" => [

@@ -47,7 +47,7 @@
                                     <div class="form-group">
                                         <label>รูปบัตรประชาชน</label>
                                         <div class="text-center">
-                                            <img src="<?= $result['id_image'] ?>" class="img-fluid" style="width:200px">
+                                            <img src="<?= $result['id_image'] ?>" class="img-fluid" style="width:150px">
                                         </div>
                                     </div>
                                 </div>

@@ -19,7 +19,7 @@ if ($_POST['name']) {
         exit;
     }
 
-    $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, $file_type, $file_name)]);
+    $data = Discord::postImage(config('discord.whitelist.id_image'), ["file" => curl_file_create($file, $file_type, $file_name)]);
     $image_url = $data['attachments'][0]['url'];
 
     Whitelist::create([

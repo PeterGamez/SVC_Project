@@ -72,6 +72,13 @@ $site['cdn'] = ['bs-file'];
                                             <label>เลขที่บัญชี <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="bank_number" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label>หลักฐานการฉ้อโกง <span class="text-danger">*</span></label>
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" for="blacklist_image">เลือกไฟล์</label>
+                                                <input type="file" class="custom-file-input" id="blacklist_image" name="blacklist_image[]" multiple required>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
