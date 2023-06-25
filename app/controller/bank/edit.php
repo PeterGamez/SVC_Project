@@ -10,8 +10,8 @@ if ($_POST['id']) {
 
     $newData = ['name' => $name];
 
-    if ($_POST['image']) {
-        $image = $_POST['image'];
+    if ($_FILES['image']) {
+        $image = $_FILES['image'];
         $file = $image['tmp_name'];
         $file_name = $image['name'];
         $file_size = $image['size'];
@@ -19,11 +19,11 @@ if ($_POST['id']) {
 
         $data = Discord::postImage(config('discord.bank.image'), ["file" => curl_file_create($file, $file_type, $file_name)]);
         $image_url = $data['attachments'][0]['url'];
-        array_push($newData, ['image' => $image_url]);
+        $newData['image'] = $image_url;
     }
     Bank::update(['id' => $id], $newData);
 
-    $path = admin_url("bank.$id.view");
+    $path = admin_url("bank.$id.edit");
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('bank'));

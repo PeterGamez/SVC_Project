@@ -39,7 +39,7 @@ if ($_POST['id']) {
 
         $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, $file_type, $file_name)]);
         $image_url = $data['attachments'][0]['url'];
-        array_push($newData, ['id_image' => $image_url]);
+        $newData['id_image'] = $image_url;
     }
     Whitelist::update(['id' => $id], $newData);
 
