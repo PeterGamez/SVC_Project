@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-style">
     <div class="container">
         <a class="navbar-brand" href="<?= url('/') ?>">
-            <img src="<?= config('site.logo.64') ?>" alt="<?= config('site.name') ?> icon" class="rounded" style="width:40px; ">
+            <img src="<?= config('site.logo.64') ?>" alt="<?= config('site.name') ?> icon" class="rounded" style="width:40px">
             <?= config('site.name') ?>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbartoggler" aria-controls="navbartoggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
                 ?>
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?= $_SESSION['user_avatar'] ?>" alt=" <?= $_SESSION['user_username']; ?>" class="rounded" style="width:30px;">
+                            <img src="<?= $_SESSION['user_avatar'] ?>" alt=" <?= $_SESSION['user_username']; ?>" class="rounded" style="width:30px">
                             <?= $_SESSION['user_username']; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

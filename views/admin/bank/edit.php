@@ -12,7 +12,7 @@ $site['cdn'] = ['bs-file'];
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card mb-4 shadow" style="width: 30rem;">
+                        <div class="card card-30 mb-4 shadow">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">แก้ไขธนาคาร</h5>
@@ -25,7 +25,7 @@ $site['cdn'] = ['bs-file'];
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
                                             <label>ชื่อธนาคาร <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="username" value="<?= $result['name'] ?>" required>
+                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label>โลโก้ธนาคาร</label>
@@ -37,8 +37,11 @@ $site['cdn'] = ['bs-file'];
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
-                                            <a href="<?= url_back() ?>" class="btn btn-secondary">ย้อนกลับ</a>
-                                            <button type="submit" class="btn btn-success">บันทึก</button>
+                                            <a href="<?= admin_url('bank') ?>" class="btn btn-secondary">ย้อนกลับ</a>
+                                            <div class="btn-group">
+                                                <a href="<?= admin_url('bank.' . $result['id'] . '.delete') ?>" class="btn btn-danger">ลบ</a>
+                                                <button type="submit" class="btn btn-success">บันทึก</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>

@@ -42,6 +42,7 @@ a:focus {
 
 #wrapper #content-wrapper #content {
     flex: 1 0 auto;
+    padding-bottom: 1rem;
 }
 
 .container,
@@ -964,6 +965,10 @@ a:focus {
     content: '\f105';
 }
 
+.card-30 {
+    width: 30rem;
+}
+
 footer.sticky-footer {
     padding: 2rem 0;
     flex-shrink: 0;
@@ -972,4 +977,8 @@ footer.sticky-footer {
 footer.sticky-footer .copyright {
     line-height: 1;
     font-size: 0.8rem;
+}
+
+table {
+    width: 100%
 }

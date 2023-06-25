@@ -8,7 +8,7 @@
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card mb-4 shadow" style="width: 30rem;">
+                        <div class="card card-30 mb-4 shadow">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">แก้ไขบัญชี</h5>

@@ -36,6 +36,15 @@ $site['cdn'] = ['datatables'];
                                 }
                                 ?>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>ชื่อกิจการ</th>
+                                    <th>ประเภทกิจการ</th>
+                                    <th>เจ้าของกิจการ</th>
+                                    <th>&nbsp</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

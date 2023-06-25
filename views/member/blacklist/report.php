@@ -8,7 +8,7 @@
                 <?= member_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card mb-4 shadow" style="width: 30rem;">
+                        <div class="card card-30 mb-4 shadow">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center" enctype="multipart/form-data">
                                     <h5 class="modal-title">รายงานผู้ขาย</h5>
