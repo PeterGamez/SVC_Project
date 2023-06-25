@@ -19,10 +19,10 @@
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.13.4/dataTables.bootstrap4.min.css">
     </noscript>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.4.1/responsive.bootstrap4.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.4.1/responsive.bootstrap4.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.4.1/responsive.bootstrap4.min.css">
-    </noscript>
+    </noscript> -->
 <?php } ?>
 <!-- Login -->
 <?php if (isset($site['cdn']) and in_array('login', $site['cdn'])) { ?>
