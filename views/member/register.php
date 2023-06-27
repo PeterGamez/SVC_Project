@@ -13,27 +13,26 @@ $site['cdn'] = ['login'];
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4"><?= config('site.name') ?></h1>
                         </div>
-                        <form class="user" method="POST" action="<?= member_url('login.callback.form') ?>">
+                        <form class="user" method="POST" action="<?= url() ?>">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email">
+                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                                <input type="email" class="form-control form-control-user" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user" name="password1" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user" name="password2" placeholder="Confirm Password">
                             </div>
                             <div class="form-group d-flex justify-content-center">
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block"> Login </button>
-                            <hr class="my-4">
-                            <div class="d-flex justify-content-center">
-                                <div id="g_id_onload" data-client_id="<?= config('site.google.id') ?>" data-context="signin" data-ux_mode="redirect" data-login_uri="<?= config('site.google.callback') ?>" data-auto_prompt="false">
-                                </div>
-                                <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="continue_with" data-size="large" data-logo_alignment="center">
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block"> Register </button>
                             <hr class="my-4">
                             <div class="text-center">
-                                <a class="small" href="<?= member_url('register') ?>">Create an Account!</a>
+                                <a class="small" href="<?= member_url('login') ?>">Already have an account? Login!</a>
                             </div>
                         </form>
                     </div>

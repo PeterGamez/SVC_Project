@@ -39,7 +39,12 @@ else if (str_starts_with($agent_path, config('site.member_panel'))) {
     // Chcek Login
     if ($_SESSION['login'] == false) {
         // Login
-        if ($agent_request[2] == 'login') {
+        if ($agent_request[2] == 'register') {
+            if ($agent_method == 'POST') {
+                return controller('login.register');
+            }
+            return member_views('register');
+        } else if ($agent_request[2] == 'login') {
             // Callback
             if (isset($agent_request[3]) and $agent_request[3] == 'callback' and isset($agent_request[4]) and $agent_method == 'POST') {
                 // Site Form
