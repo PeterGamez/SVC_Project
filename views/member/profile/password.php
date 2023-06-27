@@ -2,10 +2,22 @@
 
 <body>
     <div id="wrapper">
-        <?= admin_views('layouts.sidebar') ?>
+        <?php
+        if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
+            echo admin_views('layouts.sidebar');
+        } else {
+            echo member_views('layouts.sidebar');
+        }
+        ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?= admin_views('layouts.topbar') ?>
+                <?php
+                if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
+                    echo admin_views('layouts.topbar');
+                } else {
+                    echo member_views('layouts.topbar');
+                }
+                ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
                         <div class="card card-30 mb-4 shadow">

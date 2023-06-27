@@ -9,6 +9,7 @@ if ($_POST['username']) {
         echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
+    
     Account::create([
         'username' => $username,
         'email' => $email,

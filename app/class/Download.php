@@ -10,6 +10,7 @@ class Download
         header('Expires: 60');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
         readfile($file);
         ob_end_flush();
         return;

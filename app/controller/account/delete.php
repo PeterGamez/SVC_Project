@@ -6,6 +6,7 @@ if ($_POST['id']) {
         echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
+    
     Account::delete(['id' => $id]);
 
     $path = admin_url('account');

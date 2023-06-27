@@ -27,7 +27,10 @@
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
                                             <a href="<?= url_back() ?>" class="btn btn-secondary">ย้อนกลับ</a>
-                                            <button type="submit" class="btn btn-success">บันทึก</button>
+                                            <div class="btn-group">
+                                                <a href="<?= admin_url('whitelist.category.' . $result['id'] . '.delete') ?>" class="btn btn-danger">ลบ</a>
+                                                <button type="submit" class="btn btn-success">บันทึก</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>

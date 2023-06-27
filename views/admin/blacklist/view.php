@@ -89,5 +89,6 @@
                 <?= views('layouts.back_footer') ?>
             </div>
         </div>
-        <?= resource('cdn/back_foot.php') ?>
+    </div>
+    <?= resource('cdn/back_foot.php') ?>
 </body>

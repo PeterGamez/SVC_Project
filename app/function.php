@@ -96,7 +96,7 @@ function api($path)
 {
     global $site, $request;
     $path = str_replace('.', '/', $path);
-    $apiPath = './api/' . $path . '.php';
+    $apiPath = './views/api/' . $path . '.php';
     if (file_exists($apiPath)) {
         include $apiPath;
         return;

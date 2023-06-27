@@ -1,6 +1,9 @@
 # Config
 config/*.php
 
+# Cache
+storage/cache/*
+
 # Composer
 composer.lock
 vendor/
