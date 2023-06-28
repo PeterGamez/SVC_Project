@@ -11,7 +11,7 @@ $site['cdn'] = ['login'];
                     <div class="p-5">
                         <a href="<?= url('/') ?>"><i class="fas fa-arrow-left"></i></a>
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4"><?= config('site.name') ?></h1>
+                            <h1 class="h4 text-gray-900 mb-4">Register</h1>
                         </div>
                         <form class="user" method="POST" action="<?= url() ?>">
                             <div class="form-group">
