@@ -1,6 +1,10 @@
 <?php
+
+use App\Models\WhitelistCategory;
+
 $site['cdn'] = ['datatables'];
 ?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

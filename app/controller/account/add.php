@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\Account;
+
 if ($_POST['username']) {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -9,7 +13,7 @@ if ($_POST['username']) {
         echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
-    
+
     Account::create([
         'username' => $username,
         'email' => $email,

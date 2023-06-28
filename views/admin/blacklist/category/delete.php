@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\BlacklistCategory;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

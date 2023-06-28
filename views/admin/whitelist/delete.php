@@ -1,3 +1,7 @@
+<?php
+use App\Models\Whitelist;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

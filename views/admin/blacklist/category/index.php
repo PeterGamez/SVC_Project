@@ -1,6 +1,10 @@
 <?php
+
+use App\Models\BlacklistCategory;
+
 $site['cdn'] = ['datatables'];
 ?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

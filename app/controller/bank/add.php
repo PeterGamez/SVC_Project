@@ -1,4 +1,8 @@
 <?php
+use App\Class\Alert;
+use App\Class\Discord;
+use App\Models\Bank;
+
 if ($_POST['name']) {
     $name = $_POST['name'];
     $image = $_FILES['image'];

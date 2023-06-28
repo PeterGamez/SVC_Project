@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Account;
+
 $site['cdn'] = ['datatables'];
 ?>
 

@@ -1,4 +1,9 @@
 <?php
+
+use App\Class\Alert_Login;
+use App\Class\App;
+use App\Models\Account;
+
 $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 if (isset($_POST['user'])) {

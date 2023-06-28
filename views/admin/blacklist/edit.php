@@ -1,4 +1,9 @@
 <?php
+
+use App\Models\Blacklist;
+use App\Models\BlacklistCategory;
+use App\Models\Bank;
+
 $site['cdn'] = ['bs-file'];
 ?>
 
@@ -62,7 +67,7 @@ $site['cdn'] = ['bs-file'];
                                             <label>รูปบัตรประชาชน</label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="id_image">เลือกไฟล์</label>
-                                                <input type="file" class="custom-file-input" id="id_image" name="id_image">
+                                                <input type="file" class="custom-file-input" id="id_image" accept="image/png, image/jpeg" name="id_image">
                                             </div>
                                         </div>
                                         <div class="form-group">

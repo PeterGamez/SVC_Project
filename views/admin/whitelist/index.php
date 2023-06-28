@@ -1,6 +1,10 @@
 <?php
+
+use App\Models\Whitelist;
+
 $site['cdn'] = ['datatables'];
 ?>
+
 <?= views('layouts.back_header') ?>
 
 <body>
@@ -64,7 +68,9 @@ $site['cdn'] = ['datatables'];
         $('#table_whitelist').DataTable({
             scrollX: false,
             scrollY: false,
-            order: [[0, 'desc']],
+            order: [
+                [0, 'desc']
+            ],
             columnDefs: [{
                 targets: -1,
                 searchable: false,

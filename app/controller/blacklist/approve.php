@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\Blacklist;
+
 if ($_POST['id']) {
     $id = $_POST['id'];
     $approve_agree = $_POST['approve_agree'];

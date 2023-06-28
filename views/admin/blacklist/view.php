@@ -1,3 +1,11 @@
+<?php
+
+use App\Models\Blacklist;
+use App\Models\BlacklistCategory;
+use App\Models\BlacklistImage;
+use App\Models\Bank;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

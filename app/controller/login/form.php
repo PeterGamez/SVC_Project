@@ -1,4 +1,11 @@
 <?php
+
+use App\Class\Alert_Login;
+use App\Class\App;
+use App\Class\Account as AccountClass;
+use App\Models\Account;
+
+
 $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 if (isset($_POST['user'])) {
@@ -34,7 +41,7 @@ if (isset($_POST['user'])) {
         if (!password_verify($password, $data['password'])) {
             echo Alert_Login::pass_mismatch();
         } else {
-            Account::set_session($data);
+            AccountClass::set_session($data);
 
             echo Alert_Login::succeed();
         }

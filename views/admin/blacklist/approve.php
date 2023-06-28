@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\Blacklist;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

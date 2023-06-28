@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\Account;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

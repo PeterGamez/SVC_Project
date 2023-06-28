@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\Whitelist;
+
 if ($_POST['id']) {
     $id = $_POST['id'];
     $approve_agree = $_POST['approve_agree'];
@@ -11,7 +15,7 @@ if ($_POST['id']) {
     Whitelist::update(['id' => $id], [
         'approve_agree' => $approve_agree,
         'approve_by' => $_SESSION['user_id'],
-        'approve_at'=> date('Y-m-d H:i:s')
+        'approve_at' => date('Y-m-d H:i:s')
     ]);
 
     $path = admin_url("whitelist.$id.view");

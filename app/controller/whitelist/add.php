@@ -1,4 +1,9 @@
 <?php
+
+use App\Class\Alert;
+use App\Class\Discord;
+use App\Models\Whitelist;
+
 if ($_POST['name']) {
     $name = $_POST['name'];
     $description = $_POST['description'];

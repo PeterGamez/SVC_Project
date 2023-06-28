@@ -1,3 +1,9 @@
+<?php
+
+use App\Models\Whitelist;
+use App\Models\WhitelistCategory;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

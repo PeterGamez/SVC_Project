@@ -1,9 +1,14 @@
 <?php
+
+namespace App\Models;
+
+use App\Database;
+
 class Blacklist extends Database
 {
     public static $table = 'blacklist';
 
-    public static function find($conditions = [], $operator = '', $order = [])
+    public static function find(array $conditions = [], string $operator = '', array $order = [])
     {
         $conditions = array_combine(array_map(function ($key) {
             return 'blacklist.' . $key;
@@ -13,7 +18,7 @@ class Blacklist extends Database
         return parent::buildFind($sql, $conditions);
     }
 
-    public static function findOne($conditions, $operator = '', $order = [])
+    public static function findOne(array $conditions = [], string $operator = '', array $order = [])
     {
         $conditions = array_combine(array_map(function ($key) {
             return 'blacklist.' . $key;
@@ -22,14 +27,4 @@ class Blacklist extends Database
             INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id" . parent::buildWhereClause($conditions, $operator) . parent::buildOrderClause($order);
         return parent::buildFindOne($sql, $conditions);
     }
-}
-
-class BlacklistCategory extends Database
-{
-    public static $table = 'blacklist_category';
-}
-
-class BlacklistImage extends Database
-{
-    public static $table = 'blacklist_image';
 }

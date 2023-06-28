@@ -11,6 +11,13 @@ require_once './app/function.php';
 
 require_once './app/database.php';
 
+$Models = scandir('./app/models'); // ไฟล์ทั้งหมดในโฟลเดอร์
+foreach ($Models as $key => $value) {
+    if ($value != '.' && $value != '..' && substr($value, -4) == '.php') {
+        require_once './app/models/' . $value;
+    }
+}
+
 $Class = scandir('./app/class'); // ไฟล์ทั้งหมดในโฟลเดอร์
 foreach ($Class as $key => $value) {
     if ($value != '.' && $value != '..' && substr($value, -4) == '.php') {

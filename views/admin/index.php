@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\Account;
+use App\Models\Whitelist;
+use App\Models\Blacklist;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

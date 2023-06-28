@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\Bank;
+?>
+
 <?= views('layouts.back_header') ?>
 
 <body>

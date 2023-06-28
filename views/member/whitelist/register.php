@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\WhitelistCategory;
+
 $site['cdn'] = ['bs-file'];
 ?>
 
@@ -54,7 +57,7 @@ $site['cdn'] = ['bs-file'];
                                             <label>รูปบัตรประชาชน <span class="text-danger">*</span></label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="id_image">เลือกไฟล์</label>
-                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" required>
+                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" accept="image/png, image/jpeg" required>
                                             </div>
                                         </div>
                                     </div>

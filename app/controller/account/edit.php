@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\Account;
+
 if ($_POST['id']) {
     $id = $_POST['id'];
     $username = $_POST['username'];

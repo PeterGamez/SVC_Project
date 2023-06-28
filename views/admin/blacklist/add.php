@@ -1,4 +1,8 @@
 <?php
+
+use App\Models\BlacklistCategory;
+use App\Models\Bank;
+
 $site['cdn'] = ['bs-file'];
 ?>
 
@@ -54,7 +58,7 @@ $site['cdn'] = ['bs-file'];
                                             <label>รูปบัตรประชาชน <span class="text-danger">*</span></label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="id_image">เลือกไฟล์</label>
-                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" required>
+                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" accept="image/png, image/jpeg" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -76,7 +80,7 @@ $site['cdn'] = ['bs-file'];
                                             <label>หลักฐานการฉ้อโกง <span class="text-danger">*</span></label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="blacklist_image">เลือกไฟล์</label>
-                                                <input type="file" class="custom-file-input" id="blacklist_image" name="blacklist_image[]" multiple required>
+                                                <input type="file" class="custom-file-input" id="blacklist_image" name="blacklist_image[]" multiple accept="image/png, image/jpeg" required>
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\BlacklistCategory;
+
 if ($_POST['name']) {
     $name = $_POST['name'];
 

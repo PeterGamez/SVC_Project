@@ -1,7 +1,10 @@
 <?php
+
+namespace App\Class;
+
 class Download
 {
-    public static function transfer($file, $filename)
+    public static function transfer(string $file, string $filename)
     {
         ob_start();
         header('Content-Description: File Transfer');
@@ -11,7 +14,11 @@ class Download
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
         header('Content-Length: ' . filesize($file));
-        readfile($file);
+
+        $handle = fopen($file, 'rb');
+        fpassthru($handle);
+        fclose($handle);
+
         ob_end_flush();
         return;
     }

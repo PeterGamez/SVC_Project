@@ -1,6 +1,12 @@
 <?php
+require_once('./vendor/autoload.php');
+
+use App\Class\Alert_Login;
+use App\Class\Account as AccountClass;
+use App\Models\Account;
+use Google\Client as Google_Client;
+
 if (isset($_POST['credential'])) {
-    require_once('./vendor/autoload.php');
 
     $client = new Google_Client(['client_id' => config('site.google.id')]);
     $payload = $client->verifyIdToken($_POST['credential']);
@@ -16,7 +22,7 @@ if (isset($_POST['credential'])) {
                 Account::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
             }
             $data['avatar'] = $payload['picture'];
-            Account::set_session($data);
+            AccountClass::set_session($data);
 
             echo Alert_Login::succeed();
         } else {

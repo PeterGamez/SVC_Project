@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Blacklist;
+
 $site['cdn'] = ['datatables'];
 ?>
 

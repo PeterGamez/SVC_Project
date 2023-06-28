@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Class;
+
 class App
 {
     public static function getAgentIP()
@@ -18,8 +20,8 @@ class App
         }
         return array('ip' => $ip, 'country' => $country, 'cdn' => $cdn);
     }
-    
-    public static function apiRequest($api_url, $post = null)
+
+    public static function apiRequest(string $api_url, array $post = null)
     {
         $ch = curl_init($api_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -41,5 +43,18 @@ class App
         $response = curl_exec($ch);
         curl_close($ch);
         return json_decode($response);
+    }
+
+    public static function RandomHex(int $length = 6)
+    {
+        $character = '0123456789abcdef';
+        $characterLength = strlen($character);
+
+        $randomHex = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $randomHex .= $character[rand(0, $characterLength - 1)];
+        }
+        return $randomHex;
     }
 }

@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\Account;
+
 if ($_POST['password1']) {
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];

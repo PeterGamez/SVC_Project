@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= url('contact') ?>"><i class="fa-brands fa-discord"></i> Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= url('download') ?>"><i class="fa-brands fa-discord"></i> download</a>
+                </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end">
                 <?php

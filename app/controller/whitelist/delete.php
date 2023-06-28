@@ -1,4 +1,8 @@
 <?php
+
+use App\Class\Alert;
+use App\Models\Whitelist;
+
 if ($_POST['id']) {
     $id = $_POST['id'];
 

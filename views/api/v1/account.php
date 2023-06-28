@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Account;
+
 $result = Account::find();
 
 foreach ($result as $key => $value) {

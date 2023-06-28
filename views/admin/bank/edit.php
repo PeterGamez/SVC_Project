@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Bank;
+
 $site['cdn'] = ['bs-file'];
 ?>
 
@@ -31,7 +34,7 @@ $site['cdn'] = ['bs-file'];
                                             <label>โลโก้ธนาคาร</label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="image">เลือกไฟล์</label>
-                                                <input type="file" class="custom-file-input" id="image" name="image">
+                                                <input type="file" class="custom-file-input" id="image" accept="image/png, image/jpeg" name="image">
                                             </div>
                                         </div>
                                     </div>
