@@ -87,13 +87,6 @@ use App\Models\Bank;
                                         ?>
                                     </div>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="btn btn-group">
-                                        <a href="<?= admin_url('blacklist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
-                                        <a href="<?= admin_url('blacklist.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขกิจการ</a>
-                                        <a href="<?= admin_url('blacklist.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบกิจการ</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

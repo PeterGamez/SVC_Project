@@ -5,7 +5,6 @@ use App\Models\Blacklist;
 
 if ($_POST['id']) {
     $id = $_POST['id'];
-    $name = $_POST['name'];
 
     if (Blacklist::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', 1500, 'window.history.back()');

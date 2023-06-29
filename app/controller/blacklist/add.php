@@ -17,6 +17,9 @@ if ($_POST['name']) {
     $id_image = $_FILES['id_image'];
     $bank_id = $_POST['bank_id'];
     $bank_number = $_POST['bank_number'];
+    $item_name = $_POST['item_name'];
+    $item_balance = $_POST['item_balance'];
+    $item_date = $_POST['item_date'];
 
     $file = $id_image['tmp_name'];
     $file_name = $id_image['name'];
@@ -34,7 +37,10 @@ if ($_POST['name']) {
         'id_number' => $id_number,
         'id_image' => $image_url,
         'bank_id' => $bank_id,
-        'bank_number' => $bank_number
+        'bank_number' => $bank_number,
+        'item_name' => $item_name,
+        'item_balance' => $item_balance,
+        'item_date' => $item_date
     ]);
 
     if (isset($_FILES['blacklist_image'])) {
@@ -64,7 +70,6 @@ if ($_POST['name']) {
             ]);
         }
     }
-
 
     $path = admin_url('blacklist');
     echo Alert::alerts('เพิ่มกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');

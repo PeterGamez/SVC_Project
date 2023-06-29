@@ -73,6 +73,18 @@ $site['cdn'] = ['bs-file'];
                                             <label>เลขที่บัญชี <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="bank_number" value="<?= $result['bank_number'] ?>" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label>สินค้า <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_name" value="<?= $result['item_name'] ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ยอดเงิน <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_balance" value="<?= $result['item_balance'] ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>เวลาโอน <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_date" value="<?= $result['item_date'] ?>" required>
+                                        </div>
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">

@@ -65,6 +65,18 @@ $site['cdn'] = ['bs-file'];
                                             <input type="text" class="form-control" name="bank_number" required>
                                         </div>
                                         <div class="form-group">
+                                            <label>สินค้า <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ยอดเงิน <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_balance" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>เวลาโอน <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_date" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label>หลักฐานการฉ้อโกง <span class="text-danger">*</span></label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="blacklist_image">เลือกไฟล์</label>
