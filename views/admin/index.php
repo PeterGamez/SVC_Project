@@ -42,22 +42,22 @@ use App\Models\Blacklist;
                             'icon' => 'fa-light fa-user',
                         ], [
                             'title' => "Whitelist (Approve)",
-                            'count' => Whitelist::count(['approve_agree' => '1']),
+                            'count' => Whitelist::count(['approve_id' => '2']),
                             'theme' => 'success',
                             'icon' => 'fa-sharp fa-light fa-shield-check',
                         ], [
-                            'title' => "Whitelist (DisApprove)",
-                            'count' =>  Whitelist::count(['approve_agree' => '0']),
+                            'title' => "Whitelist (Waiting)",
+                            'count' =>  Whitelist::count(['approve_id' => '1']),
                             'theme' => 'danger',
                             'icon' => 'fa-sharp fa-light fa-shield-xmark',
                         ], [
                             'title' => "Blacklist (Approve)",
-                            'count' => Blacklist::count(['approve_agree' => '1']),
+                            'count' => Blacklist::count(['approve_id' => '2']),
                             'theme' => 'success',
                             'icon' => 'fa-solid fa-circle-check',
                         ], [
-                            'title' => "Blacklist (DisApprove)",
-                            'count' => Blacklist::count(['approve_agree' => '0']),
+                            'title' => "Blacklist (Waiting)",
+                            'count' => Blacklist::count(['approve_id' => '1']),
                             'theme' => 'danger',
                             'icon' => 'fa-solid fa-circle-xmark',
                         ]
