@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Blacklist;
-use App\Models\BlacklistCategory;
 use App\Models\BlacklistImage;
 use App\Models\Bank;
 ?>
@@ -32,13 +31,6 @@ use App\Models\Bank;
                                     <div class="form-group">
                                         <label>สาเหตุการขึ้นบัญชีดำ</label>
                                         <textarea class="form-control" rows="3" disabled><?= $result['reason'] ?></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>ประเภทกิจการ</label>
-                                        <?php
-                                        $category = BlacklistCategory::findOne(['id' => $result['blacklist_category_id']]);
-                                        ?>
-                                        <input type="text" class="form-control" value="<?= $category['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>เว็บไซต์</label>

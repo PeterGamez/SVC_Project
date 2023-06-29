@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Blacklist;
-use App\Models\BlacklistCategory;
 use App\Models\Bank;
 
 $site['cdn'] = ['bs-file'];
@@ -35,21 +34,6 @@ $site['cdn'] = ['bs-file'];
                                         <div class="form-group">
                                             <label>สาเหตุการขึ้นบัญชีดำ <span class="text-danger">*</span></label>
                                             <textarea class="form-control" name="reason" rows="3" required><?= $result['reason'] ?></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>ประเภทกิจการ <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="blacklist_category_id" required>
-                                                <?php
-                                                $category = BlacklistCategory::find();
-                                                for ($i = 0; $i < count($category); $i++) {
-                                                    if ($category[$i]['id'] == $result['blacklist_category_id']) {
-                                                        echo '<option value="' . $category[$i]['id'] . '" selected>' . $category[$i]['name'] . '</option>';
-                                                    } else {
-                                                        echo '<option value="' . $category[$i]['id'] . '">' . $category[$i]['name'] . '</option>';
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>

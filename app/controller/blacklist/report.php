@@ -3,7 +3,6 @@
 if ($_POST['name']) {
     $name = $_POST['name'];
     $reason = $_POST['reason'];
-    $blacklist_category_id = $_POST['blacklist_category_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
     $id_number = $_POST['id_number'];

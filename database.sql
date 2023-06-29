@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 29, 2023 at 01:09 PM
+-- Generation Time: Jun 29, 2023 at 01:54 PM
 -- Server version: 10.3.38-MariaDB-0+deb10u1-log
 -- PHP Version: 8.0.28
 
@@ -66,13 +66,15 @@ CREATE TABLE `blacklist` (
   `id` int(5) NOT NULL,
   `name` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `blacklist_category_id` int(5) NOT NULL,
   `website` varchar(255) NOT NULL,
   `id_name` varchar(255) NOT NULL,
   `id_number` varchar(255) NOT NULL,
   `id_image` varchar(255) NOT NULL,
   `bank_id` int(5) NOT NULL,
   `bank_number` varchar(255) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_balance` int(2) NOT NULL,
+  `item_date` datetime NOT NULL,
   `approve_agree` tinyint(1) NOT NULL DEFAULT 0,
   `approve_by` int(5) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
@@ -80,21 +82,6 @@ CREATE TABLE `blacklist` (
   `create_by` int(5) NOT NULL,
   `update_at` datetime DEFAULT NULL,
   `update_by` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `blacklist_category`
---
-
-CREATE TABLE `blacklist_category` (
-  `id` int(5) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `create_at` datetime NOT NULL,
-  `create_by` int(5) NOT NULL,
-  `update_at` datetime NOT NULL,
-  `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -123,7 +110,6 @@ CREATE TABLE `whitelist` (
   `id` int(5) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `whitelist_category_id` int(5) NOT NULL,
   `account_id` int(5) NOT NULL,
   `banner` varchar(255) DEFAULT NULL,
   `website` varchar(255) NOT NULL,
@@ -133,21 +119,6 @@ CREATE TABLE `whitelist` (
   `approve_agree` tinyint(1) DEFAULT 0,
   `approve_at` datetime DEFAULT NULL,
   `approve_by` int(5) DEFAULT NULL,
-  `create_at` datetime NOT NULL,
-  `create_by` int(5) NOT NULL,
-  `update_at` datetime NOT NULL,
-  `update_by` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `whitelist_category`
---
-
-CREATE TABLE `whitelist_category` (
-  `id` int(5) NOT NULL,
-  `name` varchar(255) NOT NULL,
   `create_at` datetime NOT NULL,
   `create_by` int(5) NOT NULL,
   `update_at` datetime NOT NULL,
@@ -181,12 +152,6 @@ ALTER TABLE `blacklist`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `blacklist_category`
---
-ALTER TABLE `blacklist_category`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `blacklist_image`
 --
 ALTER TABLE `blacklist_image`
@@ -196,12 +161,6 @@ ALTER TABLE `blacklist_image`
 -- Indexes for table `whitelist`
 --
 ALTER TABLE `whitelist`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `whitelist_category`
---
-ALTER TABLE `whitelist_category`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -227,12 +186,6 @@ ALTER TABLE `blacklist`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `blacklist_category`
---
-ALTER TABLE `blacklist_category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `blacklist_image`
 --
 ALTER TABLE `blacklist_image`
@@ -242,12 +195,6 @@ ALTER TABLE `blacklist_image`
 -- AUTO_INCREMENT for table `whitelist`
 --
 ALTER TABLE `whitelist`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `whitelist_category`
---
-ALTER TABLE `whitelist_category`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

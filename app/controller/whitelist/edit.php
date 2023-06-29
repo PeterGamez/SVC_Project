@@ -9,7 +9,6 @@ if ($_POST['id']) {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $whitelist_category_id = $_POST['whitelist_category_id'];
     $account_id = $_POST['account_id'];
     $website = $_POST['website'];
     $id_name = $_POST['id_name'];
@@ -28,7 +27,6 @@ if ($_POST['id']) {
     $newData = [
         'name' => $name,
         'description' => $description,
-        'whitelist_category_id' => $whitelist_category_id,
         'account_id' => $account_id,
         'website' => $website,
         'id_name' => $id_name,

@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\WhitelistCategory;
-
 $site['cdn'] = ['bs-file'];
 ?>
 
@@ -29,17 +27,6 @@ $site['cdn'] = ['bs-file'];
                                         <div class="form-group">
                                             <label>คำอธิบายกิจการ <span class="text-danger">*</span></label>
                                             <textarea class="form-control" name="description" rows="3" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>ประเภทกิจการ <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="whitelist_category_id" required>
-                                                <?php
-                                                $result = WhitelistCategory::find();
-                                                for ($i = 0; $i < count($result); $i++) {
-                                                    echo '<option value="' . $result[$i]['id'] . '">' . $result[$i]['name'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
