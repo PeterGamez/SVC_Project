@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Approve;
 use App\Models\Whitelist;
 ?>
 
@@ -30,10 +31,18 @@ use App\Models\Whitelist;
                                         </div>
                                         <div class="form-group">
                                             <label>สถานะ <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="approve_agree" required>
-                                                <option value="0" <?= $result['approve_agree'] == 0 ? 'selected' : '' ?>>ไม่อนุมัติ</option>
-                                                <option value="1" <?= $result['approve_agree'] == 1 ? 'selected' : '' ?>>อนุมัติ</option>
+                                            <select class="form-control" name="approve_id" required>
+                                                <?php
+                                                $approve = Approve::find();
+                                                for ($i = 0; $i < count($approve); $i++) {
+                                                    echo '<option value="' . $approve[$i]['id'] . '" ' . ($result['approve_id'] == $approve[$i]['id'] ? 'selected' : '') . '>' . $approve[$i]['name'] . '</option>';
+                                                }
+                                                ?>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>เหตุผล</label>
+                                            <input type="text" class="form-control" name="approve_reason" value="<?= $result['approve_reason'] ?>" required>
                                         </div>
                                     </div>
                                     <div class="modal-body">
