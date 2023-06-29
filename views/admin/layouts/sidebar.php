@@ -28,12 +28,6 @@
             <span>รายการไวริส</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= admin_url('whitelist.category') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>จัดการหมวดหมู่</span>
-        </a>
-    </li>
 
     <hr class="sidebar-divider">
 
@@ -45,12 +39,6 @@
         <a class="nav-link" href="<?= admin_url('blacklist') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>รายการแบล็คลิส</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= admin_url('blacklist.category') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>จัดการหมวดหมู่</span>
         </a>
     </li>
 

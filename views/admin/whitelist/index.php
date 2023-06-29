@@ -25,7 +25,6 @@ $site['cdn'] = ['datatables'];
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">ชื่อกิจการ</th>
-                                    <th scope="col">ประเภทกิจการ</th>
                                     <th scope="col">เจ้าของกิจการ</th>
                                     <th scope="col">สถานะ</th>
                                     <th scope="col">&nbsp</th>
@@ -38,7 +37,6 @@ $site['cdn'] = ['datatables'];
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
-                                    echo '<td>' . $result[$i]['whitelist_category'] . '</td>';
                                     echo '<td>' . $result[$i]['id_name'] . '</td>';
                                     echo $result[$i]['approve_agree'] == 1 ? '<td class="text-success">อนุมัติ</td>' : '<td class="text-danger">รอการอนุมัติ</p>' . '</td>';
                                     echo '<td><a href="' . admin_url('whitelist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
@@ -50,7 +48,6 @@ $site['cdn'] = ['datatables'];
                                 <tr>
                                     <th>#</th>
                                     <th>ชื่อกิจการ</th>
-                                    <th>ประเภทกิจการ</th>
                                     <th>เจ้าของกิจการ</th>
                                     <th>สถานะ</th>
                                     <th>&nbsp</th>

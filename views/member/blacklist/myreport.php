@@ -20,7 +20,6 @@ $site['cdn'] = ['datatables'];
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">ชื่อกิจการ</th>
-                                    <th scope="col">ประเภทกิจการ</th>
                                     <th scope="col">เจ้าของกิจการ</th>
                                     <th scope="col">&nbsp</th>
                                 </tr>
@@ -32,7 +31,6 @@ $site['cdn'] = ['datatables'];
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
-                                    echo '<td>' . $result[$i]['blacklist_category'] . '</td>';
                                     echo '<td>' . $result[$i]['id_name'] . '</td>';
                                     echo '<td><a href="' . url('blacklist.' . $result[$i]['id']) . '" target="_blank" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
                                     echo '</tr>';
@@ -43,7 +41,6 @@ $site['cdn'] = ['datatables'];
                                 <tr>
                                     <th>#</th>
                                     <th>ชื่อกิจการ</th>
-                                    <th>ประเภทกิจการ</th>
                                     <th>เจ้าของกิจการ</th>
                                     <th>&nbsp</th>
                                 </tr>
