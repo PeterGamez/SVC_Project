@@ -56,7 +56,7 @@ class Database
     {
         if (isset($newData['create_at'])) unset($newData['create_at']);
         if (isset($newData['create_by'])) unset($newData['create_by']);
-        $newData['update_at'] = date('Y-m-d H:i:s');
+        if (isset($newData['update_at'])) unset($newData['update_at']);
         $newData['update_by'] = $_SESSION['user_id'];
 
         $table = self::parseTable();
