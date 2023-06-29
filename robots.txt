@@ -5,4 +5,4 @@ Disallow: /admin/
 Disallow: /member/
 Disallow: /cdn-cgi/
 Disallow: /challenge-platform/
-Sitemap: https://lastboss.itsvc.me
+Sitemap: https://lastboss.itsvc.me/sitemap.xml
