@@ -164,34 +164,6 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return controller('whitelist.approve');
             }
         }
-        // category
-        else if ($agent_request[3] == 'category') {
-            if (empty($agent_request[4])) {
-                return admin_views('whitelist.category.index');
-            }
-            // add
-            if ($agent_request[4] == 'add' and $agent_method == 'GET') {
-                return admin_views('whitelist.category.add');
-            } else if ($agent_request[4] == 'add' and $agent_method == 'POST') {
-                return controller('whitelist.category.add');
-            }
-            // check is number
-            else if (is_numeric($agent_request[4])) {
-                $request['id'] = $agent_request[4];
-                // edit
-                if ($agent_request[5] == 'edit' and $agent_method == 'GET') {
-                    return admin_views('whitelist.category.edit');
-                } else if ($agent_request[5] == 'edit' and $agent_method == 'POST') {
-                    return controller('whitelist.category.edit');
-                }
-                // delete
-                else if ($agent_request[5] == 'delete' and $agent_method == 'GET') {
-                    return controller('whitelist.category.delete');
-                } else if ($agent_request[5] == 'delete' and $agent_method == 'POST') {
-                    return controller('whitelist.category.delete');
-                }
-            }
-        }
     }
     // Blacklist
     else if ($agent_request[2] == 'blacklist') {
@@ -223,34 +195,6 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return admin_views('blacklist.delete');
             } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
                 return controller('blacklist.delete');
-            }
-        }
-        // category
-        else if ($agent_request[3] == 'category') {
-            if (empty($agent_request[4])) {
-                return admin_views('blacklist.category.index');
-            }
-            // add
-            if ($agent_request[4] == 'add' and $agent_method == 'GET') {
-                return admin_views('blacklist.category.add');
-            } else if ($agent_request[4] == 'add' and $agent_method == 'POST') {
-                return controller('blacklist.category.add');
-            }
-            // check is number
-            else if (is_numeric($agent_request[4])) {
-                $request['id'] = $agent_request[4];
-                // edit
-                if ($agent_request[5] == 'edit' and $agent_method == 'GET') {
-                    return admin_views('blacklist.category.edit');
-                } else if ($agent_request[5] == 'edit' and $agent_method == 'POST') {
-                    return controller('blacklist.category.edit');
-                }
-                // delete
-                else if ($agent_request[5] == 'delete' and $agent_method == 'GET') {
-                    return controller('blacklist.category.delete');
-                } else if ($agent_request[5] == 'delete' and $agent_method == 'POST') {
-                    return controller('blacklist.category.delete');
-                }
             }
         }
     }
