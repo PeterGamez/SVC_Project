@@ -1,5 +1,7 @@
 <?php
+
 use App\Class\Alert;
+use App\Class\App;
 use App\Class\Discord;
 use App\Models\Bank;
 
@@ -12,7 +14,7 @@ if ($_POST['name']) {
     $file_size = $image['size'];
     $file_type = $image['type'];
 
-    $data = Discord::postImage(config('discord.bank.image'), ["file" => curl_file_create($file, $file_type, $file_name)]);
+    $data = Discord::postImage(config('discord.bank.image'), ["file" => curl_file_create($file, 'png', App::RandomHex(16) . '.png')]);
     $image_url = $data['attachments'][0]['url'];
 
     Bank::create([

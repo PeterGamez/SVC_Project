@@ -1,6 +1,7 @@
 <?php
 
 use App\Class\Alert;
+use App\Class\App;
 use App\Class\Discord;
 use App\Models\Whitelist;
 
@@ -23,7 +24,7 @@ if ($_POST['name']) {
         exit;
     }
 
-    $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, $file_type, $file_name)]);
+    $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, 'png', App::RandomHex(16) . '.png')]);
     $image_url = $data['attachments'][0]['url'];
 
     Whitelist::create([

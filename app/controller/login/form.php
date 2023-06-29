@@ -5,7 +5,6 @@ use App\Class\App;
 use App\Class\Account as AccountClass;
 use App\Models\Account;
 
-
 $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 if (isset($_POST['user'])) {

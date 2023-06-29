@@ -30,8 +30,7 @@ $site['cdn'] = ['login'];
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block"> Register </button>
-                            <hr class="my-4">
-                            <div class="text-center">
+                            <div class="mt-2 text-center">
                                 <a class="small" href="<?= member_url('login') ?>">Already have an account? Login!</a>
                             </div>
                         </form>

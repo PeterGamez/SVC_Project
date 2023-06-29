@@ -4,11 +4,11 @@ require_once('./vendor/autoload.php');
 use App\Class\Alert_Login;
 use App\Class\Account as AccountClass;
 use App\Models\Account;
-use Google\Client as Google_Client;
+use Google\Client as GoogleClient;
 
 if (isset($_POST['credential'])) {
 
-    $client = new Google_Client(['client_id' => config('site.google.id')]);
+    $client = new GoogleClient(['client_id' => config('site.google.id')]);
     $payload = $client->verifyIdToken($_POST['credential']);
     if ($payload) {
         if ($payload['email_verified'] == false) {

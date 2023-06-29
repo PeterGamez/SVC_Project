@@ -24,16 +24,15 @@ $site['cdn'] = ['login'];
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block"> Login </button>
+                            <div class="mt-2 text-center">
+                                <a class="small" href="<?= member_url('register') ?>">Create an Account!</a>
+                            </div>
                             <hr class="my-4">
                             <div class="d-flex justify-content-center">
                                 <div id="g_id_onload" data-client_id="<?= config('site.google.id') ?>" data-context="signin" data-ux_mode="redirect" data-login_uri="<?= config('site.google.callback') ?>" data-auto_prompt="false">
                                 </div>
                                 <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="continue_with" data-size="large" data-logo_alignment="center">
                                 </div>
-                            </div>
-                            <hr class="my-4">
-                            <div class="text-center">
-                                <a class="small" href="<?= member_url('register') ?>">Create an Account!</a>
                             </div>
                         </form>
                     </div>
