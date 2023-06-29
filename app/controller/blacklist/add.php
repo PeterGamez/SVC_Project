@@ -26,7 +26,7 @@ if ($_POST['name']) {
     $file_size = $id_image['size'];
     $file_type = $id_image['type'];
 
-    $data = Discord::postImage(config('discord.blacklist.id_image'), ["file" => curl_file_create($file, 'png', App::RandomHex(16) . '.png')]);
+    $data = Discord::postImage(config('discord.blacklist.id_image'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
     $image_url = $data['attachments'][0]['url'];
 
     $insert_id = Blacklist::create([
@@ -62,7 +62,7 @@ if ($_POST['name']) {
 
             $image->save($file);
 
-            $data = Discord::postImage(config('discord.blacklist.proof'), ["file" => curl_file_create($file, 'png', App::RandomHex(16) . '.png')]);
+            $data = Discord::postImage(config('discord.blacklist.proof'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
             $image_url = $data['attachments'][0]['url'];
             BlacklistImage::create([
                 'blacklist_id' => $insert_id,

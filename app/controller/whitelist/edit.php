@@ -41,7 +41,7 @@ if ($_POST['id']) {
         $file_size = $id_image['size'];
         $file_type = $id_image['type'];
 
-        $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, 'png', App::RandomHex(16) . '.png')]);
+        $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
         $image_url = $data['attachments'][0]['url'];
         $newData['id_image'] = $image_url;
     }
