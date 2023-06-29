@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\Bank;
 
 $site['cdn'] = ['datatables'];

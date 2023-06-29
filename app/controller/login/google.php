@@ -7,7 +7,6 @@ use App\Models\Account;
 use Google\Client as GoogleClient;
 
 if (isset($_POST['credential'])) {
-
     $client = new GoogleClient(['client_id' => config('site.google.id')]);
     $payload = $client->verifyIdToken($_POST['credential']);
     if ($payload) {
