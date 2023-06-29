@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 29, 2023 at 01:54 PM
+-- Generation Time: Jun 29, 2023 at 07:54 PM
 -- Server version: 10.3.38-MariaDB-0+deb10u1-log
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,9 +35,24 @@ CREATE TABLE `account` (
   `avatar` varchar(255) DEFAULT NULL,
   `role` enum('user','seller','staff','admin','superadmin') DEFAULT 'user',
   `create_at` datetime NOT NULL,
-  `create_by` int(5) NOT NULL,
+  `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
   `update_at` datetime NOT NULL,
-  `update_by` int(5) NOT NULL
+  `update_by` int(5) NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `approve`
+--
+
+CREATE TABLE `approve` (
+  `id` int(5) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `create_at` datetime NOT NULL,
+  `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
+  `update_at` datetime NOT NULL,
+  `update_by` int(5) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -51,9 +66,9 @@ CREATE TABLE `bank` (
   `name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `create_at` datetime NOT NULL,
-  `create_by` int(5) NOT NULL,
+  `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
   `update_at` datetime NOT NULL,
-  `update_by` int(5) NOT NULL
+  `update_by` int(5) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -75,12 +90,13 @@ CREATE TABLE `blacklist` (
   `item_name` varchar(255) NOT NULL,
   `item_balance` int(2) NOT NULL,
   `item_date` datetime NOT NULL,
-  `approve_agree` tinyint(1) NOT NULL DEFAULT 0,
+  `approve_id` tinyint(1) NOT NULL DEFAULT 1,
+  `approve_reason` varchar(255) DEFAULT NULL,
   `approve_by` int(5) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
-  `create_at` datetime NOT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `create_by` int(5) NOT NULL,
-  `update_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT current_timestamp(),
   `update_by` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -94,9 +110,9 @@ CREATE TABLE `blacklist_image` (
   `id` int(5) NOT NULL,
   `blacklist_id` int(5) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `create_at` datetime NOT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `create_by` int(5) NOT NULL,
-  `update_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL DEFAULT current_timestamp(),
   `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -116,12 +132,13 @@ CREATE TABLE `whitelist` (
   `id_name` varchar(255) NOT NULL,
   `id_number` varchar(255) NOT NULL,
   `id_image` varchar(255) NOT NULL,
-  `approve_agree` tinyint(1) DEFAULT 0,
+  `approve_id` tinyint(1) DEFAULT 1,
+  `approve_reason` varchar(255) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
   `approve_by` int(5) DEFAULT NULL,
-  `create_at` datetime NOT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `create_by` int(5) NOT NULL,
-  `update_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL DEFAULT current_timestamp(),
   `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -138,6 +155,12 @@ ALTER TABLE `account`
   ADD UNIQUE KEY `email_2` (`email`),
   ADD KEY `email` (`email`),
   ADD KEY `username` (`username`) USING BTREE;
+
+--
+-- Indexes for table `approve`
+--
+ALTER TABLE `approve`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bank`
@@ -171,6 +194,12 @@ ALTER TABLE `whitelist`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `approve`
+--
+ALTER TABLE `approve`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
