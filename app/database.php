@@ -21,9 +21,9 @@ class Database
     // Main function
     public static function create(array $newData)
     {
-        $newData['create_at'] = date('Y-m-d H:i:s');
+        if (isset($newData['create_at'])) unset($newData['create_at']);
         $newData['create_by'] = $_SESSION['user_id'];
-        $newData['update_at'] = date('Y-m-d H:i:s');
+        if (isset($newData['update_at'])) unset($newData['update_at']);
         $newData['update_by'] = $_SESSION['user_id'];
 
         $table = self::parseTable();
@@ -137,6 +137,7 @@ class Database
         foreach ($newData as $field => $value) {
             $query[] = "$field = ?";
         }
+        $query[] = "update_at = NOW()";
 
         return " SET " . implode(", ", $query);
     }
