@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Account;
+use App\Models\Approve;
 use App\Models\Whitelist;
 use App\Models\Blacklist;
 ?>
@@ -40,51 +41,53 @@ use App\Models\Blacklist;
                             'count' => Account::count(['role' => 'user']),
                             'theme' => 'primary',
                             'icon' => 'fa-light fa-user',
-                        ], [
-                            'title' => "Whitelist (Approve)",
-                            'count' => Whitelist::count(['approve_id' => '2']),
-                            'theme' => 'success',
-                            'icon' => 'fa-sharp fa-light fa-shield-check',
-                        ], [
-                            'title' => "Whitelist (Waiting)",
-                            'count' =>  Whitelist::count(['approve_id' => '1']),
-                            'theme' => 'danger',
-                            'icon' => 'fa-sharp fa-light fa-shield-xmark',
-                        ], [
-                            'title' => "Blacklist (Approve)",
-                            'count' => Blacklist::count(['approve_id' => '2']),
-                            'theme' => 'success',
-                            'icon' => 'fa-solid fa-circle-check',
-                        ], [
-                            'title' => "Blacklist (Waiting)",
-                            'count' => Blacklist::count(['approve_id' => '1']),
-                            'theme' => 'danger',
-                            'icon' => 'fa-solid fa-circle-xmark',
-                        ]
+                        ],
                     );
 
                     for ($i = 0; $i < count($item); $i++) {
                         if ($i == 0) {
                             echo '<div class="row">';
                         }
-                    ?>
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-<?= $item[$i]['theme'] ?> shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-<?= $item[$i]['theme'] ?> mb-1"><?= $item[$i]['title'] ?></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $item[$i]['count'] ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="<?= $item[$i]['icon'] ?> fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php
+                        show($item[$i]);
                         if ($i == count($item) - 1) {
+                            echo '</div>';
+                        }
+                    }
+
+                    $approve = Approve::find();
+                    $whitelist = array_filter($approve, function ($item) {
+                        return $item['whitelist'] == 1;
+                    });
+
+                    for ($i = 0; $i < count($whitelist); $i++) {
+                        if ($i == 0) {
+                            echo '<div class="row">';
+                        }
+                        show([
+                            'title' => "Whitelist (" . $whitelist[$i]['name'] . ")",
+                            'count' => Whitelist::count(['approve_id' => $whitelist[$i]['id']]),
+                            'theme' => $whitelist[$i]['color'],
+                            'icon' => $whitelist[$i]['icon'],
+                        ]);
+                        if ($i == count($approve) - 1) {
+                            echo '</div>';
+                        }
+                    }
+
+                    $blacklist = array_filter($approve, function ($item) {
+                        return $item['blacklist'] == 1;
+                    });
+                    for ($i = 0; $i < count($blacklist); $i++) {
+                        if ($i == 0) {
+                            echo '<div class="row">';
+                        }
+                        show([
+                            'title' => "Whitelist (" . $blacklist[$i]['name'] . ")",
+                            'count' => Blacklist::count(['approve_id' => $blacklist[$i]['id']]),
+                            'theme' => $blacklist[$i]['color'],
+                            'icon' => $whitelist[$i]['icon'],
+                        ]);
+                        if ($i == count($approve) - 1) {
                             echo '</div>';
                         }
                     }
@@ -96,3 +99,25 @@ use App\Models\Blacklist;
     </div>
     <?= resource('cdn/back_foot.php') ?>
 </body>
+<?php
+function show($item)
+{
+?>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-<?= $item['theme'] ?> shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-<?= $item['theme'] ?> mb-1"><?= $item['title'] ?></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $item['count'] ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="<?= $item['icon'] ?> fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
