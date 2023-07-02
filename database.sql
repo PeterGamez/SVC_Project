@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 29, 2023 at 07:54 PM
+-- Generation Time: Jul 02, 2023 at 10:39 AM
 -- Server version: 10.3.38-MariaDB-0+deb10u1-log
 -- PHP Version: 8.2.6
 
@@ -49,11 +49,26 @@ CREATE TABLE `account` (
 CREATE TABLE `approve` (
   `id` int(5) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `color` varchar(10) NOT NULL DEFAULT 'secondary',
+  `icon` varchar(255) NOT NULL,
+  `whitelist` tinyint(1) NOT NULL DEFAULT 0,
+  `blacklist` tinyint(1) NOT NULL DEFAULT 0,
   `create_at` datetime NOT NULL,
   `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
   `update_at` datetime NOT NULL,
   `update_by` int(5) NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `approve`
+--
+
+INSERT INTO `approve` (`id`, `name`, `color`, `icon`, `whitelist`, `blacklist`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
+(1, 'รอตรวจสอบ', 'secondary', 'fa-sharp fa-light fa-circle-v', 1, 1, '2023-06-29 14:04:37', 1, '2023-06-29 14:04:37', 1),
+(2, 'อนุมัติ', 'success', 'fa-sharp fa-light fa-circle-check', 1, 1, '2023-06-29 14:04:51', 1, '2023-06-29 14:04:51', 1),
+(3, 'ไม่อนุมัติ', 'danger', 'fa-sharp fa-light fa-circle-xmark', 1, 1, '2023-06-29 14:05:03', 1, '2023-06-29 14:05:03', 1),
+(4, 'คำขอแก้ไข', 'warning', 'fa-sharp fa-light fa-circle-plus', 1, 0, '2023-06-29 14:05:13', 1, '2023-06-29 14:05:13', 1),
+(5, 'คำขอลบ', 'warning', 'fa-sharp fa-light fa-circle-exclamation', 1, 0, '2023-06-29 14:05:25', 1, '2023-06-29 14:05:25', 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +215,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `approve`
 --
 ALTER TABLE `approve`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `bank`

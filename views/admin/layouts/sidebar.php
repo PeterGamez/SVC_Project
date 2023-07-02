@@ -58,6 +58,12 @@
             <span>จัดการธนาคาร</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= admin_url('approve') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>จัดการสถานะ</span>
+        </a>
+    </li>
 
     <hr class="sidebar-divider d-none d-md-block">
 

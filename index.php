@@ -196,6 +196,12 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
             } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
                 return controller('blacklist.delete');
             }
+            // approve
+            else if ($agent_request[4] == 'approve' and $agent_method == 'GET') {
+                return admin_views('blacklist.approve');
+            } else if ($agent_request[4] == 'approve' and $agent_method == 'POST') {
+                return controller('blacklist.approve');
+            }
         }
     }
     // Setting
@@ -275,6 +281,40 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
             }
         }
     }
+    /// Approve
+    else if ($agent_request[2] == 'approve' and in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {
+        // index
+        if (empty($agent_request[3])) {
+            return admin_views('approve.index');
+        }
+        // add
+        else if ($agent_request[3] == 'add' and $agent_method == 'GET') {
+            return admin_views('approve.add');
+        } else if ($agent_request[3] == 'add' and $agent_method == 'POST') {
+            return controller('approve.add');
+        }
+        // check is number
+        else if (is_numeric($agent_request[3])) {
+            $request['id'] = $agent_request[3];
+            // view
+            if (empty($agent_request[4])) {
+                return admin_views('approve.view');
+            }
+            // edit
+            else if ($agent_request[4] == 'edit' and $agent_method == 'GET') {
+                return admin_views('approve.edit');
+            } else if ($agent_request[4] == 'edit' and $agent_method == 'POST') {
+                return controller('approve.edit');
+            }
+            // delete
+            else if ($agent_request[4] == 'delete' and $agent_method == 'GET') {
+                return admin_views('approve.delete');
+            } else if ($agent_request[4] == 'delete' and $agent_method == 'POST') {
+                return controller('approve.delete');
+            }
+        }
+    }
+
     return admin_views('404');
 }
 // API

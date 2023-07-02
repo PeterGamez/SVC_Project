@@ -33,7 +33,7 @@ use App\Models\Whitelist;
                                             <label>สถานะ <span class="text-danger">*</span></label>
                                             <select class="form-control" name="approve_id" required>
                                                 <?php
-                                                $approve = Approve::find();
+                                                $approve = Approve::find(['whitelist' => 1]);
                                                 for ($i = 0; $i < count($approve); $i++) {
                                                     echo '<option value="' . $approve[$i]['id'] . '" ' . ($result['approve_id'] == $approve[$i]['id'] ? 'selected' : '') . '>' . $approve[$i]['name'] . '</option>';
                                                 }

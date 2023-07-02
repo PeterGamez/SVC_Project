@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Blacklist;
+use App\Models\Approve;
 
 $site['cdn'] = ['datatables'];
 ?>
@@ -16,30 +16,30 @@ $site['cdn'] = ['datatables'];
                 <div class="container-fluid">
                     <div class="d-flex">
                         <div class="p-2">
-                            <a href="<?= admin_url('blacklist.add') ?>" class="btn btn-primary">เพิ่มกิจการ</a>
+                            <a href="<?= admin_url('approve.add') ?>" class="btn btn-primary">เพิ่มสถานะ</a>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="table_blacklist" class="dt-responsive nowrap table table-striped table-hover align-middle">
+                        <table id="table_approve" class="dt-responsive nowrap table table-striped table-hover align-middle">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">ชื่อกิจการ</th>
-                                    <th scope="col">เจ้าของกิจการ</th>
                                     <th scope="col">สถานะ</th>
+                                    <th scope="col">whitelist</th>
+                                    <th scope="col">blacklist</th>
                                     <th scope="col">&nbsp</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $result = Blacklist::find();
+                                $result = Approve::find();
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
-                                    echo '<td>' . $result[$i]['id_name'] . '</td>';
-                                    echo '<td>' . $result[$i]['approve'] . '</td>';
-                                    echo '<td><a href="' . admin_url('blacklist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
+                                    echo $result[$i]['whitelist'] == '1' ? '<td class="text-success">แสดง</td>' : '<td class="text-danger">ซ่อน</td>';
+                                    echo $result[$i]['blacklist'] == '1' ? '<td class="text-success">แสดง</td>' : '<td class="text-danger">ซ่อน</td>';
+                                    echo '<td><a href="' . admin_url('approve.' . $result[$i]['id'] . '.edit') . '" class="btn btn-sm btn-primary">แก้ไข</a></td>';
                                     echo '</tr>';
                                 }
                                 ?>
@@ -47,9 +47,9 @@ $site['cdn'] = ['datatables'];
                             <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>ชื่อกิจการ</th>
-                                    <th>เจ้าของกิจการ</th>
                                     <th>สถานะ</th>
+                                    <th>whitelist</th>
+                                    <th>blacklist</th>
                                     <th>&nbsp</th>
                                 </tr>
                             </tfoot>
@@ -62,9 +62,12 @@ $site['cdn'] = ['datatables'];
     </div>
     <?= resource('cdn/back_foot.php') ?>
     <script>
-        $('#table_blacklist').DataTable({
+        $('#table_approve').DataTable({
             scrollX: false,
             scrollY: false,
+            order: [
+                [0, 'asc']
+            ],
             columnDefs: [{
                 targets: -1,
                 searchable: false,
