@@ -20,7 +20,7 @@ $site['cdn'] = ['datatables'];
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="table_whitelist" class="dt-responsive nowrap table table-striped table-hover align-middle">
+                        <table id="table_whitelist" class="dt-responsive nowrap table table-striped table-hover align-middle" style="width:100%">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>

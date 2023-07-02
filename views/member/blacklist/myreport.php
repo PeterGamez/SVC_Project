@@ -15,7 +15,7 @@ $site['cdn'] = ['datatables'];
                 <?= member_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="table-responsive">
-                        <table id="table_myreport" class="dt-responsive nowrap table table-striped table-hover align-middle">
+                        <table id="table_myreport" class="dt-responsive nowrap table table-striped table-hover align-middle" style="width:100%">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
