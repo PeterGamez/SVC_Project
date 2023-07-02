@@ -98,8 +98,8 @@ use App\Models\Bank;
                         </div>
                     </div>
                 </div>
-                <?= views('layouts.back_footer') ?>
             </div>
+            <?= views('layouts.back_footer') ?>
         </div>
     </div>
     <?= resource('cdn/back_foot.php') ?>

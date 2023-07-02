@@ -74,7 +74,7 @@ $site['cdn'] = ['bs-file'];
                                         </div>
                                         <div class="form-group">
                                             <label>เวลาโอน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="item_date" required>
+                                            <input type="datetime-local" class="form-control" name="item_date" required>
                                         </div>
                                         <div class="form-group">
                                             <label>หลักฐานการฉ้อโกง <span class="text-danger">*</span></label>
