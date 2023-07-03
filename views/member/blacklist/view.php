@@ -40,9 +40,19 @@ use App\Models\Bank;
                                         <label>เว็บไซต์</label>
                                         <input type="text" class="form-control" value="<?= $result['website'] ?>" disabled>
                                     </div>
-                                    <div class="form-group">
-                                        <label>ชื่อเจ้าของกิจการ</label>
-                                        <input type="text" class="form-control" value="<?= $result['id_name'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>ชื่อเจ้าของกิจการ</label>
+                                                <input type="text" class="form-control" value="<?= $result['id_firstname'] ?>" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>นามสกุลเจ้าของกิจการ</label>
+                                                <input type="text" class="form-control" value="<?= $result['id_lastname'] ?>" disabled>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>เลขบัตรประชาชน</label>

@@ -11,7 +11,8 @@ if ($_POST['name']) {
     $name = $_POST['name'];
     $reason = $_POST['reason'];
     $website = $_POST['website'];
-    $id_name = $_POST['id_name'];
+    $id_firstname = $_POST['id_firstname'];
+    $id_lastname = $_POST['id_lastname'];
     $id_number = $_POST['id_number'];
     $id_image = $_FILES['id_image'];
     $bank_id = $_POST['bank_id'];
@@ -27,7 +28,8 @@ if ($_POST['name']) {
         'name' => $name,
         'reason' => $reason,
         'website' => $website,
-        'id_name' => $id_name,
+        'id_firstname' => $id_firstname,
+        'id_lastname' => $id_lastname,
         'id_number' => $id_number,
         'id_image' => $image_url,
         'bank_id' => $bank_id,

@@ -32,9 +32,23 @@ use App\Models\Bank;
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="website" required>
                                         </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>ชื่อเจ้าของกิจการ <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="id_firstname" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>นามสกุลเจ้าของกิจการ <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="id_lastname" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
-                                            <label>ชื่อเจ้าของกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_name" required>
+                                            <label>นามสกุลเจ้าของกิจการ <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="id_lastname" required>
                                         </div>
                                         <div class="form-group">
                                             <label>เลขบัตรประชาชน <span class="text-danger">*</span></label>

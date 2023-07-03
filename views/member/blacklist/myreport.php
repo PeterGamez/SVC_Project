@@ -31,7 +31,7 @@ $site['cdn'] = ['datatables'];
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
-                                    echo '<td>' . $result[$i]['id_name'] . '</td>';
+                                    echo '<td>' . $result[$i]['id_firstname'] . ' ' . $result[$i]['id_lastname'] . '</td>';
                                     echo '<td><a href="' . url('blacklist.' . $result[$i]['id']) . '" target="_blank" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
                                     echo '</tr>';
                                 }
