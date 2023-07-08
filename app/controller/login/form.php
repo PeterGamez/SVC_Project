@@ -2,7 +2,7 @@
 
 use App\Class\Alert_Login;
 use App\Class\App;
-use App\Class\Account as AccountClass;
+use App\Class\Account as ClassAccount;
 use App\Models\Account;
 
 $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -22,11 +22,11 @@ if (isset($_POST['user'])) {
         'remoteip' => $ip['ip']
     ));
 
-    if ($result->success == false) {
-        if ($result->{'error-codes'}[0] == 'missing-input-secret' || $result->{'error-codes'}[0] == 'invalid-input-response') {
+    if ($result['success'] == false) {
+        if ($result['error-codes'][0] == 'missing-input-secret' || $result['error-codes'][0] == 'invalid-input-response') {
             echo Alert_Login::contact();
         } else {
-            echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result->{'error-codes'}[0], 'error', 1500, 'history.back()');
+            echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
         }
         exit;
     }
@@ -40,7 +40,7 @@ if (isset($_POST['user'])) {
         if (!password_verify($password, $data['password'])) {
             echo Alert_Login::pass_mismatch();
         } else {
-            AccountClass::set_session($data);
+            ClassAccount::set_session($data);
 
             echo Alert_Login::succeed();
         }

@@ -13,6 +13,7 @@ $site['bot'] = '';
     <div class="body container">
         blacklist view <?= $request['id'] ?>
     </div>
+    <?= resource('cdn/front_foot.php') ?>
 </body>
 
 <?= visitor_views('layouts/footer') ?>

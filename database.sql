@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 03, 2023 at 01:21 PM
+-- Generation Time: Jul 08, 2023 at 03:20 PM
 -- Server version: 10.3.38-MariaDB-0+deb10u1-log
 -- PHP Version: 8.2.6
 
@@ -31,6 +31,8 @@ CREATE TABLE `account` (
   `id` int(5) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `email_verified` enum('0','1') NOT NULL DEFAULT '0',
+  `email_verified_at` datetime DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `role` enum('user','seller','staff','admin','superadmin') DEFAULT 'user',
@@ -51,8 +53,8 @@ CREATE TABLE `approve` (
   `name` varchar(255) NOT NULL,
   `color` varchar(10) NOT NULL DEFAULT 'secondary',
   `icon` varchar(255) NOT NULL,
-  `whitelist` tinyint(1) NOT NULL DEFAULT 0,
-  `blacklist` tinyint(1) NOT NULL DEFAULT 0,
+  `whitelist` enum('0','1') NOT NULL DEFAULT '0',
+  `blacklist` enum('0','1') NOT NULL DEFAULT '0',
   `create_at` datetime NOT NULL,
   `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
   `update_at` datetime NOT NULL,
@@ -64,11 +66,11 @@ CREATE TABLE `approve` (
 --
 
 INSERT INTO `approve` (`id`, `name`, `color`, `icon`, `whitelist`, `blacklist`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
-(1, 'รอตรวจสอบ', 'secondary', 'fa-sharp fa-light fa-circle-v', 1, 1, '2023-06-29 14:04:37', 1, '2023-06-29 14:04:37', 1),
-(2, 'อนุมัติ', 'success', 'fa-sharp fa-light fa-circle-check', 1, 1, '2023-06-29 14:04:51', 1, '2023-06-29 14:04:51', 1),
-(3, 'ไม่อนุมัติ', 'danger', 'fa-sharp fa-light fa-circle-xmark', 1, 1, '2023-06-29 14:05:03', 1, '2023-06-29 14:05:03', 1),
-(4, 'คำขอแก้ไข', 'warning', 'fa-sharp fa-light fa-circle-plus', 1, 0, '2023-06-29 14:05:13', 1, '2023-06-29 14:05:13', 1),
-(5, 'คำขอลบ', 'warning', 'fa-sharp fa-light fa-circle-exclamation', 1, 0, '2023-06-29 14:05:25', 1, '2023-06-29 14:05:25', 1);
+(1, 'รอตรวจสอบ', 'secondary', 'fa-sharp fa-light fa-circle-v', '1', '1', '2023-06-29 14:04:37', 1, '2023-06-29 14:04:37', 1),
+(2, 'อนุมัติ', 'success', 'fa-sharp fa-light fa-circle-check', '1', '1', '2023-06-29 14:04:51', 1, '2023-06-29 14:04:51', 1),
+(3, 'ไม่อนุมัติ', 'danger', 'fa-sharp fa-light fa-circle-xmark', '1', '1', '2023-06-29 14:05:03', 1, '2023-06-29 14:05:03', 1),
+(4, 'คำขอแก้ไข', 'warning', 'fa-sharp fa-light fa-circle-plus', '1', '0', '2023-06-29 14:05:13', 1, '2023-06-29 14:05:13', 1),
+(5, 'คำขอลบ', 'warning', 'fa-sharp fa-light fa-circle-exclamation', '1', '0', '2023-06-29 14:05:25', 1, '2023-06-29 14:05:25', 1);
 
 -- --------------------------------------------------------
 
@@ -113,6 +115,7 @@ CREATE TABLE `blacklist` (
   `name` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL,
   `website` varchar(255) NOT NULL,
+  `blacklist_category_id` int(5) NOT NULL,
   `id_firstname` varchar(255) NOT NULL,
   `id_lastname` varchar(255) NOT NULL,
   `id_number` varchar(255) NOT NULL,
@@ -135,6 +138,21 @@ CREATE TABLE `blacklist` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blacklist_category`
+--
+
+CREATE TABLE `blacklist_category` (
+  `id` int(5) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `create_by` int(5) NOT NULL,
+  `update_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `update_by` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `blacklist_image`
 --
 
@@ -146,6 +164,21 @@ CREATE TABLE `blacklist_image` (
   `create_by` int(5) NOT NULL,
   `update_at` datetime NOT NULL DEFAULT current_timestamp(),
   `update_by` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_verify`
+--
+
+CREATE TABLE `email_verify` (
+  `id` int(5) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `verifed` enum('0','1') NOT NULL,
+  `expired_at` datetime NOT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -209,9 +242,21 @@ ALTER TABLE `blacklist`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `blacklist_category`
+--
+ALTER TABLE `blacklist_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `blacklist_image`
 --
 ALTER TABLE `blacklist_image`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `email_verify`
+--
+ALTER TABLE `email_verify`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -249,9 +294,21 @@ ALTER TABLE `blacklist`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `blacklist_category`
+--
+ALTER TABLE `blacklist_category`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `blacklist_image`
 --
 ALTER TABLE `blacklist_image`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `email_verify`
+--
+ALTER TABLE `email_verify`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --

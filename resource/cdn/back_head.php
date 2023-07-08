@@ -1,8 +1,3 @@
-<!-- Site style -->
-<link rel="preload" href="<?= resource('css/back_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-    <link rel="stylesheet" href="<?= resource('css/back_style.min.css', true) ?>">
-</noscript>
 <!-- Bootstrap -->
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
@@ -45,3 +40,8 @@
         <link rel="stylesheet" href="<?= resource('css/back_404.min.css', true) ?>">
     </noscript>
 <?php } ?>
+<!-- Site style -->
+<link rel="preload" href="<?= resource('css/back_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="<?= resource('css/back_style.min.css', true) ?>">
+</noscript>

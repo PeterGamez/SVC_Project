@@ -14,4 +14,3 @@
         <hr>
     </div>
 </footer>
-<?= resource('cdn/front_foot.php') ?>

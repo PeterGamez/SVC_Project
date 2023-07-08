@@ -72,7 +72,7 @@ class Database
     }
 
     // Build Query
-    private static function parseTable()
+    private static function parseTable(): string
     {
         if (get_called_class() == 'Database') {
             throw new \Exception("Database class cannot be used directly");
@@ -92,7 +92,7 @@ class Database
         return $table;
     }
 
-    private static function bindParams($stmt, array $params)
+    private static function bindParams($stmt, array $params): void
     {
         $types = "";
         $bindParams = [];
@@ -119,7 +119,7 @@ class Database
     }
 
     // Build Data
-    protected static function buildInsertData(array $newData)
+    protected static function buildInsertData(array $newData): string
     {
         $query = [];
 
@@ -130,7 +130,7 @@ class Database
         return " (" . implode(", ", $query) . ") VALUES (" . implode(", ", array_fill(0, count($query), "?")) . ")";
     }
 
-    protected static function buildSetData(array $newData)
+    protected static function buildSetData(array $newData): string
     {
         $query = [];
 
@@ -143,7 +143,7 @@ class Database
     }
 
     // Build Clause
-    protected static function buildWhereClause(array $conditions, string $operator = '')
+    protected static function buildWhereClause(array $conditions, string $operator = ''): string
     {
         if (empty($conditions)) {
             return "";
@@ -165,7 +165,7 @@ class Database
         return " WHERE " . implode($operatorString, $query);
     }
 
-    protected static function buildGroupClause(array $group)
+    protected static function buildGroupClause(array $group): string
     {
         if (empty($group)) {
             return "";
@@ -174,7 +174,7 @@ class Database
         return " GROUP BY " . implode(", ", $group);
     }
 
-    protected static function buildOrderClause(array $order)
+    protected static function buildOrderClause(array $order): string
     {
         if (empty($order)) {
             return "";
@@ -190,7 +190,7 @@ class Database
     }
 
     // Build result
-    protected static function buildCreate(string $sql, array $conditions)
+    protected static function buildCreate(string $sql, array $conditions): ?int
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -199,7 +199,7 @@ class Database
         return $stmt->insert_id;
     }
 
-    protected static function buildFind(string $sql, array $conditions)
+    protected static function buildFind(string $sql, array $conditions): ?array
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -212,7 +212,7 @@ class Database
         return $result;
     }
 
-    protected static function buildFindOne(string $sql, array $conditions)
+    protected static function buildFindOne(string $sql, array $conditions): ?array
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -225,7 +225,7 @@ class Database
         return $result[0] ?? null;
     }
 
-    protected static function buildFindCount(string $sql, array $conditions = [])
+    protected static function buildFindCount(string $sql, array $conditions = []): ?int
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -238,7 +238,7 @@ class Database
         return $result[0]['count'] ?? null;
     }
 
-    protected static function buildUpdate(string $sql, array $conditions, array $newData)
+    protected static function buildUpdate(string $sql, array $conditions, array $newData): int
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -249,7 +249,7 @@ class Database
         return $affectedRows;
     }
 
-    protected static function buildDelete(string $sql, array $conditions)
+    protected static function buildDelete(string $sql, array $conditions): int
     {
         global $conn;
         $stmt = $conn->prepare($sql);

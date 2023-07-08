@@ -7,6 +7,7 @@ use App\Models\Whitelist;
 
 if ($_POST['id']) {
     $id = $_POST['id'];
+    $tag = $_POST['tag'];
     $name = $_POST['name'];
     $description = $_POST['description'];
     $account_id = $_POST['account_id'];
@@ -26,6 +27,7 @@ if ($_POST['id']) {
     }
 
     $newData = [
+        'tag' => $tag,
         'name' => $name,
         'description' => $description,
         'account_id' => $account_id,

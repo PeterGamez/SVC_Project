@@ -11,8 +11,12 @@ $site['bot'] = '';
 <body>
     <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
-        whitelist view <?= $request['id'] ?>
+        whitelist tag <?= $request['tag'] ?>
+        <div class="card">
+
+        </div>
     </div>
+    <?= resource('cdn/front_foot.php') ?>
 </body>
 
 <?= visitor_views('layouts/footer') ?>

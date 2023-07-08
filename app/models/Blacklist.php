@@ -14,7 +14,9 @@ class Blacklist extends Database
             return 'blacklist.' . $key;
         }, array_keys($conditions)), array_values($conditions));
         $sql = "SELECT blacklist.*, approve.name as approve FROM blacklist
-            INNER JOIN approve ON blacklist.approve_id = approve.id" . parent::buildWhereClause($conditions, $operator) . parent::buildOrderClause($order);
+            INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id
+            INNER JOIN approve ON blacklist.approve_id = approve.id"
+            . parent::buildWhereClause($conditions, $operator) . parent::buildOrderClause($order);
         return parent::buildFind($sql, $conditions);
     }
 
@@ -24,7 +26,9 @@ class Blacklist extends Database
             return 'blacklist.' . $key;
         }, array_keys($conditions)), array_values($conditions));
         $sql = "SELECT blacklist.*, approve.name as approve FROM blacklist
-            INNER JOIN approve ON blacklist.approve_id = approve.id" . parent::buildWhereClause($conditions, $operator) . parent::buildOrderClause($order);
+            INNER JOIN blacklist_category ON blacklist.blacklist_category_id = blacklist_category.id
+            INNER JOIN approve ON blacklist.approve_id = approve.id"
+            . parent::buildWhereClause($conditions, $operator) . parent::buildOrderClause($order);
         return parent::buildFindOne($sql, $conditions);
     }
 }

@@ -2,7 +2,7 @@
 require_once('./vendor/autoload.php');
 
 use App\Class\Alert_Login;
-use App\Class\Account as AccountClass;
+use App\Class\Account as ClassAccount;
 use App\Models\Account;
 use Google\Client as GoogleClient;
 
@@ -21,7 +21,7 @@ if (isset($_POST['credential'])) {
                 Account::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
             }
             $data['avatar'] = $payload['picture'];
-            AccountClass::set_session($data);
+            ClassAccount::set_session($data);
 
             echo Alert_Login::succeed();
         } else {

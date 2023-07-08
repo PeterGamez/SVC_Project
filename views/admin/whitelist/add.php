@@ -21,6 +21,10 @@ $site['cdn'] = ['bs-file'];
                                 <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="form-group">
+                                            <label>แท็กร้าน</label>
+                                            <input type="text" class="form-control" name="tag" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="name" required>
                                         </div>

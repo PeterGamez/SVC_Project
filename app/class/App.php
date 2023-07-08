@@ -4,7 +4,7 @@ namespace App\Class;
 
 class App
 {
-    public static function getAgentIP()
+    public static function getAgentIP(): array
     {
         $ip = 'Unknown';
         $cdn = null;
@@ -21,13 +21,13 @@ class App
         return array('ip' => $ip, 'country' => $country, 'cdn' => $cdn);
     }
 
-    public static function apiRequest(string $api_url, array $post = null)
+    public static function apiRequest(string $api_url, array $post = null): array
     {
         $ch = curl_init($api_url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         if ($post) {
-            curl_setopt($ch, CURLOPT_POST, TRUE);
+            curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
         }
 
@@ -35,17 +35,31 @@ class App
         $headers[] = 'Accept: application/json';
         $headers[] = 'User-Agent: itsvc/1.0';
 
-        if (isset($_SESSION['access_token']))
+        if (isset($_SESSION['access_token'])) {
             $headers[] = 'Authorization: Bearer ' . $_SESSION['access_token'];
+        }
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $response = curl_exec($ch);
         curl_close($ch);
-        return json_decode($response);
+        return json_decode($response, true);
     }
 
-    public static function RandomHex(int $length = 6)
+    public static function RandomText($length): string
+    {
+        $character = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characterLength = strlen($character);
+
+        $random = '';
+
+        for ($i = 0; $length < 32; $i++) {
+            $random .= $character[rand(0, $characterLength - 1)];
+        }
+        return $random;
+    }
+
+    public static function RandomHex(int $length = 6): string
     {
         $character = '0123456789abcdef';
         $characterLength = strlen($character);

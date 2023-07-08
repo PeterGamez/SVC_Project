@@ -6,6 +6,7 @@ use App\Class\Discord;
 use App\Models\Whitelist;
 
 if ($_POST['name']) {
+    $tag = $_POST['tag'];
     $name = $_POST['name'];
     $description = $_POST['description'];
     $account_id = $_POST['account_id'];
@@ -29,6 +30,7 @@ if ($_POST['name']) {
     $image_url = $data['attachments'][0]['url'];
 
     Whitelist::create([
+        'tag' => $tag,
         'name' => $name,
         'description' => $description,
         'account_id' => $account_id,

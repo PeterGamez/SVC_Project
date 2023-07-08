@@ -13,7 +13,7 @@
     if ($site['social'] == true) {
     ?>
         <meta name="description" content="<?= $site['desc'] ?>">
-        <meta name="keywords" content="Discord Thailand, IBO Community, Devastate">
+        <meta name="keywords" content="แจ้งคนโกง, โดนโกง, ซื้อของออนไลน์, เช็คเลขบัญชี, มิจฉาชีพ, ฉ้อโกง, หลอกขาย, โดนหลอก, ออนไลน์, ห้ามโอน, ตรวจสอบ, ตรวจเช็ค, ระวัง">
         <meta property="og:title" content="<?= $site['name'] ?>">
         <meta property="og:description" content="<?= $site['desc'] ?>">
         <meta property="og:site_name" content="<?= config('site.name') ?>">

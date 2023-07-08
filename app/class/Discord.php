@@ -4,7 +4,7 @@ namespace App\Class;
 
 class Discord
 {
-    public static function post(string $url, array $data)
+    public static function post(string $url, array $data): array
     {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -17,7 +17,7 @@ class Discord
         return json_decode($response, true);
     }
 
-    public static function postImage(string $url, array $data)
+    public static function postImage(string $url, array $data): array
     {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_POST, true);

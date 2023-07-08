@@ -1,8 +1,3 @@
-<!-- Site style -->
-<link rel="preload" href="<?= resource('css/font_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-    <link rel="stylesheet" href="<?= resource('css/font_style.min.css', true) ?>">
-</noscript>
 <!-- Bootstrap -->
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
@@ -33,3 +28,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/modules/export-data.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/modules/accessibility.min.js"></script>
 <?php } ?>
+<!-- Site style -->
+<link rel="preload" href="<?= resource('css/font_style.min.css', true) ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+    <link rel="stylesheet" href="<?= resource('css/font_style.min.css', true) ?>">
+</noscript>

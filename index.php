@@ -10,7 +10,7 @@ if (empty($agent_request[1])) {
 // Whitelist
 else if ($agent_request[1] == 'whitelist') {
     if (isset($agent_request[2])) {
-        $request['id'] = $agent_request[2];
+        $request['tag'] = $agent_request[2];
         return visitor_views('whitelist.view');
     } else {
         return visitor_views('whitelist.index');
@@ -203,6 +203,34 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 return controller('blacklist.approve');
             }
         }
+        // category
+        else if ($agent_request[3] == 'category') {
+            if (empty($agent_request[4])) {
+                return admin_views('blacklist.category.index');
+            }
+            // add
+            if ($agent_request[4] == 'add' and $agent_method == 'GET') {
+                return admin_views('blacklist.category.add');
+            } else if ($agent_request[4] == 'add' and $agent_method == 'POST') {
+                return controller('blacklist.category.add');
+            }
+            // check is number
+            else if (is_numeric($agent_request[4])) {
+                $request['id'] = $agent_request[4];
+                // edit
+                if ($agent_request[5] == 'edit' and $agent_method == 'GET') {
+                    return admin_views('blacklist.category.edit');
+                } else if ($agent_request[5] == 'edit' and $agent_method == 'POST') {
+                    return controller('blacklist.category.edit');
+                }
+                // delete
+                else if ($agent_request[5] == 'delete' and $agent_method == 'GET') {
+                    return controller('blacklist.category.delete');
+                } else if ($agent_request[5] == 'delete' and $agent_method == 'POST') {
+                    return controller('blacklist.category.delete');
+                }
+            }
+        }
     }
     // Setting
     /// Account
@@ -336,5 +364,9 @@ else if (str_starts_with($agent_path, '/api')) {
         return api('400');
     }
     return api('404');
+}
+// verify email
+else if (str_starts_with($agent_path, '/verify-email')) {
+    return controller('account.verify-email');
 }
 return views('404');

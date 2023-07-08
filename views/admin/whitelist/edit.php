@@ -27,6 +27,10 @@ $site['cdn'] = ['bs-file'];
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
+                                            <label>แท็กร้าน</label>
+                                            <input type="text" class="form-control" name="tag" value="<?= $result['tag'] ?>" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
                                         </div>
