@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\SMTP;
 
 class Mail
 {
-    public static function sendMail($email, $subject, $body): bool
+    public static function sendMail(string $email, string $subject, string $body): bool
     {
         require './vendor/autoload.php';
 

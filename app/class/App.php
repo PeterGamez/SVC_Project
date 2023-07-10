@@ -72,7 +72,7 @@ class App
         return $randomHex;
     }
 
-    public static function Captcha($captcha): bool
+    public static function Captcha(string $captcha): bool
     {
         if (!isset($captcha)) {
             echo Alert_Login::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
