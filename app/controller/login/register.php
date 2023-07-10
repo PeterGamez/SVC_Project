@@ -1,5 +1,6 @@
 <?php
 
+use App\Class\Account as ClassAccount;
 use App\Class\Alert_Login;
 use App\Class\App;
 use App\Models\Account;
@@ -21,11 +22,11 @@ if (isset($_POST['user'])) {
         'remoteip' => $ip['ip']
     ));
 
-    if ($result->success == false) {
-        if ($result->{'error-codes'}[0] == 'missing-input-secret' || $result->{'error-codes'}[0] == 'invalid-input-response') {
+    if ($result['success'] == false) {
+        if ($result['error-codes'][0] == 'missing-input-secret' || $result['error-codes'][0] == 'invalid-input-response') {
             echo Alert_Login::contact();
         } else {
-            echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result->{'error-codes'}[0], 'error', 1500, 'history.back()');
+            echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
         }
         exit;
     }
@@ -53,6 +54,11 @@ if (isset($_POST['user'])) {
             if ($data) {
                 $_SESSION['callback'] = member_url('login');
                 echo Alert_Login::succeed();
+                // if (ClassAccount::create_verify_token($email)) {
+                //     echo Alert_Login::verifyEmail();
+                // } else {
+                //     echo Alert_Login::alert('ไม่สามารถส่งอีเมลยืนยันได้', 'error', 1500, 'window.location.href="' . member_url('login') . '"');
+                // }
             } else {
                 echo Alert_Login::alert('ไม่สามารถลงทะเบียนได้', 'error', 1500, 'history.back()');
             }
