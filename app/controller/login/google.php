@@ -35,5 +35,5 @@ if (isset($_POST['credential'])) {
         echo Alert_Login::alert('ไม่สามารถยืนยันตัวตนได้', 'error', 1500, 'history.back()');
     }
 } else {
-    redirect(admin_url('login'));
+    redirect(member_url('login'));
 }

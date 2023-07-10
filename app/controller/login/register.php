@@ -65,5 +65,5 @@ if (isset($_POST['user'])) {
         }
     }
 } else {
-    redirect(admin_url('login'));
+    redirect(member_url('login'));
 }

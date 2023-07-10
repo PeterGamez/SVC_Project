@@ -52,5 +52,5 @@ if (isset($_POST['user'])) {
         echo Alert_Login::alert('ไม่พบชื่อผู้ใช้งาน', 'warning', 1500, 'history.back()');
     }
 } else {
-    redirect(admin_url('login'));
+    redirect(member_url('login'));
 }
