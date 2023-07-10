@@ -7,7 +7,7 @@ use App\Models\EmailVerify;
 if (isset($_GET['token'])) {
     $token = $_GET['token'];
 
-    $emailVerify = EmailVerify::findToken(['token' => $token]);
+    $emailVerify = EmailVerify::findToken(['token' => $token, 'verifed' => 0, 'expire_at' => date('Y-m-d H:i:s')]);
 
     if ($emailVerify) {
         EmailVerify::update(['id' => $emailVerify['id']], ['verifed' => 1]);
