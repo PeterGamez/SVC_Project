@@ -74,15 +74,13 @@ class App
 
     public static function Captcha($captcha)
     {
-        $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-
         if (!$captcha) {
             echo Alert_Login::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
             return false;
         }
         $ip = App::getAgentIP();
 
-        $result = App::apiRequest($cf_turnstile_path, array(
+        $result = App::apiRequest('https://challenges.cloudflare.com/turnstile/v0/siteverify', array(
             'secret' => config('site.cloudflare.turnstile.secret'),
             'response' => $captcha,
             'remoteip' => $ip['ip']
