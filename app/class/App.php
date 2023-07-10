@@ -53,7 +53,7 @@ class App
 
         $random = '';
 
-        for ($i = 0; $length < 32; $i++) {
+        for ($i = 0; $i < $length; $i++) {
             $random .= $character[rand(0, $characterLength - 1)];
         }
         return $random;
