@@ -42,9 +42,7 @@ class Account
         $emailVerify = EmailVerify::findToken(['token' => $token]);
         if ($emailVerify) {
             EmailVerify::update(['id' => $emailVerify['id']], ['verifed' => 1]);
-
-            ModelsAccount::update(['email' => $emailVerify['email']], ['email_verified_at' => date('Y-m-d H:i:s')]);
-
+            ModelsAccount::update(['email' => $emailVerify['email']], ['email_verified' => 1, 'email_verified_at' => date('Y-m-d H:i:s')]);
             return true;
         } else {
             return false;
