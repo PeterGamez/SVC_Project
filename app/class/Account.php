@@ -25,7 +25,8 @@ class Account
             $token = App::RandomText(16);
             EmailVerify::create([
                 'email' => $email,
-                'token' => $token
+                'token' => $token,
+                'expired_at' => date('Y-m-d H:i:s', strtotime('+1 hour')),
             ]);
 
             $subject = config('site.name') . ': Verify Your Email';

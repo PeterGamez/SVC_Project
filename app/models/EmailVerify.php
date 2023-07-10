@@ -20,10 +20,6 @@ class EmailVerify extends Database
         return parent::buildCreate($sql, $newData);
     }
 
-    public static function find(array $conditions = [], string $operator = '', array $order = [])
-    {
-    }
-
     public static function findOne(array $conditions, string $operator = '', array $order = [])
     {
         $table = self::$table;
@@ -44,9 +40,6 @@ class EmailVerify extends Database
         $sql = "SELECT * FROM $table WHERE token = ? AND verifed = 0 AND expired_at > NOW()";
         return parent::buildFindOne($sql, $conditions);
     }
-    public static function count(array $conditions = [], string $operator = '', array $group = [])
-    {
-    }
 
     public static function update(array $conditions, array $newData)
     {
@@ -60,7 +53,10 @@ class EmailVerify extends Database
         return parent::buildUpdate($sql, $conditions, $newData);
     }
 
-    public static function delete(array $conditions)
+    public static function verifyToken(array $conditions)
     {
+        $table = self::$table;
+        $sql = "UPDATE $table SET verifed = 1 WHERE token = ? AND verifed = 0 AND expired_at > NOW()";
+        return parent::buildUpdate($sql, $conditions, []);
     }
 }

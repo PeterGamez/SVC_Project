@@ -1,8 +1,8 @@
 <?php
 require_once('./vendor/autoload.php');
 
-use App\Class\Alert_Login;
 use App\Class\Account as ClassAccount;
+use App\Class\Alert_Login;
 use App\Models\Account;
 use Google\Client as GoogleClient;
 
@@ -17,6 +17,10 @@ if (isset($_POST['credential'])) {
 
         $data = Account::findOne(['email' => $payload['email']]);
         if ($data) {
+            // if ($data['email_verifed'] == 0) {
+            //     echo Alert_Login::verifyEmail();
+            //     exit;
+            // }
             if ($data['avatar'] <> $payload['picture']) {
                 Account::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
             }

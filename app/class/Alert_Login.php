@@ -38,6 +38,11 @@ class Alert_Login
         return Alert_Login::alert('รหัสผ่านไม่ถูกต้อง', 'error', 1500, 'history.back()');
     }
 
+    public static function verifyEmail()
+    {
+        return Alert_Login::alert('กรุณายืนยันอีเมลก่อนเข้าใช้งาน', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');
+    }
+
     public static function succeed()
     {
         if (isset($_SESSION['callback'])) {

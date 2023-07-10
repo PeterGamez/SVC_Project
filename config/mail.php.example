@@ -1,0 +1,11 @@
+<?php
+$mail = [
+    "host" => "localhost",
+    "username" => "",
+    "password" => "",
+    "tls" => true,
+    "secure" => "tls",
+    "port" => 587,
+];
+
+return $mail;

@@ -367,6 +367,6 @@ else if (str_starts_with($agent_path, '/api')) {
 }
 // verify email
 else if (str_starts_with($agent_path, '/verify-email')) {
-    return controller('account.verify-email');
+    return controller('login.verify-email');
 }
 return views('404');
