@@ -8,26 +8,8 @@ use App\Models\Account;
 $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 if (isset($_POST['user'])) {
-    // Captcha
-    $captcha = $_POST['cf-turnstile-response'];
-    if (!$captcha) {
-        echo Alert_Login::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
-        exit;
-    }
-    $ip = App::getAgentIP();
-
-    $result = App::apiRequest($cf_turnstile_path, array(
-        'secret' => config('site.cloudflare.turnstile.secret'),
-        'response' => $captcha,
-        'remoteip' => $ip['ip']
-    ));
-
-    if ($result['success'] == false) {
-        if ($result['error-codes'][0] == 'missing-input-secret' || $result['error-codes'][0] == 'invalid-input-response') {
-            echo Alert_Login::contact();
-        } else {
-            echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
-        }
+    $captcha = App::Captcha($_POST['cf-turnstile-response']);
+    if ($captcha == false) {
         exit;
     }
 
