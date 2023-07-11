@@ -1,7 +1,7 @@
 <?php
 $mail = [
-    "host" => "localhost",
-    "username" => "",
+    "host" => "itsvc.dev",
+    "username" => "lastboss@itsvc.dev",
     "password" => "",
     "tls" => true,
     "secure" => "tls",

@@ -1,9 +1,9 @@
 <?php
 $database = [
     "host" => "localhost",
-    "user" => "root",
+    "user" => "alltime_lastboss",
     "password" => "",
-    "database" => "project"
+    "database" => "lastboss"
 ];
 
 return $database;
