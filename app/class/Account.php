@@ -19,9 +19,7 @@ class Account
     public static function create_verify_token(string $email)
     {
         $emailVerify = EmailVerify::findEmail(['email' => $email]);
-        if ($emailVerify) {
-            return false;
-        } else {
+        if (!$emailVerify) {
             $token = App::RandomText(16);
             EmailVerify::create([
                 'email' => $email,
@@ -34,6 +32,8 @@ class Account
 
             Mail::sendMail($email,  $subject, $body);
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -41,11 +41,13 @@ class Account
     {
         $emailVerify = EmailVerify::findToken(['token' => $token]);
         if ($emailVerify) {
-            EmailVerify::update(['id' => $emailVerify['id']], ['verifed' => 1]);
-            ModelsAccount::update(['email' => $emailVerify['email']], ['email_verified' => 1, 'email_verified_at' => date('Y-m-d H:i:s')]);
-            return true;
-        } else {
-            return false;
+            if (EmailVerify::verifyEmail(['id' => $emailVerify['id']])) {
+                $user = ModelsAccount::findOne(['email' => $emailVerify['email']]);
+                if (ModelsAccount::verifyEmail(['id' => $user['id']])) {
+                    return true;
+                }
+            }
         }
+        return false;
     }
 }

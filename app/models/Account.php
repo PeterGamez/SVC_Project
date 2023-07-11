@@ -19,11 +19,10 @@ class Account extends Database
         return parent::buildUpdate($sql, [$insert_id, $insert_id, $insert_id], []);
     }
 
-    public static function verify_email($user_id)
+    public static function verifyEmail($user_id)
     {
         $table = self::$table;
-
-        $sql = "UPDATE $table SET email_verified_at = NOW(), update_at = NOW(), update_by = ? WHERE id = ?";
+        $sql = "UPDATE $table SET email_verified = '1', email_verified_at = NOW(), update_at = NOW(), update_by = ? WHERE id = ?";
         return parent::buildUpdate($sql, [$user_id, $user_id], []);
     }
 }

@@ -30,33 +30,21 @@ class EmailVerify extends Database
     public static function findEmail(array $conditions)
     {
         $table = self::$table;
-        $sql = "SELECT * FROM $table WHERE email = ? AND verifed = 0 AND expired_at > NOW()";
+        $sql = "SELECT * FROM $table WHERE email = ? AND verified = '0' AND expired_at > NOW()";
         return parent::buildFindOne($sql, $conditions);
     }
 
     public static function findToken(array $conditions)
     {
         $table = self::$table;
-        $sql = "SELECT * FROM $table WHERE token = ? AND verifed = 0 AND expired_at > NOW()";
+        $sql = "SELECT * FROM $table WHERE token = ? AND verified = '0' AND expired_at > NOW()";
         return parent::buildFindOne($sql, $conditions);
     }
 
-    public static function update(array $conditions, array $newData)
-    {
-        if (isset($newData['create_at'])) unset($newData['create_at']);
-        if (isset($newData['create_by'])) unset($newData['create_by']);
-        if (isset($newData['update_at'])) unset($newData['update_at']);
-        if (isset($newData['update_by'])) unset($newData['update_by']);
-
-        $table = self::$table;
-        $sql = "UPDATE $table" . parent::buildSetData($newData) . parent::buildWhereClause($conditions);
-        return parent::buildUpdate($sql, $conditions, $newData);
-    }
-
-    public static function verifyToken(array $conditions)
+    public static function verifyEmail(array $conditions)
     {
         $table = self::$table;
-        $sql = "UPDATE $table SET verifed = 1 WHERE token = ? AND verifed = 0 AND expired_at > NOW()";
+        $sql = "UPDATE $table SET verified = '1'" . parent::buildWhereClause($conditions) . " AND verified = '0' AND expired_at > NOW()";
         return parent::buildUpdate($sql, $conditions, []);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Class\Account as ClassAccount;
 use App\Class\Alert_Login;
 use App\Class\App;
 use App\Models\Account;
@@ -35,11 +36,11 @@ if (isset($_POST['user'])) {
             if ($data) {
                 $_SESSION['callback'] = member_url('login');
                 echo Alert_Login::succeed();
-                // if (ClassAccount::create_verify_token($email)) {
-                //     echo Alert_Login::verifyEmail();
-                // } else {
-                //     echo Alert_Login::alert('ไม่สามารถส่งอีเมลยืนยันได้', 'error', 1500, 'window.location.href="' . member_url('login') . '"');
-                // }
+                if (ClassAccount::create_verify_token($email)) {
+                    echo Alert_Login::verifyEmail();
+                } else {
+                    echo Alert_Login::alert('ไม่สามารถส่งอีเมลยืนยันได้', 'error', 1500, 'window.location.href="' . member_url('login') . '"');
+                }
             } else {
                 echo Alert_Login::alert('ไม่สามารถลงทะเบียนได้', 'error', 1500, 'history.back()');
             }

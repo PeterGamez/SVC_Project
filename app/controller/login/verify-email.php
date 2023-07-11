@@ -10,7 +10,7 @@ if (isset($_GET['token'])) {
     if ($data == true) {
         echo Alert::alerts('ยืนยันอีเมลสำเร็จ', 'success', 1500, 'window.location.href = "' . member_url('login') . '"');
     } else {
-        echo Alert::alerts('ยืนยันอีเมลไม่สำเร็จ', 'error', 1500, 'window.history.href = "' . member_url('login') . '"');
+        echo Alert::alerts('ยืนยันอีเมลไม่สำเร็จ', 'error', 1500, 'window.location.href = "' . member_url('login') . '"');
     }
 } else {
     redirect(member_url('login'));

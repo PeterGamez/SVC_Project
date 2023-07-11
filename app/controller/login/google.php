@@ -1,9 +1,9 @@
 <?php
 require_once('./vendor/autoload.php');
 
-use App\Class\Account as ClassAccount;
+use App\Class\Account;
 use App\Class\Alert_Login;
-use App\Models\Account;
+use App\Models\Account as ModelsAccount;
 use Google\Client as GoogleClient;
 
 if (isset($_POST['credential'])) {
@@ -15,17 +15,21 @@ if (isset($_POST['credential'])) {
             exit;
         }
 
-        $data = Account::findOne(['email' => $payload['email']]);
+        $data = ModelsAccount::findOne(['email' => $payload['email']]);
         if ($data) {
-            // if ($data['email_verifed'] == 0) {
-            //     echo Alert_Login::verifyEmail();
-            //     exit;
-            // }
+            if ($data['email_verified'] == 0) {
+                if (Account::create_verify_token($data['email']) == true) {
+                    echo Alert_Login::verifyEmail();
+                } else {
+                    echo Alert_Login::reverifyEmail();
+                }
+                exit;
+            }
             if ($data['avatar'] <> $payload['picture']) {
-                Account::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
+                ModelsAccount::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
             }
             $data['avatar'] = $payload['picture'];
-            ClassAccount::set_session($data);
+            Account::set_session($data);
 
             echo Alert_Login::succeed();
         } else {
