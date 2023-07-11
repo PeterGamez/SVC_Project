@@ -32,7 +32,6 @@ else if ($agent_request[1] == 'contact') {
 // Application
 else if ($agent_request[1] == 'download') {
     if (empty($agent_request[2])) {
-        return visitor_views('download');
     } else if ($agent_request[2] == 'android') {
         return Class\Download::transfer('resource/application/android/release.apk', 'IntraCheck.apk');
     }
