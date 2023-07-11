@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2023 at 03:20 PM
+-- Generation Time: Jul 11, 2023 at 04:35 PM
 -- Server version: 10.3.38-MariaDB-0+deb10u1-log
 -- PHP Version: 8.2.6
 
@@ -150,6 +150,14 @@ CREATE TABLE `blacklist_category` (
   `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `blacklist_category`
+--
+
+INSERT INTO `blacklist_category` (`id`, `name`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
+(1, 'ฉ้อโกงการซื้อขาย', '2023-07-08 14:39:54', 1, '2023-07-08 14:39:54', 1),
+(2, 'พฤติกรรมน่าสงสัย', '2023-07-08 14:40:07', 1, '2023-07-08 14:40:07', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -176,7 +184,7 @@ CREATE TABLE `email_verify` (
   `id` int(5) NOT NULL,
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
-  `verifed` enum('0','1') NOT NULL,
+  `verified` enum('0','1') NOT NULL,
   `expired_at` datetime NOT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -297,7 +305,7 @@ ALTER TABLE `blacklist`
 -- AUTO_INCREMENT for table `blacklist_category`
 --
 ALTER TABLE `blacklist_category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `blacklist_image`
