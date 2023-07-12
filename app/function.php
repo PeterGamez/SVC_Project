@@ -72,7 +72,7 @@ function controller($path)
 {
     global $site;
     $path = str_replace('.', '/', $path);
-    $controllerPath = './app/controller/' . $path . '.php';
+    $controllerPath = './controller/' . $path . '.php';
     if (file_exists($controllerPath)) {
         include $controllerPath;
         return;
