@@ -25,7 +25,7 @@ use App\Models\Bank;
                                     $result = Blacklist::findOne(['id' => $request['id']]);
                                     ?>
                                     <div class="form-group">
-                                        <label>ชื่อกิจการ <?= $result['approve_agree'] == 1 ? '<span class="text-success"><i class="fa-sharp fa-light fa-shield-check"></i></span>' : '<span class="text-danger"><i class="fa-sharp fa-light fa-shield-xmark"></i></span>' ?></label>
+                                        <label>ชื่อกิจการ <?= $result['approve_id'] == 1 ? '<span class="text-success"><i class="fa-sharp fa-light fa-shield-check"></i></span>' : '<span class="text-danger"><i class="fa-sharp fa-light fa-shield-xmark"></i></span>' ?></label>
                                         <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
