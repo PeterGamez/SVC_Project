@@ -31,17 +31,17 @@ class Database
         return self::buildCreate($sql, $newData);
     }
 
-    public static function find(array $conditions = [], string $operator = '', array $order = [])
+    public static function find(array $conditions = [], string $operator = '', int $limit = 0)
     {
         $table = self::parseTable();
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildOrderClause($order);
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildLimitClause($limit);
         return self::buildFind($sql, $conditions);
     }
 
-    public static function findOne(array $conditions, string $operator = '', array $order = [])
+    public static function findOne(array $conditions, string $operator = '', int $limit = 0)
     {
         $table = self::parseTable();
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildOrderClause($order);
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildLimitClause($limit);
         return self::buildFindOne($sql, $conditions);
     }
 
@@ -174,19 +174,13 @@ class Database
         return " GROUP BY " . implode(", ", $group);
     }
 
-    protected static function buildOrderClause(array $order): string
+    protected static function buildLimitClause(int $limit): string
     {
-        if (empty($order)) {
+        if (empty($limit) || $limit <= 0) {
             return "";
         }
 
-        $query = [];
-
-        foreach ($order as $field => $value) {
-            $query[] = "$field $value";
-        }
-
-        return " ORDER BY " . implode(", ", $query);
+        return " LIMIT $limit";
     }
 
     // Build result

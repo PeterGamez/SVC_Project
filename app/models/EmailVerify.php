@@ -20,10 +20,10 @@ class EmailVerify extends Database
         return parent::buildCreate($sql, $newData);
     }
 
-    public static function findOne(array $conditions, string $operator = '', array $order = [])
+    public static function findOne(array $conditions, string $operator = '', int $limit = 0)
     {
         $table = self::$table;
-        $sql = "SELECT * FROM $table" . parent::buildWhereClause($conditions, $operator) . parent::buildOrderClause($order);
+        $sql = "SELECT * FROM $table" . parent::buildWhereClause($conditions, $operator) . parent::buildLimitClause($limit);
         return parent::buildFindOne($sql, $conditions);
     }
 
