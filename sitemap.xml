@@ -7,9 +7,32 @@
 
 
 <url>
-  <loc>https://lastboss.itsvc.me/</loc>
+  <loc>https://lastboss.itsvc.dev/</loc>
   <priority>1.00</priority>
 </url>
-
+<url>
+  <loc>https://lastboss.itsvc.dev/whitelist</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lastboss.itsvc.dev/blacklist</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lastboss.itsvc.dev/contact</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lastboss.itsvc.dev/member/login</loc>
+  <priority>0.10</priority>
+</url>
+<url>
+  <loc>https://lastboss.itsvc.dev/privacy</loc>
+  <priority>0.10</priority>
+</url>
+<url>
+  <loc>https://lastboss.itsvc.dev/tos</loc>
+  <priority>0.10</priority>
+</url>
 
 </urlset>
