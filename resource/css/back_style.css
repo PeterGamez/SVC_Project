@@ -972,6 +972,7 @@ footer.sticky-footer .copyright {
 }
 
 input.form-control:disabled,
-textarea.form-control:disabled {
+textarea.form-control:disabled,
+select.form-control:disabled {
     background-color: transparent;
 }
