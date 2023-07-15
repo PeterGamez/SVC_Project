@@ -368,4 +368,4 @@ else if (str_starts_with($agent_path, '/api')) {
 else if (str_starts_with($agent_path, '/verify-email')) {
     return member_controller('login.verify-email');
 }
-return views('404');
+return visitor_views('404');

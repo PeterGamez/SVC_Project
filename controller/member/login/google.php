@@ -1,5 +1,5 @@
 <?php
-require_once('./vendor/autoload.php');
+require_once './vendor/autoload.php';
 
 use App\Class\Account;
 use App\Class\Alert_Login;
