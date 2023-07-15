@@ -43,13 +43,13 @@ use App\Models\Bank;
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>ชื่อเจ้าของกิจการ</label>
+                                                <label>ชื่อจริงผู้ขาย</label>
                                                 <input type="text" class="form-control" value="<?= $result['id_firstname'] ?>" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>นามสกุลเจ้าของกิจการ</label>
+                                                <label>นามสกุลผู้ขาย</label>
                                                 <input type="text" class="form-control" value="<?= $result['id_lastname'] ?>" disabled>
                                             </div>
                                         </div>
@@ -79,13 +79,19 @@ use App\Models\Bank;
                                         <label>สินค้า</label>
                                         <input type="text" class="form-control" value="<?= $result['item_name'] ?>" disabled>
                                     </div>
-                                    <div class="form-group">
-                                        <label>ยอดเงิน</label>
-                                        <input type="text" class="form-control" value="<?= $result['item_balance'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>เวลาโอน</label>
-                                        <input type="text" class="form-control" value="<?= $result['item_date'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>ยอดเงิน</label>
+                                                <input type="text" class="form-control" value="<?= $result['item_balance'] ?>" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>เวลาโอน</label>
+                                                <input type="text" class="form-control" value="<?= $result['item_date'] ?>" disabled>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>หลักฐาน</label>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Approve;
 use App\Models\Blacklist;
 use App\Models\BlacklistImage;
 use App\Models\Bank;
@@ -25,7 +26,10 @@ use App\Models\Bank;
                                     $result = Blacklist::findOne(['id' => $request['id']]);
                                     ?>
                                     <div class="form-group">
-                                        <label>ชื่อกิจการ <?= $result['approve_id'] == 1 ? '<span class="text-success"><i class="fa-sharp fa-light fa-shield-check"></i></span>' : '<span class="text-danger"><i class="fa-sharp fa-light fa-shield-xmark"></i></span>' ?></label>
+                                        <?php
+                                        $approve = Approve::findOne(['id' => $result['approve_id']]);
+                                        ?>
+                                        <label>ชื่อกิจการ <span class="text-<?= $approve['color'] ?>"><i class="<?= $approve['icon'] ?>"></i></span></label>
                                         <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
@@ -39,13 +43,13 @@ use App\Models\Bank;
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>ชื่อเจ้าของกิจการ</label>
+                                                <label>ชื่อจริงผู้ขาย</label>
                                                 <input type="text" class="form-control" value="<?= $result['id_firstname'] ?>" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>นามสกุลเจ้าของกิจการ</label>
+                                                <label>นามสกุลผู้ขาย</label>
                                                 <input type="text" class="form-control" value="<?= $result['id_lastname'] ?>" disabled>
                                             </div>
                                         </div>
@@ -60,28 +64,40 @@ use App\Models\Bank;
                                             <img src="<?= $result['id_image'] ?>" class="img-fluid" style="width:150px">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>ประเภทบัญชีธนาคาร</label>
-                                        <?php
-                                        $bank = Bank::findOne(['id' => $result['bank_id']]);
-                                        ?>
-                                        <input type="text" class="form-control" value="<?= $bank['name'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>เลขที่บัญชี</label>
-                                        <input type="text" class="form-control" value="<?= $result['bank_number'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label">ประเภทบัญชีธนาคาร</label>
+                                                <?php
+                                                $bank = Bank::findOne(['id' => $result['bank_id']]);
+                                                ?>
+                                                <input type="text" class="form-control" value="<?= $bank['name'] ?>" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label">เลขที่บัญชี</label>
+                                                <input type="text" class="form-control" value="<?= $result['bank_number'] ?>" disabled>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>สินค้า</label>
                                         <input type="text" class="form-control" value="<?= $result['item_name'] ?>" disabled>
                                     </div>
-                                    <div class="form-group">
-                                        <label>ยอดเงิน</label>
-                                        <input type="text" class="form-control" value="<?= $result['item_balance'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>เวลาโอน</label>
-                                        <input type="text" class="form-control" value="<?= $result['item_date'] ?>" disabled>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>ยอดเงิน</label>
+                                                <input type="text" class="form-control" value="<?= $result['item_balance'] ?>" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>เวลาโอน</label>
+                                                <input type="text" class="form-control" value="<?= $result['item_date'] ?>" disabled>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>หลักฐาน</label>

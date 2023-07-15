@@ -28,3 +28,8 @@ body::-webkit-scrollbar-thumb {
 a {
     text-decoration: none;
 }
+
+input.form-control:disabled,
+textarea.form-control:disabled {
+    background-color: transparent;
+}

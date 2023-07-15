@@ -35,20 +35,16 @@ use App\Models\Bank;
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label>ชื่อเจ้าของกิจการ <span class="text-danger">*</span></label>
+                                                    <label>ชื่อจริงผู้ขาย <span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="id_firstname" required>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label>นามสกุลเจ้าของกิจการ <span class="text-danger">*</span></label>
+                                                    <label>นามสกุลผู้ขาย <span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="id_lastname" required>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>นามสกุลเจ้าของกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_lastname" required>
                                         </div>
                                         <div class="form-group">
                                             <label>เลขบัตรประชาชน <span class="text-danger">*</span></label>
@@ -61,20 +57,51 @@ use App\Models\Bank;
                                                 <input type="file" class="custom-file-input" id="id_image" name="id_image" accept="image/png, image/jpeg" required>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>ประเภทบัญชีธนาคาร <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="bank_id" required>
-                                                <?php
-                                                $bank = Bank::find();
-                                                for ($i = 0; $i < count($bank); $i++) {
-                                                    echo '<option value="' . $bank[$i]['id'] . '">' . $bank[$i]['name'] . '</option>';
-                                                }
-                                                ?>
-                                            </select>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>ประเภทบัญชีธนาคาร <span class="text-danger">*</span></label>
+                                                    <select class="form-control" name="bank_id" required>
+                                                        <?php
+                                                        $bank = Bank::find();
+                                                        for ($i = 0; $i < count($bank); $i++) {
+                                                            echo '<option value="' . $bank[$i]['id'] . '">' . $bank[$i]['name'] . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>เลขที่บัญชี <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="bank_number" required>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>เลขที่บัญชี <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="bank_number" required>
+                                            <label>สินค้า <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="item_name" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>ยอดเงิน <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="item_balance" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>เวลาโอน <span class="text-danger">*</span></label>
+                                                    <input type="datetime-local" class="form-control" name="item_date" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>หลักฐานการฉ้อโกง <span class="text-danger">*</span></label>
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" for="blacklist_image">เลือกไฟล์</label>
+                                                <input type="file" class="custom-file-input" id="blacklist_image" name="blacklist_image[]" multiple accept="image/png, image/jpeg" required>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-body">

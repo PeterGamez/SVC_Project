@@ -20,7 +20,7 @@ $site['cdn'] = ['datatables'];
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">ชื่อกิจการ</th>
-                                    <th scope="col">เจ้าของกิจการ</th>
+                                    <th scope="col">ผู้ขาย</th>
                                     <th scope="col">&nbsp</th>
                                 </tr>
                             </thead>
@@ -41,7 +41,7 @@ $site['cdn'] = ['datatables'];
                                 <tr>
                                     <th>#</th>
                                     <th>ชื่อกิจการ</th>
-                                    <th>เจ้าของกิจการ</th>
+                                    <th>ผู้ขาย</th>
                                     <th>&nbsp</th>
                                 </tr>
                             </tfoot>

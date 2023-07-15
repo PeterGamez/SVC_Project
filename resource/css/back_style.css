@@ -170,14 +170,6 @@ a:focus {
     overflow: hidden !important;
 }
 
-.text-xs {
-    font-size: .7rem;
-}
-
-.text-lg {
-    font-size: 1.2rem;
-}
-
 .text-gray-100 {
     color: #f8f9fc !important;
 }
@@ -977,4 +969,9 @@ footer.sticky-footer {
 footer.sticky-footer .copyright {
     line-height: 1;
     font-size: 0.8rem;
+}
+
+input.form-control:disabled,
+textarea.form-control:disabled {
+    background-color: transparent;
 }
