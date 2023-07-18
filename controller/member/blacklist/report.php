@@ -7,6 +7,8 @@ use App\Models\Blacklist;
 use App\Models\BlacklistImage;
 use Intervention\Image\ImageManagerStatic as Image;
 
+require_once './vendor/intervention/image/src/Intervention/Image/ImageManagerStatic';
+
 if ($_POST['name']) {
     $name = $_POST['name'];
     $reason = $_POST['reason'];
