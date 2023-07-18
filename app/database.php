@@ -184,7 +184,7 @@ class Database extends DataSelect
         return $stmt->insert_id;
     }
 
-    protected static function buildFind(string $sql, array $conditions): ?array
+    protected static function buildFind(string $sql, array $conditions): array
     {
         global $conn;
         $stmt = $conn->prepare($sql);
@@ -268,7 +268,7 @@ class DataSelect
         return $this;
     }
 
-    public function join(string $table, $column1, $operator, $column2, string $type = "INNER"): self
+    public function join(string $table, string $column1, string $operator, string $column2, string $type = "INNER"): self
     {
         $this->jointable[] = " $type JOIN $table ON $column1 $operator $column2";
         return $this;
