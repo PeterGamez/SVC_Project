@@ -42,7 +42,7 @@ class Account
         $emailVerify = EmailVerify::findToken(['token' => $token]);
         if ($emailVerify) {
             if (EmailVerify::verifyEmail(['id' => $emailVerify['id']])) {
-                $user = ModelsAccount::findOne(['email' => $emailVerify['email']]);
+                $user = ModelsAccount::find()->where('email', '=', $emailVerify['email'])->get();
                 if (ModelsAccount::verifyEmail(['id' => $user['id']])) {
                     return true;
                 }

@@ -16,10 +16,10 @@ try {
 mysqli_set_charset($conn, 'utf8');
 date_default_timezone_set("Asia/Bangkok");
 
-class Database
+class Database extends DataSelect
 {
     // Main function
-    public static function create(array $newData)
+    public static function create(array $newData): int
     {
         if (isset($newData['create_at'])) unset($newData['create_at']);
         $newData['create_by'] = $_SESSION['user_id'];
@@ -31,28 +31,28 @@ class Database
         return self::buildCreate($sql, $newData);
     }
 
-    public static function find(array $conditions = [], string $operator = '', int $limit = 0)
+    public static function find(): DataSelect
     {
         $table = self::parseTable();
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildLimitClause($limit);
-        return self::buildFind($sql, $conditions);
+        $instance = new parent($table);
+        return $instance;
     }
 
-    public static function findOne(array $conditions, string $operator = '', int $limit = 0)
+    public static function findOne(array $conditions, string $operator = ''): array
     {
         $table = self::parseTable();
-        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildLimitClause($limit);
+        $sql = "SELECT * FROM $table" . self::buildWhereClause($conditions, $operator);
         return self::buildFindOne($sql, $conditions);
     }
 
-    public static function count(array $conditions = [], string $operator = '', array $group = [])
+    public static function count(array $conditions = [], string $operator = '', array $group = []): int
     {
         $table = self::parseTable();
         $sql = "SELECT COUNT(*) as count FROM $table" . self::buildWhereClause($conditions, $operator) . self::buildGroupClause($group);
         return self::buildFindCount($sql, $conditions);
     }
 
-    public static function update(array $conditions, array $newData)
+    public static function update(array $conditions, array $newData): int
     {
         if (isset($newData['create_at'])) unset($newData['create_at']);
         if (isset($newData['create_by'])) unset($newData['create_by']);
@@ -64,7 +64,7 @@ class Database
         return self::buildUpdate($sql, $conditions, $newData);
     }
 
-    public static function delete(array $conditions)
+    public static function delete(array $conditions): int
     {
         $table = self::parseTable();
         $sql = "DELETE FROM $table" . self::buildWhereClause($conditions);
@@ -174,15 +174,6 @@ class Database
         return " GROUP BY " . implode(", ", $group);
     }
 
-    protected static function buildLimitClause(int $limit): string
-    {
-        if (empty($limit) || $limit <= 0) {
-            return "";
-        }
-
-        return " LIMIT $limit";
-    }
-
     // Build result
     protected static function buildCreate(string $sql, array $conditions): ?int
     {
@@ -252,5 +243,107 @@ class Database
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
         return $affectedRows;
+    }
+}
+
+class DataSelect
+{
+    protected $query;
+    protected $jointable = [];
+    protected $whereConditions = [];
+    protected $whereOperator;
+    protected $bindParams = [];
+    protected $order = [];
+    protected $group = [];
+    protected $limit;
+
+    protected function __construct(string $table)
+    {
+        $this->query = "SELECT * FROM $table";
+    }
+
+    public function select(string ...$fields): self
+    {
+        $this->query = str_replace("*", implode(", ", $fields), $this->query);
+        return $this;
+    }
+
+    public function join(string $table, $column1, $operator, $column2, string $type = "INNER"): self
+    {
+        $this->jointable[] = " $type JOIN $table ON $column1 $operator $column2";
+        return $this;
+    }
+
+    public function where(string $column, string $operator = "=", array|string $value): self
+    {
+        if (is_array($value)) {
+            $placeholders = implode(', ', array_fill(0, count($value), '?'));
+            $this->whereConditions[] = "$column $operator ($placeholders)";
+            $this->bindParams = array_merge($this->bindParams, $value);
+        } else {
+            $this->whereConditions[] = "$column $operator ?";
+            $this->bindParams[] = $value;
+        }
+        return $this;
+    }
+
+    public function operator(string $operator): self
+    {
+        $operator = strtoupper($operator);
+        $this->whereOperator = ($operator === 'OR') ? 'OR' : 'AND';
+        return $this;
+    }
+
+    public function order(string ...$columns): self
+    {
+        $this->order = $columns;
+        return $this;
+    }
+
+    public function group(string ...$columns): self
+    {
+        $this->group = $columns;
+        return $this;
+    }
+
+    public function limit(int $value): self
+    {
+        $this->limit = $value;
+        return $this;
+    }
+
+    private function query(): void
+    {
+        if (!empty($this->jointable)) {
+            $this->query .= implode(' ', $this->jointable);
+        }
+
+        if (!empty($this->whereConditions)) {
+            $this->query .= " WHERE " . implode(' ' . $this->whereOperator . ' ', $this->whereConditions);
+        }
+
+        if (!empty($this->order)) {
+            $this->query .= " ORDER BY " . implode(', ', $this->order);
+        }
+
+        if (!empty($this->group)) {
+            $this->query .= " GROUP BY " . implode(', ', $this->group);
+        }
+
+        if ($this->limit) {
+            $this->query .= " LIMIT " . $this->limit;
+        }
+    }
+
+    public function get(): array
+    {
+        $this->query();
+        return DataBase::buildFind($this->query, $this->bindParams);
+    }
+
+    public function getOne(): ?array
+    {
+        $this->query();
+        return DataBase::buildFindOne($this->query, $this->bindParams);
     }
 }

@@ -8,7 +8,7 @@ class EmailVerify extends Database
 {
     public static $table = 'email_verify';
 
-    public static function create(array $newData)
+    public static function create(array $newData): int
     {
         if (isset($newData['create_at'])) unset($newData['create_at']);
         if (isset($newData['create_by'])) unset($newData['create_by']);
@@ -18,13 +18,6 @@ class EmailVerify extends Database
         $table = self::$table;
         $sql = "INSERT INTO $table" . parent::buildInsertData($newData);
         return parent::buildCreate($sql, $newData);
-    }
-
-    public static function findOne(array $conditions, string $operator = '', int $limit = 0)
-    {
-        $table = self::$table;
-        $sql = "SELECT * FROM $table" . parent::buildWhereClause($conditions, $operator) . parent::buildLimitClause($limit);
-        return parent::buildFindOne($sql, $conditions);
     }
 
     public static function findEmail(array $conditions)
