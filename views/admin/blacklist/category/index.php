@@ -30,7 +30,7 @@ $site['cdn'] = ['datatables'];
                             </thead>
                             <tbody>
                                 <?php
-                                $result = BlacklistCategory::find();
+                                $result = BlacklistCategory::find()->get();
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';

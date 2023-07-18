@@ -1,10 +1,11 @@
 <?php
-require_once './vendor/autoload.php';
 
 use App\Class\Account;
 use App\Class\Alert_Login;
 use App\Models\Account as ModelsAccount;
 use Google\Client as GoogleClient;
+
+require_once './vendor/google/apiclient/src/Google/Client.php';
 
 if (isset($_POST['credential'])) {
     $client = new GoogleClient(['client_id' => config('site.google.id')]);
@@ -15,7 +16,7 @@ if (isset($_POST['credential'])) {
             exit;
         }
 
-        $data = ModelsAccount::findOne(['email' => $payload['email']]);
+        $data = ModelsAccount::find()->where('email', '=', $payload['email'])->getOne();
         if ($data) {
             if ($data['email_verified'] == 0) {
                 if (Account::create_verify_token($data['email']) == true) {

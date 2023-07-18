@@ -54,7 +54,7 @@ use App\Models\Blacklist;
                         }
                     }
 
-                    $approve = Approve::find();
+                    $approve = Approve::find()->get();
                     $whitelist = array_filter($approve, function ($item) {
                         return $item['whitelist'] == 1;
                     });

@@ -3,7 +3,7 @@
 use App\Class\Alert;
 use App\Models\Whitelist;
 
-$result = Whitelist::findOne(['tag' => $request['tag']]);
+$result = Whitelist::find()->where('tag', '=', $request['tag'])->getOne();
 if (!$result) {
     Alert::alert('ไม่พบข้อมูล', 'error', 1500, 'window.location.href = "' . url('blacklist') . '"');
     exit;

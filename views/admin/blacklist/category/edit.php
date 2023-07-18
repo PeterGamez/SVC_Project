@@ -20,7 +20,7 @@ use App\Models\BlacklistCategory;
                                 </div>
                                 <form method="POST" action="<?= url() ?>">
                                     <?php
-                                    $result = BlacklistCategory::findOne(['id' => $request['id']]);
+                                    $approve = BlacklistCategory::find()->where('id', '=', $result['id'])->getOne();
                                     ?>
                                     <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">

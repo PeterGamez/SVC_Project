@@ -24,7 +24,7 @@ $site['bot'] = '';
             </thead>
             <tbody>
                 <?php
-                $result = Whitelist::find();
+                $result = Whitelist::find()->get();
                 for ($i = 0; $i < count($result); $i++) {
                     echo '<tr>';
                     echo '<th scope="row"><a href="' . url('whitelist.' . $result[$i]['tag']) . '">' . $result[$i]['tag'] . '</a></th>';

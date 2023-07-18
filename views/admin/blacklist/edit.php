@@ -24,7 +24,14 @@ $site['cdn'] = ['bs-file'];
                                 <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Blacklist::findOne(['id' => $request['id']]);
+                                        $result = Blacklist::find()
+                                            ->select(
+                                                'blacklist.*',
+                                                'blacklist_category.name as blacklist_category'
+                                            )
+                                            ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
+                                            ->where('id', '=', $request['id'])
+                                            ->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
@@ -70,7 +77,7 @@ $site['cdn'] = ['bs-file'];
                                                     <label>ประเภทบัญชีธนาคาร <span class="text-danger">*</span></label>
                                                     <select class="form-control" name="bank_id" required>
                                                         <?php
-                                                        $bank = Bank::find();
+                                                        $bank = Bank::find()->get();
                                                         for ($i = 0; $i < count($bank); $i++) {
                                                             if ($bank[$i]['id'] == $result['bank_id']) {
                                                                 echo '<option value="' . $bank[$i]['id'] . '" selected>' . $bank[$i]['name'] . '</option>';

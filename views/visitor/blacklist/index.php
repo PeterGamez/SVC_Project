@@ -56,20 +56,20 @@ $site['bot'] = '';
                     </thead>
                     <tbody>
                         <?php
-                        $where = array();
+                        $result = Blacklist::find()->limit(20);
                         if (isset($_GET['bank']) and $_GET['bank'] != '') {
-                            $where['bank_number'] = $_GET['bank'];
+                            $result->where('bank_number', '=', $_GET['bank']);
                         }
                         if (isset($_GET['firstname']) and $_GET['firstname'] != '') {
-                            $where['id_firstname'] = $_GET['firstname'];
+                            $result->where('id_firstname', '=', $_GET['firstname']);
                         }
                         if (isset($_GET['lastname']) and $_GET['lastname'] != '') {
-                            $where['id_lastname'] = $_GET['lastname'];
+                            $result->where('id_lastname', '=', $_GET['lastname']);
                         }
                         if (isset($_GET['idcard']) and $_GET['idcard'] != '') {
-                            $where['id_number'] = $_GET['idcard'];
+                            $result->where('id_number', '=', $_GET['idcard']);
                         }
-                        $result = Blacklist::find($where, '', 20);
+                        $result = $result->get();
                         if (count($result) == 0) {
                             echo '<tr><td colspan="4" class="text-center">ไม่พบข้อมูล</td></tr>';
                         }

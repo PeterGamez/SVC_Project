@@ -19,7 +19,7 @@ if (isset($_POST['user'])) {
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
 
-    $data = Account::findOne(['username' => $user, 'email' => $user], 'OR');
+    $data = Account::find()->where('username', '=', $user)->where('email', '=', $user)->operator('OR')->getOne();
     if ($data) {
         echo Alert_Login::alert('ชื่อผู้ใช้งานหรืออีเมลนี้มีผู้ใช้งานแล้ว', 'warning', 1500, 'history.back()');
     } else {

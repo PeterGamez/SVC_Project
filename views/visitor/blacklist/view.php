@@ -1,11 +1,21 @@
 <?php
 
 use App\Class\Alert;
-use App\Models\Bank;
 use App\Models\Blacklist;
 use App\Models\BlacklistImage;
 
-$result = Blacklist::findOne(['id' => $request['id']]);
+$result = Blacklist::find()
+    ->select(
+        'blacklist.*',
+        'blacklist_category.name as blacklist_category',
+        'bank.name as bank_name',
+    )
+    ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
+    ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+    ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
+    ->where('blacklist.id', '=', $request['id'])
+    ->getOne();
+
 if (!$result) {
     Alert::alert('ไม่พบข้อมูล', 'error', 1500, 'window.location.href = "' . url('blacklist') . '"');
     exit;
@@ -32,9 +42,6 @@ $site['bot'] = '';
                         <a href="<?= url_back() ?>" class="btn btn-close"></a>
                     </div>
                     <div class="modal-body">
-                        <?php
-                        $result = Blacklist::findOne(['id' => $request['id']]);
-                        ?>
                         <div class="mb-3">
                             <label class="form-label">ชื่อกิจการ</label>
                             <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
@@ -69,10 +76,7 @@ $site['bot'] = '';
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">ประเภทบัญชีธนาคาร</label>
-                                    <?php
-                                    $bank = Bank::findOne(['id' => $result['bank_id']]);
-                                    ?>
-                                    <input type="text" class="form-control" value="<?= $bank['name'] ?>" disabled>
+                                    <input type="text" class="form-control" value="<?= $result['bank_name'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="col">
@@ -103,7 +107,7 @@ $site['bot'] = '';
                         <div class="mb-3">
                             <label class="form-label">หลักฐาน</label>
                             <?php
-                            $proof = BlacklistImage::find(['blacklist_id' => $result['id']]);
+                            $proof = BlacklistImage::find()->where('blacklist_id', '=', $result['id'])->get();
                             foreach ($proof as $key => $value) {
                             ?>
                                 <div class="text-center">
