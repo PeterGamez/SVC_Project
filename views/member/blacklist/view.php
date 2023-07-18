@@ -28,12 +28,12 @@ use App\Models\BlacklistImage;
                                             'approve.icon as approve_icon',
                                             'bank.name as bank_name',
                                         )
-                                        ->join('approve', 'blacklist.approve_id', '=', 'approve.id')
-                                        ->where('id', '=', $request['id'])
+                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->where('blacklist.id', '=', $request['id'])
                                         ->getOne();
                                     ?>
                                     <div class="form-group">
-                                        <label>ชื่อกิจการ <span class="text-<?= $approve['color'] ?>"><i class="<?= $approve['icon'] ?>"></i></span></label>
+                                        <label>ชื่อกิจการ <span class="text-<?= $result['approve_color'] ?>"><i class="<?= $result['approve_icon'] ?>"></i></span></label>
                                         <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">

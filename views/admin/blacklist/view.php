@@ -32,9 +32,9 @@ use App\Models\Bank;
                                             'bank.name as bank_name',
                                         )
                                         ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
-                                        ->join('approve', 'blacklist.approve_id', '=', 'approve.id')
-                                        ->join('bank', 'blacklist.bank_id', '=', 'bank.id')
-                                        ->where('id', '=', $request['id'])
+                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
+                                        ->where('blacklist.id', '=', $request['id'])
                                         ->getOne();
                                     ?>
                                     <div class="form-group">
