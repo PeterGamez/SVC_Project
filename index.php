@@ -344,26 +344,6 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
 
     return admin_views('404');
 }
-// API
-else if (str_starts_with($agent_path, '/api')) {
-    header('Access-Control-Allow-Origin: ' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']);
-    header('Access-Control-Allow-Headers: Content-Type');
-    header("Content-Type: application/json; charset=UTF-8");
-    if ($agent_request[2] == 'v1') {
-        if ($agent_request[3] == 'account' and $agent_method == 'GET') {
-            return api('v1.account');
-        } else if ($agent_request[3] == 'bank' and $agent_method == 'GET') {
-            return api('v1.bank');
-        } else if ($agent_request[3] == 'blacklist' and $agent_method == 'GET') {
-            return api('v1.blacklist');
-        } else if ($agent_request[3] == 'whitelist' and $agent_method == 'GET') {
-            return api('v1.whitelist');
-        }
-    } else {
-        return api('400');
-    }
-    return api('404');
-}
 // verify email
 else if (str_starts_with($agent_path, '/verify-email')) {
     return member_controller('login.verify-email');
