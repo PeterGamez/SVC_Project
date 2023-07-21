@@ -1,7 +1,8 @@
 <?php
-require_once './app/autoload.php';
 
-use App\Class;
+use App\Class\Download;
+
+require_once './app/autoload.php';
 
 // Visitor
 if (empty($agent_request[1])) {
@@ -33,7 +34,7 @@ else if ($agent_request[1] == 'contact') {
 else if ($agent_request[1] == 'download') {
     if (empty($agent_request[2])) {
     } else if ($agent_request[2] == 'android') {
-        return Class\Download::transfer('resource/application/android/release.apk', 'IntraCheck.apk');
+        return Download::transfer('resource/application/android/release.apk', 'IntraCheck.apk');
     }
 }
 // Member Panel
