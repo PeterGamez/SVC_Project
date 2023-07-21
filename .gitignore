@@ -1,3 +1,6 @@
+# Editor Settings
+.vscode/
+
 # Config
 config/*.php
 
