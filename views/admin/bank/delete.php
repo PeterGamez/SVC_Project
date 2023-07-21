@@ -21,7 +21,7 @@ use App\Models\Bank;
                                 <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Bank::find()->where('id', '=', $request['id'])->getOne();
+                                        $result = Bank::find($request)->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">

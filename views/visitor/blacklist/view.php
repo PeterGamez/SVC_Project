@@ -13,7 +13,7 @@ $result = Blacklist::find()
     ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
     ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
     ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
-    ->where('blacklist.id', '=', $request['id'])
+    ->where('blacklist.id', $request['id'])
     ->getOne();
 
 if (!$result) {
@@ -107,7 +107,7 @@ $site['bot'] = '';
                         <div class="mb-3">
                             <label class="form-label">หลักฐาน</label>
                             <?php
-                            $proof = BlacklistImage::find()->where('blacklist_id', '=', $result['id'])->get();
+                            $proof = BlacklistImage::find()->where('blacklist_id', $result['id'])->get();
                             foreach ($proof as $key => $value) {
                             ?>
                                 <div class="text-center">

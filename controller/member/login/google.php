@@ -16,7 +16,7 @@ if (isset($_POST['credential'])) {
             exit;
         }
 
-        $data = ModelsAccount::find()->where('email', '=', $payload['email'])->getOne();
+        $data = ModelsAccount::find()->where('email', $payload['email'])->getOne();
         if ($data) {
             if ($data['email_verified'] == 0) {
                 if (Account::create_verify_token($data['email']) == true) {

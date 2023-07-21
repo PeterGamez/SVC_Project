@@ -30,7 +30,7 @@ $site['cdn'] = ['bs-file'];
                                                 'blacklist_category.name as blacklist_category'
                                             )
                                             ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
-                                            ->where('id', '=', $request['id'])
+                                            ->where('blacklist.id', $request['id'])
                                             ->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">

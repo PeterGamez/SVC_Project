@@ -34,7 +34,7 @@ use App\Models\Bank;
                                         ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
                                         ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
                                         ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
-                                        ->where('blacklist.id', '=', $request['id'])
+                                        ->where('blacklist.id', $request['id'])
                                         ->getOne();
                                     ?>
                                     <div class="form-group">
@@ -108,7 +108,7 @@ use App\Models\Bank;
                                     <div class="form-group">
                                         <label>หลักฐาน</label>
                                         <?php
-                                        $proof = BlacklistImage::find()->where('blacklist_id', '=', $result['id'])->get();
+                                        $proof = BlacklistImage::find()->where('blacklist_id', $result['id'])->get();
                                         foreach ($proof as $key => $value) {
                                         ?>
                                             <div class="text-center">

@@ -58,16 +58,16 @@ $site['bot'] = '';
                         <?php
                         $result = Blacklist::find()->limit(20);
                         if (isset($_GET['bank']) and $_GET['bank'] != '') {
-                            $result->where('bank_number', '=', $_GET['bank']);
+                            $result->where('bank_number', $_GET['bank']);
                         }
                         if (isset($_GET['firstname']) and $_GET['firstname'] != '') {
-                            $result->where('id_firstname', '=', $_GET['firstname']);
+                            $result->where('id_firstname', $_GET['firstname']);
                         }
                         if (isset($_GET['lastname']) and $_GET['lastname'] != '') {
-                            $result->where('id_lastname', '=', $_GET['lastname']);
+                            $result->where('id_lastname', $_GET['lastname']);
                         }
                         if (isset($_GET['idcard']) and $_GET['idcard'] != '') {
-                            $result->where('id_number', '=', $_GET['idcard']);
+                            $result->where('id_number', $_GET['idcard']);
                         }
                         $result = $result->get();
                         if (count($result) == 0) {

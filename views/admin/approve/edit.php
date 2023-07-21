@@ -23,7 +23,7 @@ $site['cdn'] = ['bs-file'];
                                 <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Approve::find()->where('id', '=', $request['id'])->getOne();
+                                        $result = Approve::find($request)->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">

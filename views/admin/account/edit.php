@@ -20,7 +20,7 @@ use App\Models\Account;
                                 </div>
                                 <form method="POST" action="<?= url() ?>">
                                     <?php
-                                    $result = Account::find()->where('id', '=', $request['id'])->getOne();
+                                    $result = Account::find($request)->getOne();
                                     ?>
                                     <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">

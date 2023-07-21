@@ -21,7 +21,7 @@ use App\Models\Whitelist;
                                 <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Whitelist::find()->where('account_id', '=', $request['user_id'])->getOne()
+                                        $result = Whitelist::find()->where('account_id', $request['user_id'])->getOne()
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">

@@ -17,7 +17,7 @@ if (isset($_POST['user'])) {
     $user = strtolower($_POST['user']);
     $password = $_POST['password'];
 
-    $data = ModelsAccount::find()->where('username', '=', $user)->where('email', '=', $user)->operator('OR')->getOne();
+    $data = ModelsAccount::find()->where('username', $user)->where('email', $user)->operator('OR')->getOne();
     if ($data) {
         if (!password_verify($password, $data['password'])) {
             echo Alert_Login::pass_mismatch();

@@ -31,10 +31,10 @@ class Database extends DataSelect
         return self::buildCreate($sql, $newData);
     }
 
-    public static function find(): DataSelect
+    public static function find($conditions = null): DataSelect
     {
         $table = self::parseTable();
-        $instance = new parent($table);
+        $instance = new parent($table, $conditions);
         return $instance;
     }
 
@@ -257,9 +257,14 @@ class DataSelect
     protected $group = [];
     protected $limit;
 
-    protected function __construct(string $table)
+    protected function __construct(string $table, array $conditions = null)
     {
         $this->query = "SELECT * FROM $table";
+        if (is_array($conditions)) {
+            foreach ($conditions as $field => $value) {
+                $this->where($field, $value);
+            }
+        }
     }
 
     public function select(string ...$fields): self
@@ -274,11 +279,11 @@ class DataSelect
         return $this;
     }
 
-    public function where(string $column, string $operator = "=", array|string $value): self
+    public function where(string $column, array|string $value, string $operator = "="): self
     {
         if (is_array($value)) {
             $placeholders = implode(', ', array_fill(0, count($value), '?'));
-            $this->whereConditions[] = "$column $operator ($placeholders)";
+            $this->whereConditions[] = "$column IN ($placeholders)";
             $this->bindParams = array_merge($this->bindParams, $value);
         } else {
             $this->whereConditions[] = "$column $operator ?";

@@ -22,7 +22,7 @@ use App\Models\Whitelist;
                                 <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Whitelist::find()->where('id', '=', $request['id'])->getOne();
+                                        $result = Whitelist::find($request)->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
@@ -33,7 +33,7 @@ use App\Models\Whitelist;
                                             <label>สถานะ <span class="text-danger">*</span></label>
                                             <select class="form-control" name="approve_id" required>
                                                 <?php
-                                                $approve = Approve::find()->where('whitelist', '=', 1)->get();
+                                                $approve = Approve::find()->where('whitelist', 1)->get();
                                                 for ($i = 0; $i < count($approve); $i++) {
                                                     echo '<option value="' . $approve[$i]['id'] . '" ' . ($result['approve_id'] == $approve[$i]['id'] ? 'selected' : '') . '>' . $approve[$i]['name'] . '</option>';
                                                 }

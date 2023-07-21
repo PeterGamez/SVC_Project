@@ -9,7 +9,7 @@ if ($_POST['id']) {
     $email = $_POST['email'];
     $role = $_POST['role'];
 
-    $data = Account::find()->where('id', '=', $id)->getOne();
+    $data = Account::find()->where('id', $id)->getOne();
     if (count($data) == 0) {
         echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;

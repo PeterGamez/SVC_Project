@@ -30,7 +30,7 @@ class Account
             $subject = config('site.name') . ': Verify Your Email';
             $body = Mail::verifypage(url('verify-email?token=' . $token));
 
-            Mail::sendMail($email,  $subject, $body);
+            Mail::sendMail($email, $subject, $body);
             return true;
         } else {
             return false;
@@ -42,7 +42,7 @@ class Account
         $emailVerify = EmailVerify::findToken(['token' => $token]);
         if ($emailVerify) {
             if (EmailVerify::verifyEmail(['id' => $emailVerify['id']])) {
-                $user = ModelsAccount::find()->where('email', '=', $emailVerify['email'])->get();
+                $user = ModelsAccount::find()->where('email', $emailVerify['email'])->get();
                 if (ModelsAccount::verifyEmail(['id' => $user['id']])) {
                     return true;
                 }

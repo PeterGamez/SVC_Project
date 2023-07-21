@@ -19,7 +19,7 @@ use App\Models\Account;
                                     <h5 class="modal-title">ตรวจสอบบัญชี</h5>
                                 </div>
                                 <?php
-                                $result = Account::find()->where('id', '=', $request['id'])->getOne();
+                                $result = Account::find($request)->getOne();
                                 ?>
                                 <div class="modal-body">
                                     <div class="form-group">

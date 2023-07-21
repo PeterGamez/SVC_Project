@@ -28,7 +28,7 @@ use App\Models\Whitelist;
                                             'approve.icon as approve_icon'
                                         )
                                         ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
-                                        ->where('whitelist.id', '=', $request['id'])
+                                        ->where('whitelist.id', $request['id'])
                                         ->getOne();
                                     ?>
                                     <div class="form-group">
