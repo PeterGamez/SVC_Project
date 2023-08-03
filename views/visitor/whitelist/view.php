@@ -65,7 +65,6 @@ $site['bot'] = '';
             </div>
         </div>
     </div>
+    <?= visitor_views('layouts/footer') ?>
     <?= resource('cdn/front_foot.php') ?>
 </body>
-
-<?= visitor_views('layouts/footer') ?>

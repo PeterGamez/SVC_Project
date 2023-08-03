@@ -15,7 +15,7 @@ $site['bot'] = '';
     <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
         <div class="row">
-            <div class="col-sm-12 col-md-5 col-lg-4">
+            <div class="col-sm-12 col-md-5 col-lg-4" data-aos="fade-up">
                 <div class="card" style="width: 100%;">
                     <div class="card-header">
                         ค้นหาข้อมูล
@@ -44,7 +44,7 @@ $site['bot'] = '';
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-7 col-lg-8">
+            <div class="col-sm-12 col-md-7 col-lg-8" data-aos="fade-up">
                 <table class="table table-striped table-hover align-middle nowrap" style="width:100%">
                     <thead>
                         <tr>
@@ -95,7 +95,6 @@ $site['bot'] = '';
             </div>
         </div>
     </div>
+    <?= visitor_views('layouts/footer') ?>
     <?= resource('cdn/front_foot.php') ?>
 </body>
-
-<?= visitor_views('layouts/footer') ?>
