@@ -8,10 +8,10 @@ use App\Models\Account as ModelsAccount;
 $cf_turnstile_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 if (isset($_POST['user'])) {
-    // $captcha = App::Captcha($_POST['cf-turnstile-response']);
-    // if ($captcha == false) {
-    //     exit;
-    // }
+    $captcha = App::Captcha($_POST['cf-turnstile-response']);
+    if ($captcha == false) {
+        exit;
+    }
 
     // Login
     $user = strtolower($_POST['user']);
