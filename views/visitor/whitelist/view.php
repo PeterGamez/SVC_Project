@@ -3,7 +3,7 @@
 use App\Class\Alert;
 use App\Models\Whitelist;
 
-$result = Whitelist::findOne(['tag' => $request['tag']]);
+$result = Whitelist::find($request)->getOne();
 if (!$result) {
     Alert::alert('ไม่พบข้อมูล', 'error', 1500, 'window.location.href = "' . url('blacklist') . '"');
     exit;
@@ -65,7 +65,6 @@ $site['bot'] = '';
             </div>
         </div>
     </div>
+    <?= visitor_views('layouts/footer') ?>
     <?= resource('cdn/front_foot.php') ?>
 </body>
-
-<?= visitor_views('layouts/footer') ?>

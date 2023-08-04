@@ -11,9 +11,14 @@ $site['bot'] = '';
 <body>
     <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
-        contact
+        <div class="d-flex justify-content-center">
+            <div class="card border-0" style="width: 70rem;" data-aos="fade-up">
+                <div class="card-body">
+                    <img src="https://cdn.discordapp.com/attachments/1040886801310699561/1134819739525464174/IN_-_4.png" class="d-block w-100" alt="image1">
+                </div>
+            </div>
+        </div>
     </div>
+    <?= visitor_views('layouts/footer') ?>
     <?= resource('cdn/front_foot.php') ?>
 </body>
-
-<?= visitor_views('layouts/footer') ?>

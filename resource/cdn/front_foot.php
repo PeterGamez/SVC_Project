@@ -15,3 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive/2.4.1/dataTables.responsive.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs5/2.4.1/responsive.bootstrap5.min.js"></script>
 <?php } ?>
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<!-- Site style -->
+<script src="<?= resource('js/fontend.min.js', true) ?>"></script>

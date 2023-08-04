@@ -1,8 +1,8 @@
+# Editor Settings
+.vscode/
+
 # Config
 config/*.php
-
-# Cache
-storage/cache/*
 
 # Composer
 composer.lock

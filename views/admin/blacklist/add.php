@@ -65,7 +65,7 @@ $site['cdn'] = ['bs-file'];
                                                     <label>ประเภทบัญชีธนาคาร <span class="text-danger">*</span></label>
                                                     <select class="form-control" name="bank_id" required>
                                                         <?php
-                                                        $bank = Bank::find();
+                                                        $bank = Bank::find()->get();
                                                         for ($i = 0; $i < count($bank); $i++) {
                                                             echo '<option value="' . $bank[$i]['id'] . '">' . $bank[$i]['name'] . '</option>';
                                                         }

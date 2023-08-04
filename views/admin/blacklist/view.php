@@ -23,13 +23,22 @@ use App\Models\Bank;
                                 </div>
                                 <div class="modal-body">
                                     <?php
-                                    $result = Blacklist::findOne(['id' => $request['id']]);
+                                    $result = Blacklist::find()
+                                        ->select(
+                                            'blacklist.*',
+                                            'blacklist_category.name as blacklist_category',
+                                            'approve.color as approve_color',
+                                            'approve.icon as approve_icon',
+                                            'bank.name as bank_name',
+                                        )
+                                        ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
+                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
+                                        ->where('blacklist.id', $request['id'])
+                                        ->getOne();
                                     ?>
                                     <div class="form-group">
-                                        <?php
-                                        $approve = Approve::findOne(['id' => $result['approve_id']]);
-                                        ?>
-                                        <label>ชื่อกิจการ <span class="text-<?= $approve['color'] ?>"><i class="<?= $approve['icon'] ?>"></i></span></label>
+                                        <label>ชื่อกิจการ <span class="text-<?= $result['approve_color'] ?>"><i class="<?= $result['approve_icon'] ?>"></i></span></label>
                                         <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
@@ -68,10 +77,7 @@ use App\Models\Bank;
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label class="form-label">ประเภทบัญชีธนาคาร</label>
-                                                <?php
-                                                $bank = Bank::findOne(['id' => $result['bank_id']]);
-                                                ?>
-                                                <input type="text" class="form-control" value="<?= $bank['name'] ?>" disabled>
+                                                <input type="text" class="form-control" value="<?= $result['bank_name'] ?>" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -102,7 +108,7 @@ use App\Models\Bank;
                                     <div class="form-group">
                                         <label>หลักฐาน</label>
                                         <?php
-                                        $proof = BlacklistImage::find(['blacklist_id' => $result['id']]);
+                                        $proof = BlacklistImage::find()->where('blacklist_id', $result['id'])->get();
                                         foreach ($proof as $key => $value) {
                                         ?>
                                             <div class="text-center">

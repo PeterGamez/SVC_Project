@@ -32,13 +32,19 @@ $site['cdn'] = ['datatables'];
                             </thead>
                             <tbody>
                                 <?php
-                                $result = Blacklist::find();
+                                $result = Blacklist::find()
+                                    ->select(
+                                        'blacklist.*',
+                                        'approve.name as approve_name'
+                                    )
+                                    ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                    ->get();
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
                                     echo '<td>' . $result[$i]['name'] . '</td>';
                                     echo '<td>' . $result[$i]['id_firstname'] . ' ' . $result[$i]['id_lastname'] . '</td>';
-                                    echo '<td>' . $result[$i]['approve'] . '</td>';
+                                    echo '<td>' . $result[$i]['approve_name'] . '</td>';
                                     echo '<td><a href="' . admin_url('blacklist.' . $result[$i]['id']) . '" class="btn btn-sm btn-primary">ตรวจสอบ</a></td>';
                                     echo '</tr>';
                                 }

@@ -26,7 +26,7 @@ $site['cdn'] = ['datatables'];
                             </thead>
                             <tbody>
                                 <?php
-                                $result = Blacklist::find(['create_by' => $_SESSION['user_id']]);
+                                $result = Blacklist::find()->where('create_by', $_SESSION['user_id'])->get();
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';

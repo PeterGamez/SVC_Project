@@ -1,4 +1,5 @@
 <?php
+
 function config($key)
 {
     $configKeys = explode('.', $key);
@@ -68,6 +69,7 @@ function url_back()
 {
     return $_SERVER['HTTP_REFERER'];
 }
+
 function controller($path)
 {
     global $site;
@@ -90,18 +92,6 @@ function member_controller($path)
 {
     global $site;
     return controller('member/' . $path);
-}
-
-function api($path)
-{
-    global $site, $request;
-    $path = str_replace('.', '/', $path);
-    $apiPath = './views/api/' . $path . '.php';
-    if (file_exists($apiPath)) {
-        include $apiPath;
-        return;
-    }
-    return null;
 }
 
 function redirect($path)

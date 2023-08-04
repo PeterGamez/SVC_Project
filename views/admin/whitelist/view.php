@@ -21,13 +21,18 @@ use App\Models\Whitelist;
                                 </div>
                                 <div class="modal-body">
                                     <?php
-                                    $result = Whitelist::findOne(['id' => $request['id']]);
+                                    $result = Whitelist::find()
+                                        ->select(
+                                            'whitelist.*',
+                                            'approve.color as approve_color',
+                                            'approve.icon as approve_icon'
+                                        )
+                                        ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
+                                        ->where('whitelist.id', $request['id'])
+                                        ->getOne();
                                     ?>
                                     <div class="form-group">
-                                        <?php
-                                        $approve = Approve::findOne(['id' => $result['approve_id']]);
-                                        ?>
-                                        <label>ชื่อกิจการ <span class="text-<?= $approve['color'] ?>"><i class="<?= $approve['icon'] ?>"></i></span></label>
+                                        <label>ชื่อกิจการ <span class="text-<?= $result['approve_color'] ?>"><i class="<?= $result['approve_icon'] ?>"></i></span></label>
                                         <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
                                     </div>
                                     <div class="form-group">

@@ -21,7 +21,7 @@ use App\Models\Blacklist;
                                 <form method="POST" action="<?= url() ?>">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Blacklist::findOne(['id' => $request['id']]);
+                                        $result = Blacklist::find($request)->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">

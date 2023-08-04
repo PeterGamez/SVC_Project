@@ -28,7 +28,7 @@ use App\Models\Blacklist;
                             'icon' => 'fa-sharp fa-light fa-users',
                         ], [
                             'title' => "Account (Superadmin, Admin, Staff)",
-                            'count' => Account::count(['role' => ['superadmin',  'admin',  'staff']]),
+                            'count' => Account::count(['role' => ['superadmin', 'admin', 'staff']]),
                             'theme' => 'primary',
                             'icon' => 'fa-sharp fa-light fa-square-terminal',
                         ], [
@@ -54,7 +54,7 @@ use App\Models\Blacklist;
                         }
                     }
 
-                    $approve = Approve::find();
+                    $approve = Approve::find()->get();
                     $whitelist = array_filter($approve, function ($item) {
                         return $item['whitelist'] == 1;
                     });

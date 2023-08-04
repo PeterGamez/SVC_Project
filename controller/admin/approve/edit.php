@@ -11,8 +11,7 @@ if ($_POST['id']) {
     $whitelist = $_POST['whitelist'];
     $blacklist = $_POST['blacklist'];
 
-    $data = Approve::findOne(['id' => $id]);
-    if (count($data) == 0) {
+    if (Approve::count(['id' => $id]) == 0) {
         echo Alert::alerts('ไม่พบสถานะนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
