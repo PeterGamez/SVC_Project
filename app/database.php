@@ -181,7 +181,9 @@ class Database extends DataSelect
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
         $stmt->execute();
-        return $stmt->insert_id;
+        $result = $stmt->insert_id;
+        $stmt->close();
+        return $result;
     }
 
     protected static function buildFind(string $sql, array $conditions): array
