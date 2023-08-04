@@ -2,13 +2,15 @@
 
 namespace App;
 
+use Exception;
+
 try {
     $conn = mysqli_connect(config('database.host'), config('database.user'), config('database.password'), config('database.database'));
     if (!$conn) {
         echo ('Connection failed: ' . mysqli_connect_error());
         die();
     }
-} catch (\Exception $e) {
+} catch (Exception $e) {
     echo ('Exception: database connection failed');
     die();
 }
@@ -75,7 +77,7 @@ class Database extends DataSelect
     private static function parseTable(): string
     {
         if (get_called_class() == 'Database') {
-            throw new \Exception("Database class cannot be used directly");
+            throw new Exception("Database class cannot be used directly");
         }
         $table = null;
         if (isset(get_called_class()::$table)) {

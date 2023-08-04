@@ -225,7 +225,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
                 }
                 // delete
                 else if ($agent_request[5] == 'delete' and $agent_method == 'GET') {
-                    return admin_controller('blacklist.category.delete');
+                    return admin_views('blacklist.category.delete');
                 } else if ($agent_request[5] == 'delete' and $agent_method == 'POST') {
                     return admin_controller('blacklist.category.delete');
                 }
