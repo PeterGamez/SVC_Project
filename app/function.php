@@ -20,7 +20,7 @@ function config($key)
 function resource($key, $url = false)
 {
     global $site, $request;
-    $resourcePath = dirname(__DIR__) . '/resource/' . $key;
+    $resourcePath = dirname(__DIR__) . '/public/resource/' . $key;
     if (file_exists($resourcePath)) {
         if ($url == true) {
             $value = explode('.', $key);
