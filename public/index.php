@@ -3,14 +3,14 @@
 use App\Class\App;
 use App\Class\Download;
 
-require_once './app/autoload.php';
+require_once dirname(__DIR__) . '/app/autoload.php';
 
 // Visitor
-if (empty($agent_request[1]) and App::isPOST()) {
+if (empty($agent_request[1]) and App::isGET()) {
     return visitor_views('index');
 }
 // Whitelist
-else if ($agent_request[1] == 'whitelist' and App::isPOST()) {
+else if ($agent_request[1] == 'whitelist' and App::isGET()) {
     if (isset($agent_request[2])) {
         $request['tag'] = $agent_request[2];
         return visitor_views('whitelist.view');
@@ -19,7 +19,7 @@ else if ($agent_request[1] == 'whitelist' and App::isPOST()) {
     }
 }
 // Blacklist
-else if ($agent_request[1] == 'blacklist' and App::isPOST()) {
+else if ($agent_request[1] == 'blacklist' and App::isGET()) {
     if (isset($agent_request[2])) {
         $request['id'] = $agent_request[2];
         return visitor_views('blacklist.view');
@@ -28,7 +28,7 @@ else if ($agent_request[1] == 'blacklist' and App::isPOST()) {
     }
 }
 // Contact
-else if ($agent_request[1] == 'contact' and App::isPOST()) {
+else if ($agent_request[1] == 'contact' and App::isGET()) {
     return visitor_views('contact');
 }
 // Application

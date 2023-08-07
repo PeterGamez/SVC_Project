@@ -4,7 +4,7 @@ function config($key)
 {
     $configKeys = explode('.', $key);
     $filename = array_shift($configKeys);
-    $config = include('./config/' . $filename . '.php');
+    $config = include(dirname(__DIR__) . '/config/' . $filename . '.php');
 
     foreach ($configKeys as $nestedKey) {
         if (isset($config[$nestedKey])) {
@@ -20,7 +20,7 @@ function config($key)
 function resource($key, $url = false)
 {
     global $site, $request;
-    $resourcePath = './resource/' . $key;
+    $resourcePath = dirname(__DIR__) . '/resource/' . $key;
     if (file_exists($resourcePath)) {
         if ($url == true) {
             $value = explode('.', $key);
@@ -74,7 +74,7 @@ function controller($path)
 {
     global $site;
     $path = str_replace('.', '/', $path);
-    $controllerPath = './controller/' . $path . '.php';
+    $controllerPath = dirname(__DIR__) . '/controller/' . $path . '.php';
     if (file_exists($controllerPath)) {
         include $controllerPath;
         return;
@@ -104,7 +104,7 @@ function views($filename)
 {
     global $site, $request;
     $filename = str_replace('.', '/', $filename);
-    $viewPath = './views/' . $filename . '.php';
+    $viewPath = dirname(__DIR__) . '/views/' . $filename . '.php';
     if (file_exists($viewPath)) {
         include $viewPath;
         return;
