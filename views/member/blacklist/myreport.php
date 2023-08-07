@@ -5,7 +5,7 @@ use App\Models\Blacklist;
 $site['cdn'] = ['datatables'];
 ?>
 
-<?= views('layouts.back_header') ?>
+<?= views('template/back/header') ?>
 
 <body>
     <div id="wrapper">
@@ -48,11 +48,11 @@ $site['cdn'] = ['datatables'];
                         </table>
                     </div>
                 </div>
-                <?= views('layouts.back_footer') ?>
+               <?= views('template/back/footer') ?>
             </div>
         </div>
     </div>
-    <?= resource('cdn/back_foot.php') ?>
+    <?= views('template/back/cdn_footer') ?>
     <script>
         $('#table_myreport').DataTable({
             scrollX: false,

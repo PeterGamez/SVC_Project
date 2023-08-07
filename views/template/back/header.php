@@ -17,5 +17,5 @@
     <link rel="shortcut icon" href="<?= config('site.logo.ico') ?>" type="image/x-icon">
     <link rel="apple-touch-icon" href="<?= config('site.logo.64') ?>">
 
-    <?= resource('cdn/back_head.php') ?>
+    <?= views('template/back/cdn_header') ?>
 </head>

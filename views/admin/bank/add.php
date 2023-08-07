@@ -2,7 +2,7 @@
 $site['cdn'] = ['bs-file'];
 ?>
 
-<?= views('layouts.back_header') ?>
+<?= views('template/back/header') ?>
 
 <body>
     <div id="wrapper">
@@ -43,8 +43,8 @@ $site['cdn'] = ['bs-file'];
                     </div>
                 </div>
             </div>
-            <?= views('layouts.back_footer') ?>
+           <?= views('template/back/footer') ?>
         </div>
     </div>
-    <?= resource('cdn/back_foot.php') ?>
+    <?= views('template/back/cdn_footer') ?>
 </body>

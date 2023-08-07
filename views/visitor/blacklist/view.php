@@ -28,7 +28,7 @@ $site['desc'] = config('site.description');
 $site['bot'] = '';
 ?>
 
-<?= visitor_views('layouts/header') ?>
+<?= views('template/front/header') ?>
 
 <body>
     <?= visitor_views('layouts/navbar') ?>
@@ -122,6 +122,6 @@ $site['bot'] = '';
             </div>
         </div>
     </div>
-    <?= visitor_views('layouts/footer') ?>
-    <?= resource('cdn/front_foot.php') ?>
+    <?= views('template/front/footer') ?>
+    <?= views('template/front/cdn_footer') ?>
 </body>

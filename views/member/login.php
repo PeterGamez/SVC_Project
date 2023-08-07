@@ -1,7 +1,7 @@
 <?php
 $site['cdn'] = ['login'];
 ?>
-<?= views('layouts.back_header') ?>
+<?= views('template/back/header') ?>
 
 <body>
     <div class="container">
@@ -40,5 +40,5 @@ $site['cdn'] = ['login'];
             </div>
         </div>
     </div>
-    <?= views('layouts.back_footer') ?>
+   <?= views('template/back/footer') ?>
 </body>
