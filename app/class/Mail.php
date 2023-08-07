@@ -10,7 +10,7 @@ class Mail
 {
     public static function sendMail(string $email, string $subject, string $body): bool
     {
-        require_once './vendor/autoload/phpmailer/src/PHPMailer.php';
+        require_once './vendor/phpmailer/phpmailer/src/PHPMailer.php';
         // require_once './vendor/phpmailer/phpmailer/src/SMTP.php';
 
         $mail = new PHPMailer(true);
