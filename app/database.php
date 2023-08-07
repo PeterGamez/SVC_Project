@@ -118,6 +118,7 @@ class Database extends DataSelect
             $bindParams[] = $value;
         }
         $stmt->bind_param($types, ...$bindParams);
+        return;
     }
 
     // Build Data
@@ -339,7 +340,7 @@ class DataSelect
             $this->query .= " GROUP BY " . implode(', ', $this->group);
         }
 
-        if ($this->limit) {
+        if (!empty($this->limit)) {
             $this->query .= " LIMIT " . $this->limit;
         }
     }

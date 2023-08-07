@@ -56,10 +56,6 @@ $site['bot'] = '';
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label>เลขบัตรประชาชน</label>
-                            <input type="text" class="form-control" value="<?= $result['id_number'] ?>" disabled>
-                        </div>
                     </div>
                 </div>
             </div>

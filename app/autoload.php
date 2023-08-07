@@ -30,4 +30,3 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
 $agent_url = $_SERVER['REQUEST_URI'];
 $agent_path = parse_url($agent_url, PHP_URL_PATH);
 $agent_request = explode('/', $agent_path);
-$agent_method = $_SERVER['REQUEST_METHOD'];

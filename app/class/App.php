@@ -4,6 +4,16 @@ namespace App\Class;
 
 class App
 {
+    public static function isGET()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'GET';
+    }
+
+    public static function isPOST()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+
     public static function getAgentIP(): array
     {
         $ip = 'Unknown';
