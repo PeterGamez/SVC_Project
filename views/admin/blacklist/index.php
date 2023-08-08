@@ -32,13 +32,24 @@ $site['cdn'] = ['datatables'];
                             </thead>
                             <tbody>
                                 <?php
-                                $result = Blacklist::find()
-                                    ->select(
-                                        'blacklist.*',
-                                        'approve.name as approve_name'
-                                    )
-                                    ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
-                                    ->get();
+                                if (isset($_GET['s'])) {
+                                    $result = Blacklist::find()
+                                        ->select(
+                                            'blacklist.*',
+                                            'approve.name as approve_name'
+                                        )
+                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->where('blacklist.approve_id', $_GET['s'])
+                                        ->get();
+                                } else {
+                                    $result = Blacklist::find()
+                                        ->select(
+                                            'blacklist.*',
+                                            'approve.name as approve_name'
+                                        )
+                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->get();
+                                }
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
@@ -63,7 +74,7 @@ $site['cdn'] = ['datatables'];
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

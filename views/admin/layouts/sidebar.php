@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\Approve;
+?>
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -21,13 +26,38 @@
     <div class="sidebar-heading">
         Whitelist
     </div>
-
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('whitelist') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>รายการไวริส</span>
         </a>
     </li>
+    <?php
+    $whitelist = Approve::find(['whitelist' => 1])->get();
+    if ($whitelist) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_whitelist">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>รายการเพื่มเติม</span>
+            </a>
+            <div id="collapse_whitelist" class="collapse">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <?php
+                    for ($i = 0; $i < count($whitelist); $i++) {
+                    ?>
+                        <a class="collapse-item" href="<?= admin_url('whitelist') . "?s=" . $whitelist[$i]['id'] ?>">
+                            <?= $whitelist[$i]['name'] ?>
+                        </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </li>
+    <?php
+    }
+    ?>
 
     <hr class="sidebar-divider">
 
@@ -41,6 +71,32 @@
             <span>รายการแบล็คลิส</span>
         </a>
     </li>
+    <?php
+    $blacklist = Approve::find(['blacklist' => 1])->get();
+    if ($blacklist) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_blacklist">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>รายการเพื่มเติม</span>
+            </a>
+            <div id="collapse_blacklist" class="collapse">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <?php
+                    for ($i = 0; $i < count($blacklist); $i++) {
+                    ?>
+                        <a class="collapse-item" href="<?= admin_url('blacklist') . "?s=" . $blacklist[$i]['id'] ?>">
+                            <?= $blacklist[$i]['name'] ?>
+                        </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </li>
+    <?php
+    }
+    ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('blacklist.category') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>

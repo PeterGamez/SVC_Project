@@ -32,13 +32,24 @@ $site['cdn'] = ['datatables'];
                             </thead>
                             <tbody>
                                 <?php
-                                $result = Whitelist::find()
-                                    ->select(
-                                        'whitelist.*',
-                                        'approve.name as approve'
-                                    )
-                                    ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
-                                    ->get();
+                                if (isset($_GET['s'])) {
+                                    $result = Whitelist::find()
+                                        ->select(
+                                            'whitelist.*',
+                                            'approve.name as approve'
+                                        )
+                                        ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
+                                        ->where('whitelist.approve_id', $_GET['s'])
+                                        ->get();
+                                } else {
+                                    $result = Whitelist::find()
+                                        ->select(
+                                            'whitelist.*',
+                                            'approve.name as approve'
+                                        )
+                                        ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
+                                        ->get();
+                                }
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';
@@ -63,7 +74,7 @@ $site['cdn'] = ['datatables'];
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>
