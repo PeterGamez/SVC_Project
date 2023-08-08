@@ -6,7 +6,7 @@ $site['cdn'] = ['login'];
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card o-hidden border-0 shadow-lg my-5" style="width:40rem">
+            <div class="card card-40 o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="p-5">
                         <a href="<?= url('/') ?>"><i class="fas fa-arrow-left"></i></a>

@@ -961,6 +961,14 @@ a:focus {
     width: 30rem;
 }
 
+.card-35 {
+    width: 35rem;
+}
+
+.card-40 {
+    width: 40rem;
+}
+
 footer.sticky-footer {
     padding: 2rem 0;
     flex-shrink: 0;
