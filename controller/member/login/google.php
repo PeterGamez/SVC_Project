@@ -5,7 +5,7 @@ use App\Class\Alert_Login;
 use App\Models\Account as ModelsAccount;
 use Google\Client as GoogleClient;
 
-require_once './vendor/autoload.php';
+require_once dirname(__DIR__) . './vendor/autoload.php';
 
 if (isset($_POST['credential'])) {
     $client = new GoogleClient(['client_id' => config('site.google.id')]);
