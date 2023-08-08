@@ -40,7 +40,7 @@ $site['bot'] = '';
                         </div>
                         <div class="mb-3">
                             <label>เว็บไซต์</label>
-                            <input type="text" class="form-control" value="<?= $result['website'] ?>" disabled>
+                            <a href="<?= $result['website'] ?>" class="form-control"><?= $result['website'] ?></a>
                         </div>
                         <div class="row">
                             <div class="col">

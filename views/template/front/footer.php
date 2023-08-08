@@ -5,12 +5,12 @@
             <div class="col-sm-12 col-lg-10">
                 <div class="text-center p-2">
                     <span class="text-dark">
-                        Copyright © 2022-2023 <a class="text-dark" href="<?= url('/') ?>"><?= config('site.name') ?></a>. All rights reserved
+                        Copyright © 2022-2023 <a href="<?= url('/') ?>"><?= config('site.name') ?></a>. All rights reserved
                     </span>
                 </div>
                 <div class="text-center p-2">
                     <span class="text-dark">
-                        <a class="text-dark" href="<?= url('privacy') ?>">Privacy Policy</a> | <a class="text-dark" href="<?= url('tos') ?>">Terms of Service</a>
+                        <a href="<?= url('privacy') ?>">Privacy Policy</a> | <a href="<?= url('tos') ?>">Terms of Service</a>
                     </span>
                 </div>
             </div>
