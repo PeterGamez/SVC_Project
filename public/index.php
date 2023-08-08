@@ -1,5 +1,7 @@
 <?php
 
+define("__ROOT__", dirname(__DIR__));
+
 session_start();
 
 if (empty($_SESSION['id'])) {
@@ -8,4 +10,4 @@ if (empty($_SESSION['id'])) {
     $_SESSION['user_role'] = 'visitor';
 }
 
-require_once dirname(__DIR__) . '/app/autoload.php';
+require_once __ROOT__ . '/app/autoload.php';

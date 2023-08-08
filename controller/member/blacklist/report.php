@@ -7,7 +7,7 @@ use App\Models\Blacklist;
 use App\Models\BlacklistImage;
 use Intervention\Image\ImageManagerStatic as Image;
 
-require_once dirname(__DIR__) . '/vendor/intervention/image/src/Intervention/Image/ImageManagerStatic';
+require_once __ROOT__ . '/vendor/intervention/image/src/Intervention/Image/ImageManagerStatic';
 
 if ($_POST['name']) {
     $name = $_POST['name'];

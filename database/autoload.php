@@ -18,5 +18,5 @@ try {
 mysqli_set_charset($conn, 'utf8');
 date_default_timezone_set("Asia/Bangkok");
 
-require_once dirname(__DIR__) . '/database/DataSelect.php';
-require_once dirname(__DIR__) . '/database/Model.php';
+require_once __ROOT__ . '/database/DataSelect.php';
+require_once __ROOT__ . '/database/Model.php';
