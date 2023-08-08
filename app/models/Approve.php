@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Database;
+use Database\Model;
 
-class Approve extends Database
+class Approve extends Model
 {
     public static $table = 'approve';
 }

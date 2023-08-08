@@ -10,7 +10,7 @@ if (empty($_SESSION['id'])) {
 
 require_once dirname(__DIR__) . '/app/function.php';
 
-require_once dirname(__DIR__) . '/app/database.php';
+require_once dirname(__DIR__) . '/database/autoload.php';
 
 $Models = scandir(dirname(__DIR__) . '/app/models'); // ไฟล์ทั้งหมดในโฟลเดอร์
 foreach ($Models as $key => $value) {

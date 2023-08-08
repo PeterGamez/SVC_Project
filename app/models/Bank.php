@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Database;
+use Database\Model;
 
-class Bank extends Database
+class Bank extends Model
 {
     public static $table = 'bank';
 }

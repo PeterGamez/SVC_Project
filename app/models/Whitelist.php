@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Database;
+use Database\Model;
 
-class Whitelist extends Database
+class Whitelist extends Model
 {
     public static $table = 'whitelist';
 }

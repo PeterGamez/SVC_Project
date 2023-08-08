@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Database;
+use Database\Model;
 
-class BlacklistImage extends Database
+class BlacklistImage extends Model
 {
     public static $table = 'blacklist_image';
 }

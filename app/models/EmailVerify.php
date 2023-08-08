@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Database;
+use Database\Model;
 
-class EmailVerify extends Database
+class EmailVerify extends Model
 {
     public static $table = 'email_verify';
 

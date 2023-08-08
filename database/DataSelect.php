@@ -1,0 +1,110 @@
+<?php
+
+namespace Database;
+
+class DataSelect
+{
+    protected $query;
+    protected $jointable = [];
+    protected $whereConditions = [];
+    protected $whereOperator;
+    protected $bindParams = [];
+    protected $order = [];
+    protected $group = [];
+    protected $limit;
+
+    protected function __construct(string $table, array $conditions = null)
+    {
+        $this->query = "SELECT * FROM $table";
+        if (is_array($conditions)) {
+            foreach ($conditions as $field => $value) {
+                $this->where($field, $value);
+            }
+        }
+    }
+
+    public function select(string ...$fields): self
+    {
+        $this->query = str_replace("*", implode(", ", $fields), $this->query);
+        return $this;
+    }
+
+    public function join(string $table, string $column1, string $operator, string $column2, string $type = "INNER"): self
+    {
+        $this->jointable[] = " $type JOIN $table ON $column1 $operator $column2";
+        return $this;
+    }
+
+    public function where(string $column, array|string $value, string $operator = "="): self
+    {
+        if (is_array($value)) {
+            $placeholders = implode(', ', array_fill(0, count($value), '?'));
+            $this->whereConditions[] = "$column IN ($placeholders)";
+            $this->bindParams = array_merge($this->bindParams, $value);
+        } else {
+            $this->whereConditions[] = "$column $operator ?";
+            $this->bindParams[] = $value;
+        }
+        return $this;
+    }
+
+    public function operator(string $operator): self
+    {
+        $operator = strtoupper($operator);
+        $this->whereOperator = ($operator === 'OR') ? 'OR' : 'AND';
+        return $this;
+    }
+
+    public function order(string ...$columns): self
+    {
+        $this->order = $columns;
+        return $this;
+    }
+
+    public function group(string ...$columns): self
+    {
+        $this->group = $columns;
+        return $this;
+    }
+
+    public function limit(int $value): self
+    {
+        $this->limit = $value;
+        return $this;
+    }
+
+    private function query(): void
+    {
+        if (!empty($this->jointable)) {
+            $this->query .= implode(' ', $this->jointable);
+        }
+
+        if (!empty($this->whereConditions)) {
+            $this->query .= " WHERE " . implode(' ' . $this->whereOperator . ' ', $this->whereConditions);
+        }
+
+        if (!empty($this->order)) {
+            $this->query .= " ORDER BY " . implode(', ', $this->order);
+        }
+
+        if (!empty($this->group)) {
+            $this->query .= " GROUP BY " . implode(', ', $this->group);
+        }
+
+        if (!empty($this->limit)) {
+            $this->query .= " LIMIT " . $this->limit;
+        }
+    }
+
+    public function get(): array
+    {
+        $this->query();
+        return Model::buildFind($this->query, $this->bindParams);
+    }
+
+    public function getOne(): ?array
+    {
+        $this->query();
+        return Model::buildFindOne($this->query, $this->bindParams);
+    }
+}
