@@ -10,8 +10,8 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= url(config('site.admin_panel')) ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link" href="<?= url(config('site.member_panel')) ?>">
+            <i class="fa-sharp fa-solid fa-house"></i>
             <span>หน้าแรก</span>
         </a>
     </li>
@@ -26,7 +26,7 @@
     ?>
         <li class="nav-item">
             <a class="nav-link" href="<?= member_url('whitelist.setting') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fa-sharp fa-solid fa-gear"></i>
                 <span>จัดการกิจการ</span>
             </a>
         </li>
@@ -35,7 +35,7 @@
     ?>
         <li class="nav-item">
             <a class="nav-link" href="<?= member_url('whitelist.register') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fa-solid fa-square-pen"></i>
                 <span>ลงทะเบียนกิจการ</span>
             </a>
         </li>
@@ -47,13 +47,13 @@
     </div>
     <li class="nav-item">
         <a class="nav-link" href="<?= member_url('blacklist.report') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-solid fa-megaphone"></i>
             <span>แจ้งผู้ขายที่ควรระวัง</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= member_url('blacklist.myreport') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-regular fa-list"></i>
             <span>รายการผู้ขายที่คุณแจ้ง</span>
         </a>
     </li>

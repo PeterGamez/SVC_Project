@@ -16,7 +16,7 @@ use App\Models\Approve;
 
     <li class="nav-item">
         <a class="nav-link" href="<?= url(config('site.admin_panel')) ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-sharp fa-solid fa-house"></i>
             <span>หน้าแรก</span>
         </a>
     </li>
@@ -28,7 +28,7 @@ use App\Models\Approve;
     </div>
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('whitelist') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-regular fa-list"></i>
             <span>รายการไวริส</span>
         </a>
     </li>
@@ -38,7 +38,7 @@ use App\Models\Approve;
     ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_whitelist">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fa-solid fa-list-tree"></i>
                 <span>รายการเพื่มเติม</span>
             </a>
             <div id="collapse_whitelist" class="collapse">
@@ -67,7 +67,7 @@ use App\Models\Approve;
 
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('blacklist') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-regular fa-list"></i>
             <span>รายการแบล็คลิส</span>
         </a>
     </li>
@@ -77,7 +77,7 @@ use App\Models\Approve;
     ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_blacklist">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fa-solid fa-list-tree"></i>
                 <span>รายการเพื่มเติม</span>
             </a>
             <div id="collapse_blacklist" class="collapse">
@@ -99,7 +99,7 @@ use App\Models\Approve;
     ?>
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('blacklist.category') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-solid fa-layer-group"></i>
             <span>จัดการหมวดหมู่</span>
         </a>
     </li>
@@ -112,11 +112,11 @@ use App\Models\Approve;
 
     <li class="nav-item">
         <a class="nav-link" href="<?= admin_url('account') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-solid fa-users"></i>
             <span>จัดการบัญชี</span>
         </a>
         <a class="nav-link" href="<?= admin_url('bank') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fa-sharp fa-solid fa-building-columns"></i>
             <span>จัดการธนาคาร</span>
         </a>
     </li>
