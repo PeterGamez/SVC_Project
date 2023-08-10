@@ -31,6 +31,8 @@ if (isset($_POST['user'])) {
             }
             exit;
         }
+        
+        ModelsAccount::update(["id" => $data["id"]], ["last_login" => date('Y-m-d H:i:s')]);
         Account::set_session($data);
 
         echo Alert_Login::succeed();

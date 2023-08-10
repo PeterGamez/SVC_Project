@@ -26,10 +26,13 @@ if (isset($_POST['credential'])) {
                 }
                 exit;
             }
+
             if ($data['avatar'] <> $payload['picture']) {
                 ModelsAccount::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
             }
             $data['avatar'] = $payload['picture'];
+
+            ModelsAccount::update(["id" => $data["id"]], ["last_login" => date('Y-m-d H:i:s')]);
             Account::set_session($data);
 
             echo Alert_Login::succeed();
