@@ -32,7 +32,7 @@ if (isset($_POST['credential'])) {
             }
             $data['avatar'] = $payload['picture'];
 
-            ModelsAccount::update(["id" => $data["id"]], ["last_login" => date('Y-m-d H:i:s')]);
+            ModelsAccount::login($data['id']);
             Account::set_session($data);
 
             echo Alert_Login::succeed();

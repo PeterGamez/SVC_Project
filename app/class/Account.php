@@ -19,7 +19,7 @@ class Account
 
     public static function create_verify_token(string $email)
     {
-        $emailVerify = EmailVerify::findEmail(['email' => $email]);
+        $emailVerify = EmailVerify::findEmail($email);
         if (!$emailVerify) {
             $token = App::RandomText(16);
             EmailVerify::create([
@@ -40,11 +40,11 @@ class Account
 
     public static function verify_email(string $token): bool
     {
-        $emailVerify = EmailVerify::findToken(['token' => $token]);
+        $emailVerify = EmailVerify::findToken($token);
         if ($emailVerify) {
-            if (EmailVerify::verifyEmail(['id' => $emailVerify['id']])) {
+            if (EmailVerify::verifyEmail($emailVerify['id'])) {
                 $user = ModelsAccount::find()->where('email', $emailVerify['email'])->getOne();
-                if (ModelsAccount::verifyEmail(['id' => $user['id']])) {
+                if (ModelsAccount::verifyEmail($user['id'])) {
                     return true;
                 }
             }
