@@ -5,9 +5,13 @@
         <i class="fa fa-bars"></i>
     </button>
 
+    <!-- Go To Member Panel -->
+    <a href="<?= member_url() ?>" class="btn btn-link rounded-circle mr-3">
+        Goto Member Panel
+    </a>
+
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
