@@ -7,6 +7,9 @@ use App\Models\EmailVerify;
 
 class Account
 {
+    /**
+     * @param array $data [id, username, email, &avatar, role]
+     */
     public static function set_session(array $data): void
     {
         $_SESSION['login'] = true;

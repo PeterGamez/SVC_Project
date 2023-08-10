@@ -69,13 +69,10 @@ class Model extends DataSelect
         if (isset(get_called_class()::$table)) {
             $table = get_called_class()::$table;
         } else {
-            $table = get_called_class();
-            // 1. change first character to lowercase
-            $table = lcfirst($table);
-            // 2. change uppercase to underscore
-            $table = preg_replace('/(?<!^)[A-Z]/', '_$0', $table);
-            // 3. change uppercase to lowercase
-            $table = strtolower($table);
+            $table = get_called_class(); // get class name
+            $table = lcfirst($table); // change first character to lowercase
+            $table = preg_replace('/(?<!^)[A-Z]/', '_$0', $table); // add underscore before uppercase
+            $table = strtolower($table); // change uppercase to lowercase
         }
         return $table;
     }
