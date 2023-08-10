@@ -20,3 +20,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <!-- Site style -->
 <link rel="stylesheet" href="<?= resource('css/font_style.min.css', true) ?>">
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= config('site.google.analytics') ?>"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', '<?= config('site.google.analytics') ?>');
+</script>
