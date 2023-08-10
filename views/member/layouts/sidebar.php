@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= url(config('site.admin_panel')) ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= member_url() ?>">
         <div class="sidebar-brand-icon">
             <img class="img-profile rounded-circle" src="<?= config('site.logo.256') ?>" alt="<?= config('site.name') ?> logo" style="width: 50px">
         </div>
@@ -10,7 +10,7 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= url(config('site.member_panel')) ?>">
+        <a class="nav-link" href="<?= member_url() ?>">
             <i class="fa-sharp fa-solid fa-house"></i>
             <span>หน้าแรก</span>
         </a>

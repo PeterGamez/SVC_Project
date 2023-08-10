@@ -42,9 +42,9 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <?php
                             if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
-                                echo '<a class="dropdown-item" href="' . url(config('site.admin_panel')) . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
+                                echo '<a class="dropdown-item" href="' . admin_url() . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
                             } else {
-                                echo '<a class="dropdown-item" href="' . url(config('site.member_panel')) . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
+                                echo '<a class="dropdown-item" href="' . member_url() . '"><i class="fa-solid fa-users-gear"></i> หลังบ้าน</a>';
                             }
                             ?>
                             <a class="dropdown-item" href="<?= member_url('logout') ?>"><i class="fa-solid fa-lock-keyhole-open"></i> ออกจากระบบ</a>

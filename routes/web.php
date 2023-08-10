@@ -144,7 +144,7 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         $_SESSION['callback'] = url($agent_path);
         return redirect(member_url('login'));
     } else if (!in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
-        return redirect(url(config('site.member_panel')));
+        return redirect(member_url());
     }
     // Dashboard
     else if (empty($agent_request[2]) and App::isGET()) {

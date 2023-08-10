@@ -73,9 +73,9 @@ class Alert_Login
             $path = "window.location.href='$_SESSION[callback]'";
             unset($_SESSION['callback']);
         } else if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
-            $path = "window.location.href='" . url(config('site.admin_panel')) . "'";
+            $path = "window.location.href='" . admin_url() . "'";
         } else {
-            $path = "window.location.href='" . url(config('site.member_panel')) . "'";
+            $path = "window.location.href='" . member_url() . "'";
         }
         return Alert_Login::alert('เข้าสู่ระบบสำเร็จ', 'success', 1500, $path);
     }

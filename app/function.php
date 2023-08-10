@@ -55,13 +55,15 @@ function sub_url($sub, $path = '', $ext = '')
     return url($sub . '/' . $path, $ext);
 }
 
-function admin_url($path = '', $ext = '')
+function admin_url($path = null, $ext = '')
 {
+    if (empty($path)) return url(config('site.admin_panel'));
     return url(config('site.admin_panel') . '/' . $path, $ext);
 }
 
-function member_url($path = '', $ext = '')
+function member_url($path = null, $ext = '')
 {
+    if (empty($path)) return url(config('site.member_panel'));
     return url(config('site.member_panel') . '/' . $path, $ext);
 }
 
