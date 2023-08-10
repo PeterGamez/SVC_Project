@@ -20,5 +20,6 @@ class Download
         fclose($handle);
 
         ob_end_flush();
+        return;
     }
 }

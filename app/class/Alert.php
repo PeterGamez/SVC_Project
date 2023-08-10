@@ -4,7 +4,7 @@ namespace App\Class;
 
 class Alert
 {
-    public static function alert(string $title, string $icon, string $timer, string $willClose)
+    public static function alert(string $title, string $icon, string $timer, string $willClose): string
     {
         return "<body><script>
             Swal.fire({
@@ -17,7 +17,7 @@ class Alert
             })
         </script></body>";
     }
-    public static function alerts(string $title, string $icon, string $timer, string $willClose)
+    public static function alerts(string $title, string $icon, string $timer, string $willClose): string
     {
         return "<head>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.20/sweetalert2.all.min.js'></script>

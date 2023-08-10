@@ -4,12 +4,12 @@ namespace App\Class;
 
 class App
 {
-    public static function isGET()
+    public static function isGET(): bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
 
-    public static function isPOST()
+    public static function isPOST(): bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
