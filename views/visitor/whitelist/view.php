@@ -11,8 +11,12 @@ if (!$result) {
 
 $site['social'] = true; // กำหนดให้เว็บไซต์ใช้งาน Open Graph ได้
 $site['cdn'] = array(); // กำหนดให้เว็บไซต์ใช้งาน CDN ที่กำหนดได้
-$site['name'] = config('site.name');
-$site['desc'] = config('site.description');
+$site['name'] = 'Whitelist ' . $result['tag'] . ' - ' . config('site.name');
+if ($result['description']) {
+    $site['desc'] =  $result['description'] . ' | ร้านค้าของ ' . $result['id_firstname'] . ' ' . $result['id_lastname'] . ' | ' . config('site.name');
+} else {
+    $site['desc'] = 'ร้านค้าของ ' . $result['id_firstname'] . ' ' . $result['id_lastname'] . ' | ' . config('site.name');
+}
 $site['bot'] = '';
 ?>
 

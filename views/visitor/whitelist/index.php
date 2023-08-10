@@ -4,7 +4,7 @@ use App\Models\Whitelist;
 
 $site['social'] = true; // กำหนดให้เว็บไซต์ใช้งาน Open Graph ได้
 $site['cdn'] = array('jquery', 'datatables'); // กำหนดให้เว็บไซต์ใช้งาน CDN ที่กำหนดได้
-$site['name'] = config('site.name');
+$site['name'] = 'Whitelist - ' . config('site.name');
 $site['desc'] = config('site.description');
 $site['bot'] = '';
 ?>
@@ -25,7 +25,7 @@ $site['bot'] = '';
                 </thead>
                 <tbody>
                     <?php
-                    $result = Whitelist::find()->get();
+                    $result = Whitelist::find()->where('approve_id', 2)->get();
                     for ($i = 0; $i < count($result); $i++) {
                         echo '<tr>';
                         echo '<th scope="row"><a href="' . url('whitelist.' . $result[$i]['tag']) . '">' . $result[$i]['tag'] . '</a></th>';
