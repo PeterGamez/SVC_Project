@@ -35,7 +35,6 @@ if (isset($_POST['user'])) {
             ]);
             if ($data) {
                 $_SESSION['callback'] = member_url('login');
-                echo Alert_Login::succeed();
                 if (ClassAccount::create_verify_token($email)) {
                     echo Alert_Login::verifyEmail();
                 } else {

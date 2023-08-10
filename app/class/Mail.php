@@ -4,14 +4,14 @@ namespace App\Class;
 
 use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\SMTP;
 
 class Mail
 {
     public static function sendMail(string $email, string $subject, string $body): bool
     {
         require_once __ROOT__ . '/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-        // require_once __ROOT__ . '/vendor/phpmailer/phpmailer/src/SMTP.php';
+        require_once __ROOT__ . '/vendor/phpmailer/phpmailer/src/SMTP.php';
 
         $mail = new PHPMailer(true);
 
