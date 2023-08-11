@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Approve;
 use App\Models\Whitelist;
 ?>
 
@@ -38,6 +37,12 @@ use App\Models\Whitelist;
                                     <div class="form-group">
                                         <label>คำอธิบายกิจการ</label>
                                         <textarea class="form-control" rows="3" disabled><?= $result['description'] ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>รูปป้ายร้าน</label>
+                                        <div class="text-center">
+                                            <img src="<?= $result['banner'] ?>" class="img-fluid" style="width:150px">
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>เว็บไซต์</label>

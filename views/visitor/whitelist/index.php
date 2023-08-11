@@ -26,6 +26,9 @@ $site['bot'] = '';
                 <tbody>
                     <?php
                     $result = Whitelist::find()->where('approve_id', 2)->get();
+                    if (count($result) == 0) {
+                        echo '<tr><td colspan="4" class="text-center">ไม่พบข้อมูล</td></tr>';
+                    }
                     for ($i = 0; $i < count($result); $i++) {
                         echo '<tr>';
                         echo '<th scope="row"><a href="' . url('whitelist.' . $result[$i]['tag']) . '">' . $result[$i]['tag'] . '</a></th>';
