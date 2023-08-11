@@ -33,21 +33,21 @@ use App\Models\Approve;
         </a>
     </li>
     <?php
-    $whitelist = Approve::find(['whitelist' => 1])->get();
-    if ($whitelist) {
+    $whitelist_waiting = Approve::find(['whitelist_waiting' => 1])->get();
+    if ($whitelist_waiting) {
     ?>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_whitelist">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_whitelist_waiting">
                 <i class="fa-solid fa-list-tree"></i>
                 <span>รายการเพื่มเติม</span>
             </a>
-            <div id="collapse_whitelist" class="collapse">
+            <div id="collapse_whitelist_waiting" class="collapse">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <?php
-                    for ($i = 0; $i < count($whitelist); $i++) {
+                    for ($i = 0; $i < count($whitelist_waiting); $i++) {
                     ?>
-                        <a class="collapse-item" href="<?= admin_url('whitelist') . "?s=" . $whitelist[$i]['id'] ?>">
-                            <?= $whitelist[$i]['name'] ?>
+                        <a class="collapse-item" href="<?= admin_url('whitelist.waiting') . "?s=" . $whitelist_waiting[$i]['id'] ?>">
+                            <?= $whitelist_waiting[$i]['name'] ?>
                         </a>
                     <?php
                     }
@@ -97,7 +97,6 @@ use App\Models\Approve;
     <?php
     }
     ?>
-
 
     <?php
     if (in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {

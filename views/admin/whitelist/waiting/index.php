@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Whitelist;
+use App\Models\WhitelistWaiting;
 
 $site['cdn'] = ['datatables'];
 ?>
@@ -14,11 +14,6 @@ $site['cdn'] = ['datatables'];
             <div id="content">
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
-                    <div class="d-flex">
-                        <div class="p-2">
-                            <a href="<?= admin_url('whitelist.add') ?>" class="btn btn-primary">เพิ่มกิจการ</a>
-                        </div>
-                    </div>
                     <div class="table-responsive">
                         <table id="table_whitelist" class="dt-responsive nowrap table table-striped table-hover align-middle" style="width:100%">
                             <thead>
@@ -32,13 +27,24 @@ $site['cdn'] = ['datatables'];
                             </thead>
                             <tbody>
                                 <?php
-                                $result = Whitelist::find()
-                                    ->select(
-                                        'whitelist.*',
-                                        'approve.name as approve'
-                                    )
-                                    ->join('approve', 'id', 'approve_id')
-                                    ->get();
+                                if (isset($_GET['s'])) {
+                                    $result = WhitelistWaiting::find()
+                                        ->select(
+                                            'whitelist_waiting.*',
+                                            'approve.name as approve'
+                                        )
+                                        ->join('approve', 'id', 'approve_id')
+                                        ->where('whitelist_waiting.approve_id', $_GET['s'])
+                                        ->get();
+                                } else {
+                                    $result = WhitelistWaiting::find()
+                                        ->select(
+                                            'whitelist_waiting.*',
+                                            'approve.name as approve'
+                                        )
+                                        ->join('approve', 'id', 'approve_id')
+                                        ->get();
+                                }
                                 for ($i = 0; $i < count($result); $i++) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $result[$i]['id'] . '</th>';

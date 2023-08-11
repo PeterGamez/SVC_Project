@@ -4,6 +4,7 @@ use App\Class\Alert;
 use App\Class\App;
 use App\Class\Discord;
 use App\Models\Whitelist;
+use App\Models\WhitelistWaiting;
 
 if ($_POST['id']) {
     $id = $_POST['id'];
@@ -11,20 +12,22 @@ if ($_POST['id']) {
     $description = $_POST['description'];
     $website = $_POST['website'];
 
-    if (Whitelist::count(['id' => $id]) == 0) {
+    $data = Whitelist::find()->where('id', $id)->getOne();
+    if (!$data) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', 1500, 'window.history.back()');
-        exit;
-    }
-    if (Whitelist::count(['account_id' => $account_id]) > 0) {
-        echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
     }
 
     $newData = [
+        'tag' => $data['tag'],
         'name' => $name,
         'description' => $description,
-        'account_id' => $account_id,
-        'website' => $website
+        'account_id' => $_SESSION['user_id'],
+        'website' => $website,
+        'id_firstname' => $data['id_firstname'],
+        'id_lastname' => $data['id_lastname'],
+        'id_number' => $data['id_number'],
+        'id_image' => $data['image_url']
     ];
 
     if ($_FILES['banner']) {
@@ -34,7 +37,7 @@ if ($_POST['id']) {
         $newData['banner'] = $banner_url;
     }
 
-    Whitelist::update(['id' => $id], $newData);
+    WhitelistWaiting::create($newData);
 
     $path = member_url('whitelist.setting');
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');

@@ -4,6 +4,8 @@ use App\Models\Account;
 use App\Models\Approve;
 use App\Models\Whitelist;
 use App\Models\Blacklist;
+use App\Models\WhitelistWaiting;
+
 ?>
 
 <?= views('template/back/header') ?>
@@ -54,11 +56,9 @@ use App\Models\Blacklist;
                         }
                     }
 
-                    $approve = Approve::find()->get();
-                    $whitelist = array_filter($approve, function ($item) {
-                        return $item['whitelist'] == 1;
-                    });
-
+                    $whitelist = Approve::find()
+                        ->where('whitelist', 1)
+                        ->get();
                     for ($i = 0; $i < count($whitelist); $i++) {
                         if ($i == 0) {
                             echo '<div class="row">';
@@ -69,14 +69,32 @@ use App\Models\Blacklist;
                             'theme' => $whitelist[$i]['color'],
                             'icon' => $whitelist[$i]['icon'],
                         ]);
-                        if ($i == count($approve) - 1) {
+                        if ($i == count($whitelist) - 1) {
                             echo '</div>';
                         }
                     }
 
-                    $blacklist = array_filter($approve, function ($item) {
-                        return $item['blacklist'] == 1;
-                    });
+                    $whitelist_waiting = Approve::find()
+                        ->where('whitelist_waiting', 1)
+                        ->get();
+                    for ($i = 0; $i < count($whitelist_waiting); $i++) {
+                        if ($i == 0) {
+                            echo '<div class="row">';
+                        }
+                        show([
+                            'title' => "Whitelist Waiting (" . $whitelist_waiting[$i]['name'] . ")",
+                            'count' => WhitelistWaiting::count(['approve_id' => $whitelist_waiting[$i]['id']]),
+                            'theme' => $whitelist_waiting[$i]['color'],
+                            'icon' => $whitelist_waiting[$i]['icon'],
+                        ]);
+                        if ($i == count($whitelist_waiting) - 1) {
+                            echo '</div>';
+                        }
+                    }
+
+                    $blacklist = Approve::find()
+                        ->where('blacklist', 1)
+                        ->get();
                     for ($i = 0; $i < count($blacklist); $i++) {
                         if ($i == 0) {
                             echo '<div class="row">';
@@ -85,16 +103,16 @@ use App\Models\Blacklist;
                             'title' => "Blacklist (" . $blacklist[$i]['name'] . ")",
                             'count' => Blacklist::count(['approve_id' => $blacklist[$i]['id']]),
                             'theme' => $blacklist[$i]['color'],
-                            'icon' => $whitelist[$i]['icon'],
+                            'icon' => $blacklist[$i]['icon'],
                         ]);
-                        if ($i == count($approve) - 1) {
+                        if ($i == count($blacklist) - 1) {
                             echo '</div>';
                         }
                     }
                     ?>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

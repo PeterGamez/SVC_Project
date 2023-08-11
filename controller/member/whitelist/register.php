@@ -4,6 +4,7 @@ use App\Class\Alert;
 use App\Class\App;
 use App\Class\Discord;
 use App\Models\Whitelist;
+use App\Models\WhitelistWaiting;
 
 if ($_POST['name']) {
     $name = $_POST['name'];
@@ -26,7 +27,7 @@ if ($_POST['name']) {
     $data = Discord::postImage(config('discord.whitelist.id_image'), ["file" => curl_file_create($id_image['tmp_name'], 'png', App::RandomHex(4) . '.png')]);
     $image_url = $data['attachments'][0]['url'];
 
-    Whitelist::create([
+    WhitelistWaiting::create([
         'name' => $name,
         'description' => $description,
         'account_id' => $_SESSION['user_id'],
