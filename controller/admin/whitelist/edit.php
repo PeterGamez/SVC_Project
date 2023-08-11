@@ -38,14 +38,16 @@ if ($_POST['id']) {
         'id_image' => $id_image
     ];
 
-    if ($_POST['id_image']) {
-        $id_image = $_POST['id_image'];
-        $file = $id_image['tmp_name'];
-        $file_name = $id_image['name'];
-        $file_size = $id_image['size'];
-        $file_type = $id_image['type'];
+    if ($_FILES['banner']) {
+        $banner = $_FILES['banner'];
+        $data = Discord::postImage(config('discord.whitelist.banner'), ["file" => curl_file_create($banner['tmp_name'], 'png', App::RandomHex(4) . '.png')]);
+        $banner_url = $data['attachments'][0]['url'];
+        $newData['banner'] = $banner_url;
+    }
 
-        $data = Discord::postImage(config('discord.whitelist.proof'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
+    if ($_FILES['id_image']) {
+        $id_image = $_FILES['id_image'];
+        $data = Discord::postImage(config('discord.whitelist.id_image'), ["file" => curl_file_create($id_image['tmp_name'], 'png', App::RandomHex(4) . '.png')]);
         $image_url = $data['attachments'][0]['url'];
         $newData['id_image'] = $image_url;
     }
