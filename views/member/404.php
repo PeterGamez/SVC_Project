@@ -5,10 +5,10 @@ $site['cdn'] = ['404'];
 
 <body>
     <div id="wrapper">
-        <?= admin_views('layouts.sidebar') ?>
+        <?= member_views('layouts.sidebar') ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?= admin_views('layouts.topbar') ?>
+                <?= member_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="text-center">
                         <div class="error mx-auto" data-text="404">404</div>
