@@ -42,7 +42,7 @@ use App\Models\Bank;
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>นามสกุลผู้ขาย <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="id_lastname" required> maxlength="50"
+                                                    <input type="text" class="form-control" name="id_lastname" required maxlength="50">
                                                 </div>
                                             </div>
                                         </div>
