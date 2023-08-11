@@ -1,6 +1,7 @@
 <?php
 
 use App\Class\Alert;
+use App\Models\Account;
 use App\Models\Whitelist;
 
 if ($_POST['id']) {
@@ -8,10 +9,13 @@ if ($_POST['id']) {
     $approve_id = $_POST['approve_id'];
     $approve_reason = $_POST['approve_reason'];
 
-    if (Whitelist::count(['id' => $id]) == 0) {
+    $data = Whitelist::find()->where('id', $id)->getOne();
+    if (!$data) {
         echo Alert::alerts('ไม่พบกิจการนี้ในระบบ', 'error', 1500, 'window.history.back()');
         exit;
     }
+
+    Account::update(['id' => $data['account_id']], ['role' => 'seller']);
 
     Whitelist::update(['id' => $id], [
         'approve_id' => $approve_id,
