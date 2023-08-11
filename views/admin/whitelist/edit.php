@@ -43,7 +43,7 @@ $site['cdn'] = ['bs-file'];
                                             <input type="text" class="form-control" name="account_id" value="<?= $result['account_id'] ?>" required pattern="\d+" maxlength="5">
                                         </div>
                                         <div class="form-group">
-                                            <label>แบนเนอร์ <span class="text-danger">*</span></label>
+                                            <label>แบนเนอร์</label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="banner">เลือกไฟล์</label>
                                                 <input type="file" class="custom-file-input" id="banner" name="banner" accept="image/png, image/jpeg">

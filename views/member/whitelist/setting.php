@@ -33,7 +33,7 @@ use App\Models\Whitelist;
                                             <textarea class="form-control" name="description" rows="3" required maxlength="255"><?= $result['description'] ?></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>แบนเนอร์ <span class="text-danger">*</span></label>
+                                            <label>แบนเนอร์</label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="banner">เลือกไฟล์</label>
                                                 <input type="file" class="custom-file-input" id="banner" name="banner" accept="image/png, image/jpeg" required>
