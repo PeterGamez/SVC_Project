@@ -7,12 +7,12 @@ if ($_POST['password1']) {
     $password1 = $_POST['password1'];
     $password2 = $_POST['password2'];
 
-    if ($password1 != $password2) {
+    if ($password1 <> $password2) {
         echo Alert::alerts('รหัสผ่านไม่ตรงกัน', 'error', 1500, 'window.history.back()');
         exit;
     }
 
-    Account::update(['id' => $_SESSION['user_id']], ['password' => password_hash($password, PASSWORD_DEFAULT)]);
+    Account::update(['id' => $_SESSION['user_id']], ['password' => password_hash($password1, PASSWORD_DEFAULT)]);
 
     if (in_array($_SESSION['user_role'], ['superadmin', 'admin', 'staff'])) {
         $path = admin_url();
