@@ -14,7 +14,9 @@ $site['bot'] = '';
         <div class="d-flex justify-content-center">
             <div class="card border-0" style="width: 70rem;" data-aos="fade-up">
                 <div class="card-body">
-                    <img src="https://cdn.discordapp.com/attachments/1040886801310699561/1134819739525464174/IN_-_4.png" class="d-block w-100" alt="image1">
+                    <a href="https://facebook.com/whitelistseller" target="_blank">
+                        <img src="https://cdn.discordapp.com/attachments/1040886801310699561/1134819739525464174/IN_-_4.png" class="d-block w-100" alt="image1">
+                    </a>
                 </div>
             </div>
         </div>
