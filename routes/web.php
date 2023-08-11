@@ -156,6 +156,29 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         if (empty($agent_request[3]) and App::isGET()) {
             return admin_views('whitelist.index');
         }
+        // waiting
+        else if ($agent_request[3] == 'waiting') {
+            // index
+            if (empty($agent_request[4]) and App::isGET()) {
+                return admin_views('whitelist.waiting.index');
+            }
+            // check is number
+            else if (is_numeric($agent_request[4])) {
+                $request['id'] = $agent_request[4];
+                // view
+                if (empty($agent_request[4]) and App::isGET()) {
+                    return admin_views('whitelist.waiting.view');
+                }
+                // approve
+                else if ($agent_request[4] == 'approve') {
+                    if (App::isGET()) {
+                        return admin_views('whitelist.waiting.approve');
+                    } else if (App::isPOST()) {
+                        return admin_controller('whitelist.waiting.approve');
+                    }
+                }
+            }
+        }
         // add
         else if ($agent_request[3] == 'add' and in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {
             if (App::isGET()) {
@@ -185,14 +208,6 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
                     return admin_views('whitelist.delete');
                 } else if (App::isPOST()) {
                     return admin_controller('whitelist.delete');
-                }
-            }
-            // approve
-            else if ($agent_request[4] == 'approve') {
-                if (App::isGET()) {
-                    return admin_views('whitelist.approve');
-                } else if (App::isPOST()) {
-                    return admin_controller('whitelist.approve');
                 }
             }
         }
