@@ -15,7 +15,9 @@ if ($_POST['id']) {
         exit;
     }
 
-    Account::update(['id' => $data['account_id']], ['role' => 'seller']);
+    if ($approve_id == 2) {
+        Account::update(['id' => $data['account_id']], ['role' => 'seller']);
+    }
 
     Whitelist::update(['id' => $id], [
         'approve_id' => $approve_id,
