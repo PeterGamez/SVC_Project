@@ -88,7 +88,7 @@ $site['cdn'] = ['bs-file'];
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>ยอดเงิน <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="item_balance" required pattern="\d+">
+                                                    <input type="text" class="form-control" name="item_balance" required pattern="\d+" maxlength="5">
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -118,7 +118,7 @@ $site['cdn'] = ['bs-file'];
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

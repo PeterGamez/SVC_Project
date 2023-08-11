@@ -42,7 +42,7 @@ use App\Models\Blacklist;
                                         </div>
                                         <div class="form-group">
                                             <label>เหตุผล</label>
-                                            <input type="text" class="form-control" name="approve_reason" value="<?= $result['approve_reason'] ?>" required>
+                                            <input type="text" class="form-control" name="approve_reason" value="<?= $result['approve_reason'] ?>" required maxlength="255">
                                         </div>
                                     </div>
                                     <div class="modal-body">
