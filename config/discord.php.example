@@ -2,21 +2,22 @@
 $discord = [
     "admin" => [
         "register" => "https://discord.com/api/webhooks/1118860600634785803/",
-        "login" => "https://discord.com/api/webhooks/1118860635753676872/"
+        "login" => "https://discord.com/api/webhooks/1118860635753676872/",
     ],
     "whitelist" => [
         "request" => "https://discord.com/api/webhooks/1118860666103676989/",
         "approve" => "https://discord.com/api/webhooks/1118860694788526160/",
-        "id_image" => "https://discord.com/api/webhooks/1118817771841663076/"
+        "id_image" => "https://discord.com/api/webhooks/1118817771841663076/",
+        "banner" => "https://discord.com/api/webhooks/1139395051403882586/",
     ],
     "blacklist" => [
         "request" => "https://discord.com/api/webhooks/1118860727592177734/",
         "approve" => "https://discord.com/api/webhooks/1118860755698192454/",
-        "id_image" => "https://discord.com/api/webhooks/1122438423320477746/"
-        "proof" => "https://discord.com/api/webhooks/1118860783007309915/"
+        "id_image" => "https://discord.com/api/webhooks/1122438423320477746/",
+        "proof" => "https://discord.com/api/webhooks/1118860783007309915/",
     ],
     "bank" => [
-        "image" => "https://discord.com/api/webhooks/1122009607292866600/"
+        "image" => "https://discord.com/api/webhooks/1122009607292866600/",
     ]
 ];
 
