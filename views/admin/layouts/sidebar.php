@@ -97,35 +97,43 @@ use App\Models\Approve;
     <?php
     }
     ?>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= admin_url('blacklist.category') ?>">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>จัดการหมวดหมู่</span>
-        </a>
-    </li>
 
-    <hr class="sidebar-divider">
 
-    <div class="sidebar-heading">
-        Setting
-    </div>
+    <?php
+    if (in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= admin_url('blacklist.category') ?>">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>จัดการหมวดหมู่</span>
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="<?= admin_url('account') ?>">
-            <i class="fa-solid fa-users"></i>
-            <span>จัดการบัญชี</span>
-        </a>
-        <a class="nav-link" href="<?= admin_url('bank') ?>">
-            <i class="fa-sharp fa-solid fa-building-columns"></i>
-            <span>จัดการธนาคาร</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= admin_url('approve') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>จัดการสถานะ</span>
-        </a>
-    </li>
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            Setting
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= admin_url('account') ?>">
+                <i class="fa-solid fa-users"></i>
+                <span>จัดการบัญชี</span>
+            </a>
+            <a class="nav-link" href="<?= admin_url('bank') ?>">
+                <i class="fa-sharp fa-solid fa-building-columns"></i>
+                <span>จัดการธนาคาร</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= admin_url('approve') ?>">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>จัดการสถานะ</span>
+            </a>
+        </li>
+    <?php
+    }
+    ?>
 
     <hr class="sidebar-divider d-none d-md-block">
 
