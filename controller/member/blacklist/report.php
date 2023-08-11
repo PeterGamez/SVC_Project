@@ -44,7 +44,7 @@ if ($_POST['name']) {
     if (isset($_FILES['blacklist_image'])) {
         $blacklist_image = $_FILES['blacklist_image'];
 
-        $watermarkpath = realpath('./resource/images/watermark.png');
+        $watermarkpath = __ROOT__ . '/public/resource/images/watermark.png';
         $watermark = Image::make($watermarkpath);
         $watermark->resize($watermark->width() * 0.5, $watermark->height() * 0.5);
 
