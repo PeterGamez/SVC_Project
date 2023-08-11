@@ -4,6 +4,7 @@ namespace Database;
 
 class DataSelect
 {
+    protected $maintable;
     protected $query;
     protected $jointable = [];
     protected $whereConditions = [];
@@ -15,6 +16,7 @@ class DataSelect
 
     protected function __construct(string $table, array $conditions = null)
     {
+        $this->maintable = $table;
         $this->query = "SELECT * FROM $table";
         if (is_array($conditions)) {
             foreach ($conditions as $field => $value) {
@@ -29,9 +31,9 @@ class DataSelect
         return $this;
     }
 
-    public function join(string $table, string $column1, string $operator, string $column2, string $type = "INNER"): self
+    public function join(string $table, string $column1, string $column2, string $type = "INNER"): self
     {
-        $this->jointable[] = " $type JOIN $table ON $column1 $operator $column2";
+        $this->jointable[] = " $type JOIN $table ON $table.$column1 = " . $this->maintable . ".$column2";
         return $this;
     }
 

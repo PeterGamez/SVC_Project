@@ -27,7 +27,7 @@ use App\Models\Whitelist;
                                             'approve.color as approve_color',
                                             'approve.icon as approve_icon'
                                         )
-                                        ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
+                                        ->join('approve', 'id', 'approve_id')
                                         ->where('whitelist.id', $request['id'])
                                         ->getOne();
                                     ?>
@@ -79,7 +79,7 @@ use App\Models\Whitelist;
                         </div>
                     </div>
                 </div>
-               <?= views('template/back/footer') ?>
+                <?= views('template/back/footer') ?>
             </div>
         </div>
     </div>

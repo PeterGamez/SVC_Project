@@ -28,7 +28,8 @@ use App\Models\BlacklistImage;
                                             'approve.icon as approve_icon',
                                             'bank.name as bank_name',
                                         )
-                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->join('approve', 'id', 'approve_id')
+                                        ->join('bank', 'id', 'bank_id')
                                         ->where('blacklist.id', $request['id'])
                                         ->getOne();
                                     ?>
@@ -112,7 +113,7 @@ use App\Models\BlacklistImage;
                         </div>
                     </div>
                 </div>
-               <?= views('template/back/footer') ?>
+                <?= views('template/back/footer') ?>
             </div>
         </div>
     </div>

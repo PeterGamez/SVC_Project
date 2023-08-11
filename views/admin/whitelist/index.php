@@ -38,7 +38,7 @@ $site['cdn'] = ['datatables'];
                                             'whitelist.*',
                                             'approve.name as approve'
                                         )
-                                        ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
+                                        ->join('approve', 'id', 'approve_id')
                                         ->where('whitelist.approve_id', $_GET['s'])
                                         ->get();
                                 } else {
@@ -47,7 +47,7 @@ $site['cdn'] = ['datatables'];
                                             'whitelist.*',
                                             'approve.name as approve'
                                         )
-                                        ->join('approve', 'approve.id', '=', 'whitelist.approve_id')
+                                        ->join('approve', 'id', 'approve_id')
                                         ->get();
                                 }
                                 for ($i = 0; $i < count($result); $i++) {

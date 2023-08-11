@@ -10,9 +10,9 @@ $result = Blacklist::find()
         'blacklist_category.name as blacklist_category',
         'bank.name as bank_name',
     )
-    ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
-    ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
-    ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
+    ->join('blacklist_category', 'id', 'blacklist_category_id')
+    ->join('approve', 'id', 'approve_id')
+    ->join('bank', 'id', 'bank_id')
     ->where('blacklist.id', $request['id'])
     ->getOne();
 

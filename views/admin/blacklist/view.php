@@ -31,9 +31,9 @@ use App\Models\Bank;
                                             'approve.icon as approve_icon',
                                             'bank.name as bank_name',
                                         )
-                                        ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
-                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
-                                        ->join('bank', 'bank.id', '=', 'blacklist.bank_id')
+                                        ->join('blacklist_category', 'id', 'blacklist_category_id')
+                                        ->join('approve', 'id', 'approve_id')
+                                        ->join('bank', 'id', 'bank_id')
                                         ->where('blacklist.id', $request['id'])
                                         ->getOne();
                                     ?>
@@ -131,7 +131,7 @@ use App\Models\Bank;
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

@@ -38,7 +38,7 @@ $site['cdn'] = ['datatables'];
                                             'blacklist.*',
                                             'approve.name as approve_name'
                                         )
-                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->join('approve', 'id', 'approve_id')
                                         ->where('blacklist.approve_id', $_GET['s'])
                                         ->get();
                                 } else {
@@ -47,7 +47,7 @@ $site['cdn'] = ['datatables'];
                                             'blacklist.*',
                                             'approve.name as approve_name'
                                         )
-                                        ->join('approve', 'approve.id', '=', 'blacklist.approve_id')
+                                        ->join('approve', 'id', 'approve_id')
                                         ->get();
                                 }
                                 for ($i = 0; $i < count($result); $i++) {
