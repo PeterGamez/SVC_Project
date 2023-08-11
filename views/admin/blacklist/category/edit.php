@@ -26,7 +26,7 @@ use App\Models\BlacklistCategory;
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อประเภทกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
+                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required maxlength="50">
                                         </div>
                                     </div>
                                     <div class="modal-body">
