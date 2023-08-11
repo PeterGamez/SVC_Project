@@ -51,6 +51,10 @@ $site['bot'] = '';
                             <textarea class="form-control" rows="3" disabled><?= $result['reason'] ?></textarea>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">ประเภท</label>
+                            <input type="text" class="form-control" value="<?= $result['blacklist_category'] ?>" disabled>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">เว็บไซต์</label>
                             <a href="<?= $result['website'] ?>" class="form-control"><?= $result['website'] ?></a>
                         </div>

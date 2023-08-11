@@ -50,13 +50,18 @@ $site['bot'] = '';
                         <tr>
                             <th scope="col">ชื่อกิจการ</th>
                             <th scope="col">ผู้ขาย</th>
+                            <th scope="col">ประเภท</th>
                             <th scope="col">สินค้า</th>
                             <th scope="col">ยอดเงินการโกง</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $result = Blacklist::find()->where('approve_id', 2)->limit(20);
+                        $result = Blacklist::find()
+                            ->select('blacklist.*, blacklist_category.name as blacklist_category')
+                            ->join('blacklist_category', 'id', 'blacklist_category_id')
+                            ->where('blacklist.approve_id', 2)
+                            ->limit(20);
                         if (isset($_GET['bank']) and $_GET['bank'] != '') {
                             $result->where('bank_number', $_GET['bank']);
                         }
@@ -71,12 +76,13 @@ $site['bot'] = '';
                         }
                         $result = $result->get();
                         if (count($result) == 0) {
-                            echo '<tr><td colspan="4" class="text-center">ไม่พบข้อมูล</td></tr>';
+                            echo '<tr><td colspan="5" class="text-center">ไม่พบข้อมูล</td></tr>';
                         }
                         for ($i = 0; $i < count($result); $i++) {
                             echo '<tr>';
                             echo '<td><a href="' . url('blacklist.' . $result[$i]['id']) . '">' . $result[$i]['name'] . '</a></td>';
                             echo '<td>' . $result[$i]['id_firstname'] . ' ' . $result[$i]['id_lastname'] . '</td>';
+                            echo '<td>' . $result[$i]['blacklist_category'] . '</td>';
                             echo '<td>' . $result[$i]['item_name'] . '</td>';
                             echo '<td>' . $result[$i]['item_balance'] . '</td>';
                             echo '</tr>';
@@ -87,6 +93,7 @@ $site['bot'] = '';
                         <tr>
                             <th>ชื่อกิจการ</th>
                             <th>ผู้ขาย</th>
+                            <th>ประเภท</th>
                             <th>สินค้า</th>
                             <th>ยอดเงินการโกง</th>
                         </tr>
