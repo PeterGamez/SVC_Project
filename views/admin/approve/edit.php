@@ -28,7 +28,7 @@ $site['cdn'] = ['bs-file'];
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
                                             <label>ชื่อสถานะ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
+                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>color <span class="text-danger">*</span></label>
@@ -48,7 +48,7 @@ $site['cdn'] = ['bs-file'];
                                         </div>
                                         <div class="form-group">
                                             <label>icon <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="icon" value="<?= $result['icon'] ?>" required>
+                                            <input type="text" class="form-control" name="icon" value="<?= $result['icon'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>whitelist <span class="text-danger">*</span></label>

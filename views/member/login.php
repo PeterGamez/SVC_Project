@@ -15,10 +15,10 @@ $site['cdn'] = ['login'];
                         </div>
                         <form class="user" method="POST" action="<?= member_url('login.callback.form') ?>">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email">
+                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email" required minlength="5">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                                <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required minlength="8">
                             </div>
                             <div class="form-group d-flex justify-content-center">
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
@@ -40,5 +40,5 @@ $site['cdn'] = ['login'];
             </div>
         </div>
     </div>
-   <?= views('template/back/footer') ?>
+    <?= views('template/back/footer') ?>
 </body>

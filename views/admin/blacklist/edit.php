@@ -29,40 +29,40 @@ $site['cdn'] = ['bs-file'];
                                                 'blacklist.*',
                                                 'blacklist_category.name as blacklist_category'
                                             )
-                                            ->join('blacklist_category', 'blacklist_category.id', '=', 'blacklist.blacklist_category_id')
+                                            ->join('blacklist_category', 'id', 'blacklist_category_id')
                                             ->where('blacklist.id', $request['id'])
                                             ->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
+                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>สาเหตุการขึ้นบัญชีดำ <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="reason" rows="3" required><?= $result['reason'] ?></textarea>
+                                            <textarea class="form-control" name="reason" rows="3" required maxlength="255"><?= $result['reason'] ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="website" value="<?= $result['website'] ?>" required>
+                                            <input type="text" class="form-control" name="website" value="<?= $result['website'] ?>" required maxlength="50">
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>ชื่อจริงผู้ขาย <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="id_firstname" value="<?= $result['id_firstname'] ?>" required>
+                                                    <input type="text" class="form-control" name="id_firstname" value="<?= $result['id_firstname'] ?>" required maxlength="50">
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label>นามสกุลผู้ขายร <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="id_lastname" value="<?= $result['id_lastname'] ?>" required>
+                                                    <label>นามสกุลผู้ขาย <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="id_lastname" value="<?= $result['id_lastname'] ?>" required maxlength="50">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>เลขบัตรประชาชน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_card" value="<?= $result['id_card'] ?>" required>
+                                            <label>เลขบัตรประชาชน</label>
+                                            <input type="text" class="form-control" name="id_card" value="<?= $result['id_card'] ?>" pattern="\d+" maxlength="13">
                                         </div>
                                         <div class="form-group">
                                             <label>รูปบัตรประชาชน</label>
@@ -92,19 +92,19 @@ $site['cdn'] = ['bs-file'];
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>เลขที่บัญชี <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="bank_number" value="<?= $result['bank_number'] ?>" required>
+                                                    <input type="text" class="form-control" name="bank_number" value="<?= $result['bank_number'] ?>" required pattern="\d+" maxlength="15">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>สินค้า <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="item_name" value="<?= $result['item_name'] ?>" required>
+                                            <input type="text" class="form-control" name="item_name" value="<?= $result['item_name'] ?>" required maxlength="50">
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>ยอดเงิน <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="item_balance" value="<?= $result['item_balance'] ?>" required>
+                                                    <input type="text" class="form-control" name="item_balance" value="<?= $result['item_balance'] ?>" required pattern="\d+">
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -127,7 +127,7 @@ $site['cdn'] = ['bs-file'];
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

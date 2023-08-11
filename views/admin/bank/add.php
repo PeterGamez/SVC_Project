@@ -21,7 +21,7 @@ $site['cdn'] = ['bs-file'];
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อธนาคาร <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" required>
+                                            <input type="text" class="form-control" name="name" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>โลโก้ธนาคาร <span class="text-danger">*</span></label>

@@ -24,39 +24,39 @@ $site['cdn'] = ['bs-file'];
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" required>
+                                            <input type="text" class="form-control" name="name" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>สาเหตุการขึ้นบัญชีดำ <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="reason" rows="3" required></textarea>
+                                            <textarea class="form-control" name="reason" rows="3" required maxlength="255"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="website" required>
+                                            <input type="text" class="form-control" name="website" required maxlength="50">
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>ชื่อจริงผู้ขาย <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="id_firstname" required>
+                                                    <input type="text" class="form-control" name="id_firstname" required maxlength="50">
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>นามสกุลผู้ขาย <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="id_lastname" required>
+                                                    <input type="text" class="form-control" name="id_lastname" required maxlength="50">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>เลขบัตรประชาชน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="id_number" required>
+                                            <label>เลขบัตรประชาชน</label>
+                                            <input type="text" class="form-control" name="id_number" pattern="\d+" maxlength="13">
                                         </div>
                                         <div class="form-group">
-                                            <label>รูปบัตรประชาชน <span class="text-danger">*</span></label>
+                                            <label>รูปบัตรประชาชน</label>
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="id_image">เลือกไฟล์</label>
-                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" accept="image/png, image/jpeg" required>
+                                                <input type="file" class="custom-file-input" id="id_image" name="id_image" accept="image/png, image/jpeg">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -76,7 +76,7 @@ $site['cdn'] = ['bs-file'];
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>เลขที่บัญชี <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="bank_number" required>
+                                                    <input type="text" class="form-control" name="bank_number" required pattern="\d+" maxlength="15">
                                                 </div>
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@ $site['cdn'] = ['bs-file'];
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>ยอดเงิน <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="item_balance" required>
+                                                    <input type="text" class="form-control" name="item_balance" required pattern="\d+">
                                                 </div>
                                             </div>
                                             <div class="col">

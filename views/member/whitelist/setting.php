@@ -26,15 +26,22 @@ use App\Models\Whitelist;
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
+                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>คำอธิบายกิจการ <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="description" rows="3" required><?= $result['description'] ?></textarea>
+                                            <textarea class="form-control" name="description" rows="3" required maxlength="255"><?= $result['description'] ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>แบนเนอร์ <span class="text-danger">*</span></label>
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" for="banner">เลือกไฟล์</label>
+                                                <input type="file" class="custom-file-input" id="banner" name="banner" accept="image/png, image/jpeg" required>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="website" value="<?= $result['website'] ?>" required>
+                                            <input type="text" class="form-control" name="website" value="<?= $result['website'] ?>" required maxlength="50">
                                         </div>
                                     </div>
                                     <div class="modal-body">
@@ -48,7 +55,7 @@ use App\Models\Whitelist;
                         </div>
                     </div>
                 </div>
-               <?= views('template/back/footer') ?>
+                <?= views('template/back/footer') ?>
             </div>
         </div>
     </div>

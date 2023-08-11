@@ -30,11 +30,11 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>รหัสผ่านใหม่ <span class="text-danger">*</span></label>
-                                            <input type="password" class="form-control" name="password1" required>
+                                            <input type="password" class="form-control" name="password1" required minlength="8">
                                         </div>
                                         <div class="form-group">
                                             <label>ยืนยันรหัสผ่าน <span class="text-danger">*</span></label>
-                                            <input type="password" class="form-control" name="password2" required>
+                                            <input type="password" class="form-control" name="password2" required minlength="8">
                                         </div>
                                     </div>
                                     <div class="modal-body">

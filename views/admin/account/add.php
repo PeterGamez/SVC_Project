@@ -17,7 +17,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อบัญชี <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="username" required>
+                                            <input type="text" class="form-control" name="username" required minlength="5" maxlength="20">
                                         </div>
                                         <div class="form-group">
                                             <label>อีเมล <span class="text-danger">*</span></label>
@@ -25,7 +25,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>รหัสผ่าน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="password" required>
+                                            <input type="text" class="form-control" name="password" required minlength="8">
                                         </div>
                                         <div class="form-group">
                                             <label>สิทธิ์การใช้งาน <span class="text-danger">*</span></label>

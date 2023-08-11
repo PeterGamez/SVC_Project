@@ -26,11 +26,11 @@ use App\Models\Account;
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อบัญชี <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" required>
+                                            <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" required minlength="5" maxlength="20">
                                         </div>
                                         <div class="form-group">
                                             <label>อีเมล <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="email" value="<?= $result['email'] ?>" required>
+                                            <input type="text" class="form-control" name="email" value="<?= $result['email'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>สิทธิ์การใช้งาน <span class="text-danger">*</span></label>

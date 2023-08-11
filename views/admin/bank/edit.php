@@ -28,7 +28,7 @@ $site['cdn'] = ['bs-file'];
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
                                             <label>ชื่อธนาคาร <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required>
+                                            <input type="text" class="form-control" name="name" value="<?= $result['name'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>โลโก้ธนาคาร</label>

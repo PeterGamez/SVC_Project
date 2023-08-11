@@ -15,16 +15,16 @@ $site['cdn'] = ['login'];
                         </div>
                         <form class="user" method="POST" action="<?= url() ?>">
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username">
+                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username" required minlength="5" maxlength="20">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" name="email" placeholder="Email">
+                                <input type="email" class="form-control form-control-user" name="email" placeholder="Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" name="password1" placeholder="Password">
+                                <input type="password" class="form-control form-control-user" name="password1" placeholder="Password" required minlength="8">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" name="password2" placeholder="Confirm Password">
+                                <input type="password" class="form-control form-control-user" name="password2" placeholder="Confirm Password" required minlength="8">
                             </div>
                             <div class="form-group d-flex justify-content-center">
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
@@ -39,5 +39,5 @@ $site['cdn'] = ['login'];
             </div>
         </div>
     </div>
-   <?= views('template/back/footer') ?>
+    <?= views('template/back/footer') ?>
 </body>

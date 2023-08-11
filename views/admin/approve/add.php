@@ -17,7 +17,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อสถานะ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" required>
+                                            <input type="text" class="form-control" name="name" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>color <span class="text-danger">*</span></label>
@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>icon <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="icon" required>
+                                            <input type="text" class="form-control" name="icon" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>whitelist <span class="text-danger">*</span></label>

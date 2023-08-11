@@ -30,7 +30,7 @@ use App\Models\Account;
                                         </div>
                                         <div class="form-group">
                                             <label>รหัสผ่าน <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="password" required>
+                                            <input type="text" class="form-control" name="password" required minlength="8">
                                         </div>
                                     </div>
                                     <div class="modal-body">
