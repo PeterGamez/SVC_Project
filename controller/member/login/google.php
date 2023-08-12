@@ -1,7 +1,7 @@
 <?php
 
 use App\Class\Account;
-use App\Class\Alert_Login;
+use App\Class\AlertLogin;
 use App\Models\Account as ModelsAccount;
 use Google\Client as GoogleClient;
 
@@ -12,7 +12,7 @@ if (isset($_POST['credential'])) {
     $payload = $client->verifyIdToken($_POST['credential']);
     if ($payload) {
         if ($payload['email_verified'] == false) {
-            echo Alert_Login::alert('กรุณายืนยันอีเมลก่อน', 'warning', 1500, 'history.back()');
+            echo AlertLogin::alert('กรุณายืนยันอีเมลก่อน', 'warning', 1500, 'history.back()');
             exit;
         }
 
@@ -20,9 +20,9 @@ if (isset($_POST['credential'])) {
         if ($data) {
             if ($data['email_verified'] == 0) {
                 if (Account::create_verify_token($data['email']) == true) {
-                    echo Alert_Login::verifyEmail();
+                    echo AlertLogin::verifyEmail();
                 } else {
-                    echo Alert_Login::reverifyEmail();
+                    echo AlertLogin::reverifyEmail();
                 }
                 exit;
             }
@@ -35,12 +35,12 @@ if (isset($_POST['credential'])) {
             ModelsAccount::login($data['id']);
             Account::set_session($data);
 
-            echo Alert_Login::succeed();
+            echo AlertLogin::succeed();
         } else {
-            echo Alert_Login::alert('ไม่พบอีเมลในระบบ', 'warning', 1500, 'history.back()');
+            echo AlertLogin::alert('ไม่พบอีเมลในระบบ', 'warning', 1500, 'history.back()');
         }
     } else {
-        echo Alert_Login::alert('ไม่สามารถยืนยันตัวตนได้', 'error', 1500, 'history.back()');
+        echo AlertLogin::alert('ไม่สามารถยืนยันตัวตนได้', 'error', 1500, 'history.back()');
     }
 } else {
     redirect(member_url('login'));

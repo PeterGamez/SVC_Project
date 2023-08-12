@@ -38,6 +38,6 @@ class Alert
 
     public static function error()
     {
-        return Alert::alert('เกิดข้อผิดพลาด', 'error', 1500, 'history.back()');
+        return self::alert('เกิดข้อผิดพลาด', 'error', 1500, 'history.back()');
     }
 }

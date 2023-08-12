@@ -85,7 +85,7 @@ class App
     public static function Captcha(string $captcha): bool
     {
         if (!$captcha) {
-            echo Alert_Login::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
+            echo AlertLogin::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
             return false;
         }
         $ip = App::getAgentIP();
@@ -98,9 +98,9 @@ class App
 
         if ($result['success'] == false) {
             if ($result['error-codes'][0] == 'missing-input-secret' || $result['error-codes'][0] == 'invalid-input-response') {
-                echo Alert_Login::contact();
+                echo AlertLogin::contact();
             } else {
-                echo Alert_Login::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
+                echo AlertLogin::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
             }
             return false;
         }
