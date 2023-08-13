@@ -62,7 +62,7 @@ $site['cdn'] = ['bs-file'];
                                         </div>
                                         <div class="form-group">
                                             <label>เลขบัตรประชาชน</label>
-                                            <input type="text" class="form-control" name="id_number" pattern="\d+" maxlength="13">
+                                            <input type="text" class="form-control" name="id_number" pattern="\d+" minlength="13" maxlength="13">
                                         </div>
                                         <div class="form-group">
                                             <label>รูปบัตรประชาชน</label>
@@ -88,7 +88,7 @@ $site['cdn'] = ['bs-file'];
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>เลขที่บัญชี <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="bank_number" required pattern="\d+" maxlength="12">
+                                                    <input type="text" class="form-control" name="bank_number" required pattern="\d+" minlength="10" maxlength="12">
                                                 </div>
                                             </div>
                                         </div>
