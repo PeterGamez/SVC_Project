@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 10, 2023 at 04:11 PM
+-- Generation Time: Aug 13, 2023 at 02:37 PM
 -- Server version: 10.3.39-MariaDB-0+deb10u1-log
 -- PHP Version: 8.2.8
 
@@ -48,9 +48,9 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `username`, `email`, `email_verified`, `email_verified_at`, `password`, `avatar`, `role`, `last_login`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
-(1, 'peter', 'chanakan.kea@gmail.com', '1', '2023-07-11 16:32:36', '$2y$10$y1iXCH2fJoKJ8SQrYi0WaOnA898DfYLcyBZGiZRq4aK85v.Vhw8u2', 'https://lh3.googleusercontent.com/a/AAcHTtfHhDm_aeVln-N4e6sIFduGI21Zlg5gNh8TzSjCXILjdg=s96-c', 'superadmin', '2023-08-10 11:55:49', '2023-06-08 14:14:25', 1, '2023-08-10 11:55:49', 1),
+(1, 'peter', 'chanakan.kea@gmail.com', '1', '2023-07-11 16:32:36', '$2y$10$y1iXCH2fJoKJ8SQrYi0WaOnA898DfYLcyBZGiZRq4aK85v.Vhw8u2', 'https://lh3.googleusercontent.com/a/AAcHTtfHhDm_aeVln-N4e6sIFduGI21Zlg5gNh8TzSjCXILjdg=s96-c', 'superadmin', '2023-08-13 13:46:25', '2023-06-08 14:14:25', 1, '2023-08-10 11:55:49', 1),
 (2, 'mhai', 'j.baem.sjw@gmail.com', '0', NULL, '$2y$10$y1iXCH2fJoKJ8SQrYi0WaOnA898DfYLcyBZGiZRq4aK85v.Vhw8u2', 'https://lh3.googleusercontent.com/a/AAcHTtdJuVDzWSgwZTxVtdA2JEOJD2lUlVlJ6r2GevU9=s96-c', 'superadmin', NULL, '2023-06-08 20:03:15', 1, '2023-06-08 20:03:15', 1),
-(3, 'sense', '0873323066z@gmail.com', '1', '2023-08-10 11:41:09', '$2y$10$y1iXCH2fJoKJ8SQrYi0WaOnA898DfYLcyBZGiZRq4aK85v.Vhw8u2', 'https://lh3.googleusercontent.com/a/AAcHTtcY0ZwPcczdKmgOD0tmRh5_eCM7v4O1tP6bKEAsODYkKW4=s96-c', 'admin', NULL, '2023-06-09 13:56:43', 1, '2023-08-10 11:41:09', 3),
+(3, 'sense', '0873323066z@gmail.com', '1', '2023-08-10 11:41:09', '$2y$10$yyR4CnYDhpkK1NqCVGrgfeefG6lq9Blnl5.nJEWX6/CgjFzgu6c52', 'https://lh3.googleusercontent.com/a/AAcHTtcY0ZwPcczdKmgOD0tmRh5_eCM7v4O1tP6bKEAsODYkKW4=s96-c', 'staff', '2023-08-11 13:47:52', '2023-06-09 13:56:43', 1, '2023-08-11 11:46:54', 1),
 (4, 'splinter', 'punkubon2549@gmail.com', '0', NULL, '$2y$10$UkQ6ILeaHP3KzWGqC7CP5uVsw2KpT9vLNHtRyBXE1LRUxhF23uwsS', NULL, 'seller', NULL, '2023-08-03 15:32:59', 1, '2023-08-03 15:32:59', 1),
 (5, 'mre', '64301060028@technicrayong.ac.th', '0', NULL, '$2y$10$DYtZer0FmVXOpUZYI9QJgOKc2ol1x2JL3ZJX7piVaC.OTLA/lJuZq', NULL, 'seller', NULL, '2023-08-03 15:32:59', 1, '2023-08-03 15:32:59', 1),
 (6, 'xcer', 'nanthida625@gmail.com', '0', NULL, '$2y$10$/C.ZCmG8h9jTG93Rp6IhReb8I6qcwJetcTy1Z2HC4uUQ.Dgo0Lhta', NULL, 'seller', NULL, '2023-08-03 15:33:00', 1, '2023-08-03 15:33:00', 1),
@@ -106,7 +106,8 @@ INSERT INTO `account` (`id`, `username`, `email`, `email_verified`, `email_verif
 (56, 'dubleake', 'aekoop20@gmail.com', '0', NULL, '$2y$10$qahwHR7dKQGtQdSFPG.wAe8LA/irfBmbXiS4aWwF7irMeRmweYZL6', NULL, 'seller', NULL, '2023-08-03 15:33:06', 1, '2023-08-03 15:33:06', 1),
 (57, '2000x', 'phumin_olo2543@hotmail.com', '0', NULL, '$2y$10$8iIiVqAcgGZ4omx9xKnvR.dQxZaD74I/0JgtyRi4HosVc94No1cvW', NULL, 'seller', NULL, '2023-08-03 15:33:06', 1, '2023-08-03 15:33:06', 1),
 (58, 'jnmumi', 'ployploy182549@gmail.com', '0', NULL, '$2y$10$k99L5ROYnnfMiq5TjC4.tuFlmJeLgg77.RELoYyuIgRLe37e5UTe6', NULL, 'seller', NULL, '2023-08-03 15:33:06', 1, '2023-08-03 15:33:06', 1),
-(59, 'cookiieznoir', 'f0ndantz@gmail.com', '0', NULL, '$2y$10$VBx9jQYuNAbD91FZobbSn.pu3j8nsedLORTuyVXrPW.iK2Cs.zFrW', NULL, 'seller', NULL, '2023-08-03 15:33:06', 1, '2023-08-03 15:33:06', 1);
+(59, 'cookiieznoir', 'f0ndantz@gmail.com', '0', NULL, '$2y$10$VBx9jQYuNAbD91FZobbSn.pu3j8nsedLORTuyVXrPW.iK2Cs.zFrW', NULL, 'seller', NULL, '2023-08-03 15:33:06', 1, '2023-08-03 15:33:06', 1),
+(60, '64209010006', '64209010006@svc.ac.th', '1', '2023-08-13 13:41:59', '$2y$10$yCxYWLyut9g5qOURjyCuceczXfpzLMGLUMzikqKgtfWm1.BRyuuiC', 'https://lh3.googleusercontent.com/a/AAcHTtcitdFDecFkUISgmRRyfHUmMHlgbf1MeEEKgROxe2tm5v8=s96-c', 'seller', '2023-08-13 13:42:05', '2023-08-13 13:41:33', 60, '2023-08-13 14:02:27', 1);
 
 -- --------------------------------------------------------
 
@@ -120,6 +121,7 @@ CREATE TABLE `approve` (
   `color` varchar(10) NOT NULL DEFAULT 'secondary',
   `icon` varchar(50) NOT NULL,
   `whitelist` enum('0','1') NOT NULL DEFAULT '0',
+  `whitelist_waiting` enum('0','1') DEFAULT '0',
   `blacklist` enum('0','1') NOT NULL DEFAULT '0',
   `create_at` datetime NOT NULL,
   `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
@@ -131,12 +133,12 @@ CREATE TABLE `approve` (
 -- Dumping data for table `approve`
 --
 
-INSERT INTO `approve` (`id`, `name`, `color`, `icon`, `whitelist`, `blacklist`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
-(1, 'รอตรวจสอบ', 'secondary', 'fa-sharp fa-light fa-circle-v', '1', '1', '2023-06-29 14:04:37', 1, '2023-06-29 14:04:37', 1),
-(2, 'อนุมัติ', 'success', 'fa-sharp fa-light fa-circle-check', '1', '1', '2023-06-29 14:04:51', 1, '2023-06-29 14:04:51', 1),
-(3, 'ไม่อนุมัติ', 'danger', 'fa-sharp fa-light fa-circle-xmark', '1', '1', '2023-06-29 14:05:03', 1, '2023-06-29 14:05:03', 1),
-(4, 'คำขอแก้ไข', 'warning', 'fa-sharp fa-light fa-circle-plus', '1', '0', '2023-06-29 14:05:13', 1, '2023-06-29 14:05:13', 1),
-(5, 'คำขอลบ', 'warning', 'fa-sharp fa-light fa-circle-exclamation', '1', '0', '2023-06-29 14:05:25', 1, '2023-06-29 14:05:25', 1);
+INSERT INTO `approve` (`id`, `name`, `color`, `icon`, `whitelist`, `whitelist_waiting`, `blacklist`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
+(1, 'รอตรวจสอบ', 'secondary', 'fa-sharp fa-light fa-circle-v', '0', '1', '1', '2023-06-29 14:04:37', 1, '2023-06-29 14:04:37', 1),
+(2, 'อนุมัติ', 'success', 'fa-sharp fa-light fa-circle-check', '1', '0', '1', '2023-06-29 14:04:51', 1, '2023-06-29 14:04:51', 1),
+(3, 'ไม่อนุมัติ', 'danger', 'fa-sharp fa-light fa-circle-xmark', '0', '1', '1', '2023-06-29 14:05:03', 1, '2023-06-29 14:05:03', 1),
+(4, 'คำขอแก้ไข', 'warning', 'fa-sharp fa-light fa-circle-plus', '0', '1', '0', '2023-06-29 14:05:13', 1, '2023-06-29 14:05:13', 1),
+(5, 'คำขอลบ', 'warning', 'fa-sharp fa-light fa-circle-exclamation', '0', '1', '0', '2023-06-29 14:05:25', 1, '2023-06-29 14:05:25', 1);
 
 -- --------------------------------------------------------
 
@@ -187,9 +189,9 @@ CREATE TABLE `blacklist` (
   `id_number` varchar(13) NOT NULL,
   `id_image` varchar(110) NOT NULL,
   `bank_id` int(5) NOT NULL,
-  `bank_number` varchar(15) NOT NULL,
+  `bank_number` varchar(12) NOT NULL,
   `item_name` varchar(50) NOT NULL,
-  `item_balance` int(2) NOT NULL,
+  `item_balance` int(5) NOT NULL,
   `item_date` datetime NOT NULL,
   `approve_id` tinyint(1) NOT NULL DEFAULT 1,
   `approve_reason` varchar(255) DEFAULT NULL,
@@ -288,62 +290,89 @@ CREATE TABLE `whitelist` (
 --
 
 INSERT INTO `whitelist` (`id`, `tag`, `name`, `description`, `account_id`, `banner`, `website`, `id_firstname`, `id_lastname`, `id_number`, `id_image`, `approve_id`, `approve_reason`, `approve_at`, `approve_by`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
-(1, 'WLS00001', 'SPLINTER STORE', ' ร้านขายสินค้า ดิสคอร์ด . แอพดูหนังฯ . เติมเกม บริดีงานไว ปลอดภัยแน่นอน', 3, 'https://share.creavite.co/FYWuGbpNLlpQU7AX.png', 'https://discord.gg/C348XCkZrb', 'ปุณณสิน', 'วงศ์ขวัญ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(2, 'WLS00002', 'MRE Nitro', '-', 4, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/Zdy63mt4sY', 'จิรายุส', 'พลรักษา', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(3, 'WLS00003', 'Xcershop', '-', 5, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10008465851143', 'มัลลิกา', 'ขันทอง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(4, 'WLS00004', 'JomJun Shop', 'รับเติมไนโตรราคาถูก/รับทำระบบ Discord/ขายไก่ตัน/และฯลฯอีกมากมาย', 6, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/SEkqJEShNx', 'ปานิตา', 'ทูลนอก', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(5, 'WLS00005', 'กอจอ ขายตามใจ', '-', 7, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/BXND9qBYBu', 'ปณชัย', 'ข่วงทิพย์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(6, 'WLS00006', 'DekKhaiNitro', 'รับทุกอย่างที่เกี่ยวกับ Discord และ Five M (ร้านสารพัดรับจ้าง)', 8, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/dekkhainitro', 'ธีร์ดนัย', 'รัตนกุลชัยนันท์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(7, 'WLS00007', 'kwanxi.shop', 'รับเติมไนโตรบูสต์ / ขายลิ้งค์ไนโตรต่างๆ / ขายแอคติดไนโตรราคาถูก - ꒱', 9, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/swcFJ6gy2f', 'มิ่งขวัญ', 'ชูชีพ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(8, 'WLS00008', 'Sunkiss shop', '-', 10, 'https://media.discordapp.net/attachments/1049172355521458258/1052967551275122698/90_20221031103523.png?width=7', 'https://discord.gg/sunkisshop', 'ธนัชชา', 'นิลประดิษฐ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(9, 'WLS00009', 'NoiKwaSarm', '-', 11, 'https://cdn.discordapp.com/attachments/1051906584869085195/1053230771961348136/LogoNKS.png', 'https://discord.gg/qBXBB8DMh4', 'พชรพล', 'แก้วศรีขำ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(10, 'WLS00010', 'MAY Nitro', '-', 12, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/dBTSEtTX', 'วรัญญา', 'สินสมุทรไทย', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(11, 'WLS00011', 'SORA shop', 'รับทำเซิร์ฟเวอร์ เซ็ตระบบ ขายไนโตร และอื่นๆ', 13, 'https://cdn.discordapp.com/attachments/958047331629035610/1052972264062197800/SORA_SHOP_logo2.png', 'https://discord.gg/EUy3FD4P5K', 'นาซีฟะห์', 'บูละ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
-(12, 'WLS00012', 'คูเป๋อขายไนโตร', 'รับเติมไนโตร /เติม PointValorant /App-premium', 14, 'https://media.discordapp.net/attachments/1041716260699910248/1052976012973047808/100_20221031104452.png?width=', 'https://discord.gg/kUs492hJxd ', 'ศิรวิทย์', 'ดิสโร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(13, 'WLS00013', 'XiaoTimp Nitro', 'รับเติมไนโตร ????\r\nไนโตเบสิค/บูสต์\r\n\r\n', 15, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/H4fVG47gJa', 'ชินวัตร', 'สองธานี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(14, 'WLS00014', 'eslhv shop', '-', 16, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10008835341748', 'พลอยชนก', 'สามเกษร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(15, 'WLS00015', 'withoutyou', 'รับกด Nitro ราคาถูก เริ่มต้นที่ 100 บาท เท่านั้น /  รับกด App Premium ทุกประเภท เช่น Faceapp', 17, 'https://cdn.discordapp.com/attachments/1051631538502107158/1058412811115577475/discord_by_tnorf.png', 'https://discord.gg/V8ukGrTyEm', 'ณัฏฐ์ธรัช', 'สิทธิอุดมพร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(16, 'WLS00016', 'MAMOMI SHOP', 'ร้านนี้ตึง บอกแค่นี้', 18, 'https://media.discordapp.net/attachments/1008674309667037255/1053290835778732093/MAMOMI_SHOP.png?width=605&hei', 'https://discord.gg/mamomishop', 'ภัทรจักร', 'เงาะเศษ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(17, 'WLS00017', 'shiro', '-', 19, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/hoyoung100446', 'นริศรา', 'อุดมสมัคร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(18, 'WLS00018', 'BABYBIGBOY SHOP', 'รับทําดิสคอร์ด,ระบบต่างๆ\r\nดิสสําเร็จราคาเริ่มต้น 30-100฿\r\nสามารถกดคําว่า \" ไปยังร้าน \" เพื่อทักไปสั่งทําได้เลยครับ อัพเดทลิ้งค์แล้วครับ', 20, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/imma.nattawat', 'ณัฐวัฒร', 'ระวีวงษ์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
-(19, 'WLS00019', 'Better_Mart', 'ขายNitro Discord/Roblox ตัวไก่ตัน และอื่นๆ สนใจกดเข้าดิสมาได้เลอออ\nมีแจกของในดิสด้วยน้าาา จุ้ฟๆ\nแอดมิน ชิทโพสต์mark ใจดี? ต่อรองราคาได้ หายใจไม่ออกก', 21, 'https://media.discordapp.net/attachments/681647576902139979/1056607937260441656/bettermart.png', 'https://discord.gg/6qP45FHUVX', 'เนติณัฎฐ์ ', 'ณรงคะชวนะ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
-(20, 'WLS00020', 'HALA SERVICE', '-', 22, 'https://cdn.discordapp.com/icons/921284305936859217/758d93101a4ade26fd9e4d55e2154217.webp', 'https://discord.gg/tyHZR8QCPP', 'กนกพิชญ์', 'อาจภักดี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
-(21, 'WLS00021', 'DekChimon', '-', 23, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/RYBWwVQFQ9', 'จิตรลดา ', 'กรดมณี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
-(22, 'WLS00022', 'RTXSHOPIE', 'ร้านขายไอดีเกมมายคราฟ Toy Code และอื่นๆ อีกมากมาย', 24, 'https://www.bng-img.ml/images/20221208rTmhxv772a4RDK2c11Ot.png', 'https://rtxshopie.com/', 'ธนกฤต', 'แย้มสุข', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
-(23, 'WLS00023', 'Chakeaw Nitro Shop', 'รับเติม Nitro discord แลกเงิน เติมเกมต่างๆ', 25, 'https://cdn.discordapp.com/attachments/998521940287434792/1056458446372876288/66_20221225132524.png', 'https://discord.gg/gNcn7wSryg', 'ปิ่นปินัทธ์', 'มาลัย', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
-(24, 'WLS00024', '1001 SHOP', 'บริการเติมNitro , เติมเกม และจำหน่ายแอพพรีเมียม ฯลฯ', 26, 'https://cdn.discordapp.com/attachments/1059074784396316695/1061492389648277626/20230108_105041_0000.png', 'https://discord.gg/cm7A8PGRwD', 'รุ่งวิกรัย', 'ลายทอง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(25, 'WLS00025', 'คุณนอนรับเติมไนโตรนะ', 'รับเติมไนโตรราคาถูก\r\nบริการรับแลกเงิน วอ&ธนาคาร\r\n', 27, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/8na9uyJZbk', 'อัญชลี', 'แซ่จง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(26, 'WLS00026', 'Horizon Store', 'บริการขายสินค้า ต่างๆ  เช่น Nitro ID-PASS / NItro GIFT / VCC / Token อายุ 1 เดือน / แอพดูหนัง / Nitro 1M & 3M\r\nปลอดภัยรวดเร็วไม่มีการ Refund', 28, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/HwXc2sbH3B', 'ธนาคิม', 'แซ่ฉั่ว', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(27, 'WLS00027', 'Brain Shop', '⚒️ รับทำระบบเซิฟเวอร์ดิสคอร์ด พร้อมใช้งาน ✏️ ออกแบบสื่อ โลโก้ แบนเนอร์', 29, 'https://media.discordapp.net/attachments/1053309685987557466/1053309845874421760/4AB38483-8E47-41CC-8368-72D66', 'https://discord.gg/fj9GVvJuxW', 'ตะวัน', 'นามโสม', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(28, 'WLS00028', 'HighSchool Shop', 'บริการรับเติม Nitro ( BACIS / BOOSTER )  ราคาถูก ', 30, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://www.facebook.com/bangflim007', 'ณัฐวุฒิ', 'หนูแก้ว', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(29, 'WLS00029', '♡ T3R STORE ヅ', '– รับเติม Discord Nitro\r\n– ขายแอพพรีเมี่ยมต่างๆ\r\n– รับปลดแบน FiveM\r\n– รับแก้ปัญหาเกี่ยวกับคอมพิวเตอร์ทุกอาการ', 31, 'https://media.discordapp.net/attachments/1045786656558567565/1070706908022972547/Y2KT3R.png?', 'https://discord.gg/JcePbSSRjA', 'ปัณณธร', 'ยุทธกิจกำจร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(30, 'WLS00030', 'Momay Shop', 'บริการรับเติมไนโตร ราคาถูก!\r\nเริ่มต้น 59 บาท', 32, 'https://i.imgur.com/wx1RWJy.jpg', 'https://discord.gg/momayshop', 'ศุภณัฐ', 'ชาวโพสะ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
-(31, 'WLS00031', 'THUNDER BOOST', 'จำหน่ายผลิตภัณฑ์เกี่ยวกับ Discord\r\n- เติม Nitro\r\n- ส่ง Nitro Gift\r\n- บริการเม็ดบูสต์เซิฟเวอร์\r\nบริการประทับใจยิ่งกว่าญาติสนิท การันตีด้วยความรักที่มอบให้ทุกคนนนน~', 33, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/thunderboost', 'ชาตรี', 'ฐิตานุวงศ์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(32, 'WLS00032', 'HongHongShop', 'บริการกดเกมพาสทุกแมพ [Roblox]\r\nบริการไก่ตัน BloxFruit\r\nรับเติมเกมออนไลน์', 34, 'https://cdn.discordapp.com/attachments/1026802803823362090/1071708033819885608/page.png', 'https://www.facebook.com/profile.php?id=1000893629', 'กังหัน', 'แสงอรุณ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(33, 'WLS00033', 'KALAMANG STORE', '-', 35, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/rySv58WBJs', 'ฟ้าคุ้ม', 'นวลขจี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(34, 'WLS00034', 'boost 88!', 'รับเติม Nitro ราคาถูกที่สุด ปลอดภัย รวดเร็ว ♥ \r\nสามารถเติมสะสมหลายเดือนได้!\r\n', 36, 'https://media.discordapp.net/attachments/702436540587966545/1080058018558922772/Neon_Pink_and_Cyan_Futuristic_', 'https://discord.gg/ESEdEwMWYv', 'อริศรา', 'อุราชื่น', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(35, 'WLS00035', 'Killua NITRO•₊˚', 'ขาย Nitro เริ่มต้น 59 บาท / ขายยูทูปพรีเมี่ยมเเค่ 65 บาท / และแอะดูหนังอื่นๆ', 37, 'https://cdn.discordapp.com/attachments/1061128130431029258/1079969136744083476/26_20230106172345.png', 'https://discord.gg/ePArPQjX4F', 'อนุชา', 'จำปาทอง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(36, 'WLS00036', 'Rykershop', 'รับเติมไนโตรดิสคอร์ดราคาน่ารัก ปลอดภัย เติมไวคั้บ', 38, 'https://cdn.discordapp.com/attachments/1084335345711206421/1114777035248775238/1079_20230505085727.png', 'https://discord.gg/KEWGWuxPMK', 'ณพัชร', 'จิรกิตติชญานนท์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(37, 'WLS00037', 'Pangko Nitro', 'ร้านขายสินค้าและบริการ Nitro ต่างๆ', 39, 'https://cdn.discordapp.com/attachments/955786936474300416/1091710339936161902/533ebd036a2c179b.png', 'https://discord.gg/687AXSthnt', 'สุประดิษฐ์', 'ตาวงค์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
-(38, 'WLS00038', 'Rob Shop', '[#] รับเติมไนโตร\r\n[#] บูสต์เซิร์ฟเวอร์\r\n[#] ไนโตรลิ้งค์\r\n[#] SRC ต่างๆ\r\n[#] แบนเนอร์ / โปรไฟล์\r\n[#] ระบบดิสต่างๆ\r\n// พร้อมบริการ 24hr', 40, 'https://cdn.discordapp.com/attachments/1062631159688871936/1092102354058350723/33_20230212171657_1.png', 'https://discord.gg/n2YV89WksM', 'จักรพันธ์', 'บุตรพรม', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
-(39, 'WLS00039', 'Geevee Shop', '-', 41, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10002417034797', 'เทวฤทธ์', 'บุญแพง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
-(40, 'WLS00040', 'PANDORA SHOP', '-', 42, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/JEQ56W7v', 'กานน', 'ปลื้มจิตต์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
-(41, 'WLS00041', 'JAOMIN SHOP', '• รับทำดิส เริ่มต้นที่ 50 บาท\r\n• รับเซ็ตบอท เริ่มต้นที่ 5 บาท\r\n• รับทำโลโก้ เริ่มต้นที่ 10 บาท\r\n• รับดูเเลระบบ อาทิตย์ล่ะ 69บาท\r\n• ขายดิสสำเร็จรูป เริ่มต้นที่ 20 บาท', 43, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/Pb9yMwhs8N', 'ศรันย์พงษ์', 'มาสังข์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
-(42, 'WLS00042', 'LAVA SHOP', '-', 44, 'https://media.discordapp.net/attachments/1016929996301942828/1093810160553693215/26696610_148633269190033_1099', 'https://discord.gg/e4YhJ8mb4n ', 'ไพโรจน์', 'โยวะ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
-(43, 'WLS00043', 'CHILL VIBES, ONLY', '-', 45, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/chillvibesonly', 'กฤตพร', 'ศิริอุดมเดชกุล', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
-(44, 'WLS00044', 'picha nitro', '-', 46, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/4TEjaZEf', 'พิชญาภา', 'ดิเรกโชค', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(45, 'WLS00045', 'HAPPYPLUEMSTORE', 'ขาย Discord Nitro ราคาถูก!', 47, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/ucXSZ8zs8y', 'ณภัค', 'เมฆหมอก', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(46, 'WLS00046', 'StellaLou', '-', 48, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/stellalou', 'นัทธมน', 'ทองคำอ้น', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(47, 'WLS00047', 'Skyallstore', '-', 49, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/pskpk.ball', 'ภาสกร', 'พวงแก้ว', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(48, 'WLS00048', 'WhiteFuyu', '-', 50, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/whitefuyu', 'เงินแสน', 'ไชยศรีสังข์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(49, 'WLS00049', 'SARXN.X SHOP', '-', 51, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/sarxnx', 'ชลสิทธิ์', 'รอดภัยลี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(50, 'WLS00050', 'LUNA STORE', '-', 52, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/CHYytTZwwC', 'ณัชชา', 'เทพบริรักษ์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(51, 'WLS00051', 'MuSuBshop', '-', 53, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10008332096756', 'กิตติธาร', 'คำดี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(52, 'WLS00052', 'B2J SHOP', '– รับเติม Discord Nitro \r\n– ขายแอพพรีเมี่ยมต่างๆ ', 54, 'https://media.discordapp.net/attachments/1099965520167587902/1112276908105801848/452.png?width=683&height=683', 'https://discord.gg/TeMahaBU9H', 'กฤษฎา', 'ดาวศิริโรจน์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(53, 'WLS00053', 'Dubleake Store', '-', 55, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/cusFeqkVUq', 'เจริญทรัพย์', 'หนูสงค์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
-(54, 'WLS00054', '୧˚2000X SHOP ˚ ✦', 'ร้านเติมไนโตรเเละรับเติมเกม', 56, 'https://media.discordapp.net/attachments/1102208796035653703/1115639162272493598/22.jpg', 'https://discord.gg/3cd45E7wpg', 'ภูมินทร์', 'วงษ์ขุลี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:21', 1, '2023-08-03 15:37:21', 1),
-(55, 'WLS00055', 'JNmumi', '-', 57, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/mdBk228R65', 'ปภัสสร', 'ตาบุดดา', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:21', 1, '2023-08-03 15:37:21', 1),
-(56, 'WLS00056', 'คุกกี้เติมเกม', '-', 58, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/cktermgame', 'อรวรรณ', 'มารุ่งเรือง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:21', 1, '2023-08-03 15:37:21', 1);
+(1, 'WLS00001', 'SPLINTER STORE', ' ร้านขายสินค้า ดิสคอร์ด . แอพดูหนังฯ . เติมเกม บริดีงานไว ปลอดภัยแน่นอน', 4, 'https://share.creavite.co/FYWuGbpNLlpQU7AX.png', 'https://discord.gg/C348XCkZrb', 'ปุณณสิน', 'วงศ์ขวัญ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(2, 'WLS00002', 'MRE Nitro', '-', 5, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/Zdy63mt4sY', 'จิรายุส', 'พลรักษา', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(3, 'WLS00003', 'Xcershop', '-', 6, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10008465851143', 'มัลลิกา', 'ขันทอง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(4, 'WLS00004', 'JomJun Shop', 'รับเติมไนโตรราคาถูก/รับทำระบบ Discord/ขายไก่ตัน/และฯลฯอีกมากมาย', 7, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/SEkqJEShNx', 'ปานิตา', 'ทูลนอก', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(5, 'WLS00005', 'กอจอ ขายตามใจ', '-', 8, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/BXND9qBYBu', 'ปณชัย', 'ข่วงทิพย์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(6, 'WLS00006', 'DekKhaiNitro', 'รับทุกอย่างที่เกี่ยวกับ Discord และ Five M (ร้านสารพัดรับจ้าง)', 9, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/dekkhainitro', 'ธีร์ดนัย', 'รัตนกุลชัยนันท์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(7, 'WLS00007', 'kwanxi.shop', 'รับเติมไนโตรบูสต์ / ขายลิ้งค์ไนโตรต่างๆ / ขายแอคติดไนโตรราคาถูก - ꒱', 10, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/swcFJ6gy2f', 'มิ่งขวัญ', 'ชูชีพ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(8, 'WLS00008', 'Sunkiss shop', '-', 11, 'https://media.discordapp.net/attachments/1049172355521458258/1052967551275122698/90_20221031103523.png?width=7', 'https://discord.gg/sunkisshop', 'ธนัชชา', 'นิลประดิษฐ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(9, 'WLS00009', 'NoiKwaSarm', '-', 12, 'https://cdn.discordapp.com/attachments/1051906584869085195/1053230771961348136/LogoNKS.png', 'https://discord.gg/qBXBB8DMh4', 'พชรพล', 'แก้วศรีขำ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(10, 'WLS00010', 'MAY Nitro', '-', 13, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/dBTSEtTX', 'วรัญญา', 'สินสมุทรไทย', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(11, 'WLS00011', 'SORA shop', 'รับทำเซิร์ฟเวอร์ เซ็ตระบบ ขายไนโตร และอื่นๆ', 14, 'https://cdn.discordapp.com/attachments/958047331629035610/1052972264062197800/SORA_SHOP_logo2.png', 'https://discord.gg/EUy3FD4P5K', 'นาซีฟะห์', 'บูละ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:14', 1, '2023-08-03 15:37:14', 1),
+(12, 'WLS00012', 'คูเป๋อขายไนโตร', 'รับเติมไนโตร /เติม PointValorant /App-premium', 15, 'https://media.discordapp.net/attachments/1041716260699910248/1052976012973047808/100_20221031104452.png?width=', 'https://discord.gg/kUs492hJxd ', 'ศิรวิทย์', 'ดิสโร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(13, 'WLS00013', 'XiaoTimp Nitro', 'รับเติมไนโตร ????\r\nไนโตเบสิค/บูสต์\r\n\r\n', 16, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/H4fVG47gJa', 'ชินวัตร', 'สองธานี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(14, 'WLS00014', 'eslhv shop', '-', 17, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10008835341748', 'พลอยชนก', 'สามเกษร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(15, 'WLS00015', 'withoutyou', 'รับกด Nitro ราคาถูก เริ่มต้นที่ 100 บาท เท่านั้น /  รับกด App Premium ทุกประเภท เช่น Faceapp', 18, 'https://cdn.discordapp.com/attachments/1051631538502107158/1058412811115577475/discord_by_tnorf.png', 'https://discord.gg/V8ukGrTyEm', 'ณัฏฐ์ธรัช', 'สิทธิอุดมพร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(16, 'WLS00016', 'MAMOMI SHOP', 'ร้านนี้ตึง บอกแค่นี้', 19, 'https://media.discordapp.net/attachments/1008674309667037255/1053290835778732093/MAMOMI_SHOP.png?width=605&hei', 'https://discord.gg/mamomishop', 'ภัทรจักร', 'เงาะเศษ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(17, 'WLS00017', 'shiro', '-', 20, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/hoyoung100446', 'นริศรา', 'อุดมสมัคร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(18, 'WLS00018', 'BABYBIGBOY SHOP', 'รับทําดิสคอร์ด,ระบบต่างๆ\r\nดิสสําเร็จราคาเริ่มต้น 30-100฿\r\nสามารถกดคําว่า \" ไปยังร้าน \" เพื่อทักไปสั่งทําได้เลยครับ อัพเดทลิ้งค์แล้วครับ', 21, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/imma.nattawat', 'ณัฐวัฒร', 'ระวีวงษ์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:15', 1, '2023-08-03 15:37:15', 1),
+(19, 'WLS00019', 'Better_Mart', 'ขายNitro Discord/Roblox ตัวไก่ตัน และอื่นๆ สนใจกดเข้าดิสมาได้เลอออ\nมีแจกของในดิสด้วยน้าาา จุ้ฟๆ\nแอดมิน ชิทโพสต์mark ใจดี? ต่อรองราคาได้ หายใจไม่ออกก', 22, 'https://media.discordapp.net/attachments/681647576902139979/1056607937260441656/bettermart.png', 'https://discord.gg/6qP45FHUVX', 'เนติณัฎฐ์ ', 'ณรงคะชวนะ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
+(20, 'WLS00020', 'HALA SERVICE', '-', 23, 'https://cdn.discordapp.com/icons/921284305936859217/758d93101a4ade26fd9e4d55e2154217.webp', 'https://discord.gg/tyHZR8QCPP', 'กนกพิชญ์', 'อาจภักดี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
+(21, 'WLS00021', 'DekChimon', '-', 24, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/RYBWwVQFQ9', 'จิตรลดา ', 'กรดมณี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
+(22, 'WLS00022', 'RTXSHOPIE', 'ร้านขายไอดีเกมมายคราฟ Toy Code และอื่นๆ อีกมากมาย', 25, 'https://www.bng-img.ml/images/20221208rTmhxv772a4RDK2c11Ot.png', 'https://rtxshopie.com/', 'ธนกฤต', 'แย้มสุข', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
+(23, 'WLS00023', 'Chakeaw Nitro Shop', 'รับเติม Nitro discord แลกเงิน เติมเกมต่างๆ', 26, 'https://cdn.discordapp.com/attachments/998521940287434792/1056458446372876288/66_20221225132524.png', 'https://discord.gg/gNcn7wSryg', 'ปิ่นปินัทธ์', 'มาลัย', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:16', 1, '2023-08-03 15:37:16', 1),
+(24, 'WLS00024', '1001 SHOP', 'บริการเติมNitro , เติมเกม และจำหน่ายแอพพรีเมียม ฯลฯ', 27, 'https://cdn.discordapp.com/attachments/1059074784396316695/1061492389648277626/20230108_105041_0000.png', 'https://discord.gg/cm7A8PGRwD', 'รุ่งวิกรัย', 'ลายทอง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(25, 'WLS00025', 'คุณนอนรับเติมไนโตรนะ', 'รับเติมไนโตรราคาถูก\r\nบริการรับแลกเงิน วอ&ธนาคาร\r\n', 28, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/8na9uyJZbk', 'อัญชลี', 'แซ่จง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(26, 'WLS00026', 'Horizon Store', 'บริการขายสินค้า ต่างๆ  เช่น Nitro ID-PASS / NItro GIFT / VCC / Token อายุ 1 เดือน / แอพดูหนัง / Nitro 1M & 3M\r\nปลอดภัยรวดเร็วไม่มีการ Refund', 29, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/HwXc2sbH3B', 'ธนาคิม', 'แซ่ฉั่ว', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(27, 'WLS00027', 'Brain Shop', '⚒️ รับทำระบบเซิฟเวอร์ดิสคอร์ด พร้อมใช้งาน ✏️ ออกแบบสื่อ โลโก้ แบนเนอร์', 30, 'https://media.discordapp.net/attachments/1053309685987557466/1053309845874421760/4AB38483-8E47-41CC-8368-72D66', 'https://discord.gg/fj9GVvJuxW', 'ตะวัน', 'นามโสม', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(28, 'WLS00028', 'HighSchool Shop', 'บริการรับเติม Nitro ( BACIS / BOOSTER )  ราคาถูก ', 31, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://www.facebook.com/bangflim007', 'ณัฐวุฒิ', 'หนูแก้ว', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(29, 'WLS00029', '♡ T3R STORE ヅ', '– รับเติม Discord Nitro\r\n– ขายแอพพรีเมี่ยมต่างๆ\r\n– รับปลดแบน FiveM\r\n– รับแก้ปัญหาเกี่ยวกับคอมพิวเตอร์ทุกอาการ', 32, 'https://media.discordapp.net/attachments/1045786656558567565/1070706908022972547/Y2KT3R.png?', 'https://discord.gg/JcePbSSRjA', 'ปัณณธร', 'ยุทธกิจกำจร', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(30, 'WLS00030', 'Momay Shop', 'บริการรับเติมไนโตร ราคาถูก!\r\nเริ่มต้น 59 บาท', 33, 'https://i.imgur.com/wx1RWJy.jpg', 'https://discord.gg/momayshop', 'ศุภณัฐ', 'ชาวโพสะ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:17', 1, '2023-08-03 15:37:17', 1),
+(31, 'WLS00031', 'THUNDER BOOST', 'จำหน่ายผลิตภัณฑ์เกี่ยวกับ Discord\r\n- เติม Nitro\r\n- ส่ง Nitro Gift\r\n- บริการเม็ดบูสต์เซิฟเวอร์\r\nบริการประทับใจยิ่งกว่าญาติสนิท การันตีด้วยความรักที่มอบให้ทุกคนนนน~', 34, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/thunderboost', 'ชาตรี', 'ฐิตานุวงศ์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(32, 'WLS00032', 'HongHongShop', 'บริการกดเกมพาสทุกแมพ [Roblox]\r\nบริการไก่ตัน BloxFruit\r\nรับเติมเกมออนไลน์', 35, 'https://cdn.discordapp.com/attachments/1026802803823362090/1071708033819885608/page.png', 'https://www.facebook.com/profile.php?id=1000893629', 'กังหัน', 'แสงอรุณ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(33, 'WLS00033', 'KALAMANG STORE', '-', 36, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/rySv58WBJs', 'ฟ้าคุ้ม', 'นวลขจี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(34, 'WLS00034', 'boost 88!', 'รับเติม Nitro ราคาถูกที่สุด ปลอดภัย รวดเร็ว ♥ \r\nสามารถเติมสะสมหลายเดือนได้!\r\n', 37, 'https://media.discordapp.net/attachments/702436540587966545/1080058018558922772/Neon_Pink_and_Cyan_Futuristic_', 'https://discord.gg/ESEdEwMWYv', 'อริศรา', 'อุราชื่น', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(35, 'WLS00035', 'Killua NITRO•₊˚', 'ขาย Nitro เริ่มต้น 59 บาท / ขายยูทูปพรีเมี่ยมเเค่ 65 บาท / และแอะดูหนังอื่นๆ', 38, 'https://cdn.discordapp.com/attachments/1061128130431029258/1079969136744083476/26_20230106172345.png', 'https://discord.gg/ePArPQjX4F', 'อนุชา', 'จำปาทอง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(36, 'WLS00036', 'Rykershop', 'รับเติมไนโตรดิสคอร์ดราคาน่ารัก ปลอดภัย เติมไวคั้บ', 39, 'https://cdn.discordapp.com/attachments/1084335345711206421/1114777035248775238/1079_20230505085727.png', 'https://discord.gg/KEWGWuxPMK', 'ณพัชร', 'จิรกิตติชญานนท์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(37, 'WLS00037', 'Pangko Nitro', 'ร้านขายสินค้าและบริการ Nitro ต่างๆ', 40, 'https://cdn.discordapp.com/attachments/955786936474300416/1091710339936161902/533ebd036a2c179b.png', 'https://discord.gg/687AXSthnt', 'สุประดิษฐ์', 'ตาวงค์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:18', 1, '2023-08-03 15:37:18', 1),
+(38, 'WLS00038', 'Rob Shop', '[#] รับเติมไนโตร\r\n[#] บูสต์เซิร์ฟเวอร์\r\n[#] ไนโตรลิ้งค์\r\n[#] SRC ต่างๆ\r\n[#] แบนเนอร์ / โปรไฟล์\r\n[#] ระบบดิสต่างๆ\r\n// พร้อมบริการ 24hr', 41, 'https://cdn.discordapp.com/attachments/1062631159688871936/1092102354058350723/33_20230212171657_1.png', 'https://discord.gg/n2YV89WksM', 'จักรพันธ์', 'บุตรพรม', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
+(39, 'WLS00039', 'Geevee Shop', '-', 42, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10002417034797', 'เทวฤทธ์', 'บุญแพง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
+(40, 'WLS00040', 'PANDORA SHOP', '-', 43, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/JEQ56W7v', 'กานน', 'ปลื้มจิตต์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
+(41, 'WLS00041', 'JAOMIN SHOP', '• รับทำดิส เริ่มต้นที่ 50 บาท\r\n• รับเซ็ตบอท เริ่มต้นที่ 5 บาท\r\n• รับทำโลโก้ เริ่มต้นที่ 10 บาท\r\n• รับดูเเลระบบ อาทิตย์ล่ะ 69บาท\r\n• ขายดิสสำเร็จรูป เริ่มต้นที่ 20 บาท', 44, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/Pb9yMwhs8N', 'ศรันย์พงษ์', 'มาสังข์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
+(42, 'WLS00042', 'LAVA SHOP', '-', 45, 'https://media.discordapp.net/attachments/1016929996301942828/1093810160553693215/26696610_148633269190033_1099', 'https://discord.gg/e4YhJ8mb4n ', 'ไพโรจน์', 'โยวะ', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
+(43, 'WLS00043', 'CHILL VIBES, ONLY', '-', 46, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/chillvibesonly', 'กฤตพร', 'ศิริอุดมเดชกุล', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:19', 1, '2023-08-03 15:37:19', 1),
+(44, 'WLS00044', 'picha nitro', '-', 47, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/4TEjaZEf', 'พิชญาภา', 'ดิเรกโชค', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(45, 'WLS00045', 'HAPPYPLUEMSTORE', 'ขาย Discord Nitro ราคาถูก!', 48, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/ucXSZ8zs8y', 'ณภัค', 'เมฆหมอก', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(46, 'WLS00046', 'StellaLou', '-', 49, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/stellalou', 'นัทธมน', 'ทองคำอ้น', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(47, 'WLS00047', 'Skyallstore', '-', 50, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/pskpk.ball', 'ภาสกร', 'พวงแก้ว', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(48, 'WLS00048', 'WhiteFuyu', '-', 51, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/whitefuyu', 'เงินแสน', 'ไชยศรีสังข์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(49, 'WLS00049', 'SARXN.X SHOP', '-', 52, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/sarxnx', 'ชลสิทธิ์', 'รอดภัยลี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(50, 'WLS00050', 'LUNA STORE', '-', 53, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/CHYytTZwwC', 'ณัชชา', 'เทพบริรักษ์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(51, 'WLS00051', 'MuSuBshop', '-', 54, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/profile.php?id=10008332096756', 'กิตติธาร', 'คำดี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(52, 'WLS00052', 'B2J SHOP', '– รับเติม Discord Nitro \r\n– ขายแอพพรีเมี่ยมต่างๆ ', 55, 'https://media.discordapp.net/attachments/1099965520167587902/1112276908105801848/452.png?width=683&height=683', 'https://discord.gg/TeMahaBU9H', 'กฤษฎา', 'ดาวศิริโรจน์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(53, 'WLS00053', 'Dubleake Store', '-', 56, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/cusFeqkVUq', 'เจริญทรัพย์', 'หนูสงค์', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:20', 1, '2023-08-03 15:37:20', 1),
+(54, 'WLS00054', '୧˚2000X SHOP ˚ ✦', 'ร้านเติมไนโตรเเละรับเติมเกม', 57, 'https://media.discordapp.net/attachments/1102208796035653703/1115639162272493598/22.jpg', 'https://discord.gg/3cd45E7wpg', 'ภูมินทร์', 'วงษ์ขุลี', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:21', 1, '2023-08-03 15:37:21', 1),
+(55, 'WLS00055', 'JNmumi', '-', 58, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://discord.gg/mdBk228R65', 'ปภัสสร', 'ตาบุดดา', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:21', 1, '2023-08-03 15:37:21', 1),
+(56, 'WLS00056', 'คุกกี้เติมเกม', '-', 59, 'https://cdn.discordapp.com/embed/avatars/0.png', 'https://facebook.com/cktermgame', 'อรวรรณ', 'มารุ่งเรือง', '', '', 2, 'โอนย้ายข้อมูลเดิม', '2023-08-03 15:47:17', 1, '2023-08-03 15:37:21', 1, '2023-08-03 15:37:21', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `whitelist_waiting`
+--
+
+CREATE TABLE `whitelist_waiting` (
+  `id` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `account_id` int(5) NOT NULL,
+  `banner` varchar(110) DEFAULT NULL,
+  `website` varchar(50) NOT NULL,
+  `id_firstname` varchar(50) NOT NULL,
+  `id_lastname` varchar(50) NOT NULL,
+  `id_number` varchar(13) NOT NULL,
+  `id_image` varchar(110) NOT NULL,
+  `approve_id` tinyint(1) DEFAULT 1,
+  `approve_reason` varchar(255) DEFAULT NULL,
+  `approve_at` datetime DEFAULT NULL,
+  `approve_by` int(5) DEFAULT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `create_by` int(5) NOT NULL,
+  `update_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `update_by` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -364,7 +393,8 @@ ALTER TABLE `account`
 --
 ALTER TABLE `approve`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `whitelist` (`whitelist`,`blacklist`);
+  ADD KEY `whitelist` (`whitelist`,`blacklist`),
+  ADD KEY `whitelist_waiting` (`whitelist_waiting`);
 
 --
 -- Indexes for table `bank`
@@ -377,7 +407,10 @@ ALTER TABLE `bank`
 --
 ALTER TABLE `blacklist`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `blacklist_category_id` (`blacklist_category_id`,`approve_id`);
+  ADD KEY `id_firstname` (`id_firstname`),
+  ADD KEY `id_lastname` (`id_lastname`),
+  ADD KEY `id_number` (`id_number`),
+  ADD KEY `bank_id` (`bank_id`);
 
 --
 -- Indexes for table `blacklist_category`
@@ -407,6 +440,13 @@ ALTER TABLE `whitelist`
   ADD KEY `tag` (`tag`,`account_id`,`approve_id`);
 
 --
+-- Indexes for table `whitelist_waiting`
+--
+ALTER TABLE `whitelist_waiting`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tag` (`account_id`,`approve_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -414,7 +454,7 @@ ALTER TABLE `whitelist`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `approve`
@@ -457,6 +497,12 @@ ALTER TABLE `email_verify`
 --
 ALTER TABLE `whitelist`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
+--
+-- AUTO_INCREMENT for table `whitelist_waiting`
+--
+ALTER TABLE `whitelist_waiting`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
