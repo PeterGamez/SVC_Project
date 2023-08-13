@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\WhitelistWaiting;
-
 ?>
 
 <?= views('template/back/header') ?>
@@ -23,12 +22,12 @@ use App\Models\WhitelistWaiting;
                                     <?php
                                     $result = WhitelistWaiting::find()
                                         ->select(
-                                            'whitelist.*',
+                                            'whitelist_waiting.*',
                                             'approve.color as approve_color',
                                             'approve.icon as approve_icon'
                                         )
                                         ->join('approve', 'id', 'approve_id')
-                                        ->where('whitelist.id', $request['id'])
+                                        ->where('whitelist_waiting.id', $request['id'])
                                         ->getOne();
                                     ?>
                                     <div class="form-group">
@@ -76,7 +75,7 @@ use App\Models\WhitelistWaiting;
                                 </div>
                                 <div class="modal-body">
                                     <div class="btn btn-group">
-                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
+                                        <a href="<?= admin_url('whitelist.waiting.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
                                     </div>
                                 </div>
                             </div>
