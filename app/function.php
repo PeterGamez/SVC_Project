@@ -69,7 +69,8 @@ function member_url($path = null, $ext = '')
 
 function url_back()
 {
-    return $_SERVER['HTTP_REFERER'];
+    if ($_SERVER['HTTP_REFERER']) return $_SERVER['HTTP_REFERER'];
+    else return url();
 }
 
 function controller($path)
