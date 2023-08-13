@@ -26,7 +26,7 @@ use App\Models\Bank;
                                     $result = Blacklist::find()
                                         ->select(
                                             'blacklist.*',
-                                            'blacklist_category.name as blacklist_category',
+                                            'blacklist_category.name as blacklist_category_name',
                                             'approve.color as approve_color',
                                             'approve.icon as approve_icon',
                                             'bank.name as bank_name',
@@ -49,6 +49,12 @@ use App\Models\Bank;
                                         <label>เว็บไซต์</label>
                                         <input type="text" class="form-control" value="<?= $result['website'] ?>" disabled>
                                     </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="form-label">ประเภท</label>
+                                                <input type="text" class="form-control" value="<?= $result['blacklist_category_name'] ?>" disabled>
+                                            </div>
+                                        </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
@@ -75,13 +81,13 @@ use App\Models\Bank;
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <div class="mb-3">
+                                            <div class="form-group">
                                                 <label class="form-label">ประเภทบัญชีธนาคาร</label>
                                                 <input type="text" class="form-control" value="<?= $result['bank_name'] ?>" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="mb-3">
+                                            <div class="form-group">
                                                 <label class="form-label">เลขที่บัญชี</label>
                                                 <input type="text" class="form-control" value="<?= $result['bank_number'] ?>" disabled>
                                             </div>

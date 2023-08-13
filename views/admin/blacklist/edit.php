@@ -2,6 +2,7 @@
 
 use App\Models\Blacklist;
 use App\Models\Bank;
+use App\Models\BlacklistCategory;
 
 $site['cdn'] = ['bs-file'];
 ?>
@@ -24,14 +25,7 @@ $site['cdn'] = ['bs-file'];
                                 <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <?php
-                                        $result = Blacklist::find()
-                                            ->select(
-                                                'blacklist.*',
-                                                'blacklist_category.name as blacklist_category'
-                                            )
-                                            ->join('blacklist_category', 'id', 'blacklist_category_id')
-                                            ->where('blacklist.id', $request['id'])
-                                            ->getOne();
+                                        $result = Blacklist::find()->where('id', $request['id'])->getOne();
                                         ?>
                                         <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                         <div class="form-group">
@@ -45,6 +39,21 @@ $site['cdn'] = ['bs-file'];
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="website" value="<?= $result['website'] ?>" required maxlength="50">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ประเภท <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="blacklist_category_id" required>
+                                                <?php
+                                                $blacklist_category = BlacklistCategory::find()->get();
+                                                for ($i = 0; $i < count($blacklist_category); $i++) {
+                                                    if ($blacklist_category[$i]['id'] == $result['blacklist_category_id']) {
+                                                        echo '<option value="' . $blacklist_category[$i]['id'] . '" selected>' . $blacklist_category[$i]['name'] . '</option>';
+                                                    } else {
+                                                        echo '<option value="' . $blacklist_category[$i]['id'] . '">' . $blacklist_category[$i]['name'] . '</option>';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="row">
                                             <div class="col">

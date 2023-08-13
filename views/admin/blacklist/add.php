@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Bank;
+use App\Models\BlacklistCategory;
 
 $site['cdn'] = ['bs-file'];
 ?>
@@ -33,6 +34,17 @@ $site['cdn'] = ['bs-file'];
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="website" required maxlength="50">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ประเภท <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="blacklist_category_id" required>
+                                                <?php
+                                                $blacklist_category = BlacklistCategory::find()->get();
+                                                for ($i = 0; $i < count($blacklist_category); $i++) {
+                                                    echo '<option value="' . $blacklist_category[$i]['id'] . '">' . $blacklist_category[$i]['name'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="row">
                                             <div class="col">

@@ -7,7 +7,7 @@ use App\Models\BlacklistImage;
 $result = Blacklist::find()
     ->select(
         'blacklist.*',
-        'blacklist_category.name as blacklist_category',
+        'blacklist_category.name as blacklist_category_name',
         'bank.name as bank_name',
     )
     ->join('blacklist_category', 'id', 'blacklist_category_id')
@@ -52,7 +52,7 @@ $site['bot'] = '';
                         </div>
                         <div class="mb-3">
                             <label class="form-label">ประเภท</label>
-                            <input type="text" class="form-control" value="<?= $result['blacklist_category'] ?>" disabled>
+                            <input type="text" class="form-control" value="<?= $result['blacklist_category_name'] ?>" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">เว็บไซต์</label>
