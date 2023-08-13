@@ -40,7 +40,7 @@ if ($_POST['name']) {
     ]);
 
     $path = member_url('whitelist.register');
-    echo Alert::alerts('เพิ่มกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
+    echo Alert::alerts('ลงทะเบีบนกิจการสำเสร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(member_url('whitelist.register'));
 }
