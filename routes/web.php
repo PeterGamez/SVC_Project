@@ -134,6 +134,11 @@ else if (str_starts_with($agent_path, config('site.member_panel'))) {
             }
         }
     }
+    // not found
+    if (isset($_SESSION['callback'])) {
+        unset($_SESSION['callback']);
+        return redirect(member_url());
+    }
     return member_views('404');
 }
 // Admin Panel
@@ -166,11 +171,11 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
             else if (is_numeric($agent_request[4])) {
                 $request['id'] = $agent_request[4];
                 // view
-                if (empty($agent_request[4]) and App::isGET()) {
+                if (empty($agent_request[5]) and App::isGET()) {
                     return admin_views('whitelist.waiting.view');
                 }
                 // approve
-                else if ($agent_request[4] == 'approve') {
+                else if ($agent_request[5] == 'approve') {
                     if (App::isGET()) {
                         return admin_views('whitelist.waiting.approve');
                     } else if (App::isPOST()) {
@@ -424,6 +429,10 @@ else if (str_starts_with($agent_path, config('site.admin_panel'))) {
         }
     }
     // not found
+    if (isset($_SESSION['callback'])) {
+        unset($_SESSION['callback']);
+        return redirect(admin_url());
+    }
     return admin_views('404');
 }
 // verify email
