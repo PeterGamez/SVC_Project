@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Bank;
+
+$site['cdn'] = ['bs-file'];
 ?>
 
 <?= views('template/back/header') ?>
