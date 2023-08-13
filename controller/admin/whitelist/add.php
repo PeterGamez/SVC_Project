@@ -17,11 +17,6 @@ if ($_POST['name']) {
     $id_number = $_POST['id_number'];
     $id_image = $_FILES['id_image'];
 
-    $file = $id_image['tmp_name'];
-    $file_name = $id_image['name'];
-    $file_size = $id_image['size'];
-    $file_type = $id_image['type'];
-
     if (Whitelist::count(['account_id' => $account_id]) > 0) {
         echo Alert::alerts('บัญชีเจ้าของกิจการนี้ มีอยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
         exit;
@@ -30,7 +25,7 @@ if ($_POST['name']) {
     $data = Discord::postImage(config('discord.whitelist.banner'), ["file" => curl_file_create($banner['tmp_name'], 'png', App::RandomHex(4) . '.png')]);
     $banner_url = $data['attachments'][0]['url'];
 
-    $data = Discord::postImage(config('discord.whitelist.id_image'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
+    $data = Discord::postImage(config('discord.whitelist.id_image'), ["file" => curl_file_create($id_image['tmp_name'], 'png', App::RandomHex(4) . '.png')]);
     $image_url = $data['attachments'][0]['url'];
 
     Whitelist::create([

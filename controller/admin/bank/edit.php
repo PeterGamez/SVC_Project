@@ -16,12 +16,8 @@ if ($_POST['id']) {
 
     $newData = ['name' => $name];
 
-    if ($_FILES['image']) {
+    if ($_FILES['image']['tmp_name']) {
         $image = $_FILES['image'];
-        $file = $image['tmp_name'];
-        $file_name = $image['name'];
-        $file_size = $image['size'];
-        $file_type = $image['type'];
 
         $data = Discord::postImage(config('discord.bank.image'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
         $image_url = $data['attachments'][0]['url'];

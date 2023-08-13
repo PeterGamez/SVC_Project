@@ -5,9 +5,9 @@ use App\Class\App;
 use App\Class\Discord;
 use App\Models\Blacklist;
 use App\Models\BlacklistImage;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\ImageManager;
 
-require_once __ROOT__ . '/vendor/intervention/image/src/Intervention/Image/ImageManagerStatic';
+require_once __ROOT__ . '/vendor/autoload.php';
 
 if ($_POST['name']) {
     $name = $_POST['name'];
@@ -16,46 +16,51 @@ if ($_POST['name']) {
     $id_firstname = $_POST['id_firstname'];
     $id_lastname = $_POST['id_lastname'];
     $id_number = $_POST['id_number'];
-    $id_image = $_FILES['id_image'];
     $bank_id = $_POST['bank_id'];
     $bank_number = $_POST['bank_number'];
     $item_name = $_POST['item_name'];
     $item_balance = $_POST['item_balance'];
     $item_date = $_POST['item_date'];
 
-    $data = Discord::postImage(config('discord.blacklist.id_image'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
-    $image_url = $data['attachments'][0]['url'];
-
-    $insert_id = Blacklist::create([
+    $newData = [
         'name' => $name,
         'reason' => $reason,
         'website' => $website,
         'id_firstname' => $id_firstname,
         'id_lastname' => $id_lastname,
         'id_number' => $id_number,
-        'id_image' => $image_url,
         'bank_id' => $bank_id,
         'bank_number' => $bank_number,
         'item_name' => $item_name,
         'item_balance' => $item_balance,
         'item_date' => $item_date
-    ]);
+    ];
 
-    if (isset($_FILES['blacklist_image'])) {
+    if ($_FILES['id_image']['tmp_name']) {
+        $id_image = $_FILES['id_image'];
+        $file = $id_image['tmp_name'];
+
+        $data = Discord::postImage(config('discord.blacklist.id_image'), ["file" => curl_file_create($file, 'png', App::RandomHex(4) . '.png')]);
+        $image_url = $data['attachments'][0]['url'];
+
+        $newData['id_image'] = $image_url;
+    }
+
+    $insert_id = Blacklist::create($newData);
+
+    if ($_FILES['blacklist_image']['tmp_name']) {
         $blacklist_image = $_FILES['blacklist_image'];
 
         $watermarkpath = __ROOT__ . '/storage/images/watermark.png';
-        $watermark = Image::make($watermarkpath);
-        $watermark->resize($watermark->width() * 0.5, $watermark->height() * 0.5);
+        $manager = new ImageManager(['driver' => 'imagick']);
+        $watermark = $manager->make($watermarkpath);
 
         $file_count = count($blacklist_image['name']);
         for ($i = 0; $i < $file_count; $i++) {
             $file = $blacklist_image['tmp_name'][$i];
-            $file_name = $blacklist_image['name'][$i];
-            $file_type = $blacklist_image['type'][$i];
-            $file_size = $blacklist_image['size'][$i];
 
-            $image = Image::make($file);
+            $manager = new ImageManager(['driver' => 'imagick']);
+            $image = $manager->make($file);
             $image->insert($watermark, 'center');
 
             $image->save($file);
@@ -68,8 +73,9 @@ if ($_POST['name']) {
             ]);
         }
     }
-    $path = member_url('report');
+
+    $path = member_url('blacklist.myreport');
     echo Alert::alerts('ส่งรายงานสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
-    redirect(member_url('report'));
+    redirect(member_url('blacklist.report'));
 }
