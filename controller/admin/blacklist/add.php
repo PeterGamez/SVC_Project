@@ -50,7 +50,7 @@ if ($_POST['name']) {
         $blacklist_image = $_FILES['blacklist_image'];
 
 
-        $watermarkpath = __ROOT__ . '/public/resource/images/watermark.png';
+        $watermarkpath = __ROOT__ . '/storage/images/watermark.png';
         $watermark = Image::make($watermarkpath);
         $watermark->resize($watermark->width() * 0.5, $watermark->height() * 0.5);
 
