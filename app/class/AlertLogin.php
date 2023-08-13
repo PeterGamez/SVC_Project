@@ -39,6 +39,6 @@ class AlertLogin extends Alert
         } else {
             $path = "window.location.href='" . member_url() . "'";
         }
-        return AlertLogin::alert('เข้าสู่ระบบสำเร็จ', 'success', 1500, $path);
+        return parent::alerts('เข้าสู่ระบบสำเร็จ', 'success', 1500, $path);
     }
 }
