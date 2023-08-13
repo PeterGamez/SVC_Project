@@ -92,7 +92,7 @@ $site['cdn'] = ['bs-file'];
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>เลขที่บัญชี <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="bank_number" value="<?= $result['bank_number'] ?>" required pattern="\d+" maxlength="15">
+                                                    <input type="text" class="form-control" name="bank_number" value="<?= $result['bank_number'] ?>" required pattern="\d+" maxlength="12">
                                                 </div>
                                             </div>
                                         </div>
