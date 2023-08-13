@@ -59,6 +59,16 @@ class Model extends DataSelect
         return self::buildDelete($sql, $conditions);
     }
 
+    /**
+     * Show table status
+     */
+    public static function status(): array
+    {
+        $table = self::parseTable();
+        $sql = "SHOW TABLE STATUS LIKE $table";
+        return self::buildStatus($sql);
+    }
+
     // Build Query
     private static function parseTable(): string
     {
@@ -231,5 +241,15 @@ class Model extends DataSelect
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
         return $affectedRows;
+    }
+
+    protected static function buildStatus(string $sql): array
+    {
+        global $conn;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $result[0][0] ?? null;
     }
 }

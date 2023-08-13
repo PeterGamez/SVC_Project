@@ -19,13 +19,14 @@ if ($_POST['id']) {
     if ($approve_id == 2) {
         Account::update(['id' => $data['account_id']], ['role' => 'seller']);
 
-        $last_id = Whitelist::find()->order('id', 'DESC')->limit(1)->getOne();
-        $last_id = $last_id ? $last_id['id'] + 1 : 1;
+        $last_id = Whitelist::status();
+        $last_id = $last_id['Auto_increment'];
+        $tag = $last_id;
         if (strlen($last_id) < 5) {
-            $last_id = str_pad($last_id, 5, '0', STR_PAD_LEFT);
+            $tag = str_pad($last_id, 5, '0', STR_PAD_LEFT);
         }
         Whitelist::create([
-            'tag' => 'WLS' . $last_id,
+            'tag' => 'WLS' . $tag,
             'name' => $data['name'],
             'description' => $data['description'],
             'account_id' => $data['account_id'],
@@ -39,7 +40,8 @@ if ($_POST['id']) {
             'approve_by' => $_SESSION['user_id'],
             'approve_at' => date('Y-m-d H:i:s')
         ]);
-        $path = admin_url("whitelist.$id.view");
+        WhitelistWaiting::delete(['id' => $id]);
+        $path = admin_url("whitelist.$last_id");
         echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
     } else {
         WhitelistWaiting::update(['id' => $id], [
@@ -48,7 +50,7 @@ if ($_POST['id']) {
             'approve_by' => $_SESSION['user_id'],
             'approve_at' => date('Y-m-d H:i:s')
         ]);
-        $path = admin_url("whitelist.waiting.$id.view");
+        $path = admin_url("whitelist.waiting.$id");
         echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
     }
 } else {
