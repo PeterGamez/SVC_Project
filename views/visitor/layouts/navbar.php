@@ -26,11 +26,9 @@
                 <?php
                 if ($_SESSION['login'] == false) {
                 ?>
-                    <div class="d-flex justify-content-right">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= member_url('login') ?>">Login <i class="fa-solid fa-lock-keyhole"></i></a>
-                        </li>
-                    </div>
+                    <li class="nav-item d-flex justify-content-right">
+                        <a class="nav-link" href="<?= member_url('login') ?>">Login <i class="fa-solid fa-lock-keyhole"></i></a>
+                    </li>
                 <?php
                 } else if ($_SESSION['login'] == true) {
                 ?>
