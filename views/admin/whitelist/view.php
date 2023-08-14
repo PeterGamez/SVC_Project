@@ -13,7 +13,7 @@ use App\Models\Whitelist;
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card card-30 mb-4 shadow">
+                        <div class="card card-40 mb-4 shadow">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">รายละเอียดกิจการ</h5>
@@ -73,20 +73,20 @@ use App\Models\Whitelist;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="btn btn-group">
-                                        <a href="<?= admin_url('whitelist.' . $result['id'] . '.approve') ?>" class="btn btn-sm btn-secondary">ยืนยันกิจการ</a>
-                                        <?php
-                                        if (in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {
-                                        ?>
+                                <?php
+                                if (in_array($_SESSION['user_role'], ['superadmin', 'admin'])) {
+                                ?>
+                                    <div class="modal-body">
+                                        <div class="btn btn-group">
                                             <a href="<?= admin_url('whitelist.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขกิจการ</a>
 
                                             <a href="<?= admin_url('whitelist.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบกิจการ</a>
-                                        <?php
-                                        }
-                                        ?>
+
+                                        </div>
                                     </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

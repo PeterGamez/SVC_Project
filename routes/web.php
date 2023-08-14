@@ -103,18 +103,20 @@ else if (str_starts_with($agent_path, config('site.member_panel'))) {
     // Whitelist
     else if ($agent_request[2] == 'whitelist') {
         if (isset($agent_request[3])) {
-            if ($agent_request[3] == 'setting' and $_SESSION['user_role'] == 'seller') {
-                if (App::isGET()) {
-                    return member_views('whitelist.setting');
-                } else if (App::isPOST()) {
-                    return member_controller('whitelist.setting');
-                }
-            } else if ($agent_request[3] == 'register' and $_SESSION['user_role'] <> 'seller') {
+            if ($agent_request[3] == 'register' and $_SESSION['user_role'] <> 'seller') {
                 if (App::isGET()) {
                     return member_views('whitelist.register');
                 } else if (App::isPOST()) {
                     return member_controller('whitelist.register');
                 }
+            } else if ($agent_request[3] == 'setting' and $_SESSION['user_role'] == 'seller') {
+                if (App::isGET()) {
+                    return member_views('whitelist.setting');
+                } else if (App::isPOST()) {
+                    return member_controller('whitelist.setting');
+                }
+            } else if ($agent_request[3] == 'delete' and $_SESSION['user_role'] == 'seller' and App::isPOST()) {
+                return member_controller('whitelist.delete');
             }
         }
     }

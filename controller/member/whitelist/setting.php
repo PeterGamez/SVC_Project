@@ -27,7 +27,8 @@ if ($_POST['id']) {
         'id_firstname' => $data['id_firstname'],
         'id_lastname' => $data['id_lastname'],
         'id_number' => $data['id_number'],
-        'id_image' => $data['image_url']
+        'id_image' => $data['image_url'],
+        'approve_id' => 4
     ];
 
     if ($_FILES['banner']['tmp_name']) {

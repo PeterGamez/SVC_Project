@@ -13,7 +13,7 @@ use App\Models\Whitelist;
                 <?= member_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card card-30 mb-4 shadow">
+                        <div class="card card-40 mb-4 shadow">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">แก้ไขกิจการ</h5>
@@ -45,9 +45,9 @@ use App\Models\Whitelist;
                                         </div>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="d-flex justify-content-between">
-                                            <a href="<?= url_back() ?>" class="btn btn-secondary">ย้อนกลับ</a>
-                                            <button type="submit" class="btn btn-success">บันทึก</button>
+                                        <div class="btn btn-group">
+                                            <a href="<?= member_url('whitelist.delete') ?>" class="btn btn-danger">คำขอลบข้อมูล</a>
+                                            <button type="submit" class="btn btn-success">คำขอแก้ไขข้อมูล</button>
                                         </div>
                                     </div>
                                 </form>
