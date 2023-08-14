@@ -174,82 +174,124 @@ class Model extends DataSelect
     protected static function buildCreate(string $sql, array $conditions): ?int
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $result = $stmt->insert_id;
         $stmt->close();
+
         return $result;
     }
 
     protected static function buildFind(string $sql, array $conditions): array
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
             self::bindParams($stmt, array_values($conditions));
         }
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
+
         return $result;
     }
 
     protected static function buildFindOne(string $sql, array $conditions): ?array
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
             self::bindParams($stmt, array_values($conditions));
         }
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
+
         return $result[0] ?? null;
     }
 
     protected static function buildFindCount(string $sql, array $conditions = []): ?int
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
             self::bindParams($stmt, array_values($conditions));
         }
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
+
         return $result[0]['count'] ?? null;
     }
 
     protected static function buildUpdate(string $sql, array $conditions, array $newData): int
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_merge(array_values($newData), array_values($conditions)));
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
+
         return $affectedRows;
     }
 
     protected static function buildDelete(string $sql, array $conditions): int
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
+
         return $affectedRows;
     }
 
     protected static function buildStatus(string $sql): array
     {
         global $conn;
+
         $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            $error = $stmt->error;
+            $stmt->close();
+            throw new Exception($error);
+        }
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
+
         return $result[0][0] ?? null;
     }
 }
