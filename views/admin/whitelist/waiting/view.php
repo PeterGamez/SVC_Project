@@ -13,7 +13,7 @@ use App\Models\WhitelistWaiting;
                 <?= admin_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="card card-30 mb-4 shadow">
+                        <div class="card card-40 mb-4 shadow">
                             <div class="card-body">
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">รายละเอียดกิจการ</h5>
