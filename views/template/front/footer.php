@@ -14,7 +14,6 @@
                     </span>
                 </div>
             </div>
-            <!-- make display only in mobile device -->
             <div class="col-sm-12 col-lg-2">
                 <div class="text-center p-2">
                     <a href="<?= url('download.android') ?>"><img src="<?= resource('images/get-googleplay.png', true) ?>" alt="apk download" width="150px"></a>
