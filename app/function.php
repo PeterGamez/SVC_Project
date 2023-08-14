@@ -132,3 +132,14 @@ function visitor_views($path = '')
     global $site, $request;
     return views('visitor/' . $path);
 }
+
+function api($filename)
+{
+    global $request;
+    $filename = str_replace('.', '/', $filename);
+    $viewPath = __ROOT__ . '/api/' . $filename . '.php';
+    if (file_exists($viewPath)) {
+        include $viewPath;
+        return;
+    }
+}
