@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 14, 2023 at 06:21 PM
+-- Generation Time: Aug 14, 2023 at 10:08 PM
 -- Server version: 10.3.39-MariaDB-0+deb10u1-log
 -- PHP Version: 8.2.8
 
@@ -127,7 +127,7 @@ CREATE TABLE `blacklist` (
   `item_name` varchar(50) NOT NULL,
   `item_balance` int(5) NOT NULL,
   `item_date` datetime NOT NULL,
-  `approve_id` tinyint(1) NOT NULL DEFAULT 1,
+  `approve_id` int(5) NOT NULL DEFAULT 1,
   `approve_reason` varchar(255) DEFAULT NULL,
   `approve_by` int(5) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
@@ -151,6 +151,14 @@ CREATE TABLE `blacklist_category` (
   `update_at` datetime NOT NULL DEFAULT current_timestamp(),
   `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `blacklist_category`
+--
+
+INSERT INTO `blacklist_category` (`id`, `name`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES
+(1, 'ฉ้อโกงการซื้อขาย', '2023-07-08 14:39:54', 1, '2023-07-08 14:39:54', 1),
+(2, 'พฤติกรรมน่าสงสัย', '2023-07-08 14:40:07', 1, '2023-07-08 14:40:07', 1);
 
 -- --------------------------------------------------------
 
@@ -201,7 +209,7 @@ CREATE TABLE `whitelist` (
   `id_lastname` varchar(50) NOT NULL,
   `id_number` varchar(13) NOT NULL,
   `id_image` varchar(110) NOT NULL,
-  `approve_id` tinyint(1) DEFAULT 1,
+  `approve_id` int(5) DEFAULT 1,
   `approve_reason` varchar(255) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
   `approve_by` int(5) DEFAULT NULL,
@@ -228,7 +236,7 @@ CREATE TABLE `whitelist_waiting` (
   `id_lastname` varchar(50) NOT NULL,
   `id_number` varchar(13) NOT NULL,
   `id_image` varchar(110) NOT NULL,
-  `approve_id` tinyint(1) DEFAULT 1,
+  `approve_id` int(5) DEFAULT 1,
   `approve_reason` varchar(255) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
   `approve_by` int(5) DEFAULT NULL,
@@ -247,18 +255,15 @@ CREATE TABLE `whitelist_waiting` (
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username_2` (`username`),
-  ADD UNIQUE KEY `email_2` (`email`),
-  ADD KEY `email` (`email`),
-  ADD KEY `username` (`username`) USING BTREE;
+  ADD UNIQUE KEY `UNIQUE` (`username`,`email`),
+  ADD KEY `INDEX` (`username`,`email`);
 
 --
 -- Indexes for table `approve`
 --
 ALTER TABLE `approve`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `whitelist` (`whitelist`,`blacklist`),
-  ADD KEY `whitelist_waiting` (`whitelist_waiting`);
+  ADD KEY `INDEX` (`whitelist`,`blacklist`,`whitelist_waiting`) USING BTREE;
 
 --
 -- Indexes for table `bank`
@@ -271,10 +276,9 @@ ALTER TABLE `bank`
 --
 ALTER TABLE `blacklist`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_firstname` (`id_firstname`),
-  ADD KEY `id_lastname` (`id_lastname`),
-  ADD KEY `id_number` (`id_number`),
-  ADD KEY `bank_id` (`bank_id`);
+  ADD KEY `blacklist_ibfk_blacklist_category` (`blacklist_category_id`),
+  ADD KEY `blacklist_ibfk_approve` (`approve_id`),
+  ADD KEY `INDEX` (`id_firstname`,`id_lastname`,`id_number`) USING BTREE;
 
 --
 -- Indexes for table `blacklist_category`
@@ -287,28 +291,30 @@ ALTER TABLE `blacklist_category`
 --
 ALTER TABLE `blacklist_image`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `blacklist_id` (`blacklist_id`);
+  ADD KEY `INDEX` (`blacklist_id`) USING BTREE;
 
 --
 -- Indexes for table `email_verify`
 --
 ALTER TABLE `email_verify`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`,`token`,`verified`,`expired_at`);
+  ADD UNIQUE KEY `INDEX` (`token`) USING BTREE;
 
 --
 -- Indexes for table `whitelist`
 --
 ALTER TABLE `whitelist`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tag` (`tag`,`account_id`,`approve_id`);
+  ADD KEY `whitelist_ibfk_approve` (`approve_id`),
+  ADD KEY `INDEX` (`tag`,`account_id`,`approve_id`) USING BTREE;
 
 --
 -- Indexes for table `whitelist_waiting`
 --
 ALTER TABLE `whitelist_waiting`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tag` (`account_id`,`approve_id`);
+  ADD KEY `whitelist_waiting_ibfk_approve` (`approve_id`),
+  ADD KEY `INDEX` (`account_id`,`approve_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -342,7 +348,7 @@ ALTER TABLE `blacklist`
 -- AUTO_INCREMENT for table `blacklist_category`
 --
 ALTER TABLE `blacklist_category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `blacklist_image`
@@ -367,6 +373,44 @@ ALTER TABLE `whitelist`
 --
 ALTER TABLE `whitelist_waiting`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `blacklist`
+--
+ALTER TABLE `blacklist`
+  ADD CONSTRAINT `blacklist_ibfk_approve` FOREIGN KEY (`approve_id`) REFERENCES `approve` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `blacklist_ibfk_bank` FOREIGN KEY (`bank_id`) REFERENCES `bank` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `blacklist_ibfk_blacklist_category` FOREIGN KEY (`blacklist_category_id`) REFERENCES `blacklist_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `blacklist_image`
+--
+ALTER TABLE `blacklist_image`
+  ADD CONSTRAINT `blacklist_image_ibfk_blacklist` FOREIGN KEY (`blacklist_id`) REFERENCES `blacklist` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `email_verify`
+--
+ALTER TABLE `email_verify`
+  ADD CONSTRAINT `email_verify_ibfk_account` FOREIGN KEY (`email`) REFERENCES `account` (`email`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `whitelist`
+--
+ALTER TABLE `whitelist`
+  ADD CONSTRAINT `whitelist_ibfk_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `whitelist_ibfk_approve` FOREIGN KEY (`approve_id`) REFERENCES `approve` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `whitelist_waiting`
+--
+ALTER TABLE `whitelist_waiting`
+  ADD CONSTRAINT `whitelist_waiting_ibfk_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `whitelist_waiting_ibfk_approve` FOREIGN KEY (`approve_id`) REFERENCES `approve` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
