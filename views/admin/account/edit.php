@@ -26,7 +26,7 @@ use App\Models\Account;
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อบัญชี <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" required minlength="5" maxlength="20">
+                                            <input type="text" class="form-control" name="username" value="<?= $result['username'] ?>" required pattern="a-zA-Z0-9_" minlength="5" maxlength="20">
                                         </div>
                                         <div class="form-group">
                                             <label>อีเมล <span class="text-danger">*</span></label>
