@@ -36,7 +36,7 @@ class Alert
         </body>";
     }
 
-    public static function error()
+    public static function error(): string
     {
         return self::alert('เกิดข้อผิดพลาด', 'error', 1500, 'history.back()');
     }

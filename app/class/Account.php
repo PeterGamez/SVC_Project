@@ -20,7 +20,7 @@ class Account
         $_SESSION['user_role'] = $data['role'];
     }
 
-    public static function create_verify_token(string $email)
+    public static function create_verify_token(string $email): bool
     {
         $emailVerify = EmailVerify::findEmail($email);
         if (!$emailVerify) {

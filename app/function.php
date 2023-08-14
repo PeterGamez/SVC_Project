@@ -1,6 +1,8 @@
 <?php
 
-function config($key)
+use App\Class\App;
+
+function config($key): ?string
 {
     $configKeys = explode('.', $key);
     $filename = array_shift($configKeys);
@@ -20,6 +22,7 @@ function config($key)
 function resource($key, $url = false)
 {
     global $site, $request;
+
     $resourcePath = __ROOT__ . '/public/resource/' . $key;
     if (file_exists($resourcePath)) {
         if ($url == true) {
@@ -37,7 +40,7 @@ function resource($key, $url = false)
     return null;
 }
 
-function url($path = '', $ext = '')
+function url($path = '', $ext = ''): string
 {
     $protocol = $_SERVER['REQUEST_SCHEME'] . '://';
     if (!$path) $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -50,24 +53,24 @@ function url($path = '', $ext = '')
     return $url;
 }
 
-function sub_url($sub, $path = '', $ext = '')
+function sub_url($sub, $path = '', $ext = ''): string
 {
     return url($sub . '/' . $path, $ext);
 }
 
-function admin_url($path = null, $ext = '')
+function admin_url($path = null, $ext = ''): string
 {
     if (empty($path)) return url(config('site.admin_panel'));
     return url(config('site.admin_panel') . '/' . $path, $ext);
 }
 
-function member_url($path = null, $ext = '')
+function member_url($path = null, $ext = ''): string
 {
     if (empty($path)) return url(config('site.member_panel'));
     return url(config('site.member_panel') . '/' . $path, $ext);
 }
 
-function url_back()
+function url_back(): string
 {
     if ($_SERVER['HTTP_REFERER']) return $_SERVER['HTTP_REFERER'];
     else return url();
@@ -76,6 +79,7 @@ function url_back()
 function controller($path)
 {
     global $site;
+
     $path = str_replace('.', '/', $path);
     $controllerPath = __ROOT__ . '/controller/' . $path . '.php';
     if (file_exists($controllerPath)) {
@@ -85,19 +89,21 @@ function controller($path)
     return null;
 }
 
-function admin_controller($path)
+function admin_controller($path): ?string
 {
     global $site;
+
     return controller('admin/' . $path);
 }
 
-function member_controller($path)
+function member_controller($path): ?string
 {
     global $site;
+
     return controller('member/' . $path);
 }
 
-function redirect($path)
+function redirect($path): void
 {
     header('Location: ' . $path);
     exit;
@@ -106,6 +112,7 @@ function redirect($path)
 function views($filename)
 {
     global $site, $request;
+
     $filename = str_replace('.', '/', $filename);
     $viewPath = __ROOT__ . '/views/' . $filename . '.php';
     if (file_exists($viewPath)) {
@@ -115,27 +122,44 @@ function views($filename)
     return null;
 }
 
-function admin_views($path = '')
+function admin_views($path = ''): ?string
 {
     global $site, $request;
+
     return views('admin/' . $path);
 }
 
-function member_views($path = '')
+function member_views($path = ''): ?string
 {
     global $site, $request;
+
     return views('member/' . $path);
 }
 
-function visitor_views($path = '')
+function visitor_views($path = ''): ?string
 {
     global $site, $request;
+
     return views('visitor/' . $path);
 }
 
-function api($filename)
+function api($method, $filename): void
 {
     global $request;
+
+    if (str_contains($method, '|')) {
+        $methods = explode('|', $method);
+        if (!in_array($_SERVER['REQUEST_METHOD'], $methods)) {
+            echo App::error_405();
+            exit;
+        }
+    } else {
+        if ($method != $_SERVER['REQUEST_METHOD']) {
+            echo App::error_405();
+            exit;
+        }
+    }
+
     $filename = str_replace('.', '/', $filename);
     $viewPath = __ROOT__ . '/api/' . $filename . '.php';
     if (file_exists($viewPath)) {

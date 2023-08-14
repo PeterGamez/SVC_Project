@@ -8,7 +8,7 @@ class Account extends Model
 {
     public static $table = 'account';
 
-    public static function register(array $newData)
+    public static function register(array $newData): int
     {
         $table = self::$table;
 
@@ -19,14 +19,14 @@ class Account extends Model
         return parent::buildUpdate($sql, [$insert_id, $insert_id, $insert_id], []);
     }
 
-    public static function verifyEmail(int $user_id)
+    public static function verifyEmail(int $user_id): int
     {
         $table = self::$table;
         $sql = "UPDATE $table SET email_verified = '1', email_verified_at = NOW(), update_at = NOW(), update_by = ? WHERE id = ?";
         return parent::buildUpdate($sql, [$user_id, $user_id], []);
     }
 
-    public static function login(int $user_id)
+    public static function login(int $user_id): int
     {
         $table = self::$table;
         $sql = "UPDATE $table SET last_login = NOW() WHERE id = ?";
