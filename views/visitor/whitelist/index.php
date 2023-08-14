@@ -23,21 +23,6 @@ $site['bot'] = '';
                         <th scope="col">เจ้าของกิจการ</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-                    $result = Whitelist::find()->where('approve_id', 2)->get();
-                    if (count($result) == 0) {
-                        echo '<tr><td colspan="4" class="text-center">ไม่พบข้อมูล</td></tr>';
-                    }
-                    for ($i = 0; $i < count($result); $i++) {
-                        echo '<tr>';
-                        echo '<th scope="row"><a href="' . url('whitelist.' . $result[$i]['tag']) . '">' . $result[$i]['tag'] . '</a></th>';
-                        echo '<td>' . $result[$i]['name'] . '</td>';
-                        echo '<td>' . $result[$i]['id_firstname'] . ' ' . $result[$i]['id_lastname'] . '</td>';
-                        echo '</tr>';
-                    }
-                    ?>
-                </tbody>
                 <tfoot>
                     <tr>
                         <th>#</th>
@@ -52,16 +37,26 @@ $site['bot'] = '';
     <?= views('template/front/cdn_footer') ?>
     <script>
         $('#table_whitelist').DataTable({
+            ajax: '<?= url('api.v1.whitelist.list') ?>',
+            processing: true,
+            columnDefs: [{
+                    targets: 0,
+                    render: (data, type, row) => `<a href="<?= url('whitelist') ?>/${data}">${data}</a>`,
+                },
+                {
+                    targets: 1,
+                    render: (data, type, row) => `${data}`,
+                },
+                {
+                    targets: 2,
+                    render: (data, type, row) => `${data}`,
+                },
+            ],
             scrollX: true,
             scrollY: false,
             order: [
                 [0, 'desc']
             ],
-            columnDefs: [{
-                targets: -1,
-                searchable: false,
-                orderable: false
-            }, ],
             language: {
                 url: "<?= resource('datatables/th.json', true) ?>"
             }
