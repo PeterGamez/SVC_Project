@@ -1,6 +1,6 @@
 <?php
 $site['social'] = true; // กำหนดให้เว็บไซต์ใช้งาน Open Graph ได้
-$site['cdn'] = array(); // กำหนดให้เว็บไซต์ใช้งาน CDN ที่กำหนดได้
+$site['cdn'] = array('tawk'); // กำหนดให้เว็บไซต์ใช้งาน CDN ที่กำหนดได้
 $site['name'] = config('site.name');
 $site['desc'] = config('site.description');
 $site['bot'] = '';
@@ -17,13 +17,13 @@ $site['bot'] = '';
                     <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="3000">
-                                <img src="<?= config('site.cdn.path') ?>/lastboss/home1.png" class="d-block w-100" alt="image1">
+                                <img src="<?= config('site.cdn.path') ?>/images/home1.png" class="d-block w-100" alt="image1">
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
-                                <img src="<?= config('site.cdn.path') ?>/lastboss/home2.png" class="d-block w-100" alt="image2">
+                                <img src="<?= config('site.cdn.path') ?>/images/home2.png" class="d-block w-100" alt="image2">
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
-                                <img src="<?= config('site.cdn.path') ?>/lastboss/home3.png" class="d-block w-100" alt="image3">
+                                <img src="<?= config('site.cdn.path') ?>/images/home3.png" class="d-block w-100" alt="image3">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">

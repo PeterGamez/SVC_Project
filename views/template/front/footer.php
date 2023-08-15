@@ -16,7 +16,7 @@
             </div>
             <div class="col-sm-12 col-lg-2">
                 <div class="text-center p-2">
-                    <a href="<?= url('download.android') ?>"><img src="<?= resource('images/get-googleplay.png', true) ?>" alt="apk download" width="150px"></a>
+                    <a href="<?= url('download.android') ?>"><img src="<?= config('site.cdn.path') ?>/images/get-googleplay.png" alt="apk download" width="150px" height="45px"></a>
                 </div>
             </div>
         </div>

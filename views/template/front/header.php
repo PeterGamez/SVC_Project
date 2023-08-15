@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: https://embed.tawk.to'); ?>
+
 <!DOCTYPE html>
 <html lang="<?= config('site.lang') ?>">
 
