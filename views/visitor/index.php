@@ -12,7 +12,7 @@ $site['bot'] = '';
     <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
         <div class="d-flex justify-content-center">
-            <div class="card border-0" style="width: 70rem;" data-aos="fade-up" data-aos-delay="100">
+            <div class="card border-0" style="width:70rem;" data-aos="fade-up" data-aos-delay="100">
                 <div class="card-body">
                     <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">

@@ -34,7 +34,7 @@ $site['bot'] = '';
     <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
         <div class="d-flex justify-content-center">
-            <div class="card mb-4 shadow" style="width: 50rem;">
+            <div class="card mb-4 shadow" style="width:50rem;">
                 <div class="card-body">
                     <div class="modal-header justify-content-between">
                         <span></span>

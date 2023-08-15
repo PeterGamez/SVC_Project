@@ -8,7 +8,7 @@ use App\Models\Approve;
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= admin_url() ?>">
         <div class="sidebar-brand-icon">
-            <img class="img-profile rounded-circle" src="<?= config('site.logo.256') ?>" alt="<?= config('site.name') ?> logo" style="width: 50px">
+            <img class="img-profile rounded-circle" src="<?= config('site.logo.256') ?>" alt="<?= config('site.name') ?> logo" width="50px" height="50px">
         </div>
     </a>
 

@@ -16,7 +16,7 @@ $site['bot'] = '';
     <div class="body container">
         <div class="row">
             <div class="col-sm-12 col-md-5 col-lg-4" data-aos="fade-up">
-                <div class="card" style="width: 100%;">
+                <div class="card" style="width:100%;">
                     <div class="card-header">
                         ค้นหาข้อมูล
                     </div>
