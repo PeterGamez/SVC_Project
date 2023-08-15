@@ -15,7 +15,7 @@ $site['cdn'] = ['login'];
                         </div>
                         <form class="user" method="POST" action="<?= member_url('login.callback.form') ?>">
                             <div class="mb-3">
-                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email" required pattern="a-zA-Z0-9_" minlength="5">
+                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email" required pattern="[a-zA-Z0-9._@]+" minlength="5">
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required minlength="8">

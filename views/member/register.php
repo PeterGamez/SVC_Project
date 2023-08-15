@@ -15,7 +15,7 @@ $site['cdn'] = ['login'];
                         </div>
                         <form class="user" method="POST" action="<?= url() ?>">
                             <div class="mb-3">
-                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username" required pattern="a-zA-Z0-9_" minlength="5" maxlength="20">
+                                <input type="text" class="form-control form-control-user" name="user" placeholder="Username" required pattern="[a-zA-Z0-9_]+" minlength="5" maxlength="20">
                             </div>
                             <div class="mb-3">
                                 <input type="email" class="form-control form-control-user" name="email" placeholder="Email" required>
