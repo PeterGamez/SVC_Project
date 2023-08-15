@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-style">
     <div class="container">
         <a class="navbar-brand" href="<?= url('/') ?>">
-            <img src="<?= config('site.logo.64') ?>" alt="<?= config('site.name') ?> icon" class="rounded" style="width:40px">
+            <img src="<?= config('site.logo.128') ?>" alt="<?= config('site.name') ?> icon" class="rounded" style="width:40px">
             <?= config('site.name') ?>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbartoggler" aria-controls="navbartoggler" aria-expanded="false" aria-label="Toggle navigation">

@@ -17,13 +17,13 @@ $site['bot'] = '';
                     <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="3000">
-                                <img src="https://cdn.discordapp.com/attachments/1040886801310699561/1134818358047551619/IN_-_1.png" class="d-block w-100" alt="image1">
+                                <img src="<?= config('site.cdn.path') ?>/lastboss/home1.png" class="d-block w-100" alt="image1">
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://cdn.discordapp.com/attachments/1040886801310699561/1134818358320177222/IN_-_2.png" class="d-block w-100" alt="image2">
+                                <img src="<?= config('site.cdn.path') ?>/lastboss/home2.png" class="d-block w-100" alt="image2">
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://cdn.discordapp.com/attachments/1040886801310699561/1134818358617980949/IN_-_3.png" class="d-block w-100" alt="image3">
+                                <img src="<?= config('site.cdn.path') ?>/lastboss/home3.png" class="d-block w-100" alt="image3">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">

@@ -38,7 +38,7 @@ $site['bot'] = '';
     <script>
         $('#table_whitelist').DataTable({
             ajax: '<?= url('api.v1.whitelist.list') ?>',
-            processing: true,
+            deferRender: true,
             columnDefs: [{
                     targets: 0,
                     render: (data, type, row) => `<a href="<?= url('whitelist') ?>/${data}">${data}</a>`,
