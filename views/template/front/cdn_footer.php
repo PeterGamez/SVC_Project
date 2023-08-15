@@ -19,7 +19,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <!-- Site style -->
 <script src="<?= resource('js/fontend.min.js', true) ?>"></script>
-
 <!-- Tawk.to -->
 <?php if (in_array('tawk', $site['cdn'])) { ?>
     <script type="text/javascript">
