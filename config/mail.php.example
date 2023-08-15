@@ -1,6 +1,6 @@
 <?php
 $mail = [
-    "host" => "itsvc.dev",
+    "host" => "mail.itsvc.dev",
     "username" => "lastboss@itsvc.dev",
     "password" => "",
     "tls" => true,
