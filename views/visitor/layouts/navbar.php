@@ -18,9 +18,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= url('blacklist') ?>"><i class="fa-solid fa-square-list"></i> Blacklist</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= url('contact') ?>"><i class="fa-brands fa-discord"></i> Contact</a>
-                </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end">
                 <?php
