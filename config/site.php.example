@@ -3,10 +3,10 @@ $site = [
     "name" => "Intra Check",
     "description" => "INTRA CHECK เว็บแอปพลิเคชั่นรวบรวมการกระทำผิด และการตรวจสอบในองค์กร",
     "logo" => [
-        "64" => resource('images/logo-64.png', true),
-        "128" => resource('images/logo-128.png', true),
-        "256" => resource('images/logo-256.png', true),
-        "ico" => resource('images/logo.ico', true),
+        "64" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/logo/logo-64.png",
+        "128" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/logo/logo-128.png",
+        "256" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/logo/logo-256.png",
+        "ico" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/logo/logo.ico",
     ],
     "lang" => "th",
     
@@ -16,13 +16,17 @@ $site = [
     "google" => [
         "id" => "704090470537-97c10g406cm14m2lntapii8aq0cg2nbk.apps.googleusercontent.com",
         "secret" => "",
-        "callback" => url('backend.login.google')
+        "callback" => url('member.login.callback.google'),
+        "analytics" => ""
     ],
     "cloudflare" => [
         "turnstile" => [
             "key" => "0x4AAAAAAAFtsf6-QCIxSaQT",
             "secret" => ""
         ]
+    ],
+    "cdn" => [
+        "path" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public"
     ],
 ];
 

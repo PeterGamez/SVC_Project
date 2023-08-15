@@ -16,7 +16,7 @@ class Account
         $_SESSION['user_id'] = $data['id'];
         $_SESSION['user_username'] = $data['username'];
         $_SESSION['user_email'] = $data['email'];
-        $_SESSION['user_avatar'] = isset($data['avatar']) ? $data['avatar'] : resource('images/logo-1000.png', true);
+        $_SESSION['user_avatar'] = isset($data['avatar']) ? $data['avatar'] : config('site.logo.128');
         $_SESSION['user_role'] = $data['role'];
     }
 
