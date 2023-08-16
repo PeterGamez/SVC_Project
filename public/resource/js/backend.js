@@ -1,4 +1,8 @@
-// * SB Admin 2 v4.1.3
+/**
+ * SB Admin 2 v4.1.3
+ * 
+ * https://github.com/StartBootstrap/startbootstrap-sb-admin-2
+ */
 
 (function ($) {
     "use strict";
