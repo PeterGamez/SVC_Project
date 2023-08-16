@@ -12,9 +12,9 @@
     <!-- Login style -->
     <link rel="stylesheet" href="<?= resource('css/back_login.min.css', true) ?>">
     <!-- Cloudflare Turnstile -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer data-category="necessary"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <!-- Google Oauth -->
-    <script src="https://accounts.google.com/gsi/client" async defer data-category="necessary"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
     <meta name="google-signin-client_id" content="<?= config('site.google.id') ?>">
 <?php } ?>
 <!-- 404 -->

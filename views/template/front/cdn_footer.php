@@ -17,7 +17,7 @@
 <script src="<?= resource('js/fontend.min.js', true) ?>"></script>
 <!-- Tawk.to -->
 <?php if (in_array('tawk', $site['cdn'])) { ?>
-    <script type="text/javascript" data-category="necessary">
+    <script>
         var Tawk_API = Tawk_API || {},
             Tawk_LoadStart = new Date();
         (function() {

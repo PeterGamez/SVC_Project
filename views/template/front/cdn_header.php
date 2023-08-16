@@ -3,7 +3,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.2/css/pro.min.css">
 <!-- Sweetalert2 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.22/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.22/sweetalert2.all.min.js" async></script>
 <!-- Data Tables -->
 <?php if (in_array('datatables', $site['cdn'])) { ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/1.13.6/dataTables.bootstrap5.min.css">
@@ -14,8 +14,8 @@
 <!-- Site style -->
 <link rel="stylesheet" href="<?= resource('css/font_style.min.css', true) ?>">
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?= config('site.google.analytics') ?>" data-category="analytics"></script>
-<script data-category="analytics">
+<script type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=<?= config('site.google.analytics') ?>" data-category="analytics" async></script>
+<script type="text/plain" data-category="analytics">
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {

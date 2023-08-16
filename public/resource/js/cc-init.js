@@ -1,3 +1,8 @@
+/**
+ * CookieConsent
+ * https://github.com/orestbida/cookieconsent
+ */
+
 import { run } from 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.esm.js';
 
 run({
@@ -11,7 +16,7 @@ run({
         preferencesModal: {
             layout: "box",
             position: "right",
-            equalWeightButtons: true,
+            equalWeightButtons: false,
             flipButtons: false
         }
     },
