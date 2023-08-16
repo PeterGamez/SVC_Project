@@ -4,10 +4,6 @@
 <?php } ?>
 <!-- Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
-<!-- LazySizes -->
-<?php if (in_array('lazysizes', $site['cdn'])) { ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
-<?php } ?>
 <!-- Data Tables -->
 <?php if (in_array('datatables', $site['cdn'])) { ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net/1.13.6/jquery.dataTables.min.js"></script>
@@ -35,3 +31,6 @@
         })();
     </script>
 <?php } ?>
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js" defer></script>
+<script src="<?= resource('js/cc-init.min.js', true) ?>" defer></script>

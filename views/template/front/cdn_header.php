@@ -24,3 +24,5 @@
     gtag('js', new Date());
     gtag('config', '<?= config('site.google.analytics') ?>');
 </script>
+<!-- Cookie -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css">
