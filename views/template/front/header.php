@@ -1,6 +1,6 @@
 <?php
 if (in_array('tawk', $site['cdn'])) {
-    header('Access-Control-Allow-Origin: https://embed.tawk.to');
+    header('Access-Control-Allow-Origin: https://*.tawk.to');
     header('Access-Control-Allow-Credentials: true');
     header('Set-Cookie: SameSite=None; Secure');
 }

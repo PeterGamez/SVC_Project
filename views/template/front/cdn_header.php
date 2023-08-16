@@ -14,8 +14,8 @@
 <!-- Site style -->
 <link rel="stylesheet" href="<?= resource('css/font_style.min.css', true) ?>">
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?= config('site.google.analytics') ?>"></script>
-<script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= config('site.google.analytics') ?>" data-category="analytics"></script>
+<script data-category="analytics">
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
@@ -25,4 +25,4 @@
     gtag('config', '<?= config('site.google.analytics') ?>');
 </script>
 <!-- Cookie -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.css">

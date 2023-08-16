@@ -17,7 +17,7 @@
 <script src="<?= resource('js/fontend.min.js', true) ?>"></script>
 <!-- Tawk.to -->
 <?php if (in_array('tawk', $site['cdn'])) { ?>
-    <script type="text/javascript">
+    <script type="text/javascript" data-category="necessary">
         var Tawk_API = Tawk_API || {},
             Tawk_LoadStart = new Date();
         (function() {
@@ -32,5 +32,4 @@
     </script>
 <?php } ?>
 <!-- Cookie -->
-<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js" defer></script>
-<script src="<?= resource('js/cc-init.min.js', true) ?>" defer></script>
+<script type="module" src="<?= resource('js/cc-init.min.js', true) ?>" data-cfasync="false"></script>

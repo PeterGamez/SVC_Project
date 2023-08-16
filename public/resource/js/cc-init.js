@@ -1,109 +1,145 @@
-const config = {
-    current_lang: "en",
-    autorun: true,
-    autoclear_cookies: true,
-    page_scripts: true,
-    languages: {
-        en: {
-            consent_modal: {
-                title: "We use cookies!",
-                description:
-                    'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
-                primary_btn: {
-                    text: "Accept all",
-                    role: "accept_all", // 'accept_selected' or 'accept_all'
-                },
-                secondary_btn: {
-                    text: "Reject all",
-                    role: "accept_necessary", // 'settings' or 'accept_necessary'
-                },
-            },
-            settings_modal: {
-                title: "Cookie preferences",
-                save_settings_btn: "Save settings",
-                accept_all_btn: "Accept all",
-                reject_all_btn: "Reject all",
-                close_btn_label: "Close",
-                cookie_table_headers: [
-                    { col1: "Name" },
-                    { col2: "Domain" },
-                    { col3: "Expiration" },
-                    { col4: "Description" },
-                ],
-                blocks: [
-                    {
-                        title: "Cookie usage 📢",
-                        description:
-                            'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="#" class="cc-link">privacy policy</a>.',
-                    },
-                    {
-                        title: "Strictly necessary cookies",
-                        description:
-                            "These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly",
-                        toggle: {
-                            value: "necessary",
-                            enabled: true,
-                            readonly: true, // cookie categories with readonly=true are all treated as "necessary cookies"
-                        },
-                    },
-                    {
-                        title: "Performance and Analytics cookies",
-                        description:
-                            "These cookies allow the website to remember the choices you have made in the past",
-                        toggle: {
-                            value: "analytics", // your cookie category
-                            enabled: false,
-                            readonly: false,
-                        },
-                        cookie_table: [
-                            // list of all expected cookies
-                            {
-                                col1: "^_ga", // match all cookies starting with "_ga"
-                                col2: "google.com",
-                                col3: "2 years",
-                                col4: "description ...",
-                                is_regex: true,
-                            },
-                            {
-                                col1: "_gid",
-                                col2: "google.com",
-                                col3: "1 day",
-                                col4: "description ...",
-                            },
-                        ],
-                    },
-                    {
-                        title: "Advertisement and Targeting cookies",
-                        description:
-                            "These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you",
-                        toggle: {
-                            value: "targeting",
-                            enabled: false,
-                            readonly: false,
-                        },
-                    },
-                    {
-                        title: "More information",
-                        description:
-                            'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>.',
-                    },
-                ],
-            },
+import { run } from 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.esm.js';
+
+run({
+    guiOptions: {
+        consentModal: {
+            layout: "box inline",
+            position: "bottom left",
+            equalWeightButtons: false,
+            flipButtons: false
         },
-    },
-    gui_options: {
-        consent_modal: {
-            layout: 'box', // box/cloud/bar
-            position: 'bottom left', // bottom/middle/top + left/right/center
-            transition: 'slide', // zoom/slide
-            swap_buttons: false // enable to invert buttons
-        },
-        settings_modal: {
-            layout: 'box', // box/bar
-            position: '', // left/right
-            transition: 'slide' // zoom/slide
+        preferencesModal: {
+            layout: "box",
+            position: "right",
+            equalWeightButtons: true,
+            flipButtons: false
         }
     },
-};
-let cc = initCookieConsent();
-cc.run(config);
+    categories: {
+        necessary: {
+            readOnly: true
+        },
+        functionality: {},
+        analytics: {}
+    },
+    language: {
+        default: "th",
+        translations: {
+            th: {
+                consentModal: {
+                    label: "Cookie consent",
+                    description: "เว็บไซต์นี้ใช้คุกกี้ที่จำเป็นเพื่อให้แน่ใจว่ามีการทำงานที่เหมาะสมและติดตามคุกกี้เพื่อทำความเข้าใจว่าคุณโต้ตอบกับเว็บไซต์อย่างไร หลังจะถูกตั้งค่าหลังจากได้รับความยินยอมเท่านั้น",
+                    acceptAllBtn: "Accept all",
+                    acceptNecessaryBtn: "Reject all",
+                    showPreferencesBtn: "Manage preferences",
+                    title: "We use cookies!"
+                },
+                preferencesModal: {
+                    title: "Cookie Preferences Setting",
+                    acceptAllBtn: "Accept all",
+                    acceptNecessaryBtn: "Reject all",
+                    savePreferencesBtn: "Save preferences",
+                    closeIconLabel: "Close modal",
+                    serviceCounterLabel: "Service|Services",
+                    sections: [
+                        {
+                            title: "Cookie Usage",
+                            description: "เว็บไซต์นี้ใช้คุกกี้เพื่อให้แน่ใจว่าฟังก์ชันพื้นฐานของเว็บไซต์และเพื่อปรับปรุงประสบการณ์ออนไลน์ของคุณ คุณสามารถเลือกสำหรับแต่ละหมวดหมู่เพื่อเข้าร่วม/ไม่ใช้ได้ทุกเมื่อที่คุณต้องการ สำหรับรายละเอียดเพิ่มเติมเกี่ยวกับคุกกี้และข้อมูลที่ละเอียดอ่อนอื่นๆ"
+                        },
+                        {
+                            title: "Strictly Necessary Cookies <span class=\"pm__badge\">Always Enabled</span>",
+                            description: "คุกกี้เหล่านี้จำเป็นสำหรับการทำงานที่เหมาะสมของเว็บไซต์ของเรา หากไม่มีคุกกี้เหล่านี้ เว็บไซต์จะทำงานไม่ถูกต้อง",
+                            linkedCategory: "necessary"
+                        },
+                        {
+                            title: "Functionality Cookies",
+                            description: "คุกกี้เหล่านี้ช่วยให้เว็บไซต์จดจำตัวเลือกที่คุณได้ทำไว้ในอดีต",
+                            linkedCategory: "functionality"
+                        },
+                        {
+                            title: "Analytics Cookies",
+                            description: "คุกกี้เหล่านี้รวบรวมข้อมูลเกี่ยวกับวิธีที่คุณใช้เว็บไซต์ หน้าที่คุณเข้าชม และลิงก์ใดที่คุณคลิก ข้อมูลทั้งหมดจะไม่เปิดเผยชื่อและไม่สามารถใช้เพื่อระบุตัวตนของคุณได้",
+                            linkedCategory: "analytics",
+                            cookieTable: {
+                                headers: {
+                                    name: "Name",
+                                    description: "Description",
+                                    Service: "Service"
+                                },
+                                body: [
+                                    {
+                                        name: "_ga*, _gid, google-analytics*",
+                                        description: "Used to track you",
+                                        Service: "Google Analytics"
+                                    },
+                                ]
+                            }
+                        },
+                        {
+                            title: "More information",
+                            description: "สำหรับข้อสงสัยเกี่ยวกับนโยบายของเราเกี่ยวกับคุกกี้และตัวเลือกของคุณ โปรดติดต่อผ่าน live chat"
+                        }
+                    ]
+                }
+            },
+            en: {
+                consentModal: {
+                    label: "Cookie consent",
+                    description: "Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.",
+                    acceptAllBtn: "Accept all",
+                    acceptNecessaryBtn: "Reject all",
+                    showPreferencesBtn: "Manage preferences",
+                    title: "We use cookies!"
+                },
+                preferencesModal: {
+                    title: "Cookie Preferences Setting",
+                    acceptAllBtn: "Accept all",
+                    acceptNecessaryBtn: "Reject all",
+                    savePreferencesBtn: "Save preferences",
+                    closeIconLabel: "Close modal",
+                    serviceCounterLabel: "Service|Services",
+                    sections: [
+                        {
+                            title: "Cookie Usage",
+                            description: "I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data."
+                        },
+                        {
+                            title: "Strictly Necessary Cookies <span class=\"pm__badge\">Always Enabled</span>",
+                            description: "These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly",
+                            linkedCategory: "necessary"
+                        },
+                        {
+                            title: "Functionality Cookies",
+                            description: "These cookies allow the website to remember the choices you have made in the past",
+                            linkedCategory: "functionality"
+                        },
+                        {
+                            title: "Analytics Cookies",
+                            description: "These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you",
+                            linkedCategory: "analytics",
+                            cookieTable: {
+                                headers: {
+                                    name: "Name",
+                                    description: "Description",
+                                    Service: "Service"
+                                },
+                                body: [
+                                    {
+                                        name: "_ga*, _gid, google-analytics*",
+                                        description: "Used to track you",
+                                        Service: "Google Analytics"
+                                    },
+                                ]
+                            }
+                        },
+                        {
+                            title: "More information",
+                            description: "For any query in relation to my policy on cookies and your choices, please contact as live chat."
+                        }
+                    ]
+                }
+            }
+        },
+        autoDetect: "browser"
+    }
+});

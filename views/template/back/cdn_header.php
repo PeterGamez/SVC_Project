@@ -12,9 +12,9 @@
     <!-- Login style -->
     <link rel="stylesheet" href="<?= resource('css/back_login.min.css', true) ?>">
     <!-- Cloudflare Turnstile -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer data-category="necessary"></script>
     <!-- Google Oauth -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer data-category="necessary"></script>
     <meta name="google-signin-client_id" content="<?= config('site.google.id') ?>">
 <?php } ?>
 <!-- 404 -->
@@ -24,3 +24,5 @@
 <?php } ?>
 <!-- Site style -->
 <link rel="stylesheet" href="<?= resource('css/back_style.min.css', true) ?>">
+<!-- Cookie -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.css">

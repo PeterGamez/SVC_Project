@@ -23,3 +23,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive/2.5.0/dataTables.responsive.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.5.0/responsive.bootstrap4.min.js"></script>
 <?php } ?>
+<!-- Cookie -->
+<script type="module" src="<?= resource('js/cc-init.min.js', true) ?>" data-cfasync="false"></script>
