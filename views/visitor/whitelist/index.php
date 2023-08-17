@@ -56,7 +56,7 @@ $site['bot'] = '';
                 [0, 'desc']
             ],
             language: {
-                url: "<?= resource('datatables/th.json', true) ?>"
+                url: "<?= config('site.cdn.path') ?>/json/datatables-th.json"
             }
         })
     </script>

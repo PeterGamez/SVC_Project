@@ -68,7 +68,7 @@ $site['cdn'] = ['datatables'];
                 orderable: false
             }, ],
             language: {
-                url: "<?= resource('datatables/th.json', true) ?>"
+                url: "<?= config('site.cdn.path') ?>/json/datatables-th.json"
             }
         })
     </script>
