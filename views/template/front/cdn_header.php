@@ -1,9 +1,9 @@
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.2/css/pro.min.css">
 <!-- Sweetalert2 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.22/sweetalert2.all.min.js" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.23/sweetalert2.all.min.js" async></script>
 <!-- Data Tables -->
 <?php if (in_array('datatables', $site['cdn'])) { ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/1.13.6/dataTables.bootstrap5.min.css">
