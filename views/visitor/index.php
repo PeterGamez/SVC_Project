@@ -17,13 +17,25 @@ $site['bot'] = '';
                     <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="3000">
-                                <img src="<?= config('site.cdn.path') ?>/images/home1.png" class="d-block w-100" alt="image1">
+                                <picture>
+                                    <source srcset="<?= config('site.cdn.path') ?>/images/home/1.webp" type="image/webp">
+                                    <source srcset="<?= config('site.cdn.path') ?>/images/home/1.png" type="image/png">
+                                    <img src="<?= config('site.cdn.path') ?>/images/home/1.png" class="d-block w-100" alt="image1">
+                                </picture>
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
-                                <img src="<?= config('site.cdn.path') ?>/images/home2.png" class="d-block w-100" alt="image2">
+                                <picture>
+                                    <source srcset="<?= config('site.cdn.path') ?>/images/home/2.webp" type="image/webp">
+                                    <source srcset="<?= config('site.cdn.path') ?>/images/home/2.png" type="image/png">
+                                    <img src="<?= config('site.cdn.path') ?>/images/home/2.png" class="d-block w-100" alt="image2">
+                                </picture>
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
-                                <img src="<?= config('site.cdn.path') ?>/images/home3.png" class="d-block w-100" alt="image3">
+                                <picture>
+                                    <source srcset="<?= config('site.cdn.path') ?>/images/home/3.webp" type="image/webp">
+                                    <source srcset="<?= config('site.cdn.path') ?>/images/home/3.png" type="image/png">
+                                    <img src="<?= config('site.cdn.path') ?>/images/home/3.png" class="d-block w-100" alt="image3">
+                                </picture>
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
