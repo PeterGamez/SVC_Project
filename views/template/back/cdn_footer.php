@@ -24,4 +24,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.5.0/responsive.bootstrap4.min.js"></script>
 <?php } ?>
 <!-- Cookie -->
-<script type="module" src="<?= resource('js/cc-init.min.js', true) ?>" data-cfasync="false"></script>
+<script type="module" src="<?= resource('js/cookieconsent.min.js', true) ?>" data-cfasync="false"></script>

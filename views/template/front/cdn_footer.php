@@ -32,4 +32,4 @@
     </script>
 <?php } ?>
 <!-- Cookie -->
-<script type="module" src="<?= resource('js/cc-init.min.js', true) ?>" data-cfasync="false"></script>
+<script type="module" src="<?= resource('js/cookieconsent.min.js', true) ?>" data-cfasync="false"></script>
