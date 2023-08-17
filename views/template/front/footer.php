@@ -12,12 +12,12 @@
                 <ul style="list-style-type: none;">
                     <li>
                         <span class="text-dark">
-                            <a href="<?= url('privacy') ?>">Privacy Policy</a>
+                            <a href="<?= url('privacy') ?>">นโยบายความเป็นส่วนตัว</a>
                         </span>
                     </li>
                     <li>
                         <span class="text-dark">
-                            <a href="<?= url('tos') ?>">Terms of Service</a>
+                            <a href="<?= url('tos') ?>">เงื้อนไขการให้บริการ</a>
                         </span>
                     </li>
                     <li>
