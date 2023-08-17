@@ -20,14 +20,14 @@ class EmailVerify extends Model
         return parent::buildCreate($sql, $newData);
     }
 
-    public static function findEmail(string $email): array
+    public static function findEmail(string $email): ?array
     {
         $table = self::$table;
         $sql = "SELECT * FROM $table WHERE email = ? AND verified = '0' AND expired_at > NOW()";
         return parent::buildFindOne($sql, [$email]);
     }
 
-    public static function findToken(string $token): array
+    public static function findToken(string $token): ?array
     {
         $table = self::$table;
         $sql = "SELECT * FROM $table WHERE token = ? AND verified = '0' AND expired_at > NOW()";
