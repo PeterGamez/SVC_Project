@@ -1,7 +1,7 @@
 <?php
 $site = [
     "name" => "Intra Check",
-    "description" => "INTRA CHECK เว็บแอปพลิเคชั่นรวบรวมการกระทำผิด และการตรวจสอบในองค์กร",
+    "description" => "เว็บแอปพลิเคชั่นรวบรวมการกระทำผิดและตรวจสอบผู้ซื้อขาย",
     "logo" => [
         "64" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/images/logo/logo-64.png",
         "128" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/images/logo/logo-128.png",
