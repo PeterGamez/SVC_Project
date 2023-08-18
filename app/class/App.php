@@ -129,4 +129,47 @@ class App
         }
         return true;
     }
+
+    static function th_date($datetime, $format = 0, $time = false, $second = false)
+    {
+        list($date, $time) = explode(' ', $datetime);
+        list($H, $i) = explode(':', $time);
+        list($Y, $m, $d) = explode('-', $date);
+        $Y = $Y + 543;
+
+        $month = array(
+            '0' => array('01' => 'มกราคม', '02' => 'กุมภาพันธ์', '03' => 'มีนาคม', '04' => 'เมษายน', '05' => 'พฤษภาคม', '06' => 'มิถุนายน', '07' => 'กรกฏาคม', '08' => 'สิงหาคม', '09' => 'กันยายน', '10' => 'ตุลาคม', '11' => 'พฤษจิกายน', '12' => 'ธันวาคม'),
+            '1' => array('01' => 'ม.ค.', '02' => 'ก.พ.', '03' => 'มี.ค.', '04' => 'เม.ย.', '05' => 'พ.ค.', '06' => 'มิ.ย.', '07' => 'ก.ค.', '08' => 'ส.ค.', '09' => 'ก.ย.', '10' => 'ต.ค.', '11' => 'พ.ย.', '12' => 'ธ.ค.')
+        );
+
+        $date =  $d . ' ' . $month[$format][$m] . ' ' . $Y;
+        if ($time == true) {
+            $date .= ' ' . $H . ':' . $i;
+            if ($second == true) {
+                $date .= ':' . $second;
+            }
+        }
+        return $date;
+    }
+
+    static function en_date($datetime, $format = 0, $time = false, $second = false)
+    {
+        list($date, $time) = explode(' ', $datetime);
+        list($H, $i) = explode(':', $time);
+        list($Y, $m, $d) = explode('-', $date);
+
+        $month = array(
+            '0' => array('01' => 'January', '02' => 'February', '03' => 'March', '04' => 'April', '05' => 'May', '06' => 'June', '07' => 'July', '08' => 'August', '09' => 'September', '10' => 'October', '11' => 'November', '12' => 'December'),
+            '1' => array('01' => 'Jan', '02' => 'Feb', '03' => 'Mar', '04' => 'Apr', '05' => 'May', '06' => 'Jun', '07' => 'July', '08' => 'Aug', '09' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec')
+        );
+
+        $date =  $d . ' ' . $month[$format][$m] . ' ' . $Y;
+        if ($time == true) {
+            $date .= ' ' . $H . ':' . $i;
+            if ($second == true) {
+                $date .= ':' . $second;
+            }
+        }
+        return $date;
+    }
 }
