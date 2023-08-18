@@ -3,10 +3,10 @@ $site = [
     "name" => "Intra Check",
     "description" => "เว็บแอปพลิเคชั่นรวบรวมการกระทำผิดและตรวจสอบผู้ซื้อขาย",
     "logo" => [
-        "64" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/images/logo/logo-64.png",
-        "128" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/images/logo/logo-128.png",
-        "256" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/images/logo/logo-256.png",
-        "ico" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/images/logo/logo.ico",
+        "64" => "https://cdn.itsvc.dev/lastboss/images/logo/logo-64.png",
+        "128" => "https://cdn.itsvc.dev/lastboss/images/logo/logo-128.png",
+        "256" => "https://cdn.itsvc.dev/lastboss/images/logo/logo-256.png",
+        "ico" => "https://cdn.itsvc.dev/lastboss/images/logo/logo.ico",
     ],
     "lang" => "th",
     
@@ -26,7 +26,7 @@ $site = [
         ]
     ],
     "cdn" => [
-        "path" => "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss"
+        "path" => "https://cdn.itsvc.dev/lastboss"
     ],
     "tawk" => [
         "url" => "https://embed.tawk.to/64dada5894cf5d49dc6a6b17/1h7re9qt2"

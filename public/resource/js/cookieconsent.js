@@ -30,8 +30,8 @@ run({
     language: {
         default: "th",
         translations: {
-            th: "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/json/cookieconsent-th.json",
-            en: "https://cdn.jsdelivr.net/gh/itsvc-dev/public/lastboss/json/cookieconsent-en.json"
+            th: "https://cdn.itsvc.dev/lastboss/json/cookieconsent-th.json",
+            en: "https://cdn.itsvc.dev/lastboss/json/cookieconsent-en.json"
         },
         autoDetect: "browser"
     }
