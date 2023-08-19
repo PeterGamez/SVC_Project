@@ -1,5 +1,5 @@
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= resource('css/bootstrap4.min.css', true) ?>">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.2/css/pro.min.css">
 <!-- Data Tables -->

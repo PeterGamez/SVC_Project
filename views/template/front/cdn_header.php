@@ -1,5 +1,5 @@
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= resource('css/bootstrap5.min.css', true) ?>">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.2/css/pro.min.css">
 <!-- Sweetalert2 -->
