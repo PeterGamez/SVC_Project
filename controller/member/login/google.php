@@ -31,31 +31,35 @@ if (isset($_POST['credential'])) {
 
             if ($data['avatar'] <> $payload['picture']) {
                 ModelsAccount::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
+                $data['avatar'] = $payload['picture'];
             }
-            $data['avatar'] = $payload['picture'];
 
             Account::set_session($data);
             ModelsAccount::login($data['id']);
 
             echo AlertLogin::succeed();
         } else {
-            $data = ModelsAccount::find()->where('username', $payload['given_name'])->getOne();
+            $username = explode('@', $payload['email'])[0];
+            $username = preg_replace('/[^a-zA-Z0-9_]/', '', $username);
+            $data = ModelsAccount::find()->where('username', $username)->getOne();
             if ($data) {
-                echo Alert::alerts('ชื่อบัญชี Google ของคุณมีผู้ใช้งานแล้ว', 'warning', 1500, 'history.back()');
+                echo Alert::alerts('บัญชี Google ของคุณมีผู้ใช้งานแล้ว', 'warning', 1500, 'history.back()');
                 exit;
             }
+
             $password = password_hash($payload['jti'], PASSWORD_DEFAULT);
             $data = ModelsAccount::register([
-                'username' => $payload['given_name'],
+                'username' => $username,
                 'email' => $payload['email'],
                 'password' => $password,
                 'avatar' => $payload['picture'],
                 'role' => 'user'
             ]);
+
             if (Account::create_verify_token($payload['email'], 'register')) {
                 echo AlertLogin::verifyEmail();
             } else {
-                echo Alert::alerts('ไม่สามารถส่งอีเมลยืนยันได้', 'error', 1500, 'window.location.href="' . member_url('login') . '"');
+                echo AlertLogin::unverifyEmail();
             }
         }
     } else {

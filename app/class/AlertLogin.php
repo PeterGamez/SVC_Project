@@ -24,6 +24,11 @@ class AlertLogin extends Alert
         return parent::alerts2('ส่งอีเมลยืนยันสำเร็จ', 'หากไม่พบอีเมลกรุณาตรวจสอบที่ <b>จดหมายขยะ</b>', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');
     }
 
+    public static function unverifyEmail(): string
+    {
+        return parent::alerts('ไม่สามารถส่งอีเมลยืนยันได้', 'error', 1500, 'window.location.href="' . member_url('login') . '"');
+    }
+
     public static function reverifyEmail(): string
     {
         return parent::alerts2('กรุณายืนยันอีเมลก่อนเข้าใช้งาน', 'หากไม่พบอีเมลกรุณาตรวจสอบที่ <b>จดหมายขยะ</b>', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');

@@ -139,7 +139,7 @@ class App
      * @param bool $time แสดงเวลาด้วยหรือไม่
      * @param bool $second แสดงวินาทีด้วยหรือไม่
      */
-    static function th_date($datetime, $format = 0, $time = false, $second = false): string
+    static function th_date(string $datetime, int $format = 0, bool $time = false, bool $second = false): string
     {
         list($date, $time) = explode(' ', $datetime);
         list($H, $i) = explode(':', $time);
@@ -167,7 +167,7 @@ class App
      * @param bool $time แสดงเวลาด้วยหรือไม่
      * @param bool $second แสดงวินาทีด้วยหรือไม่
      */
-    static function en_date($datetime, $format = 0, $time = false, $second = false): string
+    static function en_date(string $datetime, int $format = 0, bool $time = false, bool $second = false): string
     {
         list($date, $time) = explode(' ', $datetime);
         list($H, $i) = explode(':', $time);

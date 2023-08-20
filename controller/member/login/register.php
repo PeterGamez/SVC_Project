@@ -40,7 +40,7 @@ if (isset($_POST['user'])) {
         if (Account::create_verify_token($email, 'verify')) {
             echo AlertLogin::verifyEmail();
         } else {
-            echo Alert::alerts('ไม่สามารถส่งอีเมลยืนยันได้', 'error', 1500, 'window.location.href="' . member_url('login') . '"');
+            echo AlertLogin::unverifyEmail();
         }
     } else {
         echo Alert::alerts('ไม่สามารถลงทะเบียนได้', 'error', 1500, 'history.back()');
