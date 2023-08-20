@@ -12,7 +12,7 @@
                 <ul style="list-style-type: none;">
                     <li>
                         <span class="text-dark">
-                            <a href="<?= url('privacy') ?>">นโยบายความเป็นส่วนตัว</a>
+                            <a href="<?= url('privacy') ?>">ความเป็นส่วนตัว</a>
                         </span>
                     </li>
                     <li>
