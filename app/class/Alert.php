@@ -17,6 +17,7 @@ class Alert
             })
         </script></body>";
     }
+
     public static function alerts(string $title, string $icon, string $timer, string $willClose): string
     {
         return "<head>
@@ -26,6 +27,26 @@ class Alert
             <script>
                 Swal.fire({
                     title: '" . $title . "',
+                    icon: '" . $icon . "',
+                    timer: " . $timer . ",
+                    willClose: () => {
+                        " . $willClose . "
+                    }
+                })
+            </script>
+        </body>";
+    }
+
+    public static function alerts2(string $title, string $html, string $icon, string $timer, string $willClose): string
+    {
+        return "<head>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.23/sweetalert2.all.min.js'></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    title: '" . $title . "',
+                    html: '" . $html . "',
                     icon: '" . $icon . "',
                     timer: " . $timer . ",
                     willClose: () => {

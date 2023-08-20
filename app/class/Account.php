@@ -20,25 +20,34 @@ class Account
         $_SESSION['user_role'] = $data['role'];
     }
 
-    public static function create_verify_token(string $email): bool
+    public static function create_verify_token(string $email, string $type): bool
     {
         $emailVerify = EmailVerify::findEmail($email);
         if (!$emailVerify) {
             $token = App::RandomText(16);
+
+            if ($type == 'verify') {
+                $subject = config('site.name') . ': Verify Your Email';
+                $body = Mail::verifypage(url('verify-email?token=' . $token));
+            } else if ($type == 'register') {
+                $subject = config('site.name') . ': Register';
+                $body = Mail::registerpage(url('register-email?token=' . $token));
+            } else {
+                return false;
+            }
+
             EmailVerify::create([
                 'email' => $email,
                 'token' => $token,
+                'type' => $type,
                 'expired_at' => date('Y-m-d H:i:s', strtotime('+1 hour')),
             ]);
 
-            $subject = config('site.name') . ': Verify Your Email';
-            $body = Mail::verifypage(url('verify-email?token=' . $token));
-
             Mail::sendMail($email, $subject, $body);
+
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public static function verify_email(string $token): bool
@@ -49,6 +58,23 @@ class Account
                 $user = ModelsAccount::find()->where('email', $emailVerify['email'])->getOne();
                 if (ModelsAccount::verifyEmail($user['id'])) {
                     return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return array user data
+     */
+    public static function register_email(string $token, string $password): array|false
+    {
+        $emailVerify = EmailVerify::findToken($token);
+        if ($emailVerify) {
+            if (EmailVerify::verifyEmail($emailVerify['id'])) {
+                $user = ModelsAccount::find()->where('email', $emailVerify['email'])->getOne();
+                if (ModelsAccount::registerEmail($user['id'], $password)) {
+                    return $user;
                 }
             }
         }

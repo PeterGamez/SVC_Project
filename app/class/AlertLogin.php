@@ -6,27 +6,27 @@ class AlertLogin extends Alert
 {
     public static function contact(): string
     {
-        return parent::alert('กรุณาติดต่อผู้ดูแลระบบ', 'error', 1500, 'history.back()');
+        return parent::alerts('กรุณาติดต่อผู้ดูแลระบบ', 'error', 1500, 'history.back()');
     }
 
     public static function suspended(): string
     {
-        return parent::alert('บัญชีของคุณถูกระงับการใช้งาน', 'error', 1500, 'history.back()');
+        return parent::alerts('บัญชีของคุณถูกระงับการใช้งาน', 'error', 1500, 'history.back()');
     }
 
     public static function pass_mismatch(): string
     {
-        return parent::alert('รหัสผ่านไม่ถูกต้อง', 'error', 1500, 'history.back()');
+        return parent::alerts('รหัสผ่านไม่ถูกต้อง', 'error', 1500, 'history.back()');
     }
 
     public static function verifyEmail(): string
     {
-        return parent::alerts('ส่งอีเมลยืนยันสำเร็จ', 'หากไม่พบอีเมลกรุณาตรวจสอบที่ <b>จดหมายขยะ</b>', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');
+        return parent::alerts2('ส่งอีเมลยืนยันสำเร็จ', 'หากไม่พบอีเมลกรุณาตรวจสอบที่ <b>จดหมายขยะ</b>', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');
     }
 
     public static function reverifyEmail(): string
     {
-        return parent::alerts('กรุณายืนยันอีเมลก่อนเข้าใช้งาน', 'หากไม่พบอีเมลกรุณาตรวจสอบที่ <b>จดหมายขยะ</b>', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');
+        return parent::alerts2('กรุณายืนยันอีเมลก่อนเข้าใช้งาน', 'หากไม่พบอีเมลกรุณาตรวจสอบที่ <b>จดหมายขยะ</b>', 'warning', 1500, 'window.location.href="' . member_url('login') . '"');
     }
 
     public static function succeed(): string

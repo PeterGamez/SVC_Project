@@ -14,13 +14,13 @@ $site['cdn'] = ['login'];
                             <h1 class="h4 text-gray-900 mb-4">Login</h1>
                         </div>
                         <form class="user" method="POST" action="<?= member_url('login.callback.form') ?>">
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <input type="text" class="form-control form-control-user" name="user" placeholder="Username or Email" required pattern="[a-zA-Z0-9._@]+" minlength="5">
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required minlength="8">
                             </div>
-                            <div class="mb-3 d-flex justify-content-center">
+                            <div class="form-group d-flex justify-content-center">
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block"> Login </button>

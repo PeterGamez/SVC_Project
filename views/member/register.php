@@ -14,28 +14,35 @@ $site['cdn'] = ['login'];
                             <h1 class="h4 text-gray-900 mb-4">Register</h1>
                         </div>
                         <form class="user" method="POST" action="<?= url() ?>">
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <input type="text" class="form-control form-control-user" name="user" placeholder="Username" required pattern="[a-zA-Z0-9_]+" minlength="5" maxlength="20">
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <input type="email" class="form-control form-control-user" name="email" placeholder="Email" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <input type="password" class="form-control form-control-user" name="password1" placeholder="Password" required minlength="8">
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <input type="password" class="form-control form-control-user" name="password2" placeholder="Confirm Password" required minlength="8">
                             </div>
-                            <div class="mb-3 form-check">
+                            <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" name="agree" id="agree" required>
                                 <label class="form-check-label" for="agree">I agree to the <a href="<?= url('tos') ?>">Terms of Service</a></label>
                             </div>
-                            <div class="mb-3 d-flex justify-content-center">
+                            <div class="form-group d-flex justify-content-center">
                                 <div class="cf-turnstile" data-sitekey="<?= config('site.cloudflare.turnstile.key') ?>"></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block"> Register </button>
                             <div class="mt-2 text-center">
                                 <a class="small" href="<?= member_url('login') ?>">Already have an account? Login!</a>
+                            </div>
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-center">
+                                <div id="g_id_onload" data-client_id="<?= config('site.google.id') ?>" data-context="signin" data-ux_mode="redirect" data-login_uri="<?= config('site.google.callback') ?>" data-auto_prompt="false">
+                                </div>
+                                <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="continue_with" data-size="large" data-logo_alignment="center">
+                                </div>
                             </div>
                         </form>
                     </div>

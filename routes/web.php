@@ -47,6 +47,11 @@ if ($agent_request[0] == 'tos' and App::isGET()) {
     return visitor_views('tos');
 }
 
+// register email
+if (str_starts_with($agent_path, '/register-email')) {
+    return member_views('register-email');
+}
+
 // verify email
 if (str_starts_with($agent_path, '/verify-email')) {
     return member_controller('login.verify-email');

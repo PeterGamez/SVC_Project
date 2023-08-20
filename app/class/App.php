@@ -105,10 +105,13 @@ class App
         return $randomHex;
     }
 
+    /**
+     * @param string $captcha ค่า Captcha ที่ได้จาก cloudflare turnstile
+     */
     public static function Captcha(string $captcha): bool
     {
         if (!$captcha) {
-            echo AlertLogin::alert('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
+            echo Alert::alerts('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
             return false;
         }
         $ip = App::getAgentIP();
@@ -123,14 +126,20 @@ class App
             if ($result['error-codes'][0] == 'missing-input-secret' || $result['error-codes'][0] == 'invalid-input-response') {
                 echo AlertLogin::contact();
             } else {
-                echo AlertLogin::alert('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
+                echo Alert::alerts('ยืนยันตัวตนไม่สำเร็จ ' . $result['error-codes'][0], 'error', 1500, 'history.back()');
             }
             return false;
         }
         return true;
     }
 
-    static function th_date($datetime, $format = 0, $time = false, $second = false)
+    /**
+     * @param string $datetime
+     * @param int $format 0 = วันที่แบบเต็ม, 1 = วันที่แบบย่อ
+     * @param bool $time แสดงเวลาด้วยหรือไม่
+     * @param bool $second แสดงวินาทีด้วยหรือไม่
+     */
+    static function th_date($datetime, $format = 0, $time = false, $second = false): string
     {
         list($date, $time) = explode(' ', $datetime);
         list($H, $i) = explode(':', $time);
@@ -152,7 +161,13 @@ class App
         return $date;
     }
 
-    static function en_date($datetime, $format = 0, $time = false, $second = false)
+    /**
+     * @param string $datetime
+     * @param int $format 0 = วันที่แบบเต็ม, 1 = วันที่แบบย่อ
+     * @param bool $time แสดงเวลาด้วยหรือไม่
+     * @param bool $second แสดงวินาทีด้วยหรือไม่
+     */
+    static function en_date($datetime, $format = 0, $time = false, $second = false): string
     {
         list($date, $time) = explode(' ', $datetime);
         list($H, $i) = explode(':', $time);

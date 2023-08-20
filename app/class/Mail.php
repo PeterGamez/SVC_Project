@@ -49,4 +49,9 @@ class Mail
     {
         return '<html><head><style>td{padding-top:10px}</style></head><body><table cellspacing="0" cellpadding="0" style="width:100%"><tr><td>To verify your email, please click on the link below.</td></tr><tr><td><a href="' . $link . '" target="_blank">Verify your email</a></td></tr><tr><td>This link will expire in 1 hours.</td></tr></table></body></html>';
     }
+
+    public static function registerpage(string $link): string
+    {
+        return '<html><head><style>td{padding-top:10px}</style></head><body><table cellspacing="0" cellpadding="0" style="width:100%"><tr><td>To register your account, please click on the link below.</td></tr><tr><td><a href="' . $link . '" target="_blank">Register your account</a></td></tr><tr><td>This link will expire in 1 hours.</td></tr></table></body></html>';
+    }
 }

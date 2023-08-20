@@ -1,6 +1,7 @@
 <?php
 
 use App\Class\Account;
+use App\Class\Alert;
 use App\Class\AlertLogin;
 use App\Class\App;
 use App\Models\Account as ModelsAccount;
@@ -24,7 +25,7 @@ if (isset($_POST['user'])) {
             exit;
         }
         if ($data['email_verified'] == 0) {
-            if (Account::create_verify_token($data['email']) == true) {
+            if (Account::create_verify_token($data['email'], 'verify') == true) {
                 echo AlertLogin::verifyEmail();
             } else {
                 echo AlertLogin::reverifyEmail();
@@ -32,12 +33,12 @@ if (isset($_POST['user'])) {
             exit;
         }
         
-        ModelsAccount::login($data['id']);
         Account::set_session($data);
+        ModelsAccount::login($data['id']);
 
         echo AlertLogin::succeed();
     } else {
-        echo AlertLogin::alert('ไม่พบชื่อผู้ใช้งาน', 'warning', 1500, 'history.back()');
+        echo Alert::alerts('ไม่พบชื่อผู้ใช้งาน', 'warning', 1500, 'history.back()');
     }
 } else {
     redirect(member_url('login'));

@@ -25,6 +25,10 @@ if ($_SESSION['login'] == false) {
                     else if ($agent_request[2] == 'google') {
                         return member_controller('login.google');
                     }
+                    // Register Google
+                    else if ($agent_request[2] == 'register-email') {
+                        return member_controller('login.register-email');
+                    }
                 }
             }
         }
