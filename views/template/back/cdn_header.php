@@ -22,6 +22,11 @@
     <!-- 404 style -->
     <link rel="stylesheet" href="<?= resource('css/back_404.min.css', true) ?>">
 <?php } ?>
+<!-- 404 -->
+<?php if (isset($site['cdn']) and in_array('searchinput', $site['cdn'])) { ?>
+    <!-- 404 style -->
+    <link rel="stylesheet" href="<?= resource('css/searchinput.min.css', true) ?>">
+<?php } ?>
 <!-- Site style -->
 <link rel="stylesheet" href="<?= resource('css/back_style.min.css', true) ?>">
 <!-- Cookie -->

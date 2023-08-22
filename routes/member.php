@@ -94,6 +94,11 @@ else if ($agent_request[0] == 'blacklist') {
             if (App::isGET()) {
                 return member_views('blacklist.myreport');
             }
+        } else if (is_numeric($agent_request[1])) {
+            $request['id'] = $agent_request[1];
+            if (App::isGET()) {
+                return member_views('blacklist.view');
+            }
         }
     }
 }

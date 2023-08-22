@@ -3,7 +3,7 @@
 use App\Models\Bank;
 use App\Models\BlacklistCategory;
 
-$site['cdn'] = ['bs-file'];
+$site['cdn'] = ['bs-file', 'searchinput'];
 ?>
 
 <?= views('template/back/header') ?>
@@ -24,15 +24,16 @@ $site['cdn'] = ['bs-file'];
                                 <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label>ชื่อกิจการ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="name" required maxlength="50">
+                                            <label>ชื่อกิจการ<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="name" id="search-input" required maxlength="50">
+                                            <div class="autocomplete-list" id="autocomplete-list"></div>
                                         </div>
                                         <div class="form-group">
                                             <label>สาเหตุการขึ้นบัญชีดำ <span class="text-danger">*</span></label>
                                             <textarea class="form-control" name="reason" rows="3" required maxlength="255"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>เว็บไซต์ <span class="text-danger">*</span></label>
+                                            <label>ลิงก์เว็บไซต์ <span class="text-danger">*</span></label>
                                             <input type="url" class="form-control" name="website" required maxlength="50">
                                         </div>
                                         <div class="form-group">
@@ -134,4 +135,47 @@ $site['cdn'] = ['bs-file'];
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>
+    <script>
+        $(document).ready(function() {
+            $('#search-input').on('input', function() {
+                const query = $(this).val();
+                if (query.length >= 2) {
+                    $.ajax({
+                        url: '<?= url('api/v1/blacklist/search') ?>',
+                        method: 'POST',
+                        data: JSON.stringify({
+                            query: query
+                        }),
+                        success: function(response) {
+                            const result = response.data;
+
+                            const autocompleteList = $('#autocomplete-list');
+                            autocompleteList.empty();
+                            if (result.length == 0) {
+                                autocompleteList.css('border', 'none');
+                            } else {
+                                result.forEach(function(data) {
+                                    const item = $('<div class="autocomplete-item">' + data + '</div>');
+                                    autocompleteList.css('border', '1px solid #ccc');
+                                    item.on('click', function() {
+                                        $('#search-input').val(data);
+                                        autocompleteList.empty();
+                                        autocompleteList.css('border', 'none');
+                                    });
+                                    autocompleteList.append(item);
+                                });
+                            }
+                        },
+                        error: function() {
+                            console.log('Failed to fetch data from the API.');
+                        }
+                    });
+                } else {
+                    $('#autocomplete-list').empty();
+                    const autocompleteList = $('#autocomplete-list');
+                    autocompleteList.css('border', 'none');
+                }
+            });
+        });
+    </script>
 </body>
