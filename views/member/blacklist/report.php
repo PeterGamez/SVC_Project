@@ -24,7 +24,7 @@ $site['cdn'] = ['bs-file', 'searchinput'];
                                 <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label>ชื่อกิจการ<span class="text-danger">*</span></label>
+                                            <label>ชื่อกิจการ <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="name" id="search-input" required maxlength="50">
                                             <div class="autocomplete-list" id="autocomplete-list"></div>
                                         </div>
@@ -34,7 +34,7 @@ $site['cdn'] = ['bs-file', 'searchinput'];
                                         </div>
                                         <div class="form-group">
                                             <label>ลิงก์เว็บไซต์ <span class="text-danger">*</span></label>
-                                            <input type="url" class="form-control" name="website" required maxlength="50">
+                                            <input type="url" class="form-control" name="website" required maxlength="60">
                                         </div>
                                         <div class="form-group">
                                             <label>ประเภท <span class="text-danger">*</span></label>
