@@ -38,7 +38,7 @@ if ($_POST['id']) {
         'item_date' => $item_date
     ]);
 
-    $path = admin_url("blacklist.$id.view");
+    $path = admin_url("blacklist.$id");
     echo Alert::alerts('แก้ไขกิจการสำเร็จ', 'success', 1500, 'window.location.href="' . $path . '"');
 } else {
     redirect(admin_url('blacklist'));

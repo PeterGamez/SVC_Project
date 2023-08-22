@@ -48,7 +48,7 @@ use App\Models\BlacklistImage;
                                         <input type="url" class="form-control" value="<?= $result['website'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">ประเภท</label>
+                                        <label>ประเภท</label>
                                         <input type="text" class="form-control" value="<?= $result['blacklist_category_name'] ?>" disabled>
                                     </div>
                                     <div class="row">

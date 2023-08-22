@@ -139,7 +139,7 @@ $site['cdn'] = ['bs-file', 'searchinput'];
         $(document).ready(function() {
             $('#search-input').on('input', function() {
                 const query = $(this).val();
-                if (query.length >= 2) {
+                if (query.length >= 5) {
                     $.ajax({
                         url: '<?= url('api/v1/blacklist/search') ?>',
                         method: 'POST',
@@ -152,6 +152,7 @@ $site['cdn'] = ['bs-file', 'searchinput'];
                             const autocompleteList = $('#autocomplete-list');
                             autocompleteList.empty();
                             if (result.length == 0) {
+                                autocompleteList.empty();
                                 autocompleteList.css('border', 'none');
                             } else {
                                 result.forEach(function(data) {

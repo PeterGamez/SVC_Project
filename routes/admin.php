@@ -271,7 +271,7 @@ else if ($agent_request[0] == 'approve' and in_array($_SESSION['user_role'], ['s
             return admin_views('approve.view');
         }
         // edit
-        else if ($agent_request[2] == 'edit' and App::isGET()) {
+        else if ($agent_request[2] == 'edit') {
             if (App::isGET()) {
                 return admin_views('approve.edit');
             } else if (App::isPOST()) {
@@ -279,7 +279,7 @@ else if ($agent_request[0] == 'approve' and in_array($_SESSION['user_role'], ['s
             }
         }
         // delete
-        else if ($agent_request[2] == 'delete' and App::isGET()) {
+        else if ($agent_request[2] == 'delete') {
             if (App::isGET()) {
                 return admin_views('approve.delete');
             } else if (App::isPOST()) {

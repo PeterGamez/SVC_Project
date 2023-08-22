@@ -35,7 +35,7 @@ use App\Models\Account;
                                         <div class="form-group">
                                             <label>สิทธิ์การใช้งาน <span class="text-danger">*</span></label>
                                             <select class="form-control" name="role" required>
-                                                <option value="superadmin" <?= $result['role'] == "superadmin" ? "selected" : "" ?> disabled>ผู้ดูแลระบบ (superadmin)</option>
+                                                <option value="superadmin" <?= $result['role'] == "superadmin" ? "selected" : "" ?>>ผู้ดูแลระบบ (superadmin)</option>
                                                 <option value="admin" <?= $result['role'] == "admin" ? "selected" : "" ?>>ผู้ดูแล (admin)</option>
                                                 <option value="staff" <?= $result['role'] == "staff" ? "selected" : "" ?>>เจ้าหน้าที่ (staff)</option>
                                                 <option value="seller" <?= $result['role'] == "seller" ? "selected" : "" ?>>ผู้ขาย (seller)</option>
