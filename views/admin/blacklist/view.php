@@ -1,9 +1,7 @@
 <?php
 
-use App\Models\Approve;
 use App\Models\Blacklist;
 use App\Models\BlacklistImage;
-use App\Models\Bank;
 ?>
 
 <?= views('template/back/header') ?>
@@ -31,7 +29,7 @@ use App\Models\Bank;
                                             'approve.icon as approve_icon',
                                             'bank.name as bank_name',
                                         )
-                                        ->join('blacklist_category', 'id', 'blacklist_category_id')
+                                        ->join('blacklist_category', 'id', 'blacklist_category_id', 'LEFT')
                                         ->join('approve', 'id', 'approve_id')
                                         ->join('bank', 'id', 'bank_id')
                                         ->where('blacklist.id', $request['id'])
@@ -49,12 +47,10 @@ use App\Models\Bank;
                                         <label>เว็บไซต์</label>
                                         <input type="url" class="form-control" value="<?= $result['website'] ?>" disabled>
                                     </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label class="form-label">ประเภท</label>
-                                                <input type="text" class="form-control" value="<?= $result['blacklist_category_name'] ?>" disabled>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="form-label">ประเภท</label>
+                                        <input type="text" class="form-control" value="<?= $result['blacklist_category_name'] ?>" disabled>
+                                    </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
