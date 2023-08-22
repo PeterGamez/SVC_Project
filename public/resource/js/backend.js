@@ -43,4 +43,10 @@
     if ($(window).width() < 480) {
         $("#sidebarToggle").trigger('click');
     };
+
+    // form submit and disable button
+    $('form').submit(function () {
+        $('button[type=submit]').prop('disabled', true);
+        $('button[type=submit]').text('กำลังบันทึก');
+    });
 })(jQuery);
