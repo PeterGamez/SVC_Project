@@ -11,7 +11,7 @@ $site['bot'] = '';
 <body>
     <?= visitor_views('layouts/navbar') ?>
     <div class="body container">
-        <h1>เงื้อนไขการให้บริการ</h1>
+        <h1>เงื่อนไขการให้บริการ</h1>
     </div>
     <?= views('template/front/footer') ?>
     <?= views('template/front/cdn_footer') ?>

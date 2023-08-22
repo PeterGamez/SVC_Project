@@ -17,7 +17,7 @@
                     </li>
                     <li>
                         <span class="text-dark">
-                            <a href="<?= url('tos') ?>">เงื้อนไขการให้บริการ</a>
+                            <a href="<?= url('tos') ?>">เงื่อนไขการให้บริการ</a>
                         </span>
                     </li>
                     <li>

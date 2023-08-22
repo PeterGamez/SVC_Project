@@ -28,12 +28,15 @@ $site['bot'] = '';
         <div class="d-flex justify-content-center">
             <div class="card mb-4 shadow" style="width:50rem;">
                 <div class="card-body">
-                    <div class="modal-header justify-content-between">
+                    <div class="mb-3 modal-header justify-content-between">
                         <span></span>
                         <h5 class="modal-title">รายละเอียดกิจการ</h5>
                         <a href="<?= url_back() ?>" class="btn btn-close"></a>
                     </div>
                     <div class="modal-body">
+                        <div class="mb-3 d-flex justify-content-center">
+                            <img src="<?= $result['banner'] ?>" class="img-fluid rounded d-block" alt="<?= $result['name'] ?>" style="height: 200px;">
+                        </div>
                         <div class="mb-3">
                             <label>ชื่อกิจการ</label>
                             <input type="text" class="form-control" value="<?= $result['name'] ?>" disabled>
@@ -44,7 +47,7 @@ $site['bot'] = '';
                         </div>
                         <div class="mb-3">
                             <label>เว็บไซต์</label>
-                            <a href="<?= $result['website'] ?>" class="form-control"><?= $result['website'] ?></a>
+                            <a href="<?= $result['website'] ?>" class="form-control" target="_blank"><?= $result['website'] ?></a>
                         </div>
                         <div class="row">
                             <div class="col">

@@ -30,12 +30,12 @@ use App\Models\Account;
                                         </div>
                                         <div class="form-group">
                                             <label>อีเมล <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="email" value="<?= $result['email'] ?>" required maxlength="50">
+                                            <input type="email" class="form-control" name="email" value="<?= $result['email'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>สิทธิ์การใช้งาน <span class="text-danger">*</span></label>
                                             <select class="form-control" name="role" required>
-                                                <option value="superadmin" <?= $result['role'] == "superadmin" ? "selected" : "" ?>>ผู้ดูแลระบบ (superadmin)</option>
+                                                <option value="superadmin" <?= $result['role'] == "superadmin" ? "selected" : "" ?> disabled>ผู้ดูแลระบบ (superadmin)</option>
                                                 <option value="admin" <?= $result['role'] == "admin" ? "selected" : "" ?>>ผู้ดูแล (admin)</option>
                                                 <option value="staff" <?= $result['role'] == "staff" ? "selected" : "" ?>>เจ้าหน้าที่ (staff)</option>
                                                 <option value="seller" <?= $result['role'] == "seller" ? "selected" : "" ?>>ผู้ขาย (seller)</option>
@@ -55,7 +55,7 @@ use App\Models\Account;
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

@@ -43,7 +43,7 @@ use App\Models\BlacklistImage;
                                     </div>
                                     <div class="form-group">
                                         <label>เว็บไซต์</label>
-                                        <input type="text" class="form-control" value="<?= $result['website'] ?>" disabled>
+                                        <input type="url" class="form-control" value="<?= $result['website'] ?>" disabled>
                                     </div>
                                     <div class="row">
                                         <div class="col">

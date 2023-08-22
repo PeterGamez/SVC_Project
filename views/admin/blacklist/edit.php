@@ -38,7 +38,7 @@ $site['cdn'] = ['bs-file'];
                                         </div>
                                         <div class="form-group">
                                             <label>เว็บไซต์ <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="website" value="<?= $result['website'] ?>" required maxlength="50">
+                                            <input type="url" class="form-control" name="website" value="<?= $result['website'] ?>" required maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label>ประเภท <span class="text-danger">*</span></label>
