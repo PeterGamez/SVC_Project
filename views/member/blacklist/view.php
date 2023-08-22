@@ -8,10 +8,10 @@ use App\Models\BlacklistImage;
 
 <body>
     <div id="wrapper">
-        <?= admin_views('layouts.sidebar') ?>
+        <?= member_views('layouts.sidebar') ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?= admin_views('layouts.topbar') ?>
+                <?= member_views('layouts.topbar') ?>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
                         <div class="card card-40 mb-4 shadow">

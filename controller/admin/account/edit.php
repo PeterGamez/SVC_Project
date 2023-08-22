@@ -15,9 +15,15 @@ if ($_POST['id']) {
         exit;
     }
 
-    if ($username <> $data['username'] || $email <> $data['email']) {
-        if (Account::count(['username' => $username, 'email' => $email], 'OR') > 0) {
-            echo Alert::alerts('มีบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
+    if ($username <> $data['username']) {
+        if (Account::count(['username' => $username]) > 0) {
+            echo Alert::alerts('มีชื่อบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
+            exit;
+        }
+    }
+    if ($email <> $data['email']) {
+        if (Account::count(['email' => $email]) > 0) {
+            echo Alert::alerts('มีอีเมลนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
             exit;
         }
     }
