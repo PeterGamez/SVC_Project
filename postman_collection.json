@@ -28,6 +28,38 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "blacklist",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/blacklist/search",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"blacklist",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

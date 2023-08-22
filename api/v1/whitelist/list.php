@@ -2,7 +2,9 @@
 
 use App\Models\Whitelist;
 
-$data = Whitelist::find()->get();
+$data = Whitelist::find()
+    ->select('tag', 'name', 'id_firstname', 'id_lastname')
+    ->get();
 
 $dataArray = array();
 for ($i = 0; $i < count($data); $i++) {
@@ -13,6 +15,6 @@ for ($i = 0; $i < count($data); $i++) {
     );
 }
 
-$data = json_encode($dataArray);
-$data = '{"data":' . $data . '}';
-echo $data;
+$response = json_encode($dataArray);
+$response = '{"data":' . $response . '}';
+echo $response;
