@@ -15,6 +15,8 @@ for ($i = 0; $i < count($data); $i++) {
     );
 }
 
-$response = json_encode($dataArray);
-$response = '{"data":' . $response . '}';
-echo $response;
+$respond = array(
+    'data' => $dataArray
+);
+
+echo json_encode($respond);

@@ -20,6 +20,8 @@ for ($i = 0; $i < count($data); $i++) {
     $dataArray[$i] = $data[$i]['name'];
 }
 
-$response = json_encode($dataArray);
-$response = '{"data":' . $response . '}';
-echo $response;
+$respond = array(
+    'data' => $dataArray
+);
+
+echo json_encode($respond);
