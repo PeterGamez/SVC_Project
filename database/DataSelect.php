@@ -98,6 +98,7 @@ class DataSelect
         }
     }
 
+    /** return query */
     public function get(): array
     {
         $this->query();
@@ -108,5 +109,11 @@ class DataSelect
     {
         $this->query();
         return Model::buildFindOne($this->query, $this->bindParams);
+    }
+
+    public function sql(): string
+    {
+        $this->query();
+        return $this->query;
     }
 }
