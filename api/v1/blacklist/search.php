@@ -13,6 +13,7 @@ if (empty($data['query'])) {
 $data = Blacklist::find()
     ->select('name')
     ->where('name', '%' . $data['query'] . '%', 'LIKE')
+    ->limit(10)
     ->get();
 
 $dataArray = array();
