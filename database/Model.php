@@ -177,11 +177,7 @@ class Model extends DataSelect
 
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $result = $stmt->insert_id;
         $stmt->close();
 
@@ -196,11 +192,7 @@ class Model extends DataSelect
         if (!empty($conditions)) {
             self::bindParams($stmt, array_values($conditions));
         }
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
 
@@ -215,11 +207,7 @@ class Model extends DataSelect
         if (!empty($conditions)) {
             self::bindParams($stmt, array_values($conditions));
         }
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
 
@@ -234,11 +222,7 @@ class Model extends DataSelect
         if (!empty($conditions)) {
             self::bindParams($stmt, array_values($conditions));
         }
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
 
@@ -251,11 +235,7 @@ class Model extends DataSelect
 
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_merge(array_values($newData), array_values($conditions)));
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
 
@@ -268,11 +248,7 @@ class Model extends DataSelect
 
         $stmt = $conn->prepare($sql);
         self::bindParams($stmt, array_values($conditions));
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
 
@@ -284,11 +260,7 @@ class Model extends DataSelect
         global $conn;
 
         $stmt = $conn->prepare($sql);
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception($error);
-        }
+        $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
 
