@@ -10,7 +10,7 @@
                     <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>

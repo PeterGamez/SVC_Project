@@ -51,7 +51,7 @@ $site['cdn'] = ['datatables'];
                     </div>
                 </div>
             </div>
-           <?= views('template/back/footer') ?>
+            <?= views('template/back/footer') ?>
         </div>
     </div>
     <?= views('template/back/cdn_footer') ?>
