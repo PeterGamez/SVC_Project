@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 20, 2023 at 09:02 PM
+-- Generation Time: Aug 24, 2023 at 07:41 PM
 -- Server version: 10.3.39-MariaDB-0+deb10u1-log
 -- PHP Version: 8.2.8
 
@@ -55,12 +55,12 @@ CREATE TABLE `approve` (
   `color` varchar(10) NOT NULL DEFAULT 'secondary',
   `icon` varchar(50) NOT NULL,
   `whitelist` enum('0','1') NOT NULL DEFAULT '0',
-  `whitelist_waiting` enum('0','1') DEFAULT '0',
+  `whitelist_waiting` enum('0','1') NOT NULL DEFAULT '0',
   `blacklist` enum('0','1') NOT NULL DEFAULT '0',
-  `create_at` datetime NOT NULL,
-  `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
-  `update_at` datetime NOT NULL,
-  `update_by` int(5) NOT NULL DEFAULT current_timestamp()
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `create_by` int(5) NOT NULL,
+  `update_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -73,10 +73,10 @@ CREATE TABLE `bank` (
   `id` int(5) NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(110) NOT NULL,
-  `create_at` datetime NOT NULL,
-  `create_by` int(5) NOT NULL DEFAULT current_timestamp(),
-  `update_at` datetime NOT NULL,
-  `update_by` int(5) NOT NULL DEFAULT current_timestamp()
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `create_by` int(5) NOT NULL,
+  `update_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `update_by` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -89,12 +89,12 @@ CREATE TABLE `blacklist` (
   `id` int(5) NOT NULL,
   `name` varchar(50) NOT NULL,
   `reason` varchar(255) NOT NULL,
-  `website` varchar(50) NOT NULL,
+  `website` varchar(60) NOT NULL,
   `blacklist_category_id` int(5) NOT NULL,
   `id_firstname` varchar(50) NOT NULL,
   `id_lastname` varchar(50) NOT NULL,
-  `id_number` varchar(13) NOT NULL,
-  `id_image` varchar(110) NOT NULL,
+  `id_number` varchar(13) DEFAULT NULL,
+  `id_image` varchar(110) DEFAULT NULL,
   `bank_id` int(5) NOT NULL,
   `bank_number` varchar(12) NOT NULL,
   `item_name` varchar(50) NOT NULL,
@@ -102,8 +102,8 @@ CREATE TABLE `blacklist` (
   `item_date` datetime NOT NULL,
   `approve_id` int(5) NOT NULL DEFAULT 1,
   `approve_reason` varchar(255) DEFAULT NULL,
-  `approve_by` int(5) DEFAULT NULL,
   `approve_at` datetime DEFAULT NULL,
+  `approve_by` int(5) DEFAULT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `create_by` int(5) NOT NULL,
   `update_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -165,20 +165,20 @@ CREATE TABLE `email_verify` (
 
 CREATE TABLE `whitelist` (
   `id` int(5) NOT NULL,
-  `tag` varchar(50) DEFAULT NULL,
+  `tag` varchar(10) DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   `account_id` int(5) NOT NULL,
-  `banner` varchar(110) DEFAULT NULL,
-  `website` varchar(50) NOT NULL,
+  `banner` varchar(110) NOT NULL,
+  `website` varchar(60) NOT NULL,
   `id_firstname` varchar(50) NOT NULL,
   `id_lastname` varchar(50) NOT NULL,
   `id_number` varchar(13) NOT NULL,
   `id_image` varchar(110) NOT NULL,
-  `approve_id` int(5) DEFAULT 1,
-  `approve_reason` varchar(255) DEFAULT NULL,
-  `approve_at` datetime DEFAULT NULL,
-  `approve_by` int(5) DEFAULT NULL,
+  `approve_id` int(5) NOT NULL,
+  `approve_reason` varchar(255) NOT NULL,
+  `approve_at` datetime NOT NULL,
+  `approve_by` int(5) NOT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `create_by` int(5) NOT NULL,
   `update_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -193,11 +193,11 @@ CREATE TABLE `whitelist` (
 
 CREATE TABLE `whitelist_waiting` (
   `id` int(5) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(10) NOT NULL,
   `description` varchar(255) NOT NULL,
   `account_id` int(5) NOT NULL,
-  `banner` varchar(110) DEFAULT NULL,
-  `website` varchar(50) NOT NULL,
+  `banner` varchar(110) NOT NULL,
+  `website` varchar(60) NOT NULL,
   `id_firstname` varchar(50) NOT NULL,
   `id_lastname` varchar(50) NOT NULL,
   `id_number` varchar(13) NOT NULL,
