@@ -40,13 +40,19 @@ use App\Models\Account;
                                             <option value="user" <?= $result['role'] == "user" ? "selected" : "" ?>>ผู้ใช้งาน (user)</option>
                                         </select>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="btn btn-group">
-                                            <a href="<?= admin_url('account.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขบัญชี</a>
-                                            <a href="<?= admin_url('account.' . $result['id'] . '.password') ?>" class="btn btn-sm btn-primary">เปลี่ยนรหัสผ่าน</a>
-                                            <a href="<?= admin_url('account.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบบัญชี</a>
+                                    <?php
+                                    if ($result['role'] == 'superadmin' and $_SESSION['user_role'] == 'superadmin') {
+                                    ?>
+                                        <div class="modal-body">
+                                            <div class="btn btn-group">
+                                                <a href="<?= admin_url('account.' . $result['id'] . '.edit') ?>" class="btn btn-sm btn-primary">แก้ไขบัญชี</a>
+                                                <a href="<?= admin_url('account.' . $result['id'] . '.password') ?>" class="btn btn-sm btn-primary">เปลี่ยนรหัสผ่าน</a>
+                                                <a href="<?= admin_url('account.' . $result['id'] . '.delete') ?>" class="btn btn-sm btn-danger">ลบบัญชี</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,12 @@
 <?php
 
 use App\Models\Account;
+
+$result = Account::find($request)->getOne();
+if ($result['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+    redirect(admin_url('account'));
+    exit;
+}
 ?>
 
 <?= views('template/back/header') ?>
@@ -19,9 +25,6 @@ use App\Models\Account;
                                     <h5 class="modal-title">ลบบัญชี</h5>
                                 </div>
                                 <form method="POST" action="<?= url() ?>">
-                                    <?php
-                                    $result = Account::find($request)->getOne();
-                                    ?>
                                     <input type="hidden" name="id" value="<?= $result['id'] ?>">
                                     <div class="modal-body">
                                         <div class="form-group">

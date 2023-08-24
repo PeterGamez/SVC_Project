@@ -6,8 +6,14 @@ use App\Models\Account;
 if ($_POST['id']) {
     $id = $_POST['id'];
 
-    if (Account::count(['id' => $id]) == 0) {
+    $data = Account::find()->where('id', $id)->getOne();
+    if (count($data) == 0) {
         echo Alert::alerts('ไม่พบบัญชีนี้ในระบบ', 'error', 1500, 'window.history.back()');
+        exit;
+    }
+
+    if ($data['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+        echo Alert::alerts('คุณไม่มีสิทธิ์แก้ไขบัญชีนี้', 'error', 1500, 'window.history.back()');
         exit;
     }
 

@@ -15,6 +15,11 @@ if ($_POST['id']) {
         exit;
     }
 
+    if ($data['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+        echo Alert::alerts('คุณไม่มีสิทธิ์แก้ไขบัญชีนี้', 'error', 1500, 'window.history.back()');
+        exit;
+    }
+
     if ($username <> $data['username']) {
         if (Account::count(['username' => $username]) > 0) {
             echo Alert::alerts('มีชื่อบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
