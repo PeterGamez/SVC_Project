@@ -21,7 +21,7 @@ $site['cdn'] = ['bs-file', 'searchinput'];
                                 <div class="modal-header justify-content-center">
                                     <h5 class="modal-title">รายงานผู้ขาย</h5>
                                 </div>
-                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data">
+                                <form method="POST" action="<?= url() ?>" enctype="multipart/form-data" onsubmit="return checkBlacklistForm()">
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label>ชื่อกิจการ <span class="text-danger">*</span></label>
@@ -63,7 +63,7 @@ $site['cdn'] = ['bs-file', 'searchinput'];
                                         </div>
                                         <div class="form-group">
                                             <label>เลขบัตรประชาชน</label>
-                                            <input type="text" class="form-control" name="id_number" pattern="\d+" minlength="13" maxlength="13">
+                                            <input type="text" class="form-control" name="id_number" id="id_number" pattern="\d+" minlength="13" maxlength="13">
                                         </div>
                                         <div class="form-group">
                                             <label>รูปบัตรประชาชน</label>
@@ -177,6 +177,21 @@ $site['cdn'] = ['bs-file', 'searchinput'];
                     autocompleteList.css('border', 'none');
                 }
             });
+
+            function checkBlacklistForm() {
+                const id = $('#id_number').val();
+                if (id) {
+                    if (isNaN(id)) return false;
+                    if (id.substring(0, 1) == 0) return false;
+                    if (id.length != 13) return false;
+                    for (i = 0, sum = 0; i < 12; i++)
+                        sum += parseFloat(id.charAt(i)) * (13 - i);
+                    if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) return false;
+                    return true;
+                } else {
+                    return true
+                }
+            }
         });
     </script>
 </body>
