@@ -14,7 +14,7 @@ class DataSelect
     protected $group = [];
     protected $limit;
 
-    protected function __construct(string $table, array $conditions = null)
+    final protected function __construct(string $table, array $conditions = null)
     {
         $this->maintable = $table;
         $this->query = "SELECT * FROM $table";
@@ -25,19 +25,19 @@ class DataSelect
         }
     }
 
-    public function select(string ...$fields): self
+    final public function select(string ...$fields): self
     {
         $this->query = str_replace("*", implode(", ", $fields), $this->query);
         return $this;
     }
 
-    public function join(string $table, string $column1, string $column2, string $type = "INNER"): self
+    final public function join(string $table, string $column1, string $column2, string $type = "INNER"): self
     {
         $this->jointable[] = " $type JOIN $table ON $table.$column1 = " . $this->maintable . ".$column2";
         return $this;
     }
 
-    public function where(string $column, array|string $value, string $operator = "="): self
+    final public function where(string $column, array|string $value, string $operator = "="): self
     {
         if (is_array($value)) {
             $placeholders = implode(', ', array_fill(0, count($value), '?'));
@@ -50,26 +50,26 @@ class DataSelect
         return $this;
     }
 
-    public function operator(string $operator): self
+    final public function operator(string $operator): self
     {
         $operator = strtoupper($operator);
         $this->whereOperator = ($operator === 'OR') ? 'OR' : 'AND';
         return $this;
     }
 
-    public function order(string ...$columns): self
+    final public function order(string ...$columns): self
     {
         $this->order = $columns;
         return $this;
     }
 
-    public function group(string ...$columns): self
+    final public function group(string ...$columns): self
     {
         $this->group = $columns;
         return $this;
     }
 
-    public function limit(int $value): self
+    final public function limit(int $value): self
     {
         $this->limit = $value;
         return $this;
@@ -99,19 +99,19 @@ class DataSelect
     }
 
     /** return query */
-    public function get(): array
+    final public function get(): array
     {
         $this->query();
         return Model::buildFind($this->query, $this->bindParams);
     }
 
-    public function getOne(): ?array
+    final public function getOne(): ?array
     {
         $this->query();
         return Model::buildFindOne($this->query, $this->bindParams);
     }
 
-    public function sql(): string
+    final public function sql(): string
     {
         $this->query();
         return $this->query;

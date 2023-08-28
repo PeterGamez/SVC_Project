@@ -4,7 +4,7 @@ namespace App\Class;
 
 class Download
 {
-    public static function transfer(string $file, string $filename): void
+    final public static function transfer(string $file, string $filename): void
     {
         ob_start();
         header('Content-Description: File Transfer');

@@ -10,7 +10,7 @@ class Account
     /**
      * @param array $data [id, username, email, &avatar, role]
      */
-    public static function set_session(array $data): void
+    final public static function set_session(array $data): void
     {
         $_SESSION['login'] = true;
         $_SESSION['user_id'] = $data['id'];
@@ -20,7 +20,7 @@ class Account
         $_SESSION['user_role'] = $data['role'];
     }
 
-    public static function create_verify_token(string $email, string $type): bool
+    final public static function create_verify_token(string $email, string $type): bool
     {
         $emailVerify = EmailVerify::findEmail($email);
         if (!$emailVerify) {
@@ -50,7 +50,7 @@ class Account
         return false;
     }
 
-    public static function verify_email(string $token): bool
+    final public static function verify_email(string $token): bool
     {
         $emailVerify = EmailVerify::findToken($token);
         if ($emailVerify) {
@@ -67,7 +67,7 @@ class Account
     /**
      * @return array user data
      */
-    public static function register_email(string $token, string $password): array|false
+    final public static function register_email(string $token, string $password): array|false
     {
         $emailVerify = EmailVerify::findToken($token);
         if ($emailVerify) {

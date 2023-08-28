@@ -19,7 +19,7 @@ class Model extends DataSelect
         return self::buildCreate($sql, $newData);
     }
 
-    public static function find($conditions = null): parent
+    final public static function find($conditions = null): parent
     {
         $table = self::parseTable();
         $instance = new parent($table, $conditions);
@@ -62,7 +62,7 @@ class Model extends DataSelect
     /**
      * Show table status
      */
-    public static function status(): array
+    final public static function status(): array
     {
         $table = self::parseTable();
         $sql = "SHOW TABLE STATUS LIKE $table";

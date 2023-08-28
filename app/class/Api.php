@@ -4,7 +4,7 @@ namespace App\Class;
 
 class Api
 {
-    public static function error_400(): string
+    final public static function error_400(): string
     {
         $error = [
             'status' => 400,
@@ -14,7 +14,7 @@ class Api
         return json_encode($error);
     }
 
-    public static function error_404($message = null): string
+    final public static function error_404($message = null): string
     {
         $error = [
             'status' => 404,
@@ -24,7 +24,7 @@ class Api
         return json_encode($error);
     }
 
-    public static function error_405(): string
+    final public static function error_405(): string
     {
         $error = [
             'status' => 405,

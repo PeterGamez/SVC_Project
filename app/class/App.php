@@ -4,12 +4,12 @@ namespace App\Class;
 
 class App
 {
-    public static function isGET(): bool
+    final public static function isGET(): bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
 
-    public static function isPOST(): bool
+    final public static function isPOST(): bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
@@ -17,7 +17,7 @@ class App
     /** 
      * @return array [ip, country, cdn]
      */
-    public static function getAgentIP(): array
+    final public static function getAgentIP(): array
     {
         $ip = 'Unknown';
         $cdn = null;
@@ -34,7 +34,7 @@ class App
         return array('ip' => $ip, 'country' => $country, 'cdn' => $cdn);
     }
 
-    public static function apiRequest(string $api_url, array $post = null): array
+    final public static function apiRequest(string $api_url, array $post = null): array
     {
         $ch = curl_init($api_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -59,7 +59,7 @@ class App
         return json_decode($response, true);
     }
 
-    public static function RandomText($length): string
+    final public static function RandomText($length): string
     {
         $character = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $characterLength = strlen($character);
@@ -72,7 +72,7 @@ class App
         return $random;
     }
 
-    public static function RandomHex(int $length = 6): string
+    final public static function RandomHex(int $length = 6): string
     {
         $character = '0123456789abcdef';
         $characterLength = strlen($character);
@@ -88,7 +88,7 @@ class App
     /**
      * @param string $captcha ค่า Captcha ที่ได้จาก cloudflare turnstile
      */
-    public static function Captcha(string $captcha): bool
+    final public static function Captcha(string $captcha): bool
     {
         if (!$captcha) {
             echo Alert::alerts('กรุณายืนยันตัวตนด้วย Captcha', 'warning', 1500, 'history.back()');
@@ -119,7 +119,7 @@ class App
      * @param bool $time แสดงเวลาด้วยหรือไม่
      * @param bool $second แสดงวินาทีด้วยหรือไม่
      */
-    static function th_date(string $datetime, int $format = 0, bool $time = false, bool $second = false): string
+    final public static function th_date(string $datetime, int $format = 0, bool $time = false, bool $second = false): string
     {
         list($date, $time) = explode(' ', $datetime);
         list($H, $i) = explode(':', $time);
@@ -147,7 +147,7 @@ class App
      * @param bool $time แสดงเวลาด้วยหรือไม่
      * @param bool $second แสดงวินาทีด้วยหรือไม่
      */
-    static function en_date(string $datetime, int $format = 0, bool $time = false, bool $second = false): string
+    final public static function en_date(string $datetime, int $format = 0, bool $time = false, bool $second = false): string
     {
         list($date, $time) = explode(' ', $datetime);
         list($H, $i) = explode(':', $time);
