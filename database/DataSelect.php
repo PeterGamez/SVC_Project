@@ -2,8 +2,6 @@
 
 namespace Database;
 
-use Exception;
-
 class DataSelect
 {
     protected $maintable;
@@ -18,9 +16,6 @@ class DataSelect
 
     final protected function __construct(string $table, array $conditions = null)
     {
-        if (get_called_class() != 'Model') {
-            throw new Exception("DataSelect class cannot be used directly");
-        }
         $this->maintable = $table;
         $this->query = "SELECT * FROM $table";
         if (is_array($conditions)) {
