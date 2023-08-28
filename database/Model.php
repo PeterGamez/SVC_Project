@@ -156,7 +156,7 @@ class Model extends DataSelect
         }
 
         $operator = strtoupper($operator);
-        $operatorString = ($operator === "OR") ? " OR " : " AND ";
+        $operatorString = ($operator == "OR") ? " OR " : " AND ";
 
         return " WHERE " . implode($operatorString, $query);
     }
@@ -176,7 +176,7 @@ class Model extends DataSelect
         global $conn;
 
         $stmt = $conn->prepare($sql);
-        self::bindParams($stmt, array_values($conditions));
+        self::bindParams($stmt, $conditions);
         $stmt->execute();
         $result = $stmt->insert_id;
         $stmt->close();
@@ -190,7 +190,7 @@ class Model extends DataSelect
 
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
-            self::bindParams($stmt, array_values($conditions));
+            self::bindParams($stmt, $conditions);
         }
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -205,7 +205,7 @@ class Model extends DataSelect
 
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
-            self::bindParams($stmt, array_values($conditions));
+            self::bindParams($stmt, $conditions);
         }
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -220,7 +220,7 @@ class Model extends DataSelect
 
         $stmt = $conn->prepare($sql);
         if (!empty($conditions)) {
-            self::bindParams($stmt, array_values($conditions));
+            self::bindParams($stmt, $conditions);
         }
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -234,7 +234,7 @@ class Model extends DataSelect
         global $conn;
 
         $stmt = $conn->prepare($sql);
-        self::bindParams($stmt, array_merge(array_values($newData), array_values($conditions)));
+        self::bindParams($stmt, [...$newData, ...$conditions]);
         $stmt->execute();
         $affectedRows = $stmt->affected_rows;
         $stmt->close();
@@ -247,7 +247,7 @@ class Model extends DataSelect
         global $conn;
 
         $stmt = $conn->prepare($sql);
-        self::bindParams($stmt, array_values($conditions));
+        self::bindParams($stmt, $conditions);
         $stmt->execute();
         $affectedRows = $stmt->affected_rows;
         $stmt->close();

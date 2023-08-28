@@ -2,6 +2,8 @@
 
 namespace Database;
 
+use Exception;
+
 class DataSelect
 {
     protected $maintable;
@@ -16,6 +18,9 @@ class DataSelect
 
     final protected function __construct(string $table, array $conditions = null)
     {
+        if (get_called_class() != 'Model') {
+            throw new Exception("DataSelect class cannot be used directly");
+        }
         $this->maintable = $table;
         $this->query = "SELECT * FROM $table";
         if (is_array($conditions)) {
@@ -42,7 +47,7 @@ class DataSelect
         if (is_array($value)) {
             $placeholders = implode(', ', array_fill(0, count($value), '?'));
             $this->whereConditions[] = "$column IN ($placeholders)";
-            $this->bindParams = array_merge($this->bindParams, $value);
+            $this->bindParams = [...$this->bindParams, ...$value];
         } else {
             $this->whereConditions[] = "$column $operator ?";
             $this->bindParams[] = $value;
@@ -53,7 +58,7 @@ class DataSelect
     final public function operator(string $operator): self
     {
         $operator = strtoupper($operator);
-        $this->whereOperator = ($operator === 'OR') ? 'OR' : 'AND';
+        $this->whereOperator = ($operator == 'OR') ? 'OR' : 'AND';
         return $this;
     }
 
