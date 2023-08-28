@@ -1,6 +1,6 @@
 <?php
 
-use App\Class\App;
+use App\Class\Api;
 
 function config($key): ?string
 {
@@ -76,33 +76,6 @@ function url_back(): string
     else return url();
 }
 
-function controller($path)
-{
-    global $site;
-
-    $path = str_replace('.', '/', $path);
-    $controllerPath = __ROOT__ . '/controller/' . $path . '.php';
-    if (file_exists($controllerPath)) {
-        include $controllerPath;
-        return;
-    }
-    return null;
-}
-
-function admin_controller($path): ?string
-{
-    global $site;
-
-    return controller('admin/' . $path);
-}
-
-function member_controller($path): ?string
-{
-    global $site;
-
-    return controller('member/' . $path);
-}
-
 function redirect($path): void
 {
     header('Location: ' . $path);
@@ -150,12 +123,12 @@ function api($method, $filename): void
     if (str_contains($method, '|')) {
         $methods = explode('|', $method);
         if (!in_array($_SERVER['REQUEST_METHOD'], $methods)) {
-            echo App::error_405();
+            echo Api::error_405();
             exit;
         }
     } else {
         if ($method != $_SERVER['REQUEST_METHOD']) {
-            echo App::error_405();
+            echo Api::error_405();
             exit;
         }
     }
@@ -165,5 +138,26 @@ function api($method, $filename): void
     if (file_exists($viewPath)) {
         include $viewPath;
         return;
+    }
+}
+
+function loaddir($path)
+{
+    $folders = scandir($path); // ไฟล์ทั้งหมดในโฟลเดอร์
+    foreach ($folders as $key => $value) {
+        if ($value == '.' || $value == '..') continue; 
+        if (is_dir($path . '/' . $value)) {
+            $files = scandir($path . '/' . $value); // ไฟล์ทั้งหมดในโฟลเดอร์
+            foreach ($files as $key => $file) {
+                if ($file == '.' || $file == '..') continue;
+                if (substr($file, -4) == '.php') { // เฉพาะไฟล์ .php
+                    require_once $path . '/' . $value . '/' . $file;
+                }
+            }
+        } else {
+            if (substr($value, -4) == '.php') { // เฉพาะไฟล์ .php
+                require_once $path . '/' . $value;
+            }
+        }
     }
 }

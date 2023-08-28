@@ -1,6 +1,13 @@
 <?php
 
 use App\Class\App;
+use App\Controllers\Admin\Account;
+use App\Controllers\Admin\Approve;
+use App\Controllers\Admin\Bank;
+use App\Controllers\Admin\Blacklist;
+use App\Controllers\Admin\BlacklistCategory;
+use App\Controllers\Admin\Whitelist;
+use App\Controllers\Admin\WhitelistWaiting;
 
 array_shift($agent_request);
 // Chcek Login
@@ -39,7 +46,7 @@ else if ($agent_request[0] == 'whitelist') {
                 if (App::isGET()) {
                     return admin_views('whitelist.waiting.approve');
                 } else if (App::isPOST()) {
-                    return admin_controller('whitelist.waiting.approve');
+                    return WhitelistWaiting::approve();
                 }
             }
         }
@@ -49,7 +56,7 @@ else if ($agent_request[0] == 'whitelist') {
         if (App::isGET()) {
             return admin_views('whitelist.add');
         } else if (App::isPOST()) {
-            return admin_controller('whitelist.add');
+            return Whitelist::add();
         }
     }
     // check is number
@@ -64,7 +71,7 @@ else if ($agent_request[0] == 'whitelist') {
             if (App::isGET()) {
                 return admin_views('whitelist.edit');
             } else if (App::isPOST()) {
-                return admin_controller('whitelist.edit');
+                return Whitelist::edit();
             }
         }
         // delete
@@ -72,7 +79,7 @@ else if ($agent_request[0] == 'whitelist') {
             if (App::isGET()) {
                 return admin_views('whitelist.delete');
             } else if (App::isPOST()) {
-                return admin_controller('whitelist.delete');
+                return Whitelist::delete();
             }
         }
     }
@@ -88,7 +95,7 @@ else if ($agent_request[0] == 'blacklist') {
         if (App::isGET()) {
             return admin_views('blacklist.add');
         } else if (App::isPOST()) {
-            return admin_controller('blacklist.add');
+            return Blacklist::add();
         }
     }
     // check is number
@@ -103,7 +110,7 @@ else if ($agent_request[0] == 'blacklist') {
             if (App::isGET()) {
                 return admin_views('blacklist.edit');
             } else if (App::isPOST()) {
-                return admin_controller('blacklist.edit');
+                return Blacklist::edit();
             }
         }
         // delete
@@ -111,7 +118,7 @@ else if ($agent_request[0] == 'blacklist') {
             if (App::isGET()) {
                 return admin_views('blacklist.delete');
             } else if (App::isPOST()) {
-                return admin_controller('blacklist.delete');
+                return Blacklist::delete();
             }
         }
         // approve
@@ -119,7 +126,7 @@ else if ($agent_request[0] == 'blacklist') {
             if (App::isGET()) {
                 return admin_views('blacklist.approve');
             } else if (App::isPOST()) {
-                return admin_controller('blacklist.approve');
+                return Blacklist::approve();
             }
         }
     }
@@ -133,7 +140,7 @@ else if ($agent_request[0] == 'blacklist') {
             if (App::isGET()) {
                 return admin_views('blacklist.category.add');
             } else if (App::isPOST()) {
-                return admin_controller('blacklist.category.add');
+                return BlacklistCategory::add();
             }
         }
         // check is number
@@ -144,7 +151,7 @@ else if ($agent_request[0] == 'blacklist') {
                 if (App::isGET()) {
                     return admin_views('blacklist.category.edit');
                 } else if (App::isPOST()) {
-                    return admin_controller('blacklist.category.edit');
+                    return BlacklistCategory::edit();
                 }
             }
             // delete
@@ -152,7 +159,7 @@ else if ($agent_request[0] == 'blacklist') {
                 if (App::isGET()) {
                     return admin_views('blacklist.category.delete');
                 } else if (App::isPOST()) {
-                    return admin_controller('blacklist.category.delete');
+                    return BlacklistCategory::delete();
                 }
             }
         }
@@ -170,7 +177,7 @@ else if ($agent_request[0] == 'account' and in_array($_SESSION['user_role'], ['s
         if (App::isGET()) {
             return admin_views('account.add');
         } else if (App::isPOST()) {
-            return admin_controller('account.add');
+            return Account::add();
         }
     }
     // check is number
@@ -185,7 +192,7 @@ else if ($agent_request[0] == 'account' and in_array($_SESSION['user_role'], ['s
             if (App::isGET()) {
                 return admin_views('account.edit');
             } else if (App::isPOST()) {
-                return admin_controller('account.edit');
+                return Account::edit();
             }
         }
         // password
@@ -193,7 +200,7 @@ else if ($agent_request[0] == 'account' and in_array($_SESSION['user_role'], ['s
             if (App::isGET()) {
                 return admin_views('account.password');
             } else if (App::isPOST()) {
-                return admin_controller('account.password');
+                return Account::password();
             }
         }
         // delete
@@ -201,7 +208,7 @@ else if ($agent_request[0] == 'account' and in_array($_SESSION['user_role'], ['s
             if (App::isGET()) {
                 return admin_views('account.delete');
             } else if (App::isPOST()) {
-                return admin_controller('account.delete');
+                return Account::delete();
             }
         }
     }
@@ -217,7 +224,7 @@ else if ($agent_request[0] == 'bank' and in_array($_SESSION['user_role'], ['supe
         if (App::isGET()) {
             return admin_views('bank.add');
         } else if (App::isPOST()) {
-            return admin_controller('bank.add');
+            return Bank::add();
         }
     }
     // check is number
@@ -235,7 +242,7 @@ else if ($agent_request[0] == 'bank' and in_array($_SESSION['user_role'], ['supe
                 if (App::isGET()) {
                     return admin_views('bank.edit');
                 } else if (App::isPOST()) {
-                    return admin_controller('bank.edit');
+                    return Bank::edit();
                 }
             }
             // delete
@@ -243,7 +250,7 @@ else if ($agent_request[0] == 'bank' and in_array($_SESSION['user_role'], ['supe
                 if (App::isGET()) {
                     return admin_views('bank.delete');
                 } else if (App::isPOST()) {
-                    return admin_controller('bank.delete');
+                    return Bank::delete();
                 }
             }
         }
@@ -260,7 +267,7 @@ else if ($agent_request[0] == 'approve' and in_array($_SESSION['user_role'], ['s
         if (App::isGET()) {
             return admin_views('approve.add');
         } else if (App::isPOST()) {
-            return admin_controller('approve.add');
+            return Approve::add();
         }
     }
     // check is number
@@ -275,7 +282,7 @@ else if ($agent_request[0] == 'approve' and in_array($_SESSION['user_role'], ['s
             if (App::isGET()) {
                 return admin_views('approve.edit');
             } else if (App::isPOST()) {
-                return admin_controller('approve.edit');
+                return Approve::edit();
             }
         }
         // delete
@@ -283,7 +290,7 @@ else if ($agent_request[0] == 'approve' and in_array($_SESSION['user_role'], ['s
             if (App::isGET()) {
                 return admin_views('approve.delete');
             } else if (App::isPOST()) {
-                return admin_controller('approve.delete');
+                return Approve::delete();
             }
         }
     }

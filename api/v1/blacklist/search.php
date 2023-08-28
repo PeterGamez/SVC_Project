@@ -1,13 +1,13 @@
 <?php
 
-use App\Class\App;
+use App\Class\Api;
 use App\Models\Blacklist;
 
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
 if (empty($data['query'])) {
-    echo App::error_404('Bad Request');
+    echo Api::error_400();
     exit;
 }
 $data = Blacklist::find()
