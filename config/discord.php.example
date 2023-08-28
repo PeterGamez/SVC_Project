@@ -1,4 +1,5 @@
 <?php
+
 $discord = [
     "admin" => [
         "register" => "https://discord.com/api/webhooks/1118860600634785803/",
