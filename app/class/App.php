@@ -14,26 +14,6 @@ class App
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
 
-    public static function error_404($message = null): string
-    {
-        $error_404 = [
-            'status' => 404,
-            'message' => $message ?? 'API Not Found'
-        ];
-        http_response_code(404);
-        return json_encode($error_404);
-    }
-
-    public static function error_405(): string
-    {
-        $error_405 = [
-            'status' => 405,
-            'message' => 'Method Not Allowed'
-        ];
-        http_response_code(405);
-        return json_encode($error_405);
-    }
-
     /** 
      * @return array [ip, country, cdn]
      */

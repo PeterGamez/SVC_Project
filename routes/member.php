@@ -1,6 +1,10 @@
 <?php
 
 use App\Class\App;
+use App\Controller\Member\Login;
+use App\Controllers\Member\Account;
+use App\Controllers\Member\Blacklist;
+use App\Controllers\Member\Whitelist;
 
 array_shift($agent_request);
 // Chcek Login
@@ -10,7 +14,7 @@ if ($_SESSION['login'] == false) {
         if (App::isGET()) {
             return member_views('register');
         } else if (App::isPOST()) {
-            return member_controller('login.register');
+            return Login::register();
         }
     } else if ($agent_request[0] == 'login') {
         if (isset($agent_request[1])) {
@@ -19,15 +23,15 @@ if ($_SESSION['login'] == false) {
                 if (isset($agent_request[2]) and App::isPOST()) {
                     // Site Form
                     if ($agent_request[2] == 'form') {
-                        return member_controller('login.form');
+                        return Login::form();
                     }
                     // Google API
                     else if ($agent_request[2] == 'google') {
-                        return member_controller('login.google');
+                        return Login::google();
                     }
                     // Register Google
                     else if ($agent_request[2] == 'register-email') {
-                        return member_controller('login.register-email');
+                        return Login::register_email();
                     }
                 }
             }
@@ -47,7 +51,7 @@ else if (empty($agent_request[0]) and App::isGET()) {
 }
 // Logout
 else if ($agent_request[0] == 'logout' and App::isGET()) {
-    return member_controller('login.logout');
+    return Login::logout();
 }
 // Profile
 else if ($agent_request[0] == 'profile') {
@@ -56,7 +60,7 @@ else if ($agent_request[0] == 'profile') {
             if (App::isGET()) {
                 return member_views('profile.password');
             } else if (App::isPOST()) {
-                return member_controller('profile.password');
+                return Account::password();
             }
         }
     }
@@ -68,16 +72,16 @@ else if ($agent_request[0] == 'whitelist') {
             if (App::isGET()) {
                 return member_views('whitelist.register');
             } else if (App::isPOST()) {
-                return member_controller('whitelist.register');
+                return Whitelist::register();
             }
         } else if ($agent_request[1] == 'setting' and $_SESSION['user_role'] == 'seller') {
             if (App::isGET()) {
                 return member_views('whitelist.setting');
             } else if (App::isPOST()) {
-                return member_controller('whitelist.setting');
+                return Whitelist::setting();
             }
         } else if ($agent_request[1] == 'delete' and $_SESSION['user_role'] == 'seller' and App::isPOST()) {
-            return member_controller('whitelist.delete');
+            return Whitelist::delete();
         }
     }
 }
@@ -88,7 +92,7 @@ else if ($agent_request[0] == 'blacklist') {
             if (App::isGET()) {
                 return member_views('blacklist.report');
             } else if (App::isPOST()) {
-                return member_controller('blacklist.report');
+                return Blacklist::report();
             }
         } else if ($agent_request[1] == 'myreport') {
             if (App::isGET()) {

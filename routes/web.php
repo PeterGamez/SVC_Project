@@ -2,6 +2,7 @@
 
 use App\Class\App;
 use App\Class\Download;
+use App\Controller\Member\Login;
 
 array_shift($agent_request);
 
@@ -49,12 +50,12 @@ if ($agent_request[0] == 'tos' and App::isGET()) {
 
 // register email
 if (str_starts_with($agent_path, '/register-email')) {
-    return member_views('register-email');
+    return Login::register_email();
 }
 
 // verify email
 if (str_starts_with($agent_path, '/verify-email')) {
-    return member_controller('login.verify-email');
+    return Login::verify_email();
 }
 
 // API
