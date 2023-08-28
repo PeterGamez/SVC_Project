@@ -68,7 +68,7 @@ else if ($agent_request[0] == 'profile') {
 // Whitelist
 else if ($agent_request[0] == 'whitelist') {
     if (isset($agent_request[1])) {
-        if ($agent_request[1] == 'register' and $_SESSION['user_role'] <> 'seller') {
+        if ($agent_request[1] == 'register' and $_SESSION['user_role'] != 'seller') {
             if (App::isGET()) {
                 return member_views('whitelist.register');
             } else if (App::isPOST()) {

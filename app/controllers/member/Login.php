@@ -120,7 +120,7 @@ class Login
                         exit;
                     }
 
-                    if ($data['avatar'] <> $payload['picture']) {
+                    if ($data['avatar'] != $payload['picture']) {
                         ModelsAccount::update(['id' => $data['id']], ['avatar' => $payload['picture']]);
                         $data['avatar'] = $payload['picture'];
                     }

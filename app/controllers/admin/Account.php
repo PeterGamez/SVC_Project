@@ -45,7 +45,7 @@ class Account
                 exit;
             }
 
-            if ($data['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+            if ($data['role'] == 'superadmin' and $_SESSION['user_role'] != 'superadmin') {
                 echo Alert::alerts('คุณไม่มีสิทธิ์แก้ไขบัญชีนี้', 'error', 1500, 'window.history.back()');
                 exit;
             }
@@ -73,18 +73,18 @@ class Account
                 exit;
             }
 
-            if ($data['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+            if ($data['role'] == 'superadmin' and $_SESSION['user_role'] != 'superadmin') {
                 echo Alert::alerts('คุณไม่มีสิทธิ์แก้ไขบัญชีนี้', 'error', 1500, 'window.history.back()');
                 exit;
             }
 
-            if ($username <> $data['username']) {
+            if ($username != $data['username']) {
                 if (ModelsAccount::count(['username' => $username]) > 0) {
                     echo Alert::alerts('มีชื่อบัญชีนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
                     exit;
                 }
             }
-            if ($email <> $data['email']) {
+            if ($email != $data['email']) {
                 if (ModelsAccount::count(['email' => $email]) > 0) {
                     echo Alert::alerts('มีอีเมลนี้อยู่ในระบบแล้ว', 'error', 1500, 'window.history.back()');
                     exit;
@@ -118,7 +118,7 @@ class Account
                 exit;
             }
 
-            if ($data['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+            if ($data['role'] == 'superadmin' and $_SESSION['user_role'] != 'superadmin') {
                 echo Alert::alerts('คุณไม่มีสิทธิ์แก้ไขบัญชีนี้', 'error', 1500, 'window.history.back()');
                 exit;
             }

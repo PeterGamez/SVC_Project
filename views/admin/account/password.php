@@ -3,7 +3,7 @@
 use App\Models\Account;
 
 $result = Account::find($request)->getOne();
-if ($result['role'] == 'superadmin' and $_SESSION['user_role'] <> 'superadmin') {
+if ($result['role'] == 'superadmin' and $_SESSION['user_role'] != 'superadmin') {
     redirect(admin_url('account'));
     exit;
 }
