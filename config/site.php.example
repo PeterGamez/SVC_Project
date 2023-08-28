@@ -17,7 +17,7 @@ $site = [
         "id" => "704090470537-97c10g406cm14m2lntapii8aq0cg2nbk.apps.googleusercontent.com",
         "secret" => "",
         "callback" => url('member.login.callback.google'),
-        "analytics" => ""
+        "analytics" => "G-3RMGWK6C58"
     ],
     "cloudflare" => [
         "turnstile" => [
