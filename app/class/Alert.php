@@ -26,11 +26,11 @@ class Alert
         <body>
             <script>
                 Swal.fire({
-                    title: '" . $title . "',
-                    icon: '" . $icon . "',
-                    timer: " . $timer . ",
+                    title: '$title',
+                    icon: '$icon',
+                    timer: $timer,
                     willClose: () => {
-                        " . $willClose . "
+                        $willClose
                     }
                 })
             </script>
