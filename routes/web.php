@@ -50,7 +50,7 @@ if ($agent_request[0] == 'tos' and App::isGET()) {
 
 // register email
 if (str_starts_with($agent_path, '/register-email')) {
-    return Login::register_email();
+    return member_views('register-email');
 }
 
 // verify email

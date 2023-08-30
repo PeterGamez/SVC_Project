@@ -28,7 +28,7 @@ class Login
             $password1 = $_POST['password1'];
             $password2 = $_POST['password2'];
 
-            $data = ModelsAccount::find()->where('username', $user)->where('email', $user)->operator('OR')->getOne();
+            $data = ModelsAccount::find()->where('username', $user)->where('email', $email)->operator('OR')->getOne();
             if ($data) {
                 echo Alert::alerts('ชื่อผู้ใช้งานหรืออีเมลนี้มีผู้ใช้งานแล้ว', 'warning', 1500, 'history.back()');
                 exit;
