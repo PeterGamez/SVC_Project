@@ -1,5 +1,5 @@
 /**
- * CookieConsent
+ * Cookie Consent
  * https://github.com/orestbida/cookieconsent
  */
 
