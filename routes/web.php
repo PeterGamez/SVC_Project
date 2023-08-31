@@ -2,7 +2,7 @@
 
 use App\Class\App;
 use App\Class\Download;
-use App\Controller\Member\Login;
+use App\Controllers\Member\Login;
 
 array_shift($agent_request);
 

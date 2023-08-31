@@ -14,7 +14,7 @@ class DataSelect
     protected $group = [];
     protected $limit;
 
-    final protected function __construct(string $table, array $conditions = null)
+    protected function __construct(string $table, array $conditions = null)
     {
         $this->maintable = $table;
         $this->query = "SELECT * FROM $table";

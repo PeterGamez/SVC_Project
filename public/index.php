@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Root path of the project
+ */
 define("__ROOT__", dirname(__DIR__));
 
 session_start();

@@ -1,7 +1,7 @@
 <?php
 
 use App\Class\App;
-use App\Controller\Member\Login;
+use App\Controllers\Member\Login;
 use App\Controllers\Member\Account;
 use App\Controllers\Member\Blacklist;
 use App\Controllers\Member\Whitelist;

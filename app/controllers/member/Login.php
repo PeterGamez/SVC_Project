@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Member;
+namespace App\Controllers\Member;
 
 use App\Class\Account;
 use App\Class\Alert;
@@ -10,7 +10,6 @@ use App\Models\Account as ModelsAccount;
 use Google\Client as GoogleClient;
 
 require_once __ROOT__ . '/vendor/autoload.php';
-
 
 class Login
 {
