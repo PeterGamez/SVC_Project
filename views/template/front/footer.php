@@ -4,7 +4,7 @@
             <div class="col-sm-12 col-mb-9 col-lg-9 mt-3">
                 <div class="text-center">
                     <span class="text-dark">
-                        Copyright © 2022-2023 <a href="<?= url('/') ?>"><?= config('site.name') ?></a>. All rights reserved
+                        Copyright © 2023 <a href="<?= url('/') ?>"><?= config('site.name') ?></a>. All rights reserved
                     </span>
                 </div>
             </div>
